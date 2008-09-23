@@ -1,0 +1,17 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean />
+  </SettingsComponent>
+  <CompletionStatisticsManager />
+  <RecentFilesTracker>
+    <RecentFilesTracker>
+      <TrackedFile location="D:\Dev\Pandora 2.0\MapViewer\MapSizes.cs" offset="890" line="12" column="0" />
+      <TrackedFile location="D:\Dev\Pandora 2.0\BoxServerSetup\S1_Folder.cs" offset="4082" line="37" column="0" />
+      <TrackedFile location="D:\Dev\Pandora 2.0\BoxServerSetup\Setup.cs" offset="0" line="78" column="0" />
+      <TrackedFile location="D:\Dev\Pandora 2.0\ArtViewer\ArtViewer.cs" offset="0" line="-1" column="-1" />
+      <TrackedFile location="D:\Dev\Pandora 2.0\Pandora\Pandora.cs" offset="15224" line="647" column="0" />
+    </RecentFilesTracker>
+  </RecentFilesTracker>
+</Configuration>
