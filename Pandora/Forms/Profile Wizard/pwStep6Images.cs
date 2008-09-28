@@ -77,10 +77,12 @@ namespace TheBox.Forms.ProfileWizard
 		private void pwStep6Images_ValidateStep(object sender, System.ComponentModel.CancelEventArgs e)
 		{
 			ProfileWizard wiz = Wizard as ProfileWizard;
-
+            //Kons
+            wiz.NextEnabled = false;
+            //End
 			wiz.Profile.GenerateMaps( PBar );
 			wiz.Profile.CreateMapFiles();
-		}
+        }
 	}
 }
 
