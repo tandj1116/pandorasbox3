@@ -304,7 +304,10 @@ namespace TheBox.Options
 				return;
 			}
 
-			ICodeCompiler compiler = new CSharpCodeProvider().CreateCompiler();
+            //Kons - Issue 3: Obsolete Interface
+            CodeDomProvider compiler = CodeDomProvider.CreateProvider("CSharp");
+            //Kons End
+
 			CompilerParameters options = new CompilerParameters();
 
 			options.CompilerOptions = res;
