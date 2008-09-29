@@ -29,7 +29,8 @@ namespace TheBox.Forms
 		private System.Windows.Forms.MenuItem miLocalSave;
 		private System.Windows.Forms.MenuItem miExit;
 		private System.Windows.Forms.SaveFileDialog SaveFile;
-		private bool m_Modified = false;
+        //Kons - Issue 3 : useless
+		//private bool m_Modified = false;
 
 		public RemoteEditor( string file, string text )
 		{
@@ -155,7 +156,9 @@ namespace TheBox.Forms
 
 		private void tb_TextChanged(object sender, System.EventArgs e)
 		{
-			m_Modified = true;
+            //Kons - Issue 3: useless
+			//m_Modified = true;
+            //Kons End
 			m_Text = tb.Text;
 		}
 
