@@ -14,8 +14,7 @@ namespace SoundExplorer
 	/// </summary>
 	public class Form1 : System.Windows.Forms.Form
 	{
-		private string m_IDX = @"D:\Ultima\Client\2D\soundidx.mul";
-		private string m_MUL = @"D:\Ultima\Client\2D\sound.mul";
+        //Kons - Issue 8 : http://code.google.com/p/pandorasbox3/issues/detail?id=8
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.TreeView tree;
 		private System.Windows.Forms.Button button3;
