@@ -108,7 +108,8 @@ namespace TheBox.MulData
 
 			fixed ( MapCell* pCell = block.Cells )
 			{
-				ReadFile( stream.Handle, pCell, 192, &n, 0 );
+                //Kons - Issue 7 : http://code.google.com/p/pandorasbox3/issues/detail?id=7
+				ReadFile( stream.SafeFileHandle.DangerousGetHandle(), pCell, 192, &n, 0 );
 			}
 			return block;
 		}
@@ -162,7 +163,8 @@ namespace TheBox.MulData
 			int n = 0;
 
 			StaticIdx* pIdx = &idx;
-			ReadFile( stream.Handle, pIdx, 12, &n, 0 );
+            //Kons - Issue 7 : http://code.google.com/p/pandorasbox3/issues/detail?id=7
+			ReadFile( stream.SafeFileHandle.DangerousGetHandle(), pIdx, 12, &n, 0 );
 
 			return idx;
 		}
@@ -227,7 +229,8 @@ namespace TheBox.MulData
 			fixed ( StaticData* pData = data )
 			{
 				int n = 0;
-				ReadFile( stream.Handle, pData, NumberOfStatics * 7, &n, 0 ); 
+                //Kons - Issue 7 : http://code.google.com/p/pandorasbox3/issues/detail?id=7
+				ReadFile( stream.SafeFileHandle.DangerousGetHandle(), pData, NumberOfStatics * 7, &n, 0 ); 
 			}
 
 			return data;

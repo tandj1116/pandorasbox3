@@ -279,9 +279,11 @@ namespace TheBox.MapViewer
 
 			int n = 0;
 
+            
 			fixed ( short* pColorMap = ColorMap )
 			{
-				ReadFile( colstream.Handle, pColorMap, 131072, &n, 0 );
+                //Kons - Issue 7 : http://code.google.com/p/pandorasbox3/issues/detail?id=7
+                ReadFile(colstream.SafeFileHandle.DangerousGetHandle(), pColorMap, 131072, &n, 0);
 			}
 
 			colstream.Close();
@@ -1381,7 +1383,8 @@ namespace TheBox.MapViewer
 
 			fixed ( short* pColorMap = m_ColorMap )
 			{
-				ReadFile( stream.Handle, pColorMap, 131072, &n, 0 );
+                //Kons - Issue 7 : http://code.google.com/p/pandorasbox3/issues/detail?id=7
+				ReadFile( stream.SafeFileHandle.DangerousGetHandle(), pColorMap, 131072, &n, 0 );
 			}
 
 			stream.Close();
