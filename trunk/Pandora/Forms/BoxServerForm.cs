@@ -193,12 +193,11 @@ namespace TheBox.Forms
 				System.Threading.ThreadPool.QueueUserWorkItem( new System.Threading.WaitCallback( SendMessage ) );
 			}
 		}
-
+		private delegate void CloseForm();
 		private void Connect( object o )
 		{
 			bool response = BoxConnection.Connect( !m_Silent );
-
-			Close();
+			Invoke(new CloseForm(Close));
 		}
 
 		private void SendMessage( object o )

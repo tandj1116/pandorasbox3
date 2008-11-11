@@ -1,7 +1,9 @@
 using System;
 using System.IO;
 using System.Drawing;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -52,7 +54,9 @@ namespace TheBox.Forms
 
 			Pandora.LocalizeControl( this );
 
-			m_Editors = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_Editors = new List<Form>();
+			// Issue 10 - End
 		}
 
 		/// <summary>
@@ -794,7 +798,9 @@ namespace TheBox.Forms
 				RemoteEdit();
 			}
 		}
-		private ArrayList m_Editors;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<Form> m_Editors;
+		// Issue 10 - End
 		private bool m_SelfClosing = false;
 
 		private void RemoteEdit()
@@ -833,8 +839,9 @@ namespace TheBox.Forms
 		{
 			if ( m_SelfClosing )
 				return;
-
-			m_Editors.Remove( sender );
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_Editors.Remove( (Form)sender );
+			// Issue 10 - End
 		}
 
 		private void ScriptViewer_Closing(object sender, System.ComponentModel.CancelEventArgs e)

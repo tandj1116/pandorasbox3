@@ -1,7 +1,7 @@
-<?xml version="1.0"?>
-<Facet xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" MapValue="1">
+<?xml version="1.0" encoding="utf-8"?>
+<Facet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" MapValue="1">
   <Nodes>
-    <anyType xsi:type="GenericNode" Name="Adventuring">
+    <GenericNode Name="Adventuring">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Forts">
           <Elements>
@@ -20,8 +20,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Dungeons">
+    </GenericNode>
+    <GenericNode Name="Dungeons">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Britain Passage">
           <Elements>
@@ -262,8 +262,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Misc">
+    </GenericNode>
+    <GenericNode Name="Misc">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Moongates">
           <Elements>
@@ -350,8 +350,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Staff">
+    </GenericNode>
+    <GenericNode Name="Staff">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Common">
           <Elements>
@@ -367,8 +367,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Towns">
+    </GenericNode>
+    <GenericNode Name="Towns">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Britain">
           <Elements>
@@ -669,6 +669,6 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
+    </GenericNode>
   </Nodes>
 </Facet>

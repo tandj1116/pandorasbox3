@@ -1,6 +1,8 @@
 using System;
 using System.IO;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
@@ -96,8 +98,9 @@ namespace TheBox.Data
 
 				try
 				{
-					m_Facets[ i ] = ( Facet ) serializer.Deserialize( stream );
+					m_Facets[i] = (Facet)serializer.Deserialize(stream);
 				}
+				
 				catch ( Exception err )
 				{
 					Pandora.Log.WriteError( err, null );
@@ -172,13 +175,17 @@ namespace TheBox.Data
 		/// </summary>
 		/// <param name="locations">The list of locations</param>
 		/// <returns>An array of TreeNode objects corresponding to the locations supplied</returns>
-		public TreeNode[] GetLocationNodes( ArrayList locations )
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public TreeNode[] GetLocationNodes( List<object> locations )
+		// Issue 10 - End
 		{
 			TreeNode[] nodes = new TreeNode[ locations.Count ];
 
 			for ( int i = 0; i < nodes.Length; i++ )
 			{
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 				Location loc = locations[ i ] as Location;
+				// Issue 10 - End
 
 				nodes[ i ] = new TreeNode( loc.Name );
 				nodes[ i ].Tag = loc;
@@ -267,6 +274,21 @@ namespace TheBox.Data
 					}
 				}
 			}
+		}
+	}
+
+	public class SupportFacet : Facet
+	{
+		private List<GenericNode> m_Nodes;
+
+		public List<GenericNode> NodesS
+		{
+			get { return m_Nodes; }
+			set { m_Nodes = value; }
+		}
+		public SupportFacet()
+		{
+
 		}
 	}
 }

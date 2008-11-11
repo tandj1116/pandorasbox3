@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - end
 using System.Xml.Serialization;
 
 namespace TheBox.BoxServer
@@ -10,12 +12,16 @@ namespace TheBox.BoxServer
 	/// </summary>
 	public class ClientListMessage : BoxMessage
 	{
-		private ArrayList m_Clients;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<ClientEntry> m_Clients;
+		// Issue 10 - End
 
 		/// <summary>
 		/// Gets or sets the list of connected clients
 		/// </summary>
-		public ArrayList Clients
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<ClientEntry> Clients
+		// Issue 10 - End
 		{
 			get { return m_Clients; }
 			set { m_Clients = value; }

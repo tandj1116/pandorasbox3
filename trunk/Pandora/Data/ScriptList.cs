@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.Windows.Forms;
 
 using TheBox.Common;
@@ -11,12 +13,16 @@ namespace TheBox.Data
 	/// </summary>
 	public class ScriptList
 	{
-		private ArrayList m_Items;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<object> m_Items;
+		// Issue 10 - End
 
 		/// <summary>
 		/// Gets or sets the list of generic nodes composing this object
 		/// </summary>
-		public ArrayList List
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<object> List
+		// Issue 10 - End
 		{
 			get
 			{
@@ -33,14 +39,18 @@ namespace TheBox.Data
 		/// </summary>
 		public ScriptList()
 		{
-			m_Items = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_Items = new List<object>();
+			// Issue 10 - End
 		}
 
 		/// <summary>
 		/// Creates a new ScriptList object and initializes the contents
 		/// </summary>
-		/// <param name="items">The ArrayList to use as content</param>
-		public ScriptList( ArrayList items )
+		/// <param name="items">The List<> to use as content</param>
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public ScriptList( List<object> items)
+		// Issue 10 - End
 		{
 			m_Items = items;
 		}
@@ -87,7 +97,9 @@ namespace TheBox.Data
 		{
 			GenericNode gNode = new GenericNode( node.Text );
 
-			foreach ( object o in ( node.Tag as ArrayList ) )
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			foreach ( object o in ( node.Tag as List<object> ) )
+			// Issue 10 - End
 				gNode.Elements.Add( o );
 
 			foreach ( TreeNode subNode in node.Nodes )
@@ -104,14 +116,18 @@ namespace TheBox.Data
 		private TreeNode GetNode( GenericNode from )
 		{
 			TreeNode node = new TreeNode( from.Name );
-			node.Tag = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			node.Tag = new List<object>();
+			// Issue 10 - End
 
 			foreach ( object o in from.Elements )
 			{
 				if ( o is GenericNode )
 					node.Nodes.Add( GetNode( o as GenericNode ) );
 				else
-					( node.Tag as ArrayList ).Add( o );
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					( node.Tag as List<object> ).Add( o );
+					// Issue 10 - End
 			}
 
 			return node;
@@ -139,7 +155,9 @@ namespace TheBox.Data
 		/// </summary>
 		/// <param name="items">The list to evaluate</param>
 		/// <returns>null if there are no valid entries in the array list, the corresponding tree nodes otherwise</returns>
-		public TreeNode[] GetDataNodes( ArrayList items )
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public TreeNode[] GetDataNodes( List<object> items )
+		// Issue 10 - End
 		{
 			int count = 0;
 

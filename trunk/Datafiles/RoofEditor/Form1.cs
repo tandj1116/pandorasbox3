@@ -1,6 +1,8 @@
 using System;
 using System.Drawing;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Data;
@@ -687,8 +689,9 @@ namespace RoofEditor
 			Application.EnableVisualStyles();
 			Application.Run(new Form1());
 		}
-
-		private ArrayList m_TileSets;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<TileSet> m_TileSets;
+		// Issue 10 - End
 		private TileSet m_Set;
 
 		private TileMask m_Mask;
@@ -764,6 +767,10 @@ namespace RoofEditor
 
 		private void UpdateFlags()
 		{
+			// Crashfix - Smjert
+			if (m_Mask == null)
+				return; 
+
 			uint flags = (uint) 0;
 
 			for ( int i = 0; i < 8; i++ )

@@ -1,7 +1,9 @@
 using System;
 using System.Xml;
 using System.IO;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.Windows.Forms;
 using TheBox.Common;
 
@@ -12,7 +14,9 @@ namespace TheBox.Data
 	/// </summary>
 	public class DoorsData
 	{
-		private ArrayList m_Structure;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<GenericNode> m_Structure;
+		// Issue 10 - End
 
 		private string m_PortNS;
 		private string m_PortEW;
@@ -45,7 +49,9 @@ namespace TheBox.Data
 		/// </summary>
 		public DoorsData()
 		{
-			m_Structure = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_Structure = new List<GenericNode>();
+			// Issue 10 - End
 			Load();
 			BuildMenu();
 		}

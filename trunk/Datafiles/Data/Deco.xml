@@ -1,7 +1,7 @@
-<?xml version="1.0"?>
-<BoxDecoList xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<?xml version="1.0" encoding="utf-8"?>
+<BoxDecoList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Structure>
-    <anyType xsi:type="GenericNode" Name="Animations">
+    <GenericNode Name="Animations">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Bees">
           <Elements>
@@ -806,8 +806,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Boulders and Rocks">
+    </GenericNode>
+    <GenericNode Name="Boulders and Rocks">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Boulders">
           <Elements>
@@ -876,8 +876,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Build: Docks">
+    </GenericNode>
+    <GenericNode Name="Build: Docks">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Pier">
           <Elements>
@@ -902,8 +902,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Build: Doors">
+    </GenericNode>
+    <GenericNode Name="Build: Doors">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Barred Metal Door">
           <Elements>
@@ -1324,8 +1324,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Build: Fences">
+    </GenericNode>
+    <GenericNode Name="Build: Fences">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Iron Fence">
           <Elements>
@@ -1372,8 +1372,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Build: Floors">
+    </GenericNode>
+    <GenericNode Name="Build: Floors">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Blue Floor">
           <Elements>
@@ -1898,8 +1898,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Build: Other">
+    </GenericNode>
+    <GenericNode Name="Build: Other">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Edging">
           <Elements>
@@ -2132,8 +2132,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Build: Roofs">
+    </GenericNode>
+    <GenericNode Name="Build: Roofs">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Bark Roof">
           <Elements>
@@ -2786,8 +2786,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Build: Stairs">
+    </GenericNode>
+    <GenericNode Name="Build: Stairs">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Carpeted Rostrum">
           <Elements>
@@ -3072,8 +3072,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Build: Walls">
+    </GenericNode>
+    <GenericNode Name="Build: Walls">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Bamboo Wall">
           <Elements>
@@ -4483,8 +4483,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Deco: Banners and Tapestries">
+    </GenericNode>
+    <GenericNode Name="Deco: Banners and Tapestries">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Banners">
           <Elements>
@@ -4692,8 +4692,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Deco: Carpets &amp; Rugs">
+    </GenericNode>
+    <GenericNode Name="Deco: Carpets &amp; Rugs">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Bearskin Carpet">
           <Elements>
@@ -4924,8 +4924,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Deco: Curtains">
+    </GenericNode>
+    <GenericNode Name="Deco: Curtains">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Curtain 01">
           <Elements>
@@ -5008,8 +5008,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Deco: Dungeons and The Dead">
+    </GenericNode>
+    <GenericNode Name="Deco: Dungeons and The Dead">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Altar">
           <Elements>
@@ -5909,8 +5909,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Deco: Furniture">
+    </GenericNode>
+    <GenericNode Name="Deco: Furniture">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Bar">
           <Elements>
@@ -6551,8 +6551,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Deco: Lightsources">
+    </GenericNode>
+    <GenericNode Name="Deco: Lightsources">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Brazier">
           <Elements>
@@ -6682,8 +6682,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Deco: Miscellaneous">
+    </GenericNode>
+    <GenericNode Name="Deco: Miscellaneous">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Decorative Armor">
           <Elements>
@@ -6963,8 +6963,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Deco: Potted Plants &amp; Vases">
+    </GenericNode>
+    <GenericNode Name="Deco: Potted Plants &amp; Vases">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Potted Cactuses">
           <Elements>
@@ -7003,8 +7003,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Deco: Shrines">
+    </GenericNode>
+    <GenericNode Name="Deco: Shrines">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Chaos">
           <Elements>
@@ -7111,8 +7111,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Deco: Signs">
+    </GenericNode>
+    <GenericNode Name="Deco: Signs">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Blank">
           <Elements>
@@ -7270,8 +7270,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Deco: Wall Carvings &amp; Statues">
+    </GenericNode>
+    <GenericNode Name="Deco: Wall Carvings &amp; Statues">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Pedestal">
           <Elements>
@@ -7379,8 +7379,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Deco: Weapons &amp; Shields">
+    </GenericNode>
+    <GenericNode Name="Deco: Weapons &amp; Shields">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Axe">
           <Elements>
@@ -7482,8 +7482,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Fireplaces, Chimneys &amp; Ovens">
+    </GenericNode>
+    <GenericNode Name="Fireplaces, Chimneys &amp; Ovens">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Home Hearth">
           <Elements>
@@ -7677,8 +7677,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Ground Tiles">
+    </GenericNode>
+    <GenericNode Name="Ground Tiles">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Crumbling Floor">
           <Elements>
@@ -8285,8 +8285,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Ground Tiles (animated)">
+    </GenericNode>
+    <GenericNode Name="Ground Tiles (animated)">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Boulder in water">
           <Elements>
@@ -8634,8 +8634,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Items by Professions">
+    </GenericNode>
+    <GenericNode Name="Items by Professions">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Alchemist">
           <Elements>
@@ -9769,8 +9769,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Levers and Switches">
+    </GenericNode>
+    <GenericNode Name="Levers and Switches">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Levers">
           <Elements>
@@ -9805,8 +9805,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Miscellaneous">
+    </GenericNode>
+    <GenericNode Name="Miscellaneous">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Alpha Corpses">
           <Elements>
@@ -11179,8 +11179,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Multis">
+    </GenericNode>
+    <GenericNode Name="Multis">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Ballista">
           <Elements>
@@ -11429,8 +11429,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Provisions: Alchemy &amp; Magic">
+    </GenericNode>
+    <GenericNode Name="Provisions: Alchemy &amp; Magic">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Magic Crystal">
           <Elements>
@@ -11716,8 +11716,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Provisions: Armor">
+    </GenericNode>
+    <GenericNode Name="Provisions: Armor">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Amazon Armor">
           <Elements>
@@ -11984,8 +11984,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Provisions: Clothes">
+    </GenericNode>
+    <GenericNode Name="Provisions: Clothes">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Arcane">
           <Elements>
@@ -12202,8 +12202,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Provisions: Deeds">
+    </GenericNode>
+    <GenericNode Name="Provisions: Deeds">
       <Elements>
         <anyType xsi:type="GenericNode" Name="House Deeds">
           <Elements>
@@ -12218,8 +12218,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Provisions: GM Items">
+    </GenericNode>
+    <GenericNode Name="Provisions: GM Items">
       <Elements>
         <anyType xsi:type="GenericNode" Name="GM Robes">
           <Elements>
@@ -12241,8 +12241,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Provisions: Jewels and Jewlery">
+    </GenericNode>
+    <GenericNode Name="Provisions: Jewels and Jewlery">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Jewels">
           <Elements>
@@ -12294,8 +12294,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Provisions: Miscellaneous">
+    </GenericNode>
+    <GenericNode Name="Provisions: Miscellaneous">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Bedroll Tile">
           <Elements>
@@ -12402,8 +12402,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Provisions: Weapons">
+    </GenericNode>
+    <GenericNode Name="Provisions: Weapons">
       <Elements>
         <anyType xsi:type="GenericNode" Name="AoS Weapons">
           <Elements>
@@ -12641,8 +12641,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Ruins">
+    </GenericNode>
+    <GenericNode Name="Ruins">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Ruins">
           <Elements>
@@ -12673,8 +12673,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Ship Parts">
+    </GenericNode>
+    <GenericNode Name="Ship Parts">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Deck">
           <Elements>
@@ -12768,8 +12768,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Spell Icons">
+    </GenericNode>
+    <GenericNode Name="Spell Icons">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Eighth Circle">
           <Elements>
@@ -12898,8 +12898,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Vegetation">
+    </GenericNode>
+    <GenericNode Name="Vegetation">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Bonsai">
           <Elements>
@@ -13451,6 +13451,6 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
+    </GenericNode>
   </Structure>
 </BoxDecoList>

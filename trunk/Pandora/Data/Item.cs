@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.Reflection;
 using System.Xml.Serialization;
 using System.ComponentModel;
@@ -75,7 +77,9 @@ namespace TheBox.Data
 	{
 		private string m_Name;
 		private BoxPropType m_ParamType;
-		private ArrayList m_EnumValues;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<string> m_EnumValues;
+		// Issue 10 - End
 
 		[ XmlAttribute ]
 		/// <summary>
@@ -100,7 +104,9 @@ namespace TheBox.Data
 		/// <summary>
 		/// Gets or sets the list of values for an enum parameter
 		/// </summary>
-		public ArrayList EnumValues
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<string> EnumValues
+		// Issue 10 - End
 		{
 			get { return m_EnumValues; }
 			set { m_EnumValues = value; }
@@ -123,8 +129,10 @@ namespace TheBox.Data
 		private ItemDef m_DefaultArt;
 		private ParamDef m_Param1;
 		private ParamDef m_Param2;
-		private ArrayList m_List1;
-		private ArrayList m_List2;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<object> m_List1;
+		private List<object> m_List2;
+		// Issue 10 - End
 
 		/// <summary>
 		/// Gets or sets the appearance of the item created by the constructor with default parameters
@@ -156,7 +164,9 @@ namespace TheBox.Data
 		/// <summary>
 		/// Gets or sets the list of item definitions corresponding to the first parameter (if appliable)
 		/// </summary>
-		public ArrayList List1
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<object> List1
+		// Issue 10 - End
 		{
 			get { return m_List1; }
 			set { m_List1 = value; }
@@ -165,7 +175,9 @@ namespace TheBox.Data
 		/// <summary>
 		/// Gets or sets the list of item definitions for the second parameter (if appliable)
 		/// </summary>
-		public ArrayList List2
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<object> List2
+		// Issue 10 - End
 		{
 			get { return m_List2; }
 			set { m_List2 = value; }
@@ -188,7 +200,9 @@ namespace TheBox.Data
 		private bool m_EmptyCtor = false;
 		private ItemDef m_Item;
 		private string m_Name;
-		private ArrayList m_AdditionalCtors;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<object> m_AdditionalCtors;
+		// Issue 10 - End
 
 		[ XmlAttribute, Description( "The name of the class representing the item, should not contain spaces." ) ]
 		/// <summary>
@@ -244,7 +258,9 @@ namespace TheBox.Data
 		/// <summary>
 		/// Lists the additional constructors available for this item
 		/// </summary>
-		public ArrayList AdditionalCtors
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<object> AdditionalCtors
+		// Issue 10 - End
 		{
 			get { return m_AdditionalCtors; }
 			set { m_AdditionalCtors = value; }

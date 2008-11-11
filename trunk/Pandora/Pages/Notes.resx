@@ -3,7 +3,7 @@
   <!-- 
     Microsoft ResX Schema 
     
-    Version 1.3
+    Version 2.0
     
     The primary goals of this format is to allow a simple XML format 
     that is mostly human readable. The generation and parsing of the 
@@ -14,16 +14,17 @@
     
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">1.3</resheader>
+    <resheader name="version">2.0</resheader>
     <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
     <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1">this is my long string</data>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
     <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
     <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        [base64 mime encoded serialized .NET Framework object]
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
     </data>
     <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        [base64 mime encoded string representing a byte array form of the .NET Framework object]
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
     </data>
                 
     There are any number of "resheader" rows that contain simple 
@@ -35,7 +36,7 @@
     Classes that don't support this are serialized and stored with the 
     mimetype set.
     
-    The mimetype is used forserialized objects, and tells the 
+    The mimetype is used for serialized objects, and tells the 
     ResXResourceReader how to depersist the object. This is currently not 
     extensible. For a given mimetype the value must be set accordingly:
     
@@ -45,7 +46,7 @@
     
     mimetype: application/x-microsoft.net.object.binary.base64
     value   : The object must be serialized with 
-            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
     
     mimetype: application/x-microsoft.net.object.soap.base64
@@ -59,18 +60,37 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
                 <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
               <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
               <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
@@ -89,244 +109,67 @@
     <value>text/microsoft-resx</value>
   </resheader>
   <resheader name="version">
-    <value>1.3</value>
+    <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="panel1.Locked" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </data>
-  <data name="panel1.SnapToGrid" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </data>
-  <data name="panel1.DefaultModifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Private</value>
-  </data>
-  <data name="panel1.GridSize" type="System.Drawing.Size, System.Drawing, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>4, 4</value>
-  </data>
-  <data name="panel1.DrawGrid" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </data>
-  <data name="panel1.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Private</value>
-  </data>
-  <data name="txText.DefaultModifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Private</value>
-  </data>
-  <data name="txText.Locked" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </data>
-  <data name="txText.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Private</value>
-  </data>
-  <data name="labCreated.Locked" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </data>
-  <data name="labCreated.DefaultModifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Private</value>
-  </data>
-  <data name="labCreated.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Private</value>
-  </data>
-  <data name="panel2.Locked" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </data>
-  <data name="panel2.SnapToGrid" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </data>
-  <data name="panel2.DefaultModifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Private</value>
-  </data>
-  <data name="panel2.GridSize" type="System.Drawing.Size, System.Drawing, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>4, 4</value>
-  </data>
-  <data name="panel2.DrawGrid" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </data>
-  <data name="panel2.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Private</value>
-  </data>
-  <data name="txName.DefaultModifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Private</value>
-  </data>
-  <data name="txName.Locked" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </data>
-  <data name="txName.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Private</value>
-  </data>
-  <data name="cmbPriority.DefaultModifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Private</value>
-  </data>
-  <data name="cmbPriority.Locked" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </data>
-  <data name="cmbPriority.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Private</value>
-  </data>
-  <data name="splitter1.Locked" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </data>
-  <data name="splitter1.DefaultModifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Private</value>
-  </data>
-  <data name="splitter1.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Private</value>
-  </data>
-  <data name="tNotes.DefaultModifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Private</value>
-  </data>
-  <data name="tNotes.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Private</value>
-  </data>
-  <data name="tNotes.Locked" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </data>
-  <data name="imgPriority.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Private</value>
-  </data>
-  <data name="imgPriority.DefaultModifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Private</value>
-  </data>
-  <data name="imgPriority.Location" type="System.Drawing.Point, System.Drawing, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="imgPriority.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
-  </data>
+  </metadata>
   <data name="imgPriority.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFpTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0xLjAuNTAw
-        MC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZT
-        eXN0ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMA
-        AACuCQAAAk1TRnQBSQFMAgEBBAEAAQUBAAEEAQABEAEAARABAAT/ASEBEAj/AUIBTQE2BwABNgMAASgD
-        AAFAAwABIAMAAQEBAAEgBgABIP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/ADQAAzMB
-        /wMzAf8DMwH/AzMB/wMzAf8DMwH/AzMB/wMzAf8gAAMzAf8DMwH/AzMB/wMzAf8DMwH/AzMB/wMzAf8D
-        MwH/IAADMwH/AzMB/wMzAf8DMwH/AzMB/wMzAf8DMwH/AzMB/yAAAzMB/wMzAf8DMwH/AzMB/wMzAf8D
-        MwH/AzMB/wMzAf8gAAMzAf8DQwH/AzMB/wMzAf8DMwH/AzMB/wMzAf8DMwH/IAADMwH/AUwBVAErAf8B
-        OQE7ATEB/wMzAf8DMwH/AzMB/wMzAf8DMwH/IAADMwH/ASsBKQEAAf8BMQEKAQAB/wEzAgAB/wEzAgAB
-        /wEzAgAB/wEzAgAB/wMzAf8gAAMzAf8CAAEqAf8CAAEKAf8DAAH/AwAB/wMAAf8DAAH/AzMB/yAAAzMB
-        /wNTAf8DQwH/AzsB/wMzAf8DMwH/AzMB/wMzAf8gAAMzAf8BZAF1ASMB/wFSAVwBKQH/AT8BQwEvAf8D
-        MwH/AzMB/wMzAf8DMwH/IAADMwH/ASIBUwEAAf8BKQE0AQAB/wEvARQBAAH/ATMCAAH/ATMCAAH/ATMC
-        AAH/AzMB/yAAAzMB/wIAAVQB/wIAATMB/wIAARUB/wMAAf8DAAH/AwAB/wMzAf8gAAMzAf8DZgH/A1MB
-        /wNLAf8DQwH/AzMB/wMzAf8DMwH/IAADMwH/AX0BlQEaAf8BagF9ASEB/wFYAWQBJwH/AUUBSwEtAf8D
-        MwH/AzMB/wMzAf8gAAMzAf8BGgF9AQAB/wEgAV4BAAH/AScBPgEAAf8BLQEfAQAB/wEzAgAB/wEzAgAB
-        /wMzAf8gAAMzAf8CAAF/Af8CAAFmAf8CAAE/Af8CAAEfAf8DAAH/AwAB/wMzAf8gAAMzAf8DdAH/A2YB
-        /wNcAf8DUwH/A0MB/wMzAf8DMwH/IAADMwH/AZUBtgESAf8BgwGdARgB/wFwAYUBHwH/AV4BbAElAf8B
-        TAFUASsB/wE5ATsBMQH/AzMB/yAAAzMB/wESAacBAAH/ARgBiAEAAf8BHgFoAQAB/wEkAUkBAAH/ASsB
-        KQEAAf8BMQEKAQAB/wMzAf8gAAMzAf8CAAGpAf8CAAGJAf8CAAFmAf8CAAFKAf8CAAEqAf8CAAEKAf8D
-        MwH/IAADMwH/A4UB/wN0Af8DdAH/A1wB/wNTAf8DQwH/AzMB/yAAAzMB/wGuAdcBCgH/AZsBvgEQAf8B
-        iQGlARYB/wF2AY0BHQH/AWQBdQEjAf8BUgFcASkB/wMzAf8gAAMzAf8BCQHRAQAB/wEPAbIBAAH/ARYB
-        kgEAAf8BHAFzAQAB/wEiAVMBAAH/ASkBNAEAAf8DMwH/IAADMwH/AgAB1AH/AgABtAH/AgABmQH/AgAB
-        dAH/AgABVAH/AgABMwH/AzMB/yAAAzMB/wOZAf8DhQH/A3wB/wN0Af8DZgH/A1MB/wMzAf8gAAMzAf8B
-        xwH4AQIB/wG0Ad8BCAH/AaEBxgEOAf8BjwGtARQB/wF9AZUBGgH/AWoBfQEhAf8DMwH/IAADMwH/AQAB
-        /wEAAf8BBwHcAQAB/wENAbwBAAH/ARQBnQEAAf8BGgF9AQAB/wEgAV4BAAH/AzMB/yAAAzMB/wIAAv8C
-        AAHeAf8CAAG/Af8CAAGZAf8CAAF/Af8CAAFmAf8DMwH/IAADMwH/A5kB/wOZAf8DjQH/A3wB/wN0Af8D
-        ZgH/AzMB/yAAAzMB/wHMAf8BAAH/AcwB/wEAAf8BugHnAQYB/wGnAc4BDAH/AZUBtgESAf8BgwGdARgB
-        /wMzAf8gAAMzAf8BAAH/AQAB/wEAAf8BAAH/AQUB5gEAAf8BCwHHAQAB/wESAacBAAH/ARgBiAEAAf8D
-        MwH/IAADMwH/AgAC/wIAAv8CAAHpAf8CAAHMAf8CAAGpAf8CAAGJAf8DMwH/IAADMwH/A5kB/wOZAf8D
-        mQH/A40B/wOFAf8DdAH/AzMB/yAAAzMB/wHMAf8BAAH/AcwB/wEAAf8BzAH/AQAB/wHAAe8BBAH/Aa4B
-        1wEKAf8BmwG+ARAB/wMzAf8gAAMzAf8BAAH/AQAB/wEAAf8BAAH/AQAB/wEAAf8BAwHxAQAB/wEJAdEB
-        AAH/AQ8BsgEAAf8DMwH/IAADMwH/AgAC/wIAAv8CAAL/AgAB9AH/AgAB1AH/AgABtAH/AzMB/yAAAzMB
-        /wOZAf8DmQH/A5kB/wOZAf8DmQH/A4UB/wMzAf8gAAMzAf8BzAH/AQAB/wHMAf8BAAH/AcwB/wEAAf8B
-        zAH/AQAB/wHHAfgBAgH/AbQB3wEIAf8DMwH/IAADMwH/AQAB/wEAAf8BAAH/AQAB/wEAAf8BAAH/AQAB
-        /wEAAf8BAAH/AQAB/wEHAdwBAAH/AzMB/yAAAzMB/wIAAv8CAAL/AgAC/wIAAv8CAAL/AgAB3gH/AzMB
-        /yAAAzMB/wOZAf8DmQH/A5kB/wOZAf8DmQH/A5kB/wMzAf8gAAMzAf8BzAH/AQAB/wHMAf8BAAH/AcwB
-        /wEAAf8BzAH/AQAB/wHMAf8BAAH/AcwB/wEAAf8DMwH/IAADMwH/AQAB/wEAAf8BAAH/AQAB/wEAAf8B
-        AAH/AQAB/wEAAf8BAAH/AQAB/wEAAf8BAAH/AzMB/yAAAzMB/wIAAv8CAAL/AgAC/wIAAv8CAAL/AgAC
-        /wMzAf8gAAMzAf8DMwH/AzMB/wMzAf8DMwH/AzMB/wMzAf8DMwH/IAADMwH/AzMB/wMzAf8DMwH/AzMB
-        /wMzAf8DMwH/AzMB/yAAAzMB/wMzAf8DMwH/AzMB/wMzAf8DMwH/AzMB/wMzAf8gAAMzAf8DMwH/AzMB
-        /wMzAf8DMwH/AzMB/wMzAf8DMwH//wD/ABIAAUIBTQE+BwABPgMAASgDAAFAAwABIAMAAQEBAAEBBgAB
-        ARYAA/+BABD/AfABDwHwAQ8B8AEPAfABDwHwAQ8B8AEPAfABDwHwAQ8B8AEPAfABDwHwAQ8B8AEPAfAB
-        DwHwAQ8B8AEPAfABDwHwAQ8B8AEPAfABDwHwAQ8B8AEPAfABDwHwAQ8B8AEPAfABDwHwAQ8B8AEPAfAB
-        DwHwAQ8B8AEPAfABDwHwAQ8B8AEPAfABDwHwAQ8B8AEPAfABDwHwAQ8B8AEPAfABDwHwAQ8B8AEPAfAB
-        DwHwAQ8B8AEPAfABDwHwAQ8B8AEPEP8WAAs=
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACs
+        CQAAAk1TRnQBSQFMAgEBBAEAAQkBAAEEAQABEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        AwABIAMAAQEBAAEgBgABIP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/ADQAAzQB/wM0
+        Af8DNAH/AzQB/wM0Af8DNAH/AzQB/wM0Af8gAAM0Af8DNAH/AzQB/wM0Af8DNAH/AzQB/wM0Af8DNAH/
+        IAADNAH/AzQB/wM0Af8DNAH/AzQB/wM0Af8DNAH/AzQB/yAAAzQB/wM0Af8DNAH/AzQB/wM0Af8DNAH/
+        AzQB/wM0Af8gAAM0Af8DRAH/AzQB/wM0Af8DNAH/AzQB/wM0Af8DNAH/IAADNAH/AU0BVQEsAf8BOgE8
+        ATIB/wM0Af8DNAH/AzQB/wM0Af8DNAH/IAADNAH/ASwBKgEBAf8BMgELAQEB/wE0AgEB/wE0AgEB/wE0
+        AgEB/wE0AgEB/wM0Af8gAAM0Af8CAQErAf8CAQELAf8DAQH/AwEB/wMBAf8DAQH/AzQB/yAAAzQB/wNU
+        Af8DRAH/AzwB/wM0Af8DNAH/AzQB/wM0Af8gAAM0Af8BZQF2ASQB/wFTAV0BKgH/AUABRAEwAf8DNAH/
+        AzQB/wM0Af8DNAH/IAADNAH/ASMBVAEBAf8BKgE1AQEB/wEwARUBAQH/ATQCAQH/ATQCAQH/ATQCAQH/
+        AzQB/yAAAzQB/wIBAVUB/wIBATQB/wIBARYB/wMBAf8DAQH/AwEB/wM0Af8gAAM0Af8DZwH/A1QB/wNM
+        Af8DRAH/AzQB/wM0Af8DNAH/IAADNAH/AX4BlQEbAf8BawF+ASIB/wFZAWUBKAH/AUYBTAEuAf8DNAH/
+        AzQB/wM0Af8gAAM0Af8BGwF+AQEB/wEhAV8BAQH/ASgBPwEBAf8BLgEgAQEB/wE0AgEB/wE0AgEB/wM0
+        Af8gAAM0Af8CAQGAAf8CAQFnAf8CAQFAAf8CAQEgAf8DAQH/AwEB/wM0Af8gAAM0Af8DdQH/A2cB/wNd
+        Af8DVAH/A0QB/wM0Af8DNAH/IAADNAH/AZUBtgETAf8BgwGdARkB/wFxAYUBIAH/AV8BbQEmAf8BTQFV
+        ASwB/wE6ATwBMgH/AzQB/yAAAzQB/wETAacBAQH/ARkBiAEBAf8BHwFpAQEB/wElAUoBAQH/ASwBKgEB
+        Af8BMgELAQEB/wM0Af8gAAM0Af8CAQGpAf8CAQGJAf8CAQFnAf8CAQFLAf8CAQErAf8CAQELAf8DNAH/
+        IAADNAH/A4UB/wN1Af8DdQH/A10B/wNUAf8DRAH/AzQB/yAAAzQB/wGuAdcBCwH/AZsBvgERAf8BiQGl
+        ARcB/wF3AY0BHgH/AWUBdgEkAf8BUwFdASoB/wM0Af8gAAM0Af8BCgHRAQEB/wEQAbIBAQH/ARcBkgEB
+        Af8BHQF0AQEB/wEjAVQBAQH/ASoBNQEBAf8DNAH/IAADNAH/AgEB1AH/AgEBtAH/AgEBmQH/AgEBdQH/
+        AgEBVQH/AgEBNAH/AzQB/yAAAzQB/wOZAf8DhQH/A30B/wN1Af8DZwH/A1QB/wM0Af8gAAM0Af8BxwH4
+        AQMB/wG0Ad8BCQH/AaEBxgEPAf8BjwGtARUB/wF+AZUBGwH/AWsBfgEiAf8DNAH/IAADNAH/AQEB/wEB
+        Af8BCAHcAQEB/wEOAbwBAQH/ARUBnQEBAf8BGwF+AQEB/wEhAV8BAQH/AzQB/yAAAzQB/wIBAv8CAQHe
+        Af8CAQG/Af8CAQGZAf8CAQGAAf8CAQFnAf8DNAH/IAADNAH/A5kB/wOZAf8DjQH/A30B/wN1Af8DZwH/
+        AzQB/yAAAzQB/wHMAf8BAQH/AcwB/wEBAf8BugHnAQcB/wGnAc4BDQH/AZUBtgETAf8BgwGdARkB/wM0
+        Af8gAAM0Af8BAQH/AQEB/wEBAf8BAQH/AQYB5gEBAf8BDAHHAQEB/wETAacBAQH/ARkBiAEBAf8DNAH/
+        IAADNAH/AgEC/wIBAv8CAQHpAf8CAQHMAf8CAQGpAf8CAQGJAf8DNAH/IAADNAH/A5kB/wOZAf8DmQH/
+        A40B/wOFAf8DdQH/AzQB/yAAAzQB/wHMAf8BAQH/AcwB/wEBAf8BzAH/AQEB/wHAAe8BBQH/Aa4B1wEL
+        Af8BmwG+AREB/wM0Af8gAAM0Af8BAQH/AQEB/wEBAf8BAQH/AQEB/wEBAf8BBAHxAQEB/wEKAdEBAQH/
+        ARABsgEBAf8DNAH/IAADNAH/AgEC/wIBAv8CAQL/AgEB9AH/AgEB1AH/AgEBtAH/AzQB/yAAAzQB/wOZ
+        Af8DmQH/A5kB/wOZAf8DmQH/A4UB/wM0Af8gAAM0Af8BzAH/AQEB/wHMAf8BAQH/AcwB/wEBAf8BzAH/
+        AQEB/wHHAfgBAwH/AbQB3wEJAf8DNAH/IAADNAH/AQEB/wEBAf8BAQH/AQEB/wEBAf8BAQH/AQEB/wEB
+        Af8BAQH/AQEB/wEIAdwBAQH/AzQB/yAAAzQB/wIBAv8CAQL/AgEC/wIBAv8CAQL/AgEB3gH/AzQB/yAA
+        AzQB/wOZAf8DmQH/A5kB/wOZAf8DmQH/A5kB/wM0Af8gAAM0Af8BzAH/AQEB/wHMAf8BAQH/AcwB/wEB
+        Af8BzAH/AQEB/wHMAf8BAQH/AcwB/wEBAf8DNAH/IAADNAH/AQEB/wEBAf8BAQH/AQEB/wEBAf8BAQH/
+        AQEB/wEBAf8BAQH/AQEB/wEBAf8BAQH/AzQB/yAAAzQB/wIBAv8CAQL/AgEC/wIBAv8CAQL/AgEC/wM0
+        Af8gAAM0Af8DNAH/AzQB/wM0Af8DNAH/AzQB/wM0Af8DNAH/IAADNAH/AzQB/wM0Af8DNAH/AzQB/wM0
+        Af8DNAH/AzQB/yAAAzQB/wM0Af8DNAH/AzQB/wM0Af8DNAH/AzQB/wM0Af8gAAM0Af8DNAH/AzQB/wM0
+        Af8DNAH/AzQB/wM0Af8DNAH//wD/ABIAAUIBTQE+BwABPgMAASgDAAFAAwABIAMAAQEBAAEBBgABARYA
+        A/+BABD/AfABDwHwAQ8B8AEPAfABDwHwAQ8B8AEPAfABDwHwAQ8B8AEPAfABDwHwAQ8B8AEPAfABDwHw
+        AQ8B8AEPAfABDwHwAQ8B8AEPAfABDwHwAQ8B8AEPAfABDwHwAQ8B8AEPAfABDwHwAQ8B8AEPAfABDwHw
+        AQ8B8AEPAfABDwHwAQ8B8AEPAfABDwHwAQ8B8AEPAfABDwHwAQ8B8AEPAfABDwHwAQ8B8AEPAfABDwHw
+        AQ8B8AEPAfABDwHwAQ8B8AEPEP8L
 </value>
   </data>
-  <data name="groupBox1.DefaultModifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Private</value>
-  </data>
-  <data name="groupBox1.GridSize" type="System.Drawing.Size, System.Drawing, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>4, 4</value>
-  </data>
-  <data name="groupBox1.SnapToGrid" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
-  <data name="groupBox1.Locked" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </data>
-  <data name="groupBox1.DrawGrid" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </data>
-  <data name="groupBox1.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Private</value>
-  </data>
-  <data name="cmbType.DefaultModifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Private</value>
-  </data>
-  <data name="cmbType.Locked" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </data>
-  <data name="cmbType.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Private</value>
-  </data>
-  <data name="cmbAscending.DefaultModifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Private</value>
-  </data>
-  <data name="cmbAscending.Locked" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </data>
-  <data name="cmbAscending.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Private</value>
-  </data>
-  <data name="bAdd.Locked" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </data>
-  <data name="bAdd.DefaultModifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Private</value>
-  </data>
-  <data name="bAdd.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Private</value>
-  </data>
-  <data name="bDelete.Locked" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </data>
-  <data name="bDelete.DefaultModifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Private</value>
-  </data>
-  <data name="bDelete.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Private</value>
-  </data>
-  <data name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </data>
-  <data name="$this.Locked" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </data>
-  <data name="$this.SnapToGrid" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </data>
-  <data name="$this.DrawGrid" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </data>
-  <data name="$this.TrayHeight" type="System.Int32, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>80</value>
-  </data>
-  <data name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>(Default)</value>
-  </data>
-  <data name="$this.Localizable" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </data>
-  <data name="$this.DefaultModifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Private</value>
-  </data>
-  <data name="$this.Name">
-    <value>Notes</value>
-  </data>
-  <data name="$this.GridSize" type="System.Drawing.Size, System.Drawing, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>4, 4</value>
-  </data>
+  </metadata>
 </root>

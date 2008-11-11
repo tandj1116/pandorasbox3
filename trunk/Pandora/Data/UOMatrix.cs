@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 
 namespace TheBox.Data
 {
@@ -9,9 +11,11 @@ namespace TheBox.Data
 	public class UOMatrix
 	{
 		/// <summary>
-		/// ArrayList containing all the rows. Each row is an array list of integer values where 0 means no object
+		/// List containing all the rows. Each row is an array list of integer values where 0 means no object
 		/// </summary>
-		private ArrayList m_Rows;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<List<int>> m_Rows;
+		// Issue 10 - End
 
 		/// <summary>
 		/// The width in cells of the matrix
@@ -30,14 +34,19 @@ namespace TheBox.Data
 		/// <param name="height">The cells height</param>
 		public UOMatrix( int width, int height )
 		{
-			m_Rows = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_Rows = new List<List<int>>();
+			// Issue 10 - End
 
 			for ( int i = 0; i < height; i++ )
 			{
 				int[] cells = new int[ width ];
 				cells.Initialize();
 
-				m_Rows.Add( new ArrayList( cells ) );
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				m_Rows.Add(new List<int>());
+				m_Rows[i].AddRange(cells);
+				// Issue 10 - End
 			}
 
 			m_Width = width;
@@ -60,8 +69,9 @@ namespace TheBox.Data
 				else if ( value > m_Width )
 				{
 					int difference = value - m_Width;
-
-					foreach( ArrayList row in m_Rows )
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					foreach( List<int> row in m_Rows )
+					// Issue 10 - End
 					{
 						int[] cells = new int[ difference ];
 						cells.Initialize();
@@ -96,7 +106,10 @@ namespace TheBox.Data
 						int[] cells = new int[ m_Width ];
 						cells.Initialize();
 
-						m_Rows.Add( new ArrayList( cells ) );
+						// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+						m_Rows.Add( new List<int>());
+						m_Rows[i].AddRange(cells);
+						// Issue 10 - End
 					}
 
 					m_Height = value;
@@ -113,8 +126,10 @@ namespace TheBox.Data
 			{
 				if ( InRange( x, y ) )
 				{
-					ArrayList row = m_Rows[ y ] as ArrayList;
-					return (int) row[ x ];
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					List<int> row = m_Rows[y];
+					return row[ x ];
+					// Issue 10 - End
 				}
 				else
 				{
@@ -125,7 +140,9 @@ namespace TheBox.Data
 			{
 				if ( InRange( x, y ) )
 				{
-					ArrayList row = m_Rows[ y ] as ArrayList;
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					List<int> row = m_Rows[ y ];
+					// Issue 10 - End
 					row[ x ] = value;
 				}
 				else

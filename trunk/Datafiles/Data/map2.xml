@@ -1,7 +1,7 @@
-<?xml version="1.0"?>
-<Facet xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" MapValue="2">
+<?xml version="1.0" encoding="utf-8"?>
+<Facet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" MapValue="2">
   <Nodes>
-    <anyType xsi:type="GenericNode" Name="Caves">
+    <GenericNode Name="Caves">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Ancient Lair">
           <Elements>
@@ -66,8 +66,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Cities">
+    </GenericNode>
+    <GenericNode Name="Cities">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Alexandretta's Bowl">
           <Elements>
@@ -136,8 +136,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Dungeons">
+    </GenericNode>
+    <GenericNode Name="Dungeons">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Ankh">
           <Elements>
@@ -252,8 +252,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Forts and Camps">
+    </GenericNode>
+    <GenericNode Name="Forts and Camps">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Girpsy">
           <Elements>
@@ -305,8 +305,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Misc">
+    </GenericNode>
+    <GenericNode Name="Misc">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Passages">
           <Elements>
@@ -381,6 +381,6 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
+    </GenericNode>
   </Nodes>
 </Facet>

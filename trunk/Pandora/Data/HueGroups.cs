@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.Xml.Serialization;
 
 namespace TheBox.Data
@@ -10,12 +12,16 @@ namespace TheBox.Data
 	[ Serializable, XmlInclude( typeof( HuesCollection ) ) ]
 	public class HueGroups
 	{
-		private ArrayList m_Groups;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<HuesCollection> m_Groups;
+		// Issue 10 - End
 
 		/// <summary>
 		/// Gets or sets the list of groups
 		/// </summary>
-		public ArrayList Groups
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<HuesCollection> Groups
+		// Issue 10 - End
 		{
 			get { return m_Groups; }
 			set { m_Groups = value; }
@@ -23,7 +29,9 @@ namespace TheBox.Data
 
 		public HueGroups()
 		{
-			m_Groups = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_Groups = new List<HuesCollection>();
+			// Issue 10 - End
 		}
 
 		/// <summary>
@@ -53,7 +61,9 @@ namespace TheBox.Data
 	public class HuesCollection
 	{
 		private string m_Name;
-		private ArrayList m_Hues;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<int> m_Hues;
+		// Issue 10 - End
 
 		/// <summary>
 		/// Gets or sets the name of this group
@@ -68,7 +78,9 @@ namespace TheBox.Data
 		/// <summary>
 		/// Gets or sets the list of hues
 		/// </summary>
-		public ArrayList Hues
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<int> Hues
+		// Issue 10 - End
 		{
 			get { return m_Hues; }
 			set { m_Hues = value; }
@@ -76,7 +88,9 @@ namespace TheBox.Data
 
 		public HuesCollection()
 		{
-			m_Hues = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_Hues = new List<int>();
+			// Issue 10 - End
 		}
 
 		public override string ToString()

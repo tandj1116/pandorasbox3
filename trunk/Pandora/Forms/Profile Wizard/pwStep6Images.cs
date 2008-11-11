@@ -77,12 +77,12 @@ namespace TheBox.Forms.ProfileWizard
 		private void pwStep6Images_ValidateStep(object sender, System.ComponentModel.CancelEventArgs e)
 		{
 			ProfileWizard wiz = Wizard as ProfileWizard;
-            //Kons
-            wiz.NextEnabled = false;
-            //End
+			// Issue 2 - Next button enabled in wizard - http://code.google.com/p/pandorasbox3/issues/detail?id=2&can=1 - Kons
+      wiz.NextEnabled = false;
+			// Issue 2 - End
 			wiz.Profile.GenerateMaps( PBar );
 			wiz.Profile.CreateMapFiles();
-        }
+    }
 	}
 }
 

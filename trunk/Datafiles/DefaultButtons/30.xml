@@ -2,10 +2,10 @@
 <ButtonDef xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Caption="Kill">
   <LeftObject xsi:type="MultiCommandDef" DefaultIndex="0">
     <Commands>
-      <anyType xsi:type="MenuCommand" Caption="Kill" Command="Kill" UsePrefix="true" />
-      <anyType xsi:type="MenuCommand" Caption="Kick" Command="Kick" UsePrefix="true" />
-      <anyType xsi:type="MenuCommand" Caption="Ban" Command="Ban" UsePrefix="true" />
-      <anyType xsi:type="MenuCommand" Caption="Firewall" Command="Firewall" UsePrefix="true" />
+      <MenuCommand Caption="Kill" Command="Kill" UsePrefix="true" />
+      <MenuCommand Caption="Kick" Command="Kick" UsePrefix="true" />
+      <MenuCommand Caption="Ban" Command="Ban" UsePrefix="true" />
+      <MenuCommand Caption="Firewall" Command="Firewall" UsePrefix="true" />
     </Commands>
   </LeftObject>
 </ButtonDef>

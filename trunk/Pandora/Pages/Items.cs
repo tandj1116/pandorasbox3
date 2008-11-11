@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
@@ -574,8 +576,10 @@ namespace TheBox.Pages
 		/// <summary>
 		/// Updates the items list
 		/// </summary>
-		/// <param name="items">An ArrayList of BoxItems objects</param>
-		private void UpdateItems( ArrayList items )
+		/// <param name="items">A List of BoxItems objects</param>
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private void UpdateItems( List<object> items )
+		// Issue 10 - End
 		{
 			if ( items != null && items.Count > 0 )
 			{
@@ -614,7 +618,9 @@ namespace TheBox.Pages
 
 			if ( e.Node != null )
 			{
-				UpdateItems( e.Node.Tag as ArrayList );
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				UpdateItems( e.Node.Tag as List<object> );
+				// Issue 10 - End
 			}
 
 			SelectedItem = null;
@@ -804,7 +810,9 @@ namespace TheBox.Pages
 		private void cmAddSub_Click(object sender, System.EventArgs e)
 		{
 			TreeNode node = new TreeNode( "NewSubsection" );
-			node.Tag = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			node.Tag = new List<object>();
+			// Issue 10 - End
 
 			tCat.SelectedNode.Nodes.Add( node );
 
@@ -879,7 +887,9 @@ namespace TheBox.Pages
 		private void cmAddMainCat_Click(object sender, System.EventArgs e)
 		{
 			TreeNode node = new TreeNode( "NewCategory" );
-			node.Tag = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			node.Tag = new List<object>();
+			// Issue 10 - End
 
 			tCat.Nodes.Add( node );
 			tCat.LabelEdit = true;
@@ -919,7 +929,9 @@ namespace TheBox.Pages
 
 			if ( form.ShowDialog() == DialogResult.OK )
 			{
-				( tCat.SelectedNode.Tag as ArrayList ).Add( form.Item );
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				( tCat.SelectedNode.Tag as List<object> ).Add( form.Item );
+				// Issue 10 - End
 
 				TreeNode catNode = tCat.SelectedNode;
 
@@ -981,7 +993,9 @@ namespace TheBox.Pages
 				"",
 				MessageBoxButtons.YesNo ) == DialogResult.Yes )
 			{
-				( tCat.SelectedNode.Tag as ArrayList ).Remove( SelectedItem );
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				( tCat.SelectedNode.Tag as List<object> ).Remove( SelectedItem );
+				// Issue 10 - End
 
 				TreeNode next = tItems.SelectedNode.NextNode;
 
@@ -1090,7 +1104,9 @@ namespace TheBox.Pages
 				
 				foreach ( TreeNode node in tItems.Nodes )
 				{
-					if ( ( node.Tag as BoxItem ) == ( tCat.SelectedNode.Tag as ArrayList )[ res.Index ] as BoxItem )
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					if ( ( node.Tag as BoxItem ) == ( tCat.SelectedNode.Tag as List<object> )[ res.Index ] as BoxItem )
+					// Issue 10 - End
 					{
 						tItems.SelectedNode = node;
 						break;

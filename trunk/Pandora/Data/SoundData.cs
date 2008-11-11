@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using TheBox.Common;
 using System.Windows.Forms;
 using System.Xml.Serialization;
@@ -54,7 +56,9 @@ namespace TheBox.Data
 	/// </summary>
 	public class SoundData
 	{
-		private ArrayList m_Structure;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<GenericNode> m_Structure;
+		// Issue 10 - End
 		private ContextMenu m_Menu;
 		private UOSound m_SelectedSound;
 
@@ -66,7 +70,9 @@ namespace TheBox.Data
 		/// <summary>
 		/// Gets or sets the sounds library structure
 		/// </summary>
-		public ArrayList Structure
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<GenericNode> Structure
+		// Issue 10 - End
 		{
 			get { return m_Structure; }
 			set { m_Structure = value; }
@@ -77,7 +83,7 @@ namespace TheBox.Data
 		/// </summary>
 		public SoundData()
 		{
-			m_Structure = new ArrayList();
+			m_Structure = new List<GenericNode>();
 		}
 
 		[ XmlIgnore ]

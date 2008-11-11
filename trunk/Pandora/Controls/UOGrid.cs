@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
@@ -21,7 +23,9 @@ namespace TheBox.Controls
 			SetStyle( ControlStyles.UserPaint, true );
 			SetStyle( ControlStyles.AllPaintingInWmPaint, true );
 
-			m_Selection = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_Selection = new List<Point>();
+			// Issue 10 - End
 		}
 
 		/// <summary> 
@@ -62,7 +66,9 @@ namespace TheBox.Controls
 		/// <summary>
 		/// Contains the cells currently selected on the control
 		/// </summary>
-		protected ArrayList m_Selection;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		protected List<Point> m_Selection;
+		// Issue 10 - End
 
 		/// <summary>
 		/// The starting point of the rectangle
@@ -87,7 +93,9 @@ namespace TheBox.Controls
 		/// <summary>
 		/// The color table used in conjunction with the Tile Matrix
 		/// </summary>
-		private Hashtable m_ColorTable;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private Dictionary<int, int> m_ColorTable;
+		// Issue 10 - End
 
 		#endregion
 
@@ -215,7 +223,9 @@ namespace TheBox.Controls
 		/// <summary>
 		/// Gets or sets the color table used for the display of the items in the matrix
 		/// </summary>
-		public virtual Hashtable ColorTable
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public virtual Dictionary<int, int> ColorTable
+		// Issue 10 - End
 		{
 			get { return m_ColorTable; }
 			set { m_ColorTable = value; }
@@ -280,11 +290,17 @@ namespace TheBox.Controls
 
 						if ( item != 0 )
 						{
-							object c = m_ColorTable[ item ];
-
-							if ( c == null )
+							// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+							int c;
+							
+							if(m_ColorTable.TryGetValue(item, out c))
+								return;
+							object o = c;
+							if ( o == null )
 							{
-								Brush colorBrush = new SolidBrush( (Color) c );
+								Brush colorBrush = new SolidBrush( (Color) o );
+								// Issue 10 - End
+
 								e.Graphics.FillRectangle( colorBrush, rect );
 							}
 						}

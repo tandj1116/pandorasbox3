@@ -1,6 +1,8 @@
 using System;
 using System.IO;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
@@ -14,17 +16,23 @@ namespace TheBox.Data
 	/// </summary>
 	public class SpawnGroups
 	{
-		private ArrayList m_Structure;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<GenericNode> m_Structure;
+		// Issue 10 - End
 
 		public SpawnGroups()
 		{
-			m_Structure = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_Structure = new List<GenericNode>();
+			// Issue 10 - End
 		}
 
 		/// <summary>
 		/// Gets or sets the groups structure
 		/// </summary>
-		public ArrayList Structure
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<GenericNode> Structure
+		// Issue 10 - End
 		{
 			get { return m_Structure; }
 			set { m_Structure = value; }
@@ -61,7 +69,9 @@ namespace TheBox.Data
 			foreach ( TreeNode node in nodes )
 			{
 				GenericNode gNode = new GenericNode( node.Text );
-				gNode.Elements = node.Tag as ArrayList;
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				gNode.Elements = node.Tag as List<object>;
+				// Issue 10 - End
 
 				m_Structure.Add( gNode );
 			}

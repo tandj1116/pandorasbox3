@@ -1,6 +1,8 @@
 using System;
 using System.IO;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.Reflection;
 
 namespace BoxServerSetup
@@ -13,14 +15,19 @@ namespace BoxServerSetup
 		public static string RunUOFolder = null;
 		public static string BoxFolder = null;
 		public static string Spawner = "Spawner";
-		public static ArrayList Log;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public static List<string> Log;
 		
-		public static ArrayList Modules;
+		public static List<BoxModule> Modules;
+		// Issue 10 - End
+
 		private static BoxModule m_Core;
 
 		static Setup()
 		{
-			Modules = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			Modules = new List<BoxModule>();
+			// Issue 10 - End
 
 			// CORE FILES
 			m_Core = new BoxModule(
@@ -87,13 +94,17 @@ namespace BoxServerSetup
 
 		public static void PerformInstall( System.Windows.Forms.ProgressBar pBar )
 		{
-			Log = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			Log = new List<string>();
+			// Issue 10 - End
 			Log.Add( "Installation log" );
 			Log.Add( "" );
 
 			m_Asm = ( typeof( Setup ) ).Assembly;
 
-			ArrayList files = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			List<string> files = new List<string>();
+			// Issue 10 - End
 
 			files.AddRange( m_Core.Files );
 
@@ -236,13 +247,17 @@ namespace BoxServerSetup
 		public string Name;
 		public string Description;
 		public bool Install = true;
-		public ArrayList Files;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<string> Files;
+		// Issue 10 - End
 
 		public BoxModule( string name, string description, params string[] files )
 		{
 			Name = name;
 			Description = description;
-			Files = new ArrayList( files );
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			Files = new List<string>( files );
+			// Issue 10 - End
 		}
 	}
 }

@@ -1,6 +1,8 @@
 using System;
 using System.Drawing;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.Windows.Forms;
 
 using TheBox.BoxServer;
@@ -14,7 +16,9 @@ namespace TheBox.Roofing
 	{
 		private Point m_BasePoint;
 		private RoofImage m_RoofImage;
-		private ArrayList m_Edges;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<RoofRect> m_Edges;
+		// Issue 10 - End
 		private TileSet m_TileSet;
 
 		/// <summary>
@@ -33,7 +37,9 @@ namespace TheBox.Roofing
 		/// <summary>
 		/// Gets the rectangles currently selected
 		/// </summary>
-		public ArrayList Rectangles
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<RoofRect> Rectangles
+		// Issue 10 - End
 		{
 			get { return m_Edges; }
 		}
@@ -52,7 +58,9 @@ namespace TheBox.Roofing
 		/// </summary>
 		public Roof()
 		{
-			m_Edges = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_Edges = new List<RoofRect>();
+			// Issue 10 - End
 			m_RoofImage = new RoofImage();
 		}
 
@@ -133,13 +141,16 @@ namespace TheBox.Roofing
 				{
 					return Rectangle.Empty;
 				}
-
-				RoofRect temp = m_Edges[ 0 ] as RoofRect;
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				RoofRect temp = m_Edges[ 0 ];
+				// Issue 10 - End
 				Rectangle bounds = new Rectangle( temp.Rectangle.Location, temp.Rectangle.Size );
 
 				for ( int i = 1; i < m_Edges.Count; i++ )
 				{
-					RoofRect cfr = m_Edges[ i ] as RoofRect;
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					RoofRect cfr = m_Edges[ i ];
+					// Issue 10 - End
 
 					if ( bounds.Left > cfr.Rectangle.Left )
 					{
@@ -196,7 +207,9 @@ namespace TheBox.Roofing
 			m_RoofImage.Height = bounds.Height + 3;
 
 			// Create the data array
-			m_RoofImage.Data = new ArrayList( m_RoofImage.Width * m_RoofImage.Height );
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_RoofImage.Data = new List<int>( m_RoofImage.Width * m_RoofImage.Height );
+			// Issue 10 - End
 
 			for ( int i = 0; i < m_RoofImage.Width * m_RoofImage.Height; i++ )
 			{
@@ -267,7 +280,9 @@ namespace TheBox.Roofing
 			{
 				if ( slope == Slope.None || slope == Slope.Right )
 				{
-					if ( (int) m_RoofImage.Data[ x2 + y * m_RoofImage.Width ] < height )
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					if ( m_RoofImage.Data[ x2 + y * m_RoofImage.Width ] < height )
+					// Issue 10 - End
 					{
 						m_RoofImage.Data[ x2 + y * m_RoofImage.Width ] = height;
 						added = true;
@@ -278,7 +293,9 @@ namespace TheBox.Roofing
 
 				if ( slope == Slope.None || slope == Slope.Left )
 				{
-					if ( (int) m_RoofImage.Data[ x1 + y * m_RoofImage.Width ] < height )
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					if ( m_RoofImage.Data[ x1 + y * m_RoofImage.Width ] < height )
+					// Issue 10 - End
 					{
 						m_RoofImage.Data[ x1 + y * m_RoofImage.Width ] = height;
 						added = true;
@@ -313,7 +330,9 @@ namespace TheBox.Roofing
 			{
 				if ( slope == Slope.None || slope == Slope.Top )
 				{
-					if ( (int) m_RoofImage.Data[ x + y2 * m_RoofImage.Width ] < height )
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					if ( m_RoofImage.Data[ x + y2 * m_RoofImage.Width ] < height )
+					// Issue 10 - End
 					{
 						m_RoofImage.Data[ x + y2 * m_RoofImage.Width ] = height;
 						added = true;
@@ -324,7 +343,9 @@ namespace TheBox.Roofing
 
 				if ( slope == Slope.None || slope == Slope.Bottom )
 				{
-					if ( (int) m_RoofImage.Data[ x + y1 * m_RoofImage.Width ] < height )
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					if ( m_RoofImage.Data[ x + y1 * m_RoofImage.Width ] < height )
+					// Issue 10 - End
 					{
 						m_RoofImage.Data[ x + y1 * m_RoofImage.Width ] = height;
 						added = true;
@@ -370,9 +391,11 @@ namespace TheBox.Roofing
 		{
 			int[] line = new int[ 3 ];
 
-			line[ 0 ] = (int) m_RoofImage.Data[ index - 1 ];
-			line[ 1 ] = (int) m_RoofImage.Data[ index ];
-			line[ 2 ] = (int) m_RoofImage.Data[ index + 1 ];
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			line[ 0 ] = m_RoofImage.Data[ index - 1 ];
+			line[ 1 ] = m_RoofImage.Data[ index ];
+			line[ 2 ] = m_RoofImage.Data[ index + 1 ];
+			// Issue 10 - End
 
 			return line;
 		}
@@ -392,14 +415,18 @@ namespace TheBox.Roofing
 			// Revert any sign changes due to image processing
 			for ( int i = 0; i < m_RoofImage.Width * m_RoofImage.Height; i++ )
 			{
-				if ( (int) m_RoofImage.Data[ i ] < 0 )
-					m_RoofImage.Data[ i ] = - (int) m_RoofImage.Data[ i ];
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				if ( m_RoofImage.Data[ i ] < 0 )
+					m_RoofImage.Data[ i ] = - m_RoofImage.Data[ i ];
+				// Issue 10 - End
 			}
 
 			// Calculate the roof ids
 			for ( int i = 0; i < m_RoofImage.Width * m_RoofImage.Height; i++ )
 			{
-				if ( (int) m_RoofImage.Data[ i ] == 0 )
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				if ( m_RoofImage.Data[ i ] == 0 )
+				// Issue 10 - End
 				{
 					roofIDs[ i ] = 0;
 				}
@@ -410,7 +437,9 @@ namespace TheBox.Roofing
 
 					if ( roofIDs[ i ] == 0 )
 					{
-						m_RoofImage.Data[ i ] = - (int) m_RoofImage.Data[ i ];
+						// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+						m_RoofImage.Data[ i ] = - m_RoofImage.Data[ i ];
+						// Issue 10 - End
 						fail = true;
 					}
 
@@ -483,7 +512,9 @@ namespace TheBox.Roofing
 
 					for ( dx = 1; dx + x < m_RoofImage.Width; dx++ )
 					{
-						if ( ( (int) roofIDs[ p + dx ] != roofIDs[ p ] ) || ( (int) m_RoofImage.Data[ p ] != (int) m_RoofImage.Data[ p + dx ] ) )
+						// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+						if ( ( roofIDs[ p + dx ] != roofIDs[ p ] ) || ( m_RoofImage.Data[ p ] != m_RoofImage.Data[ p + dx ] ) )
+						// Issue 10 - End
 						{
 							break;
 						}
@@ -492,7 +523,9 @@ namespace TheBox.Roofing
 					for ( dy = 1; dy + y < m_RoofImage.Height; dy++ )
 					{
 						if ( ( (int) roofIDs[ p + m_RoofImage.Width * dy ] != roofIDs[ p ] ) ||
-							( (int) m_RoofImage.Data[ p ] != (int) m_RoofImage.Data[ p + m_RoofImage.Width * dy ] ) )
+							// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+							( m_RoofImage.Data[ p ] != m_RoofImage.Data[ p + m_RoofImage.Width * dy ] ) )
+						// Issue 10 - End
 						{
 							break;
 						}
@@ -501,7 +534,9 @@ namespace TheBox.Roofing
 					dx--;
 					dy--;
 
-					tilez = height + ( 3 * (int) m_RoofImage.Data[ p ] ) - 3;
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					tilez = height + ( 3 * m_RoofImage.Data[ p ] ) - 3;
+					// Issue 10 - End
 					tileid = roofIDs[ p ];
 
 					if ( dx > 0 || dy > 0 )
@@ -567,14 +602,18 @@ namespace TheBox.Roofing
 			// Revert any sign changes due to image processing
 			for ( int i = 0; i < m_RoofImage.Width * m_RoofImage.Height; i++ )
 			{
-				if ( (int) m_RoofImage.Data[ i ] < 0 )
-					m_RoofImage.Data[ i ] = - (int) m_RoofImage.Data[ i ];
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				if ( m_RoofImage.Data[ i ] < 0 )
+					m_RoofImage.Data[ i ] = - m_RoofImage.Data[ i ];
+				// Issue 10 - End
 			}
 
 			// Calculate the roof ids
 			for ( int i = 0; i < m_RoofImage.Width * m_RoofImage.Height; i++ )
 			{
-				if ( (int) m_RoofImage.Data[ i ] == 0 )
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				if ( m_RoofImage.Data[ i ] == 0 )
+				// Issue 10 - End
 				{
 					roofIDs[ i ] = 0;
 				}
@@ -585,7 +624,9 @@ namespace TheBox.Roofing
 
 					if ( roofIDs[ i ] == 0 )
 					{
-						m_RoofImage.Data[ i ] = - (int) m_RoofImage.Data[ i ];
+						// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+						m_RoofImage.Data[ i ] = - m_RoofImage.Data[ i ];
+						// Issue 10 - End
 						fail = true;
 					}
 				}
@@ -615,7 +656,9 @@ namespace TheBox.Roofing
 
 			int p = 0;
 
-			ArrayList items = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			List<BuildItem> items = new List<BuildItem>();
+			// Issue 10 - End
 
 			for ( int y = 0; y < m_RoofImage.Height; y++ )
 			{
@@ -634,7 +677,9 @@ namespace TheBox.Roofing
 
 					item.X = m_BasePoint.X + x;
 					item.Y = m_BasePoint.Y + y;
-					item.Z = height + ( 3 * (int) m_RoofImage.Data[ p ] ) - 3;
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					item.Z = height + ( 3 * m_RoofImage.Data[ p ] ) - 3;
+					// Issue 10 - End
 
 					items.Add( item );
 				}

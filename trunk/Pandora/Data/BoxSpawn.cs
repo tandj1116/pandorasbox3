@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.ComponentModel;
 using System.Xml.Serialization;
 
@@ -12,7 +14,9 @@ namespace TheBox.Data
 	public class BoxSpawn : IComparable, ICloneable
 	{
 		private string m_Name;
-		private ArrayList m_Entries;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<BoxSpawnEntry> m_Entries;
+		// Issue 10 - End
 		private bool m_Group = false;
 		private int m_Count = 1;
 		private int m_MinDelay = 5;
@@ -23,7 +27,9 @@ namespace TheBox.Data
 
 		public BoxSpawn()
 		{
-			m_Entries = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_Entries = new List<BoxSpawnEntry>();
+			// Issue 10 - End
 		}
 
 		[ XmlAttribute, Category( "Spawn" ), Description( "The name of this spawn group" ) ]
@@ -34,7 +40,9 @@ namespace TheBox.Data
 		}
 
 		[ Browsable( false ) ]
-		public ArrayList Entries
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<BoxSpawnEntry> Entries
+		// Issue 10 - End
 		{
 			get { return m_Entries; }
 			set { m_Entries = value; }
@@ -122,11 +130,15 @@ namespace TheBox.Data
 			s.m_Name = this.m_Name;
 			s.m_Team = this.m_Team;
 
-			s.m_Entries = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			s.m_Entries = new List<BoxSpawnEntry>();
+			// Issue 10 - End
 
 			foreach ( BoxSpawnEntry e in this.m_Entries )
 			{
-				s.m_Entries.Add( e.Clone() );
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				s.m_Entries.Add( e.Clone() as BoxSpawnEntry );
+				// Issue 10 - End
 			}
 
 			return s;

@@ -393,6 +393,8 @@ namespace TheBox.Pages
 			this.labServer.Text = "Admin.ProcessNotFound";
 			this.labServer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.labServer.Paint += new System.Windows.Forms.PaintEventHandler(this.labServer_Paint);
+			// Button has to be disabled if no process found
+			EnableServerButtons();
 			// 
 			// bGetServ
 			// 

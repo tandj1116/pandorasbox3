@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.IO;
 
 namespace TheBox.Roofing
@@ -10,7 +12,9 @@ namespace TheBox.Roofing
 	public class TileSet
 	{
 		private string m_Name;
-		private ArrayList m_Tiles;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<TileMask> m_Tiles;
+		// Issue 10 - End
 
 		/// <summary>
 		/// Gets the name of this tileset
@@ -23,7 +27,9 @@ namespace TheBox.Roofing
 		/// <summary>
 		/// Gets the tiles included in this tileset
 		/// </summary>
-		public ArrayList Tiles
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<TileMask> Tiles
+		// Issue 10 - End
 		{
 			get { return m_Tiles; }
 		}
@@ -33,7 +39,9 @@ namespace TheBox.Roofing
 		/// </summary>
 		public TileSet()
 		{
-			m_Tiles = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_Tiles = new List<TileMask>();
+			// Issue 10 - End
 		}
 
 		/// <summary>
@@ -58,9 +66,11 @@ namespace TheBox.Roofing
 		/// Loads the roof tiles defined in rooftiles.cfg
 		/// </summary>
 		/// <returns>An array list of tilesets</returns>
-		public static ArrayList Load()
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public static List<TileSet> Load()
 		{
-			ArrayList list = new ArrayList();
+			List<TileSet> list = new List<TileSet>();
+			// Issue 10 - End
 
 			StreamReader reader = new StreamReader( @"D:\Dev\Pandora 2.0\Data\rooftiles.cfg" );
 
@@ -105,7 +115,9 @@ namespace TheBox.Roofing
 			return list;
 		}
 
-		public static void Save( ArrayList list )
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public static void Save( List<TileSet> list )
+		// Issue 10 - End
 		{
 			StreamWriter writer = new StreamWriter( @"D:\Dev\Pandora 2.0\Data\rooftiles.cfg" );
 

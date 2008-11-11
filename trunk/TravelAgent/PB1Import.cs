@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.Collections.Specialized;
 using System.Xml.Serialization;
 
@@ -134,10 +136,14 @@ namespace Box.Misc
 	[XmlInclude (typeof(Location))]
 	public class LocationsList
 	{
-		public ArrayList Places;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<Location> Places;
+		// Issue 10 - End
 		public LocationsList()
 		{
-			Places = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			Places = new List<Location>();
+			// Issue 10 - End
 		}
 	}
 	/// <summary>

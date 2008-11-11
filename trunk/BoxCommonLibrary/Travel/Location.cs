@@ -1,7 +1,9 @@
 using System;
 using System.Xml.Serialization;
 using System.Windows.Forms;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 
 namespace TheBox.Data
 {
@@ -70,7 +72,9 @@ namespace TheBox.Data
 		/// </summary>
 		/// <param name="list">A collection of Location structures</param>
 		/// <returns>A TreeNodeCollection object containing nodes for all the locations in the list</returns>
-		public static TreeNode[] ArrayToNodes( ArrayList list )
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public static TreeNode[] ArrayToNodes( List<object> list )
+		// Issue 10 - End
 		{
 			TreeNode[] nodes = new TreeNode[ list.Count ];
 

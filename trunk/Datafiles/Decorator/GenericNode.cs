@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.Xml.Serialization;
 
 namespace TheBox.Common
@@ -10,7 +12,9 @@ namespace TheBox.Common
 	public class GenericNode : IComparable
 	{
 		private string m_Name;
-		private ArrayList m_Elements;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<object> m_Elements;
+		// Issue 10 - End
 
 		[ XmlAttribute ]
 		/// <summary>
@@ -25,7 +29,9 @@ namespace TheBox.Common
 		/// <summary>
 		/// Gets or sets the subelements of this node
 		/// </summary>
-		public ArrayList Elements
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<object> Elements
+		// Issue 10 - End
 		{
 			get { return m_Elements; }
 			set { m_Elements = value; }
@@ -36,7 +42,9 @@ namespace TheBox.Common
 		/// </summary>
 		public GenericNode()
 		{
-			m_Elements = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_Elements = new List<object>();
+			// Issue 10 - End
 		}
 
 		/// <summary>

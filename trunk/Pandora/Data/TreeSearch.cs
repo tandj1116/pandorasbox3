@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.Windows.Forms;
 
 using TheBox.Common;
@@ -35,10 +37,11 @@ namespace TheBox.Data
 			{
 				DoNode( subNode, results, text );
 			}
-
-			if ( node.Tag != null && node.Tag is ArrayList )
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			if ( node.Tag != null && node.Tag is List<object> )
 			{
-				ArrayList list = node.Tag as ArrayList;
+				List<object> list = node.Tag as List<object>;
+				// Issue 10 - End
 
 				for ( int i = 0; i < list.Count; i++ )
 				{

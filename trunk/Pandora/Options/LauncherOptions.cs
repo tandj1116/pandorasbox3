@@ -1,6 +1,8 @@
 using System;
 using System.IO;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.Xml.Serialization;
 using System.Windows.Forms;
 using System.Drawing;
@@ -14,12 +16,14 @@ namespace TheBox.Options
 	/// </summary>
 	public class LauncherOptions
 	{
-		private ArrayList m_Entries;
-
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<LauncherEntry> m_Entries;
+		
 		/// <summary>
 		/// Gets or sets the entires in the launcher
 		/// </summary>
-		public ArrayList LauncherEntries
+		public List<LauncherEntry> LauncherEntries
+		// Issue 10 - End
 		{
 			get { return m_Entries; }
 			set { m_Entries = value; }
@@ -27,7 +31,9 @@ namespace TheBox.Options
 
 		public LauncherOptions()
 		{
-			m_Entries = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_Entries = new List<LauncherEntry>();
+			// Issue 10 - End
 		}
 
 		/// <summary>
@@ -55,7 +61,9 @@ namespace TheBox.Options
 
 			for ( int i = 0; i < nodes.Length; i++ )
 			{
-				LauncherEntry entry = m_Entries[ i ] as LauncherEntry;
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				LauncherEntry entry = m_Entries[ i ];
+				// Issue 10 - End
 				nodes[ i ] = entry.TreeNode;
 				
 				if ( entry.Valid )

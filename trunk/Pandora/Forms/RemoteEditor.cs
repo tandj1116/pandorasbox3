@@ -29,8 +29,9 @@ namespace TheBox.Forms
 		private System.Windows.Forms.MenuItem miLocalSave;
 		private System.Windows.Forms.MenuItem miExit;
 		private System.Windows.Forms.SaveFileDialog SaveFile;
-        //Kons - Issue 3 : useless
+		// Issue 3 - Obsolete interface - Useless code - http://code.google.com/p/pandorasbox3/issues/detail?id=3&can=1 - Kons
 		//private bool m_Modified = false;
+		// Issue 3 - End
 
 		public RemoteEditor( string file, string text )
 		{

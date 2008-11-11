@@ -1,6 +1,8 @@
 using System;
 using System.Drawing;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -55,11 +57,15 @@ namespace TheBox.Roofing
 			Pandora.LocalizeControl( this );
 
 			m_Roof = new Roof();
-			m_RoofTiles = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_RoofTiles = new List<TileSet>();
+			// Issue 10 - End
 		}
 
 		private Roof m_Roof;
-		private ArrayList m_RoofTiles;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<TileSet> m_RoofTiles;
+		// Issue 10 - End
 
 		/// <summary>
 		/// Clean up any resources being used.

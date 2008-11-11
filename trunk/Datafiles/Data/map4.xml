@@ -1,7 +1,7 @@
-<?xml version="1.0"?>
-<Facet xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" MapValue="4">
+<?xml version="1.0" encoding="utf-8"?>
+<Facet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" MapValue="4">
   <Nodes>
-    <anyType xsi:type="GenericNode" Name="Homare - jima">
+    <GenericNode Name="Homare - jima">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Adventure point">
           <Elements>
@@ -51,8 +51,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Isamu - jima">
+    </GenericNode>
+    <GenericNode Name="Isamu - jima">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Adventure point">
           <Elements>
@@ -120,8 +120,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Makoto - jima">
+    </GenericNode>
+    <GenericNode Name="Makoto - jima">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Misk">
           <Elements>
@@ -193,6 +193,6 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
+    </GenericNode>
   </Nodes>
 </Facet>

@@ -1,6 +1,8 @@
 using System;
 using System.Drawing;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Data;
@@ -272,14 +274,17 @@ namespace Decorator
 			Application.EnableVisualStyles();
 			Application.Run(new Form1());
 		}
-
-		private ArrayList m_IDs;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<int> m_IDs;
+		// Issue 10 - End
 		private BoxDecoList m_Deco;
 		private const string m_File = @"D:\Dev\Pandora 2.0\Data\Deco.xml";
 
 		private void button1_Click(object sender, System.EventArgs e)
 		{
-			m_IDs = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_IDs = new List<int>();
+			// Issue 10 - End
 			m_Deco = BoxDecoList.FromFile( m_File );
 
 			foreach ( GenericNode g in m_Deco.Structure )

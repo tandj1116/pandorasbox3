@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
@@ -724,10 +726,11 @@ namespace TheBox.Pages
 		{
 			tLoc.BeginUpdate();
 			tLoc.Nodes.Clear();
-
-			if ( tCat.SelectedNode.Tag is ArrayList )
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			if ( tCat.SelectedNode.Tag is List<object> )
 			{
-				tLoc.Nodes.AddRange( Pandora.TravelAgent.GetLocationNodes( tCat.SelectedNode.Tag as ArrayList ) );
+				tLoc.Nodes.AddRange( Pandora.TravelAgent.GetLocationNodes( tCat.SelectedNode.Tag as List<object> ) );
+				// Issue 10 - End
 			}
 				
 			tLoc.EndUpdate();
@@ -972,8 +975,9 @@ namespace TheBox.Pages
 			{
 				if ( tCat.SelectedNode == null )
 					return;
-
-				if ( ! (tCat.SelectedNode.Tag != null && tCat.SelectedNode.Tag is ArrayList ) )
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				if ( ! (tCat.SelectedNode.Tag != null && tCat.SelectedNode.Tag is List<object> ) )
+				// Issue 10 - End
 					return;
 
 				TreeNode onNode = tLoc.GetNodeAt( e.X, e.Y );
@@ -994,8 +998,10 @@ namespace TheBox.Pages
 					this.mLocDel.Enabled = true;
 				}
 
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 				// Enable new location only if the selected node is a subsection node
-				if ( tCat.SelectedNode.Tag != null && tCat.SelectedNode.Tag is ArrayList )
+				if ( tCat.SelectedNode.Tag != null && tCat.SelectedNode.Tag is List<object> )
+				// Issue 10 - End
 				{
 					this.mLocNew.Enabled = true;
 				}
@@ -1033,8 +1039,9 @@ namespace TheBox.Pages
 
 					if ( next != null )
 						nextIndex = tLoc.Nodes.IndexOf( next );
-
-					( sub.Tag as ArrayList ).RemoveAt( index );
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					( sub.Tag as List<object> ).RemoveAt( index );
+					// Issue 10 - End
 
 					TreeNode node = tCat.SelectedNode;
 					tCat.SelectedNode = null;
@@ -1072,7 +1079,9 @@ namespace TheBox.Pages
 
 			if ( quickLoc.ShowDialog() == DialogResult.OK )
 			{
-				ArrayList list = tCat.SelectedNode.Tag as ArrayList;
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				List<object> list = tCat.SelectedNode.Tag as List<object>;
+				// Issue 10 - End
 
 				if ( list != null )
 				{
@@ -1113,9 +1122,11 @@ namespace TheBox.Pages
 
 			if ( quickLoc.ShowDialog() == DialogResult.OK )
 			{
-				( tCat.SelectedNode.Tag as ArrayList ).Sort();
-
-				int index = ( tCat.SelectedNode.Tag as ArrayList ).IndexOf( location );
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				( tCat.SelectedNode.Tag as List<object> ).Sort();
+				
+				int index = ( tCat.SelectedNode.Tag as List<object> ).IndexOf( location );
+				// Issue 10 - End
 
 				TreeNode node = tCat.SelectedNode;
 				tCat.SelectedNode = null;
@@ -1292,9 +1303,11 @@ namespace TheBox.Pages
 		private void mCatNewSub_Click(object sender, System.EventArgs e)
 		{
 			TreeNode node = new TreeNode( "NewSubsection" );
-			node.Tag = new ArrayList();
-
-			if ( tCat.SelectedNode.Tag != null && tCat.SelectedNode.Tag is ArrayList )
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			node.Tag = new List<object>();
+			
+			if ( tCat.SelectedNode.Tag != null && tCat.SelectedNode.Tag is List<object> )
+				// Issue 10 - End
 				tCat.SelectedNode.Parent.Nodes.Add( node );
 			else
 				tCat.SelectedNode.Nodes.Add( node );
@@ -1467,8 +1480,11 @@ namespace TheBox.Pages
 
 		private void tmr_Tick(object sender, System.EventArgs e)
 		{
-			if ( Pandora.Profile.Travel.FollowClient )
-				Synch();
+			if(Pandora.Profile != null)
+			{
+				if (Pandora.Profile.Travel.FollowClient)
+					Synch();
+			}
 		}
 
 		private void chkSynch_CheckedChanged(object sender, System.EventArgs e)

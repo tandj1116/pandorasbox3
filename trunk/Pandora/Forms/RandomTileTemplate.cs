@@ -1,6 +1,8 @@
 using System;
 using System.Drawing;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -484,7 +486,9 @@ namespace TheBox.Forms
 
 		private void RandomTileTemplate_Closing(object sender, System.ComponentModel.CancelEventArgs e)
 		{
-			ArrayList purge = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			List<RandomTilesList> purge = new List<RandomTilesList>();
+			// Issue 10 - End
 
 			// Validate
 			foreach( RandomTilesList tiles in m_List.List )

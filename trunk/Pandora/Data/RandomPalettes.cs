@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.Drawing;
 using TheBox.BoxServer;
 
@@ -127,7 +129,9 @@ namespace TheBox.Data
 
 						if ( m_RandomHues != null )
 						{
-							hue = (int) m_RandomHues.Hues[ rnd.Next( m_RandomHues.Hues.Count ) ];
+							// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+							hue = m_RandomHues.Hues[ rnd.Next( m_RandomHues.Hues.Count ) ];
+							// Issue 10 - End
 						}
 						
 						item.Hue = hue;
@@ -213,7 +217,9 @@ namespace TheBox.Data
 		/// <param name="hues">A list of hues to use for the brush</param>
 		/// <param name="fill">The are percentage to fill</param>
 		/// <returns>The server message created</returns>
-		private RandomBrushMessage CreateMessage( RandomTilesList tileset, ArrayList hues, double fill )
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private RandomBrushMessage CreateMessage( RandomTilesList tileset, List<int> hues, double fill )
+		// Issue 10 - End
 		{
 			RandomBrushMessage msg = new RandomBrushMessage();
 			Random rnd = new Random();
@@ -233,7 +239,9 @@ namespace TheBox.Data
 							BuildItem item = new BuildItem();
 
 							item.ID = id;
-							item.Hue = (int) hues[ rnd.Next( hues.Count ) ];
+							// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+							item.Hue = hues[ rnd.Next( hues.Count ) ];
+							// Issue 10 - End
 
 							item.X = x - ( m_Width / 2 );
 							item.Y = y - ( m_Height / 2 );
@@ -268,7 +276,9 @@ namespace TheBox.Data
 		/// <returns>A message that can be sent to the server</returns>
 		public RandomBrushMessage CreateMessage( RandomTilesList tileset, int hue, double fill )
 		{
-			ArrayList list = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			List<int> list = new List<int>();
+			// Issue 10 - End
 			list.Add( hue );
 
 			return CreateMessage( tileset, list, fill );

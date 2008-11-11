@@ -1,6 +1,8 @@
 using System;
 using System.IO;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using TheBox.Common;
 using System.Xml;
 using System.Drawing;
@@ -12,15 +14,22 @@ namespace TheBox.Data
 	/// </summary>
 	public class LightsData
 	{
-		private ArrayList m_Structure;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<GenericNode> m_Structure;
+		// Issue 10 - End
 		private string m_SelectedCategory;
 
 		public LightsData()
 		{
-			m_Structure = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_Structure = new List<GenericNode>();
+			// Issue 10 - End
 			CreateStructure();
 
-			GenericNode gNode = m_Structure[ 0 ] as GenericNode;
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			GenericNode gNode = m_Structure[ 0 ];
+			// Issue 10 - End
+
 			m_SelectedCategory = gNode.Name;
 		}
 
@@ -59,7 +68,9 @@ namespace TheBox.Data
 
 				for ( int i = 0; i < categories.Length; i++ )
 				{
-					GenericNode gNode = m_Structure[ i ] as GenericNode;
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					GenericNode gNode = m_Structure[ i ];
+					// Issue 10 - End
 
 					categories[ i ] = gNode.Name;
 				}

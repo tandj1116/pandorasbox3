@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.Xml.Serialization;
 
 namespace TheBox.BoxServer
@@ -10,12 +12,16 @@ namespace TheBox.BoxServer
 	/// </summary>
 	public class BuildMessage : BoxMessage
 	{
-		private ArrayList m_Items;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<BuildItem> m_Items;
+		// Issue 10 - End
 
 		/// <summary>
 		/// Gets or sets the items composing this structure
 		/// </summary>
-		public ArrayList Items
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<BuildItem> Items
+		// Issue 10 - End 
 		{
 			get { return m_Items; }
 			set { m_Items = value; }
@@ -26,7 +32,9 @@ namespace TheBox.BoxServer
 		/// </summary>
 		public BuildMessage()
 		{
-			m_Items = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_Items = new List<BuildItem>();
+			// Issue 10 - End
 		}
 	}
 
