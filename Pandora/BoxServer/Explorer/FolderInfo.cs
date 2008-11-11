@@ -1,6 +1,8 @@
 using System;
 using System.IO;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.Xml.Serialization;
 using System.Windows.Forms;
 
@@ -67,7 +69,9 @@ namespace TheBox.BoxServer
 		/// </summary>
 		/// <param name="elements">An array list of items in a folder</param>
 		/// <returns>The corresponding tree nodes</returns>
-		private TreeNode[] DoElements( ArrayList elements )
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private TreeNode[] DoElements( List<object> elements )
+		// Issue 10 - End
 		{
 			TreeNode[] nodes = new TreeNode[ elements.Count ];
 

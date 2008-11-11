@@ -18,7 +18,9 @@
  * 
  *///////////////////////////////////////////////////////////////////////////////////////////
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
@@ -106,9 +108,11 @@ namespace TheBox.MapViewer
 			SetStyle( ControlStyles.AllPaintingInWmPaint, true );
 
 			// Initialize variables
-			m_MapArray = new ArrayList();
+			//m_MapArray = new ArrayList();
 			m_ColorMap = new short[ 65536 ];
-			m_DrawObjects = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_DrawObjects = new List<IMapDrawable>();
+			// Issue 10 - End
 
 			// Generate the Difl data
 			GeneratePatchData();
@@ -282,8 +286,9 @@ namespace TheBox.MapViewer
             
 			fixed ( short* pColorMap = ColorMap )
 			{
-                //Kons - Issue 7 : http://code.google.com/p/pandorasbox3/issues/detail?id=7
-                ReadFile(colstream.SafeFileHandle.DangerousGetHandle(), pColorMap, 131072, &n, 0);
+				// Issue 7 - Handle Warnings - http://code.google.com/p/pandorasbox3/issues/detail?id=7&can=1 - Kons
+        ReadFile(colstream.SafeFileHandle.DangerousGetHandle(), pColorMap, 131072, &n, 0);
+				// Issue 7 - End
 			}
 
 			colstream.Close();
@@ -300,8 +305,10 @@ namespace TheBox.MapViewer
 			FileStream stadifistream = null;
 			FileStream stadiflstream = null;
 
-			Hashtable MapPatch = null;
-			Hashtable StaPatch = null;
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			Dictionary<int,int> MapPatch = null;
+			Dictionary<int,int> StaPatch = null;
+			// Issue 10 - End
 
 			if ( statics )
 			{
@@ -314,7 +321,9 @@ namespace TheBox.MapViewer
 					stadifistream = new FileStream( stadifi, FileMode.Open, FileAccess.Read, FileShare.ReadWrite );
 					stadiflstream = new FileStream( stadifl, FileMode.Open, FileAccess.Read, FileShare.ReadWrite );
 
-					StaPatch = new Hashtable();
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					StaPatch = new Dictionary<int, int>();
+					// Issue 10 - End
 
 					BinaryReader reader = new BinaryReader( stadiflstream );
 
@@ -335,7 +344,9 @@ namespace TheBox.MapViewer
 				mapdifstream = new FileStream( mapdif, FileMode.Open, FileAccess.Read, FileShare.ReadWrite );
 				mapdiflstream = new FileStream( mapdifl, FileMode.Open, FileAccess.Read, FileShare.ReadWrite );
 
-				MapPatch = new Hashtable();
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				MapPatch = new Dictionary<int, int>();
+				// Issue 10 - End
 
 				BinaryReader reader = new BinaryReader( mapdiflstream );
 
@@ -346,6 +357,7 @@ namespace TheBox.MapViewer
 				// Issue 1 - End
 				{
 					int key = reader.ReadInt32();
+					
 					MapPatch[ key ] = i++;
 				}
 
@@ -380,10 +392,12 @@ namespace TheBox.MapViewer
 
 					MapBlock bMap = null;
 
-					if ( mappatch && MapPatch.Contains( bindex ) )
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					if ( mappatch && MapPatch.ContainsKey( bindex ) )
 					{
 						// Patched map block
-						mapdifstream.Seek( (int) MapPatch[ bindex ] * MapBlock.Size, SeekOrigin.Begin );						
+						mapdifstream.Seek( MapPatch[ bindex ] * MapBlock.Size, SeekOrigin.Begin );
+						// Issue 10 - End
 						bMap = MapBlock.ReadFromStream( mapdifstream );
 					}
 					else
@@ -400,10 +414,12 @@ namespace TheBox.MapViewer
 						StaticData[] sData = null;
 						int NumOfStatics = 0;
 
-						if ( stapatch && StaPatch.Contains( bindex ) )
+						// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+						if ( stapatch && StaPatch.ContainsKey( bindex ) )
 						{
 							// Patch
-							stadifistream.Seek( (int) StaPatch[ bindex ] * StaticIdx.Size, SeekOrigin.Begin );
+							stadifistream.Seek( StaPatch[ bindex ] * StaticIdx.Size, SeekOrigin.Begin );
+							// Issue 10 - End
 							staidxstream.Seek( StaticIdx.Size, SeekOrigin.Current );
 
 							idx = StaticIdx.ReadFromStream( stadifistream );
@@ -709,7 +725,8 @@ namespace TheBox.MapViewer
 		/// <summary>
 		/// Array of byte values used to display the map
 		/// </summary>
-		private ArrayList m_MapArray;
+		// Non usato
+		//private ArrayList m_MapArray;
 
 		/// <summary>
 		/// The list of the colors for the map display
@@ -749,12 +766,16 @@ namespace TheBox.MapViewer
 		/// <summary>
 		/// Patch information for the map
 		/// </summary>
-		private Hashtable m_MapPatch;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private Dictionary<int,int> m_MapPatch;
+		// Issue 10 - End
 
 		/// <summary>
 		/// Patch information for the statics
 		/// </summary>
-		private Hashtable m_StaPatch;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private Dictionary<int,int> m_StaPatch;
+		// Issue 10 - End
 
 		/// <summary>
 		/// Error display on the control surface
@@ -764,7 +785,9 @@ namespace TheBox.MapViewer
 		/// <summary>
 		/// The list of the objects drawn on the map
 		/// </summary>
-		private ArrayList m_DrawObjects;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<IMapDrawable> m_DrawObjects;
+		// Issue 10 - End
 
 		/// <summary>
 		/// Displays the cross at the center of the map
@@ -1038,7 +1061,9 @@ namespace TheBox.MapViewer
 		/// Gets or sets the list of drawing objects on the map
 		/// </summary>
 		[ Browsable( false ) ]
-		public ArrayList DrawObjects
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<IMapDrawable> DrawObjects
+		// Issue 10 - End
 		{
 			get { return m_DrawObjects; }
 			set { m_DrawObjects = value; }
@@ -1323,7 +1348,9 @@ namespace TheBox.MapViewer
 			// Note: Some blocks are duplicated.
 			// Always use the second block or the map will miss pieces
 
-			m_MapPatch = new Hashtable();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_MapPatch = new Dictionary<int,int>();
+			// Issue 10 - End
 
 			if ( File.Exists( GetMulFile( MulFileType.MapDifl, m_Map ) ) )
 			{
@@ -1349,8 +1376,9 @@ namespace TheBox.MapViewer
 			//
 			// STATICS: Read from stadiflX.mul
 			//
-
-			m_StaPatch = new Hashtable();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_StaPatch = new Dictionary<int,int>();
+			// Issue 10 - End
 
 			if ( File.Exists( GetMulFile( MulFileType.StaDifl, m_Map ) ) )
 			{
@@ -1383,8 +1411,9 @@ namespace TheBox.MapViewer
 
 			fixed ( short* pColorMap = m_ColorMap )
 			{
-                //Kons - Issue 7 : http://code.google.com/p/pandorasbox3/issues/detail?id=7
+				// Issue 7 - Handle Warnings - http://code.google.com/p/pandorasbox3/issues/detail?id=7&can=1 - Kons
 				ReadFile( stream.SafeFileHandle.DangerousGetHandle(), pColorMap, 131072, &n, 0 );
+				// Issue 7 - End
 			}
 
 			stream.Close();
@@ -1521,9 +1550,11 @@ namespace TheBox.MapViewer
 					m_MapBlocks[ index ] = MapBlock.ReadFromStream( mapStream );
 
 					// Verify if this block is patched
-					if ( mappatch && m_MapPatch.Contains( BlockNumber ) )
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					if ( mappatch && m_MapPatch.ContainsKey( BlockNumber ) )
 					{
-						mapDifStream.Seek( (int) m_MapPatch[ BlockNumber ] * t_MapBlockSize, SeekOrigin.Begin );
+						mapDifStream.Seek( m_MapPatch[ BlockNumber ] * t_MapBlockSize, SeekOrigin.Begin );
+						// Issue 10 - End
 						m_MapBlocks[ index ] = MapBlock.ReadFromStream( mapDifStream );
 					}
 
@@ -1544,9 +1575,11 @@ namespace TheBox.MapViewer
 						FileStream muleStaStream = staticsStream;
 
 						// Verify if the statics are patched
-						if ( stapatch && m_StaPatch.Contains( BlockNumber ) )
+						// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+						if ( stapatch && m_StaPatch.ContainsKey( BlockNumber ) )
 						{
-							staDifiStream.Seek( (int) m_StaPatch[ BlockNumber ] * t_StaticIdxSize, SeekOrigin.Begin );
+							staDifiStream.Seek( m_StaPatch[ BlockNumber ] * t_StaticIdxSize, SeekOrigin.Begin );
+							// Issue 10 - End
 	
 							idx = StaticIdx.ReadFromStream( staDifiStream );
 
@@ -1838,7 +1871,12 @@ namespace TheBox.MapViewer
 				return Height;
 
 			// The block is patched, read patch data
-			int DifIndex = (int) m_MapPatch[ BlockNumber ];
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			int DifIndex;
+
+			if (!m_MapPatch.TryGetValue(BlockNumber, out DifIndex))
+				return 0;
+			// Issue 10 - End
 
 			FileStream mapDifStream = null;
 

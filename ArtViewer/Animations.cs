@@ -1,6 +1,8 @@
 using System;
 using System.IO;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.Drawing;
 using System.Drawing.Imaging;
 
@@ -26,8 +28,9 @@ namespace TheBox.UltimaImport
 
 			if ( path == null )
 				return;
-
-			ArrayList list1 = new ArrayList(), list2 = new ArrayList(), list3 = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			List<int> list1 = new List<int>(), list2 = new List<int>(), list3 = new List<int>();
+			// Issue 10 - End
 			int max1 = 0, max2 = 0, max3 = 0;
 
 			using ( StreamReader ip = new StreamReader( path ) )
@@ -108,7 +111,9 @@ namespace TheBox.UltimaImport
 				m_Table1[i] = -1;
 
 			for ( int i = 0; i < list1.Count; i += 2 )
-				m_Table1[(int)list1[i]] = (int)list1[i + 1];
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				m_Table1[list1[i]] = list1[i + 1];
+				// Issue 10 - End
 
 			m_Table2 = new int[max2+1];
 
@@ -116,7 +121,9 @@ namespace TheBox.UltimaImport
 				m_Table2[i] = -1;
 
 			for ( int i = 0; i < list2.Count; i += 2 )
-				m_Table2[(int)list2[i]] = (int)list2[i + 1];
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				m_Table2[list2[i]] = list2[i + 1];
+				// Issue 10 - End
 
 			m_Table3 = new int[ max3 + 1 ];
 
@@ -124,7 +131,9 @@ namespace TheBox.UltimaImport
 				m_Table3[i] = -1;
 
 			for ( int i = 0; i < list3.Count; i += 2 )
-				m_Table3[(int)list3[i]] = (int)list3[i+1];
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				m_Table3[list3[i]] = list3[i+1];
+				// Issue 10 - End
 		}
 
 		/// <summary>
@@ -394,16 +403,17 @@ namespace TheBox.UltimaImport
 
 			for ( int i = 0; i < count; ++i )
 			{
-				object o = BodyTable.m_Entries[i];
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				BodyTableEntry bte;
+				BodyTable.m_Entries.TryGetValue(i, out bte);
 
-				if ( o == null || BodyConverter.Contains( i ) )
+				if ( bte == null || BodyConverter.Contains(i))
+				// Issue 10 - End
 				{
 					m_Table[i] = i;
 				}
 				else
 				{
-					BodyTableEntry bte = (BodyTableEntry)o;
-
 					m_Table[i] = bte.m_OldID | (1 << 31) | (((bte.m_NewHue ^ 0x8000) & 0xFFFF) << 15);
 				}
 			}
@@ -505,11 +515,15 @@ namespace TheBox.UltimaImport
 
 	public class BodyTable
 	{
-		public static Hashtable m_Entries;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public static Dictionary<int, BodyTableEntry> m_Entries;
+		// Issue 10 - End
 
 		static BodyTable()
 		{
-			m_Entries = new Hashtable();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_Entries = new Dictionary<int, BodyTableEntry>();
+			// Issue 10 - End
 
 			string filePath = ArtViewer.ArtViewer.MulManager[ "body.def", true ];
 

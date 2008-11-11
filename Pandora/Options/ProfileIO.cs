@@ -1,6 +1,8 @@
 using System;
 using System.IO;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using Microsoft.CSharp;
 using System.CodeDom.Compiler;
 using System.Reflection;
@@ -21,8 +23,10 @@ namespace TheBox.Options
 		public string CommandPrefix;
 		public string[] Modifiers;
 		public bool[] ModifierWarnings;
-		public ArrayList SpeechPresets;
-		public ArrayList WebPresets;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<string> SpeechPresets;
+		public List<string> WebPresets;
+		// Issue 10 - End
 		public bool[] EnabledMaps;
 		public string[] MapNames;
 		public string[] EmbeddedList;
@@ -205,9 +209,10 @@ namespace TheBox.Options
 			{
 				File.Delete( filename );
 			}
-
-			ArrayList embedded = new ArrayList();
-			ArrayList files = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			List<string> embedded = new List<string>();
+			List<string> files = new List<string>();
+			// Issue 10 - End
 
 			embedded.Add( "BoxData.xml" );
 			files.Add( Path.Combine( m_Profile.BaseFolder, "BoxData.xml" ) );
@@ -292,9 +297,11 @@ namespace TheBox.Options
 			for ( int i = 0; i < embedded.Count; i++ )
 			{
 				res += " ";
-				res += string.Format( "/resource:\"{0}\",{1}", files[ i ] as string, embedded[ i ] as string );
-
-				EmbeddedList[ i ] = embedded[ i ] as string;
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				res += string.Format( "/resource:\"{0}\",{1}", files[ i ], embedded[ i ]);
+				
+				EmbeddedList[ i ] = embedded[ i ];
+				// Issue 10 - End
 			}
 
 			if ( ! TheBox.Common.Utility.SaveXml( this, temp ) )
@@ -304,9 +311,9 @@ namespace TheBox.Options
 				return;
 			}
 
-            //Kons - Issue 3: Obsolete Interface
-            CodeDomProvider compiler = CodeDomProvider.CreateProvider("CSharp");
-            //Kons End
+			// Issue 3 - Obsolete interface - Useless code - http://code.google.com/p/pandorasbox3/issues/detail?id=3&can=1 - Kons
+      CodeDomProvider compiler = CodeDomProvider.CreateProvider("CSharp");
+			// Issue 3 - End
 
 			CompilerParameters options = new CompilerParameters();
 

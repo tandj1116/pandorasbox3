@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 
 namespace TheBox.Common
 {
@@ -10,14 +12,18 @@ namespace TheBox.Common
 	public class RecentList
 	{
 		private int m_Capacity = 10;
-		private ArrayList m_List;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<object> m_List;
+		// Issue 10 - End
 
 		/// <summary>
 		/// Creates a new RecentList object
 		/// </summary>
 		public RecentList()
 		{
-			m_List = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_List = new List<object>();
+			// Issue 10 - End
 		}
 
 		/// <summary>
@@ -42,7 +48,9 @@ namespace TheBox.Common
 		/// <summary>
 		/// Gets or sets the items in the list
 		/// </summary>
-		public ArrayList List
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<object> List
+		// Issue 10 - End
 		{
 			get { return m_List; }
 			set { m_List = value; }

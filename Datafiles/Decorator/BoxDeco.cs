@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.IO;
 using System.Xml.Serialization;
 
@@ -73,23 +75,28 @@ namespace TheBox.Data
 	[ Serializable, XmlInclude( typeof( BoxDeco ) ), XmlInclude( typeof( GenericNode ) ) ]
 	public class BoxDecoList
 	{
-		private ArrayList m_Structure;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<GenericNode> m_Structure;
 
 		/// <summary>
 		/// Gets or sets the structure of the decoration items available
 		/// </summary>
-		public ArrayList Structure
+		public List<GenericNode> Structure
+		// Issue 10 - End
 		{
 			get { return m_Structure; }
 			set { m_Structure = value; }
 		}
+		
 
 		/// <summary>
 		/// Creates a new BoxDecoList object
 		/// </summary>
 		public BoxDecoList()
 		{
-			m_Structure = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_Structure = new List<GenericNode>();
+			// Issue 10 - End
 		}
 
 		/// <summary>

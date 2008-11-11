@@ -1,6 +1,8 @@
 using System;
 using System.Drawing;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.IO;
@@ -29,7 +31,9 @@ namespace TheBox.Forms
 		public VisualClientList()
 		{
 			InitializeComponent();
-			m_Table = new Hashtable();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_Table = new Dictionary<Point, List<ClientEntry>>();
+			// Issue 10 - End
 			Pandora.LocalizeControl( this );
 
 			tBar.ImageList = new ImageList();
@@ -46,8 +50,10 @@ namespace TheBox.Forms
 
 		private int m_Map = 0;
 		private Image m_Image = null;
-		private ArrayList m_Clients;
-		private Hashtable m_Table;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<ClientEntry> m_Clients;
+		private Dictionary<Point, List<ClientEntry>> m_Table;
+		// Issue 10 - End
 		private bool[,] m_Grid;
 		private Point m_GoPoint = Point.Empty;
 
@@ -195,7 +201,9 @@ namespace TheBox.Forms
 			}
 			else
 			{
-				m_Clients = new ArrayList();
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				m_Clients = new List<ClientEntry>();
+				// Issue 10 - End
 			}
 
 			for( int i = 0; i < 4; i++ )
@@ -238,7 +246,10 @@ namespace TheBox.Forms
 
 					m_Grid[x,y] = true;
 
-					ArrayList current = m_Table[ new Point( x, y ) ] as ArrayList;
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					List<ClientEntry> current;
+					m_Table.TryGetValue(new Point(x, y), out current);
+					// Issue 10 - End
 
 					if ( current != null )
 					{
@@ -246,10 +257,13 @@ namespace TheBox.Forms
 					}
 					else
 					{
-						current = new ArrayList();
+						// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+						current = new List<ClientEntry>();
 						current.Add( client );
+						// Issue 10 - End
 
-						m_Table[ new Point( x,y ) ] = current;
+						m_Table[new Point(x,y)] = current;
+						
 					}
 				}
 			}
@@ -264,13 +278,19 @@ namespace TheBox.Forms
 				{
 					if ( m_Grid[x,y] )
 					{
-						int count = ( m_Table[ new Point( x, y ) ] as ArrayList ).Count;
-						Brush backGridBrush = new SolidBrush( Color.Yellow );
+						// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+						Point p;
+						if(m_Table.ContainsKey(p = new Point(x, y)))
+						{
+							int count = m_Table[p].Count;
+							Brush backGridBrush = new SolidBrush(Color.Yellow);
 
-						// Draw this background
-						e.Graphics.FillRectangle( backGridBrush, 8 + x * 4, 40 + y * 4, 4, 4 );
+							// Draw this background
+							e.Graphics.FillRectangle(backGridBrush, 8 + x * 4, 40 + y * 4, 4, 4);
 
-						backGridBrush.Dispose();
+							backGridBrush.Dispose();
+						}
+						// Issue 10 - End
 					}
 				}
 			}
@@ -345,7 +365,10 @@ namespace TheBox.Forms
 
 			if ( m_Grid[ xBlock, yBlock ] )
 			{
-				ArrayList clients = m_Table[ new Point( xBlock, yBlock ) ] as ArrayList;
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				List<ClientEntry> clients;
+				m_Table.TryGetValue(new Point( xBlock, yBlock ), out clients );
+				// Issue 10 - End
 
 				if ( clients == null || clients.Count == 0 )
 					return;

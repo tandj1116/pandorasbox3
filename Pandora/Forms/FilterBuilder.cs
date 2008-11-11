@@ -1,6 +1,8 @@
 using System;
 using System.Drawing;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -34,7 +36,9 @@ namespace TheBox.Forms
 		private System.Windows.Forms.Button bDel;
 		private System.Windows.Forms.Label labOutput;
 
-		private ArrayList m_Conditions;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<string> m_Conditions;
+		// Issue 10 - End
 		private System.Windows.Forms.Button bCheck;
 		private string m_Filter;
 
@@ -42,7 +46,9 @@ namespace TheBox.Forms
 		{
 			InitializeComponent();
 
-			m_Conditions = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_Conditions = new List<string>();
+			// Issue 10 - End
 
 			Pandora.LocalizeControl( this );
 			Pandora.ToolTip.SetToolTip( cmbOp, Pandora.TextProvider[ "Tips.Operators" ] );

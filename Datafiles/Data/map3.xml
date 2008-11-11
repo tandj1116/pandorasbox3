@@ -1,7 +1,7 @@
-<?xml version="1.0"?>
-<Facet xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" MapValue="3">
+<?xml version="1.0" encoding="utf-8"?>
+<Facet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" MapValue="3">
   <Nodes>
-    <anyType xsi:type="GenericNode" Name="Dungeons">
+    <GenericNode Name="Dungeons">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Doom">
           <Elements>
@@ -17,8 +17,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Sites">
+    </GenericNode>
+    <GenericNode Name="Sites">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Arena">
           <Elements>
@@ -121,8 +121,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Towns">
+    </GenericNode>
+    <GenericNode Name="Towns">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Luna">
           <Elements>
@@ -157,6 +157,6 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
+    </GenericNode>
   </Nodes>
 </Facet>

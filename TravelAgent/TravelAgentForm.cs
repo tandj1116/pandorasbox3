@@ -1,6 +1,8 @@
 using System;
 using System.Drawing;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Data;
@@ -749,7 +751,9 @@ namespace TheBox.TravelAgent
 
 			if ( parent != m_FacetNode )
 			{
-				node.Tag = new ArrayList();
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				node.Tag = new List<object>();
+				// Issue 10 - End
 			}
 
 			parent.Nodes.Add( node );
@@ -800,7 +804,9 @@ namespace TheBox.TravelAgent
 			tLoc.Nodes.Add( node );
 			tLoc.SelectedNode = node;
 
-			( parent.Tag as ArrayList ).Add( loc );
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert	
+			( parent.Tag as List<object> ).Add( loc );
+			// Issue 10 - End
 
 			txLoc.Clear();
 			txLoc.Focus();
@@ -830,7 +836,9 @@ namespace TheBox.TravelAgent
 
 			if ( e.Node != null && e.Node.Tag != null )
 			{
-				foreach( Location loc in e.Node.Tag as ArrayList )
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				foreach( Location loc in e.Node.Tag as List<object> )
+				// Issue 10 - End
 				{
 					TreeNode node = new TreeNode( loc.Name );
 					node.Tag = loc;
@@ -927,7 +935,9 @@ namespace TheBox.TravelAgent
 					{
 						GenericNode gSub = new GenericNode( sub.Text );
 
-						foreach( Location loc in sub.Tag as ArrayList )
+						// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+						foreach( Location loc in sub.Tag as List<object> )
+						// Issue 10 - End
 						{
 							gSub.Elements.Add( loc );
 						}
@@ -957,11 +967,15 @@ namespace TheBox.TravelAgent
 					foreach( GenericNode gSub in gCat.Elements )
 					{
 						TreeNode sub = new TreeNode( gSub.Name );
-						sub.Tag = new ArrayList();
+						// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+						sub.Tag = new List<object>();
+						// Issue 10 - End
 
 						foreach( Location loc in gSub.Elements )
 						{
-							( sub.Tag as ArrayList ).Add( loc );
+							// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+							( sub.Tag as List<object> ).Add( loc );
+							// Issue 10 - End
 						}
 
 						cat.Nodes.Add( sub );
@@ -1104,7 +1118,9 @@ namespace TheBox.TravelAgent
 
 		private void miLocDelete_Click(object sender, System.EventArgs e)
 		{
-			( tCat.SelectedNode.Tag as ArrayList ).Remove( CurrentLocation );
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			( tCat.SelectedNode.Tag as List<object> ).Remove( CurrentLocation );
+			// Issue 10 - End
 			tLoc.Nodes.Remove( tLoc.SelectedNode );
 			CurrentLocation = null;
 
@@ -1204,12 +1220,16 @@ namespace TheBox.TravelAgent
 					if ( subNode == null )
 					{
 						subNode = new TreeNode( sub.Name );
-						subNode.Tag = new ArrayList();
+						// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+						subNode.Tag = new List<object>();
+						// Issue 10 - End
 					}
 
 					catNode.Nodes.Add( subNode );
 
-					( subNode.Tag as ArrayList ).AddRange( sub.Elements );
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					( subNode.Tag as List<object> ).AddRange( sub.Elements );
+					// Issue 10 - End
 				}
 			}
 

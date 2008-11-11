@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
@@ -574,7 +576,7 @@ namespace TheBox.Pages
 
 				if ( e.Node.Tag != null )
 				{
-					ArrayList list = e.Node.Tag as ArrayList;
+					List<object> list = e.Node.Tag as List<object>;
 
 					foreach( BoxDeco deco in list )
 					{
@@ -678,7 +680,9 @@ namespace TheBox.Pages
 		private void cmCustomCat_Click(object sender, System.EventArgs e)
 		{
 			TreeNode n = new TreeNode( "New Category" );
-			n.Tag = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			n.Tag = new List<object>();
+			// Issue 10 - End
 
 			tCat.Nodes[ 0 ].Nodes.Add( n );
 
@@ -699,11 +703,12 @@ namespace TheBox.Pages
 				BoxDeco deco = form.Deco;
 
 				tDeco.Nodes.Add( deco.TreeNode );
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				( tCat.SelectedNode.Tag as List<object> ).Add( deco );
+				( tCat.SelectedNode.Tag as List<object> ).Sort();
 
-				( tCat.SelectedNode.Tag as ArrayList ).Add( deco );
-				( tCat.SelectedNode.Tag as ArrayList ).Sort();
-
-				int index = ( tCat.SelectedNode.Tag as ArrayList ).IndexOf( deco );
+				int index = (tCat.SelectedNode.Tag as List<object>).IndexOf(deco);
+				// Issue 10 - End
 
 				TreeNode n = tCat.SelectedNode;
 				tCat.SelectedNode = null;
@@ -894,12 +899,14 @@ namespace TheBox.Pages
 			{
 				foreach ( TreeNode sub in cat.Nodes )
 				{
-					foreach ( BoxDeco deco in sub.Tag as ArrayList )
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					foreach ( BoxDeco deco in sub.Tag as List<object> )
 					{
 						if ( deco.ID == id )
 						{
 							result = sub;
-							index = ( sub.Tag as ArrayList ).IndexOf( deco );
+							index = ( sub.Tag as List<object> ).IndexOf( deco );
+							// Issue 10 - End
 						}
 					}
 				}
@@ -930,12 +937,14 @@ namespace TheBox.Pages
 			{
 				foreach ( TreeNode sub in cat.Nodes )
 				{
-					foreach ( BoxDeco deco in sub.Tag as ArrayList )
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					foreach ( BoxDeco deco in sub.Tag as List<object> )
 					{
 						if ( deco.Name.ToLower().IndexOf( text ) > -1 )
 						{
 							// Result
-							Result r = new Result( sub, ( sub.Tag as ArrayList ).IndexOf( deco ) );
+							Result r = new Result( sub, ( sub.Tag as List<object> ).IndexOf( deco ) );
+							// Issue 10 - End
 							m_Results.Add( r );
 						}
 					}

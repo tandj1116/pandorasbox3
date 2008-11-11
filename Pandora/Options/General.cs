@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 
 using TheBox.Common;
 
@@ -53,8 +55,10 @@ namespace TheBox.Options
 		private int m_LightLevel = 0;
 		private RecentStringList m_SpeechList;
 		private RecentStringList m_WebList;
-		private ArrayList m_SpeechPresets;
-		private ArrayList m_WebPresets;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<string> m_SpeechPresets;
+		private List<string> m_WebPresets;
+		// Issue 10 - End
 
 		private string m_StartupTab = null;
 
@@ -81,7 +85,9 @@ namespace TheBox.Options
 		/// <summary>
 		/// Gets or sets the web presets
 		/// </summary>
-		public ArrayList WebPresets
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<string> WebPresets
+		// Issue 10 - End
 		{
 			get { return m_WebPresets; }
 			set { m_WebPresets = value; }
@@ -90,7 +96,9 @@ namespace TheBox.Options
 		/// <summary>
 		/// Gets or sets the speech presets
 		/// </summary>
-		public ArrayList SpeechPresets
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<string> SpeechPresets
+		// Issue 10 - End
 		{
 			get { return m_SpeechPresets; }
 			set { m_SpeechPresets = value; }
@@ -408,9 +416,10 @@ namespace TheBox.Options
 
 			m_SpeechList = new RecentStringList();
 			m_WebList = new RecentStringList();
-
-			m_SpeechPresets = new ArrayList();
-			m_WebPresets = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_SpeechPresets = new List<string>();
+			m_WebPresets = new List<string>();
+			// Issue 10 - End
 		}
 	}
 }

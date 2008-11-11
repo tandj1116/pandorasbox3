@@ -1,6 +1,8 @@
 using System;
 using System.Drawing;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
@@ -23,12 +25,16 @@ namespace TheBox.Forms
 
 		private HueGroups m_Groups;
 
-		private ArrayList m_SelectedHues;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<int> m_SelectedHues;
+		// Issue 10 - End
 
 		/// <summary>
 		/// Gets or sets the hues selected on the chart
 		/// </summary>
-		public ArrayList SelectedHues
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<int> SelectedHues
+		// Issue 10 - End
 		{
 			get
 			{
@@ -85,7 +91,9 @@ namespace TheBox.Forms
 		{
 			InitializeComponent();
 
-			SelectedHues = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			SelectedHues = new List<int>();
+			// Issue 10 - End
 
 			TempBmp = new Bitmap( 450, 300 );
 
@@ -407,7 +415,9 @@ namespace TheBox.Forms
 			}
 		}
 
-		private Bitmap DrawSelection(Bitmap oldImg, ArrayList list, Color color)
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private Bitmap DrawSelection(Bitmap oldImg, List<int> list, Color color)
+		// Issue 10 - End
 		{
 			TempBmp = (Bitmap) oldImg.Clone();
 
@@ -424,7 +434,9 @@ namespace TheBox.Forms
 			list.Sort();
 
 			bool Range = false;
-			int First = (int) list[0];
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			int First = list[0];
+			// Issue 10 - End
 			int Last = First;
 
 			foreach ( int s in list )

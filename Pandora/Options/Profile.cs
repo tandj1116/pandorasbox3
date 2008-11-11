@@ -486,7 +486,7 @@ namespace TheBox.Options
 				// Import default files
 				Assembly asm = Pandora.DataAssembly;
 
-				for ( int i = 0; i < 4; i++ )
+				for ( int i = 0; i < 5; i++ )
 				{
 					Stream stream = asm.GetManifestResourceStream( string.Format( res, i.ToString() ) );
 					FileStream fStream = new FileStream( string.Format( dest, i.ToString() ), FileMode.Create, FileAccess.Write, FileShare.Read );

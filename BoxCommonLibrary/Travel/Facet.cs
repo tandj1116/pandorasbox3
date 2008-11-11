@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.Xml.Serialization;
 using System.Windows.Forms;
 
@@ -16,7 +18,9 @@ namespace TheBox.Data
 	public class Facet
 	{
 		private byte m_Map;
-		private ArrayList m_Nodes;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<GenericNode> m_Nodes;
+		// Issue 10 - End
 
 		/// <summary>
 		/// Gets or sets the map file corresponding to this facet
@@ -31,7 +35,10 @@ namespace TheBox.Data
 		/// <summary>
 		/// Gets or sets the category nodes
 		/// </summary>
-		public ArrayList Nodes
+
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<GenericNode> Nodes
+		// Issue 10 - End
 		{
 			get { return m_Nodes; }
 			set { m_Nodes = value; }
@@ -42,7 +49,9 @@ namespace TheBox.Data
 		/// </summary>
 		public Facet()
 		{
-			m_Nodes = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_Nodes = new List<GenericNode>();
+			// Issue 10 - End
 		}
 
 		/// <summary>
@@ -91,7 +100,9 @@ namespace TheBox.Data
 				foreach ( TreeNode SubNode in CatNode.Nodes )
 				{
 					GenericNode Subsection = new GenericNode( SubNode.Text );
-					Subsection.Elements = ( ArrayList ) SubNode.Tag;
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					Subsection.Elements = (List<object>)SubNode.Tag;
+					// Issue 10 - End
 
 					Category.Elements.Add( Subsection );
 				}
@@ -192,11 +203,15 @@ namespace TheBox.Data
 			{
 				foreach ( TreeNode sub in cat.Nodes )
 				{
-					foreach ( Location loc in sub.Tag as ArrayList )
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					foreach ( Location loc in sub.Tag as List<object> )
+					// Issue 10 - End
 					{
 						if ( loc.Name.ToLower().IndexOf( text ) != -1 )
 						{
-							Result res = new Result( sub, ( sub.Tag as ArrayList ).IndexOf( loc ) );
+							// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+							Result res = new Result( sub, ( sub.Tag as List<object> ).IndexOf( loc ) );
+							// Issue 10 - End
 							results.Add( res );
 						}
 					}

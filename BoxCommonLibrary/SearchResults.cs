@@ -1,6 +1,8 @@
 using System;
 using System.Windows.Forms;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 
 namespace TheBox.Common
 {
@@ -9,7 +11,9 @@ namespace TheBox.Common
 	/// </summary>
 	public class SearchResults
 	{
-		private ArrayList m_Results;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<Result> m_Results;
+		// Issue 10 - End
 		private int m_Index = 0;
 
 		/// <summary>
@@ -17,7 +21,9 @@ namespace TheBox.Common
 		/// </summary>
 		public SearchResults()
 		{
-			m_Results = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_Results = new List<Result>();
+			// Issue 10 - End
 		}
 
 		/// <summary>
@@ -48,7 +54,9 @@ namespace TheBox.Common
 				return null;
 			}
 
-			return m_Results[ m_Index++ ] as Result;
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			return m_Results[ m_Index++ ];
+			// Issue 10 - End
 		}
 
 		/// <summary>
@@ -62,7 +70,9 @@ namespace TheBox.Common
 				return null;
 			}
 
-			return m_Results[ --m_Index ] as Result;
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			return m_Results[ --m_Index ];
+			// Issue 10 - End
 		}
 
 		/// <summary>
@@ -127,8 +137,10 @@ namespace TheBox.Common
 
 				if ( cmp.Node.FullPath.ToLower() == this.Node.FullPath.ToLower() )
 				{
-					IComparable one = ( (ArrayList) this.Node.Tag )[ this.m_Index ] as IComparable;
-					IComparable two = ( (ArrayList) cmp.Node.Tag )[ cmp.m_Index ] as IComparable;
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					IComparable one = ( (List<object>) this.Node.Tag )[ this.m_Index ] as IComparable;
+					IComparable two = ( (List<object>) cmp.Node.Tag )[ cmp.m_Index ] as IComparable;
+					// Issue 10 - End
 
 					return one.CompareTo( two );
 				}

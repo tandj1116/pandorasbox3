@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.Xml.Serialization;
 using System.IO;
 using System.Xml;
@@ -27,12 +29,18 @@ namespace TheBox.Lang
 					return null;
 				}
 
-				Hashtable loc = (Hashtable) m_Sections[ locate[ 0 ] ];
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				Dictionary<string, string> loc;
+				m_Sections.TryGetValue(locate[0], out loc);
+				// Issue 10 - End
 
-				if ( loc == null )
+				if (loc == null)
 					return null;
-
-				return (string) loc[ locate[1] ];
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				string s;
+				loc.TryGetValue(locate[1], out s);
+				return s;
+				// Issue 10 - End
 			}
 			set
 			{
@@ -47,7 +55,9 @@ namespace TheBox.Lang
 			}
 		}
 
-		private Hashtable m_Sections;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private Dictionary<string, Dictionary<string, string>> m_Sections;
+		// Issue 10 - End
 		private string m_Language;
 
 		/// <summary>
@@ -62,7 +72,9 @@ namespace TheBox.Lang
 		/// <summary>
 		/// Gets or sets the data collection for this text provider
 		/// </summary>
-		public Hashtable Data
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public Dictionary<string, Dictionary<string, string>> Data
+		// Issue 10 - End
 		{
 			get { return m_Sections; }
 			set { m_Sections = value; }
@@ -73,25 +85,29 @@ namespace TheBox.Lang
 		/// </summary>
 		public TextProvider()
 		{
-			m_Sections = new Hashtable();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_Sections = new Dictionary<string, Dictionary<string, string>>();
+			// Issue 10 - End
 		}
 
 		private void Add( string text, string category, string definition )
 		{
-			Hashtable loc = null;
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			Dictionary<string, string> loc = null;
 
-			if ( m_Sections.ContainsKey( category ) )
+
+			if (m_Sections.ContainsKey(category))
 			{
-				loc = (Hashtable) m_Sections[ category ];
+				loc = m_Sections[category];
 			}
 			else
 			{
-				loc = new Hashtable();
+				loc = new Dictionary<string, string>();
 
-				m_Sections.Add( category, loc );
+				m_Sections.Add(category, loc);
 			}
-
-			loc[ definition ] = text;
+			loc[definition] = text;
+			// Issue 10 - End
 		}
 
 		/// <summary>
@@ -110,7 +126,10 @@ namespace TheBox.Lang
 		/// <param name="item">The item name</param>
 		public void RemoveItem( string section, string item )
 		{
-			Hashtable hash = (Hashtable) m_Sections[ section ];
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			Dictionary<string, string> hash;
+			m_Sections.TryGetValue(section, out hash);
+			// Issue 10 - End
 
 			if ( hash != null )
 			{
@@ -159,7 +178,10 @@ namespace TheBox.Lang
 
 				topnode.Attributes.Append( topname );
 
-				Hashtable hash = ( (Hashtable) m_Sections[ toplevel ] );
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				Dictionary<string, string> hash;
+				m_Sections.TryGetValue(toplevel, out hash);
+				// Issue 10 - End
 
 				foreach( string lowlevel in hash.Keys )
 				{
@@ -170,7 +192,11 @@ namespace TheBox.Lang
 					entrynode.Attributes.Append( name );
 
 					XmlAttribute val = dom.CreateAttribute( "text" );
-					val.Value = (string) hash[ lowlevel ];
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					string value;
+					hash.TryGetValue(lowlevel, out value);
+					val.Value = value;
+					// Issue 10 - End
 					entrynode.Attributes.Append( val );
 
 					topnode.AppendChild( entrynode );
@@ -201,7 +227,9 @@ namespace TheBox.Lang
 			{
 				string topkey = section.Attributes[ "name" ].Value;
 
-				Hashtable hash = new Hashtable();
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				Dictionary<string, string> hash = new Dictionary<string, string>();
+				// Issue 10 - End
 
 				foreach ( XmlNode entry in section.ChildNodes )
 				{

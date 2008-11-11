@@ -1,6 +1,8 @@
 using System;
 using System.IO;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
@@ -66,7 +68,9 @@ namespace TheBox.Data
 				{
 					GenericNode gNode = new GenericNode( sub.Text );
 
-					gNode.Elements.AddRange( sub.Tag as ArrayList );
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					gNode.Elements.AddRange( sub.Tag as List<object> );
+					// Issue 10 - End
 					gNode.Elements.Sort();
 
 					n.Elements.Add( gNode );
@@ -86,6 +90,27 @@ namespace TheBox.Data
 			XmlSerializer serializer = new XmlSerializer( typeof( BoxDecoList ) );
 			m_Default = serializer.Deserialize( stream ) as BoxDecoList;
 			stream.Close();
+
+			/*Support s = new Support();
+			s.StructureS = new List<GenericNode>();
+			for(int i = 0; i < m_Default.Structure.Count; i++)
+			{
+				GenericNode n = m_Default.Structure[i] as GenericNode;
+				s.StructureS.Add(n);
+			}
+			TextWriter w = new StreamWriter(@"c:\deco.xml");
+			try
+			{
+			XmlSerializer ser = new XmlSerializer(typeof(Support));
+			
+				ser.Serialize(w, s);
+			}
+			catch (System.Exception e)
+			{
+				MessageBox.Show(e.ToString());
+			}
+			
+			w.Close();*/
 
 			string custom = Path.Combine( Pandora.Profile.BaseFolder, "CustomDeco.xml" );
 
@@ -113,11 +138,11 @@ namespace TheBox.Data
 		}
 
 		/// <summary>
-		/// Gets the tree nodes corrsponding to the given list of generic nodes
+		/// Gets the tree nodes corresponding to the given list of generic nodes
 		/// </summary>
 		/// <param name="list">The list describing the generic nodes structure</param>
 		/// <returns>An array of TreeNode items</returns>
-		private static TreeNode[] GetNodes( ArrayList list )
+		private static TreeNode[] GetNodes(List<GenericNode> list)
 		{
 			TreeNode[] nodes = new TreeNode[ list.Count ];
 
@@ -132,9 +157,10 @@ namespace TheBox.Data
 				{
 					TreeNode sub = new TreeNode( n2.Name );
 					cat.Nodes.Add( sub );
-
-					sub.Tag = new ArrayList();
-					( sub.Tag as ArrayList ).AddRange( n2.Elements );
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					sub.Tag = new List<object>();
+					( sub.Tag as List<object> ).AddRange( n2.Elements );
+					// Issue 10 - End
 				}
 			}
 

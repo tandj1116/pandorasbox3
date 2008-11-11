@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.Drawing;
 
 namespace TheBox.Roofing
@@ -9,7 +11,9 @@ namespace TheBox.Roofing
 	/// </summary>
 	public class RoofImage
 	{
-		private ArrayList m_Data;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<int> m_Data;
+		// Issue 10 - End
 		private int m_Height;
 		private int m_Width;
 		private Bitmap m_Image;
@@ -17,7 +21,9 @@ namespace TheBox.Roofing
 		/// <summary>
 		/// Gets or sets the data containing the structure of the roof
 		/// </summary>
-		public ArrayList Data
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<int> Data
+		// Issue 10 - End
 		{
 			get { return m_Data; }
 			set { m_Data = value; }
@@ -54,7 +60,9 @@ namespace TheBox.Roofing
 		/// </summary>
 		public RoofImage()
 		{
-			m_Data = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_Data = new List<int>();
+			// Issue 10 - End
 			m_Height = 0;
 			m_Width = 0;
 			m_Image = new Bitmap( 240, 240 );
@@ -126,12 +134,14 @@ namespace TheBox.Roofing
 					rect.X = x * dw + basePoint.X;
 					rect.Width = ( x + 1 ) * dw + basePoint.X - rect.X;
 
-					if ( (int) m_Data[ p ] > 0 )
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					if ( m_Data[ p ] > 0 )
 					{
 						// Data positive: valid piece - Use Green
 						PaintRect( rect, Color.FromArgb( 0, Math.Min( 255, ( (int) m_Data[ p ] * 10 ) + 100 ), 0 ) );
 					}
-					else if ( (int) m_Data[ p ] < 0 )
+					else if ( m_Data[ p ] < 0 )
+					// Issue 10 - End
 					{
 						// Data negative: not valid piece - Use Red
 						PaintRect( rect, Color.FromArgb( Math.Max( -255, ( -(int) m_Data[ p ] * 10 ) + 100 ), 0, 0 ) );

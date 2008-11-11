@@ -101,7 +101,7 @@ namespace TheBox.Pages
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(Notes));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Notes));
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.txText = new System.Windows.Forms.TextBox();
 			this.panel3 = new System.Windows.Forms.Panel();
@@ -145,7 +145,6 @@ namespace TheBox.Pages
 			this.txText.Name = "txText";
 			this.txText.Size = new System.Drawing.Size(258, 94);
 			this.txText.TabIndex = 8;
-			this.txText.Text = "";
 			this.txText.TextChanged += new System.EventHandler(this.txText_TextChanged);
 			// 
 			// panel3
@@ -197,7 +196,6 @@ namespace TheBox.Pages
 			this.txName.Name = "txName";
 			this.txName.Size = new System.Drawing.Size(174, 20);
 			this.txName.TabIndex = 4;
-			this.txName.Text = "";
 			this.txName.TextChanged += new System.EventHandler(this.txName_TextChanged);
 			// 
 			// cmbPriority
@@ -224,9 +222,11 @@ namespace TheBox.Pages
 			// 
 			this.tNotes.Dock = System.Windows.Forms.DockStyle.Left;
 			this.tNotes.HideSelection = false;
+			this.tNotes.ImageIndex = 0;
 			this.tNotes.ImageList = this.imgPriority;
 			this.tNotes.Location = new System.Drawing.Point(0, 0);
 			this.tNotes.Name = "tNotes";
+			this.tNotes.SelectedImageIndex = 0;
 			this.tNotes.ShowLines = false;
 			this.tNotes.ShowPlusMinus = false;
 			this.tNotes.ShowRootLines = false;
@@ -236,10 +236,12 @@ namespace TheBox.Pages
 			// 
 			// imgPriority
 			// 
-			this.imgPriority.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
-			this.imgPriority.ImageSize = new System.Drawing.Size(16, 16);
 			this.imgPriority.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgPriority.ImageStream")));
 			this.imgPriority.TransparentColor = System.Drawing.Color.Transparent;
+			this.imgPriority.Images.SetKeyName(0, "");
+			this.imgPriority.Images.SetKeyName(1, "");
+			this.imgPriority.Images.SetKeyName(2, "");
+			this.imgPriority.Images.SetKeyName(3, "");
 			// 
 			// groupBox1
 			// 
@@ -301,8 +303,10 @@ namespace TheBox.Pages
 			this.Size = new System.Drawing.Size(496, 142);
 			this.Load += new System.EventHandler(this.Notes_Load);
 			this.panel1.ResumeLayout(false);
+			this.panel1.PerformLayout();
 			this.panel3.ResumeLayout(false);
 			this.panel2.ResumeLayout(false);
+			this.panel2.PerformLayout();
 			this.groupBox1.ResumeLayout(false);
 			this.ResumeLayout(false);
 

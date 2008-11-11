@@ -1,7 +1,7 @@
-<?xml version="1.0"?>
-<SoundData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<?xml version="1.0" encoding="utf-8"?>
+<SoundData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Structure>
-    <anyType xsi:type="GenericNode" Name="Ambient">
+    <GenericNode Name="Ambient">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Air">
           <Elements>
@@ -306,8 +306,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Animals">
+    </GenericNode>
+    <GenericNode Name="Animals">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Alligator">
           <Elements>
@@ -802,8 +802,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Human">
+    </GenericNode>
+    <GenericNode Name="Human">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Female">
           <Elements>
@@ -948,8 +948,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Instruments">
+    </GenericNode>
+    <GenericNode Name="Instruments">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Drums">
           <Elements>
@@ -1078,8 +1078,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Items">
+    </GenericNode>
+    <GenericNode Name="Items">
       <Elements>
         <anyType xsi:type="UOSound" Index="42" Name="Anvil" />
         <anyType xsi:type="UOSound" Index="562" Name="Axe" />
@@ -1216,8 +1216,8 @@
         <anyType xsi:type="UOSound" Index="495" Name="Trap" />
         <anyType xsi:type="UOSound" Index="87" Name="Use Cloth" />
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Misc">
+    </GenericNode>
+    <GenericNode Name="Misc">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Big Foot">
           <Elements>
@@ -1304,8 +1304,8 @@
         <anyType xsi:type="UOSound" Index="85" Name="Turn Page" />
         <anyType xsi:type="UOSound" Index="86" Name="Unkown" />
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Monsters">
+    </GenericNode>
+    <GenericNode Name="Monsters">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Blade Spirits">
           <Elements>
@@ -1763,8 +1763,8 @@
           </Elements>
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Skills">
+    </GenericNode>
+    <GenericNode Name="Skills">
       <Elements>
         <anyType xsi:type="UOSound" Index="573" Name="Carpentry" />
         <anyType xsi:type="GenericNode" Name="Identify">
@@ -1776,8 +1776,8 @@
         <anyType xsi:type="UOSound" Index="585" Name="Scribe" />
         <anyType xsi:type="UOSound" Index="586" Name="Spirit Speak" />
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Spells">
+    </GenericNode>
+    <GenericNode Name="Spells">
       <Elements>
         <anyType xsi:type="GenericNode" Name="Agility">
           <Elements>
@@ -1868,6 +1868,6 @@
         <anyType xsi:type="UOSound" Index="502" Name="Wall of Stone" />
         <anyType xsi:type="UOSound" Index="486" Name="Weaken" />
       </Elements>
-    </anyType>
+    </GenericNode>
   </Structure>
 </SoundData>

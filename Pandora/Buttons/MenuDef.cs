@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.Windows.Forms;
 using System.Drawing;
 
@@ -13,12 +15,16 @@ namespace TheBox.Buttons
 	/// </summary>
 	public class MenuDef : IButtonFunction, IDisposable, ICloneable
 	{
-		private ArrayList m_Items;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<object> m_Items;
+		// Issue 10 - End
 		private ContextMenu m_Menu;
 		/// <summary>
 		/// Gets or sets the collection defining this menu
 		/// </summary>
-		public ArrayList Items
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<object> Items
+		// Issue 10 - End
 		{
 			get { return m_Items; }
 			set { m_Items = value; }
@@ -46,7 +52,9 @@ namespace TheBox.Buttons
 		/// </summary>
 		public MenuDef()
 		{
-			m_Items = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_Items = new List<object>();
+			// Issue 10 - End
 		}
 
 		/// <summary>
@@ -61,9 +69,11 @@ namespace TheBox.Buttons
 		/// <summary>
 		/// Computes menu items corresponding to a given list of definitions
 		/// </summary>
-		/// <param name="list">ArrayList containing the elements to be transformed into the menu items</param>
+		/// <param name="list">List<> containing the elements to be transformed into the menu items</param>
 		/// <returns>A list of menu items resulting from the array list</returns>
-		private MenuItem[] GetItems( ArrayList list )
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private MenuItem[] GetItems( List<object> list )
+		// Issue 10 - End
 		{
 			MenuItem[] items = new MenuItem[ list.Count ];
 
@@ -197,9 +207,11 @@ namespace TheBox.Buttons
 			return def;
 		}
 
-		private ArrayList CloneItems( ArrayList items )
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<object> CloneItems( List<object> items )
 		{
-			ArrayList list = new ArrayList();
+			List<object> list = new List<object>();
+			// Issue 10 - End
 
 			foreach ( object o in items )
 			{

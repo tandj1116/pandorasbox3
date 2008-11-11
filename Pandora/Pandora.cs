@@ -1,6 +1,5 @@
 using System;
 using System.Drawing;
-using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Data;
@@ -32,9 +31,9 @@ namespace TheBox
 		{
 			get
 			{
-				if ( m_Log == null )
+				if (m_Log == null)
 				{
-					m_Log = new BoxLog( Path.Combine( Pandora.ApplicationDataFolder, "Log.txt" ) );
+					m_Log = new BoxLog(Path.Combine(Pandora.ApplicationDataFolder, "Log.txt"));
 				}
 
 				return m_Log;
@@ -55,9 +54,9 @@ namespace TheBox
 			}
 			get
 			{
-				if ( m_Prop == null )
+				if (m_Prop == null)
 				{
-					throw new System.NullReferenceException( "Trying to access static field Pandora.Prop without initlizing it first." );
+					throw new System.NullReferenceException("Trying to access static field Pandora.Prop without initlizing it first.");
 				}
 				else
 				{
@@ -76,9 +75,9 @@ namespace TheBox
 			}
 			get
 			{
-				if ( m_Map == null )
+				if (m_Map == null)
 				{
-					throw new System.NullReferenceException( "Trying to access the static field Pandora.Map without initializing it first." );
+					throw new System.NullReferenceException("Trying to access the static field Pandora.Map without initializing it first.");
 				}
 				else
 				{
@@ -98,9 +97,9 @@ namespace TheBox
 			}
 			get
 			{
-				if ( m_Art == null )
+				if (m_Art == null)
 				{
-					throw new System.NullReferenceException( "Trying to access the static field Pandora.Art without initializing it first." );
+					throw new System.NullReferenceException("Trying to access the static field Pandora.Art without initializing it first.");
 				}
 				else
 				{
@@ -116,10 +115,10 @@ namespace TheBox
 		{
 			get
 			{
-				if ( m_Hues == null )
+				if (m_Hues == null)
 				{
-					if ( Pandora.Profile.MulManager[ "hues.mul" ] != null )
-						m_Hues = TheBox.Mul.Hues.Load( Pandora.Profile.MulManager[ "hues.mul" ] );
+					if (Pandora.Profile.MulManager["hues.mul"] != null)
+						m_Hues = TheBox.Mul.Hues.Load(Pandora.Profile.MulManager["hues.mul"]);
 				}
 
 				return m_Hues;
@@ -137,7 +136,7 @@ namespace TheBox
 		{
 			get
 			{
-				if ( m_TextProvider == null )
+				if (m_TextProvider == null)
 				{
 					// m_TextProvider = TheBox.Lang.TextProvider.Deserialize( @"D:\Dev\Pandora 2.0\Pandora\Language\English.xml" );
 
@@ -158,7 +157,7 @@ namespace TheBox
 			{
 				StringCollection languages = new StringCollection();
 
-				languages.Add( "English" );
+				languages.Add("English");
 
 				// TODO : Add code to correctly detect supported languages
 
@@ -170,55 +169,55 @@ namespace TheBox
 		/// Localizes the text of a control and all of its children controls
 		/// </summary>
 		/// <param name="control">The control that should be localized</param>
-		public static void LocalizeControl( Control control )
+		public static void LocalizeControl(Control control)
 		{
-//			ButtonBase bb = control as ButtonBase;
-//
-//			if ( bb != null )
-//				bb.FlatStyle = Pandora.Profile.General.FlatButtons ? FlatStyle.Flat : FlatStyle.System;
+			//			ButtonBase bb = control as ButtonBase;
+			//
+			//			if ( bb != null )
+			//				bb.FlatStyle = Pandora.Profile.General.FlatButtons ? FlatStyle.Flat : FlatStyle.System;
 
-			if ( control is Form )
+			if (control is Form)
 			{
 				// Set options on controls
 				Form f = control as Form;
 
 				f.TopMost = Pandora.Profile.General.TopMost;
-				f.Opacity = (double) Pandora.Profile.General.Opacity / 100.0;
+				f.Opacity = (double)Pandora.Profile.General.Opacity / 100.0;
 			}
 
-			if ( control is TheBox.Buttons.BoxButton )
+			if (control is TheBox.Buttons.BoxButton)
 			{
 				// Box button
 				TheBox.Buttons.BoxButton b = control as TheBox.Buttons.BoxButton;
 
 				ButtonDef def = null;
 
-				if ( b.ButtonID >= 0 )
-					def = Buttons[ b ];
+				if (b.ButtonID >= 0)
+					def = Buttons[b];
 
-				Profile.ButtonIndex.DoButton( b );
+				Profile.ButtonIndex.DoButton(b);
 			}
 			else
 			{
 				// Classic control
 				string text = control.Text;
 
-				string[] path = text.Split( new char[] { '.' } );
+				string[] path = text.Split(new char[] { '.' });
 
-				if ( path.Length == 2 )
-					control.Text = Pandora.TextProvider[ text ];
+				if (path.Length == 2)
+					control.Text = Pandora.TextProvider[text];
 
-				if ( control is LinkLabel )
+				if (control is LinkLabel)
 				{
-					( control as LinkLabel ).LinkColor = Pandora.Profile.General.Links.Color;
-					( control as LinkLabel ).VisitedLinkColor = Pandora.Profile.General.Links.Color;
-					( control as LinkLabel ).LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+					(control as LinkLabel).LinkColor = Pandora.Profile.General.Links.Color;
+					(control as LinkLabel).VisitedLinkColor = Pandora.Profile.General.Links.Color;
+					(control as LinkLabel).LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
 				}
 
-				if ( control.Controls.Count > 0 )
+				if (control.Controls.Count > 0)
 				{
-					foreach ( Control c in control.Controls )
-						LocalizeControl( c );
+					foreach (Control c in control.Controls)
+						LocalizeControl(c);
 				}
 			}
 		}
@@ -227,19 +226,19 @@ namespace TheBox
 		/// Localizes a menu and all of its submenus
 		/// </summary>
 		/// <param name="menu">The menu that must be localized</param>
-		public static void LocalizeMenu( Menu menu )
+		public static void LocalizeMenu(Menu menu)
 		{
-			foreach ( MenuItem mi in menu.MenuItems )
+			foreach (MenuItem mi in menu.MenuItems)
 			{
 				string text = mi.Text;
 
-				string localizedText = Pandora.TextProvider[ text ];
+				string localizedText = Pandora.TextProvider[text];
 
-				if ( localizedText != null )
+				if (localizedText != null)
 					mi.Text = localizedText;
 
-				if ( mi.MenuItems.Count > 0 )
-					LocalizeMenu( mi );
+				if (mi.MenuItems.Count > 0)
+					LocalizeMenu(mi);
 			}
 		}
 
@@ -250,7 +249,7 @@ namespace TheBox
 		{
 			get
 			{
-				if ( m_ToolTip == null )
+				if (m_ToolTip == null)
 				{
 					m_ToolTip = new ToolTip();
 
@@ -266,17 +265,17 @@ namespace TheBox
 		/// Updates the color used to display links
 		/// </summary>
 		/// <param name="c">The Control that contains links to be changed</param>
-		public static void UpdateLinks( Control control )
+		public static void UpdateLinks(Control control)
 		{
-			if ( control is LinkLabel )
+			if (control is LinkLabel)
 			{
-				( control as LinkLabel ).LinkColor = Pandora.Profile.General.Links.Color;
-				( control as LinkLabel ).VisitedLinkColor = Pandora.Profile.General.Links.Color;
+				(control as LinkLabel).LinkColor = Pandora.Profile.General.Links.Color;
+				(control as LinkLabel).VisitedLinkColor = Pandora.Profile.General.Links.Color;
 			}
 
-			foreach ( Control c in control.Controls )
+			foreach (Control c in control.Controls)
 			{
-				UpdateLinks( c );
+				UpdateLinks(c);
 			}
 		}
 
@@ -395,22 +394,22 @@ namespace TheBox
 		{
 			get
 			{
-				Splash.SetStatusText( "Searching existing instances" );
+				Splash.SetStatusText("Searching existing instances");
 
-				Process current = Process.GetCurrentProcess(); 
+				Process current = Process.GetCurrentProcess();
 
-				Process[] processes = Process.GetProcessesByName (current.ProcessName); 
+				Process[] processes = Process.GetProcessesByName(current.ProcessName);
 
 				//Loop through the running processes in with the same name 
-				foreach (Process process in processes) 
-				{ 
+				foreach (Process process in processes)
+				{
 					//Ignore the current process 
-					if (process.Id != current.Id) 
-					{ 
+					if (process.Id != current.Id)
+					{
 						return process;
 					}
 				}
- 
+
 				return null;
 			}
 		}
@@ -422,11 +421,11 @@ namespace TheBox
 		{
 			get
 			{
-				if ( m_Folder == null )
+				if (m_Folder == null)
 				{
-					string file = Environment.GetCommandLineArgs()[ 0 ];
+					string file = Environment.GetCommandLineArgs()[0];
 
-					m_Folder = Path.GetDirectoryName( file );
+					m_Folder = Path.GetDirectoryName(file);
 				}
 
 				return m_Folder;
@@ -451,19 +450,19 @@ namespace TheBox
 		{
 			get { return m_Connected; }
 			set
-			{ 
-				if ( m_Connected != value )
+			{
+				if (m_Connected != value)
 				{
 					m_Connected = value;
 
-					if ( m_TheBox != null )
+					if (m_TheBox != null)
 					{
-						m_TheBox.Text = string.Format( Pandora.TextProvider[ "Misc.BoxTitle" ], Pandora.Profile.Name, Pandora.Connected ? Pandora.TextProvider[ "Misc.Online" ] : Pandora.TextProvider[ "Misc.Offline" ] );
+						m_TheBox.Text = string.Format(Pandora.TextProvider["Misc.BoxTitle"], Pandora.Profile.Name, Pandora.Connected ? Pandora.TextProvider["Misc.Online"] : Pandora.TextProvider["Misc.Offline"]);
 					}
 
-					if ( OnlineChanged != null )
+					if (OnlineChanged != null)
 					{
-						OnlineChanged( null, new EventArgs() );
+						OnlineChanged(null, new EventArgs());
 					}
 				}
 			}
@@ -482,15 +481,15 @@ namespace TheBox
 		/// </summary>
 		/// <param name="text">The text that must be sent</param>
 		/// <param name="UsePrefix">Specifies whether to send the command prefix in front of the text</param>
-		public static void SendToUO( string text, bool UsePrefix )
+		public static void SendToUO(string text, bool UsePrefix)
 		{
-			if ( UsePrefix )
+			if (UsePrefix)
 			{
-				Utility.SendToUO( string.Format( "{0}{1}\r\n", m_Profile.General.CommandPrefix, text ) );
+				Utility.SendToUO(string.Format("{0}{1}\r\n", m_Profile.General.CommandPrefix, text));
 			}
 			else
 			{
-				Utility.SendToUO( string.Format( "{0}\r\n", text ) );
+				Utility.SendToUO(string.Format("{0}\r\n", text));
 			}
 		}
 
@@ -501,15 +500,15 @@ namespace TheBox
 		{
 			get
 			{
-				string[] dirs = Directory.GetDirectories( Pandora.ProfilesFolder );
-				
-				string[] profiles = new string[ dirs.Length ];
+				string[] dirs = Directory.GetDirectories(Pandora.ProfilesFolder);
 
-				for( int i = 0; i < dirs.Length; i++ )
+				string[] profiles = new string[dirs.Length];
+
+				for (int i = 0; i < dirs.Length; i++)
 				{
-					string[] path = dirs[ i ].Split( Path.DirectorySeparatorChar );
+					string[] path = dirs[i].Split(Path.DirectorySeparatorChar);
 
-					profiles[ i ] = path[ path.Length - 1 ];
+					profiles[i] = path[path.Length - 1];
 				}
 
 				return profiles;
@@ -523,7 +522,7 @@ namespace TheBox
 		{
 			m_Context.MainForm = null;
 
-			if ( m_TheBox != null )
+			if (m_TheBox != null)
 			{
 				m_TheBox.Close();
 				m_TheBox.Dispose();
@@ -539,7 +538,7 @@ namespace TheBox
 		{
 			m_Context.MainForm = null;
 
-			if ( m_TheBox != null )
+			if (m_TheBox != null)
 			{
 				m_TheBox.Close();
 				m_TheBox.Dispose();
@@ -555,13 +554,13 @@ namespace TheBox
 		{
 			m_Context.MainForm = null;
 
-			if ( m_TheBox != null )
+			if (m_TheBox != null)
 			{
 				m_TheBox.Close();
 				m_TheBox.Dispose();
 			}
 
-			Profile.DeleteProfile( Pandora.Profile.Name );
+			Profile.DeleteProfile(Pandora.Profile.Name);
 			Pandora.Profile = null;
 
 			m_Context.DoProfile();
@@ -574,18 +573,18 @@ namespace TheBox
 		{
 			get
 			{
-				if ( m_DataAssembly == null )
+				if (m_DataAssembly == null)
 				{
-					string filename = Path.Combine( Pandora.Folder, "Data" );
-					filename = Path.Combine( filename, "Data.dll" );
+					string filename = Path.Combine(Pandora.Folder, "Data");
+					filename = Path.Combine(filename, "Data.dll");
 
-					if ( ! File.Exists( filename ) )
+					if (!File.Exists(filename))
 					{
-						Pandora.Log.WriteError( null, "Data file {0} doesn't exist", filename );
-						throw new FileNotFoundException( "A required file could not be found, please reinstall", filename );
+						Pandora.Log.WriteError(null, "Data file {0} doesn't exist", filename);
+						throw new FileNotFoundException("A required file could not be found, please reinstall", filename);
 					}
 
-					m_DataAssembly = Assembly.LoadFile( filename );
+					m_DataAssembly = Assembly.LoadFile(filename);
 				}
 
 				return m_DataAssembly;
@@ -597,26 +596,26 @@ namespace TheBox
 		/// </summary>
 		/// <param name="message">The message that must be sent</param>
 		/// <returns>The message outcome</returns>
-		public static BoxMessage SendToServer( BoxMessage message )
+		public static BoxMessage SendToServer(BoxMessage message)
 		{
-			if ( !Pandora.Connected )
+			if (!Pandora.Connected)
 			{
 				// Not connected, request connection
-				if ( MessageBox.Show( null, Pandora.TextProvider[ "Misc.RequestConnection" ], "", MessageBoxButtons.YesNo, MessageBoxIcon.Question ) == DialogResult.Yes )
+				if (MessageBox.Show(null, Pandora.TextProvider["Misc.RequestConnection"], "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 				{
-					BoxServerForm form = new BoxServerForm( false );
+					BoxServerForm form = new BoxServerForm(false);
 					form.ShowDialog();
 				}
 
-				if ( !Pandora.Connected )
+				if (!Pandora.Connected)
 				{
 					return null;
 				}
 			}
 
-			Pandora.Profile.Server.FillBoxMessage( message );
+			Pandora.Profile.Server.FillBoxMessage(message);
 
-			BoxServerForm msgForm = new BoxServerForm( message );
+			BoxServerForm msgForm = new BoxServerForm(message);
 			msgForm.ShowDialog();
 
 			TheBox.Common.Utility.BringClientToFront();
@@ -629,7 +628,7 @@ namespace TheBox
 		/// </summary>
 		public static void ShowBuilderControl()
 		{
-			if ( m_BuilderControl == null )
+			if (m_BuilderControl == null)
 			{
 				m_BuilderControl = new BuilderControl();
 			}
@@ -644,9 +643,9 @@ namespace TheBox
 		{
 			get
 			{
-				string folder = Path.Combine(  ApplicationDataFolder, "Profiles" );
+				string folder = Path.Combine(ApplicationDataFolder, "Profiles");
 
-				TheBox.Common.Utility.EnsureDirectory( folder );
+				TheBox.Common.Utility.EnsureDirectory(folder);
 
 				return folder;
 			}
@@ -659,8 +658,8 @@ namespace TheBox
 		{
 			get
 			{
-				string folder = Path.Combine( Environment.GetFolderPath( Environment.SpecialFolder.ApplicationData ), "Pandora's Box 2" );
-				Utility.EnsureDirectory( folder );
+				string folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Pandora's Box 2");
+				Utility.EnsureDirectory(folder);
 				return folder;
 			}
 		}
@@ -672,123 +671,123 @@ namespace TheBox
 		{
 			#region Move Log.txt
 
-			string log = Path.Combine( Pandora.Folder, "Log.txt" );
+			string log = Path.Combine(Pandora.Folder, "Log.txt");
 
-			if ( File.Exists( log ) )
+			if (File.Exists(log))
 			{
-				Splash.SetStatusText( "Removing old log file" );
+				Splash.SetStatusText("Removing old log file");
 				try
 				{
-					File.Delete( log );
+					File.Delete(log);
 				}
-				catch {}
+				catch { }
 			}
-			
+
 			#endregion
 
 			#region Move INI file
 
-			string iniFile = Path.Combine( Pandora.Folder, "Pandora.ini" );
+			string iniFile = Path.Combine(Pandora.Folder, "Pandora.ini");
 
-			if ( File.Exists( iniFile ) )
+			if (File.Exists(iniFile))
 			{
-				Splash.SetStatusText( "Removing old ini file" );
+				Splash.SetStatusText("Removing old ini file");
 
-				string newIni = Path.Combine( Pandora.ApplicationDataFolder, "Pandora.ini" );
+				string newIni = Path.Combine(Pandora.ApplicationDataFolder, "Pandora.ini");
 
-				if ( ! File.Exists( newIni ) )
+				if (!File.Exists(newIni))
 				{
 					try
 					{
-						File.Move( iniFile, newIni );
-						Pandora.Log.WriteEntry( "Ini file moved to application data folder" );
+						File.Move(iniFile, newIni);
+						Pandora.Log.WriteEntry("Ini file moved to application data folder");
 					}
-					catch ( Exception err )
+					catch (Exception err)
 					{
-						Pandora.Log.WriteError( err, "Couldn't move ini file from {0} to {1}", iniFile, newIni );
+						Pandora.Log.WriteError(err, "Couldn't move ini file from {0} to {1}", iniFile, newIni);
 					}
 				}
 				else
 				{
 					try
 					{
-						File.Delete( iniFile );
-						Pandora.Log.WriteEntry( "Ini file {0} deleted", iniFile );
+						File.Delete(iniFile);
+						Pandora.Log.WriteEntry("Ini file {0} deleted", iniFile);
 					}
-					catch ( Exception err )
+					catch (Exception err)
 					{
-						Pandora.Log.WriteError( err, "Couldn't delete ini file {0}", iniFile );
+						Pandora.Log.WriteError(err, "Couldn't delete ini file {0}", iniFile);
 					}
 				}
 			}
 
 			#endregion
 
-			string oldFolder = Path.Combine( Pandora.Folder, "Profiles" );
+			string oldFolder = Path.Combine(Pandora.Folder, "Profiles");
 
-			if ( ! Directory.Exists( oldFolder ) )
+			if (!Directory.Exists(oldFolder))
 				return;
 
-			string[] profiles = Directory.GetDirectories( oldFolder );
+			string[] profiles = Directory.GetDirectories(oldFolder);
 
-			if ( profiles.Length == 0 )
+			if (profiles.Length == 0)
 				return;
 
-			Splash.SetStatusText( "Moving old profiles" );
+			Splash.SetStatusText("Moving old profiles");
 
-			Pandora.Log.WriteEntry( "Found {0} profiles in the old profiles folder", profiles.Length );
+			Pandora.Log.WriteEntry("Found {0} profiles in the old profiles folder", profiles.Length);
 
-			foreach ( string profile in profiles )
+			foreach (string profile in profiles)
 			{
-				string name = Utility.GetDirectoryName( profile );
-				string newFolder = Path.Combine( Pandora.ProfilesFolder, name );
+				string name = Utility.GetDirectoryName(profile);
+				string newFolder = Path.Combine(Pandora.ProfilesFolder, name);
 
 				int index = 1; // Adjust name if there's already a match
-				while( Directory.Exists( newFolder ) )
+				while (Directory.Exists(newFolder))
 				{
-					newFolder = Path.Combine( Pandora.ProfilesFolder, string.Format( "{0} {1}", name, index++ ) );
+					newFolder = Path.Combine(Pandora.ProfilesFolder, string.Format("{0} {1}", name, index++));
 				}
 
 				try
 				{
-					if ( Utility.CopyDirectory( profile, newFolder ) )
+					if (Utility.CopyDirectory(profile, newFolder))
 					{
-						Pandora.Log.WriteEntry( "Profile {0} copied from {1} to {2}", name, profile, newFolder );
+						Pandora.Log.WriteEntry("Profile {0} copied from {1} to {2}", name, profile, newFolder);
 
 						// Profile copied. Now delete.
 						try
 						{
-							Directory.Delete( profile, true );
-							Pandora.Log.WriteEntry( "Old profile folder deleted: {0}", profile );
+							Directory.Delete(profile, true);
+							Pandora.Log.WriteEntry("Old profile folder deleted: {0}", profile);
 						}
-						catch ( Exception err )
+						catch (Exception err)
 						{
-							Pandora.Log.WriteError(err, "Couldn't delete old profile folder: {0}", profile );
+							Pandora.Log.WriteError(err, "Couldn't delete old profile folder: {0}", profile);
 						}
 					}
 				}
-				catch ( Exception err )
+				catch (Exception err)
 				{
-					Pandora.Log.WriteError( err, "Couldn't move profile {0} to {1}", name, newFolder );
+					Pandora.Log.WriteError(err, "Couldn't move profile {0} to {1}", name, newFolder);
 				}
 			}
 
 			// Finally delete folder (if empty)
 			try
 			{
-				if ( Directory.GetDirectories( oldFolder).Length == 0 )
+				if (Directory.GetDirectories(oldFolder).Length == 0)
 				{
-					Directory.Delete( oldFolder, true );
-					Pandora.Log.WriteEntry( "Deleted old profile directory: {0}", oldFolder );
+					Directory.Delete(oldFolder, true);
+					Pandora.Log.WriteEntry("Deleted old profile directory: {0}", oldFolder);
 				}
 				else
 				{
-					Pandora.Log.WriteEntry( "Can't delete profiles folder because some profiles hasn't been moved" );
+					Pandora.Log.WriteEntry("Can't delete profiles folder because some profiles hasn't been moved");
 				}
 			}
-			catch ( Exception err )
+			catch (Exception err)
 			{
-				Pandora.Log.WriteError( err, "Couldn't delete old profiles folder: {0}", oldFolder );
+				Pandora.Log.WriteError(err, "Couldn't delete old profiles folder: {0}", oldFolder);
 			}
 		}
 
@@ -812,39 +811,39 @@ namespace TheBox
 		{
 			get
 			{
-				string ini = Path.Combine( Pandora.ApplicationDataFolder, "Pandora.ini" );
+				string ini = Path.Combine(Pandora.ApplicationDataFolder, "Pandora.ini");
 
-				if ( File.Exists( ini ) )
+				if (File.Exists(ini))
 				{
-					StreamReader reader = new StreamReader( ini );
+					StreamReader reader = new StreamReader(ini);
 
 					try
 					{
 						string defaultprofile = reader.ReadLine();
 						reader.Close();
 
-						string[] args = defaultprofile.Split( new char[] { '=' } );
+						string[] args = defaultprofile.Split(new char[] { '=' });
 
-						if ( args.Length == 2 && args[0].ToLower() == "defaultprofile" )
+						if (args.Length == 2 && args[0].ToLower() == "defaultprofile")
 						{
-							if ( args[ 1 ].Length > 0 )
-								return args[ 1 ];
+							if (args[1].Length > 0)
+								return args[1];
 							else
 								return null;
 						}
 					}
-					catch {}
+					catch { }
 				}
 
 				return null;
 			}
 			set
 			{
-				string ini = Path.Combine( Pandora.ApplicationDataFolder, "Pandora.ini" );
+				string ini = Path.Combine(Pandora.ApplicationDataFolder, "Pandora.ini");
 
-				StreamWriter writer = new StreamWriter( ini );
+				StreamWriter writer = new StreamWriter(ini);
 
-				writer.WriteLine( string.Format( "DefaultProfile={0}", value ) );
+				writer.WriteLine(string.Format("DefaultProfile={0}", value));
 
 				writer.Close();
 			}
@@ -863,9 +862,9 @@ namespace TheBox
 		{
 			get
 			{
-				if ( m_TravelAgent == null )
+				if (m_TravelAgent == null)
 				{
-					Pandora.Log.WriteEntry( "Creating Travel Agent" );
+					Pandora.Log.WriteEntry("Creating Travel Agent");
 					m_TravelAgent = new TheBox.Data.TravelAgent();
 				}
 
@@ -888,7 +887,7 @@ namespace TheBox
 		{
 			get
 			{
-				if ( m_ButtonManager == null )
+				if (m_ButtonManager == null)
 					m_ButtonManager = new TheBox.Data.ButtonManager();
 
 				return m_ButtonManager;
@@ -906,7 +905,7 @@ namespace TheBox
 		{
 			get
 			{
-				if ( m_BoxData == null )
+				if (m_BoxData == null)
 				{
 					m_BoxData = TheBox.Data.BoxData.Load();
 				}
@@ -928,15 +927,15 @@ namespace TheBox
 		{
 			get
 			{
-				if ( m_BoxData == null )
+				if (m_BoxData == null)
 				{
 					m_BoxData = TheBox.Data.BoxData.Load();
 				}
 
-				if ( m_Mobiles == null )
+				if (m_Mobiles == null)
 				{
-					m_Mobiles = new TheBox.Data.ScriptList( m_BoxData.Mobiles );
-					m_Mobiles.Saving +=new EventHandler(m_Mobiles_Saving);
+					m_Mobiles = new TheBox.Data.ScriptList(m_BoxData.Mobiles);
+					m_Mobiles.Saving += new EventHandler(m_Mobiles_Saving);
 				}
 
 				return m_Mobiles;
@@ -963,14 +962,14 @@ namespace TheBox
 		{
 			get
 			{
-				if ( m_BoxData == null )
+				if (m_BoxData == null)
 				{
 					m_BoxData = TheBox.Data.BoxData.Load();
 				}
 
-				if ( m_Items == null )
+				if (m_Items == null)
 				{
-					m_Items = new TheBox.Data.ScriptList( m_BoxData.Items );
+					m_Items = new TheBox.Data.ScriptList(m_BoxData.Items);
 					m_Items.Saving += new EventHandler(m_Items_Saving);
 				}
 
@@ -1002,7 +1001,7 @@ namespace TheBox
 		{
 			get
 			{
-				if ( m_SpawnGroups == null )
+				if (m_SpawnGroups == null)
 				{
 					m_SpawnGroups = SpawnGroups.Load();
 				}
@@ -1032,13 +1031,38 @@ namespace TheBox
 		{
 			get
 			{
-				if ( m_SoundData == null )
+				if (m_SoundData == null)
 				{
-					Stream stream = Pandora.DataAssembly.GetManifestResourceStream( "Data.SoundData.xml" );
-					XmlSerializer serializer = new XmlSerializer( typeof( SoundData ) );
-					m_SoundData = serializer.Deserialize( stream ) as SoundData;
+					Stream stream = Pandora.DataAssembly.GetManifestResourceStream("Data.SoundData.xml");
+					XmlSerializer serializer = new XmlSerializer(typeof(SoundData));
+					m_SoundData = serializer.Deserialize(stream) as SoundData;
 					stream.Close();
+
+					/*SupportSound s = new SupportSound();
+					s.StructureS = new List<GenericNode>();
+
+					for(int i = 0; i < m_SoundData.Structure.Count; i++)
+					{
+						GenericNode n = m_SoundData.Structure[i] as GenericNode;
+						s.StructureS.Add(n);
+					}
+					
+					TextWriter w = new StreamWriter(@"C:\SoundData.xml");
+					try
+					{
+					XmlSerializer ser = new XmlSerializer(typeof(SupportSound));
+					
+						ser.Serialize(w, s);
+					}
+					catch (System.Exception e)
+					{
+						MessageBox.Show(e.ToString());
+					}
+					
+					w.Close();*/
 				}
+
+
 
 				return m_SoundData;
 			}
@@ -1060,7 +1084,7 @@ namespace TheBox
 		{
 			get
 			{
-				if ( m_Skills == null )
+				if (m_Skills == null)
 				{
 					m_Skills = new SkillsData();
 				}
@@ -1085,7 +1109,7 @@ namespace TheBox
 		{
 			get
 			{
-				if ( m_Lights == null )
+				if (m_Lights == null)
 				{
 					m_Lights = new LightsData();
 				}
@@ -1107,7 +1131,7 @@ namespace TheBox
 		{
 			get
 			{
-				if ( m_Doors == null )
+				if (m_Doors == null)
 				{
 					m_Doors = new DoorsData();
 				}
@@ -1132,7 +1156,7 @@ namespace TheBox
 		/// </summary>
 		public static void RefreshModifiersMenu()
 		{
-			if ( m_cmModifiers == null )
+			if (m_cmModifiers == null)
 			{
 				MakeModifiersMenu();
 				return;
@@ -1140,12 +1164,12 @@ namespace TheBox
 
 			m_cmModifiers.MenuItems.Clear();
 
-			foreach( string modifier in Pandora.Profile.General.Modifiers )
+			foreach (string modifier in Pandora.Profile.General.Modifiers)
 			{
-				MenuItem item = new MenuItem( modifier );
-				item.Click += new EventHandler( OnModifierMenu );
+				MenuItem item = new MenuItem(modifier);
+				item.Click += new EventHandler(OnModifierMenu);
 
-				m_cmModifiers.MenuItems.Add( item );
+				m_cmModifiers.MenuItems.Add(item);
 			}
 		}
 
@@ -1154,50 +1178,50 @@ namespace TheBox
 		/// </summary>
 		private static void MakeModifiersMenu()
 		{
-			if ( m_cmModifiers != null )
+			if (m_cmModifiers != null)
 			{
 				m_cmModifiers.Dispose();
 			}
 
 			m_cmModifiers = new ContextMenu();
 
-			foreach ( string modifier in Pandora.Profile.General.Modifiers )
+			foreach (string modifier in Pandora.Profile.General.Modifiers)
 			{
-				MenuItem item = new MenuItem( modifier );
-				item.Click += new EventHandler ( OnModifierMenu );
+				MenuItem item = new MenuItem(modifier);
+				item.Click += new EventHandler(OnModifierMenu);
 
-				m_cmModifiers.MenuItems.Add( item );
+				m_cmModifiers.MenuItems.Add(item);
 			}
 		}
 
 		/// <summary>
 		/// Handles the selection of a specific modifier
 		/// </summary>
-		private static void OnModifierMenu( object sender, EventArgs e )
+		private static void OnModifierMenu(object sender, EventArgs e)
 		{
-			if ( m_cmModifiers.SourceControl.Tag != null )
+			if (m_cmModifiers.SourceControl.Tag != null)
 			{
 				CommandCallback callback = m_cmModifiers.SourceControl.Tag as CommandCallback;
 
-				if ( callback != null )
+				if (callback != null)
 				{
 					MenuItem mi = sender as MenuItem;
 
-					int index = m_cmModifiers.MenuItems.IndexOf( mi );
+					int index = m_cmModifiers.MenuItems.IndexOf(mi);
 
-					if ( Pandora.Profile.General.ModifiersWarnings[ index ] )
+					if (Pandora.Profile.General.ModifiersWarnings[index])
 					{
-						if ( MessageBox.Show( Pandora.BoxForm,
-							string.Format( Pandora.TextProvider[ "Errors.ModifierWarn" ], mi.Text ),
+						if (MessageBox.Show(Pandora.BoxForm,
+							string.Format(Pandora.TextProvider["Errors.ModifierWarn"], mi.Text),
 							"",
-							MessageBoxButtons.YesNo ) == DialogResult.No )
+							MessageBoxButtons.YesNo) == DialogResult.No)
 						{
 							return;
 						}
 					}
 
 					// Do
-					callback.DynamicInvoke( new object[] { mi.Text } );
+					callback.DynamicInvoke(new object[] { mi.Text });
 				}
 			}
 		}
@@ -1209,10 +1233,10 @@ namespace TheBox
 		{
 			get
 			{
-				if ( m_cmModifiers == null )
+				if (m_cmModifiers == null)
 				{
 					MakeModifiersMenu();
-					Pandora.Profile.General.ModifiersChanged += new EventHandler( OnModifiersChanged );
+					Pandora.Profile.General.ModifiersChanged += new EventHandler(OnModifiersChanged);
 				}
 
 				return m_cmModifiers;
@@ -1222,7 +1246,7 @@ namespace TheBox
 		/// <summary>
 		/// Handles changes in the list of modifiers
 		/// </summary>
-		private static void OnModifiersChanged( object sender, EventArgs e )
+		private static void OnModifiersChanged(object sender, EventArgs e)
 		{
 			RefreshModifiersMenu();
 		}
@@ -1242,20 +1266,20 @@ namespace TheBox
 		/// The main entry point for the application.
 		/// </summary>
 		[STAThread]
-		static void Main( string[] args ) 
+		static void Main(string[] args)
 		{
 			try
 			{
-				Log.WriteEntry( "Starting"	);
+				Log.WriteEntry("Starting");
 				Splash.Show();
 
 				// Delete any temp files created during compilation of profile IO
-				string temp = Path.Combine( Pandora.Folder, "temp.dll" );
+				string temp = Path.Combine(Pandora.Folder, "temp.dll");
 
-				if ( File.Exists( temp ) )
+				if (File.Exists(temp))
 				{
-					Splash.SetStatusText( "Deleting temporary files" );
-					File.Delete( temp );
+					Splash.SetStatusText("Deleting temporary files");
+					File.Delete(temp);
 				}
 
 				// Move any profiles resulting from previous versions
@@ -1263,45 +1287,45 @@ namespace TheBox
 
 				bool newProfile = false;
 
-				if ( args.Length == 1 && File.Exists( args[ 0 ] ) && Path.GetExtension( args[ 0 ] ).ToLower() == ".pbp" )
+				if (args.Length == 1 && File.Exists(args[0]) && Path.GetExtension(args[0]).ToLower() == ".pbp")
 				{
-					Pandora.Log.WriteEntry( "Importing Profile..." );
-					newProfile = ImportProfile( args[ 0 ] );
+					Pandora.Log.WriteEntry("Importing Profile...");
+					newProfile = ImportProfile(args[0]);
 				}
 
-				if ( !newProfile )
+				if (!newProfile)
 				{
-					Pandora.Log.WriteEntry( "Normal startup initiated" );
+					Pandora.Log.WriteEntry("Normal startup initiated");
 
 					Process existing = null;
 
 					try
 					{
-						 existing = Pandora.ExistingInstance;
+						existing = Pandora.ExistingInstance;
 					}
-					catch ( Exception err )
+					catch (Exception err)
 					{
-						Pandora.Log.WriteError( err, "Error when enumerating instances" );
+						Pandora.Log.WriteError(err, "Error when enumerating instances");
 					}
-					
+
 					// Move on with normal startup
-					if ( existing != null )
+					if (existing != null)
 					{
-						Pandora.Log.WriteError( null, "Double instance detected" );
-						System.Windows.Forms.MessageBox.Show( "You can't run two instances of Pandora's Box at the same time" );
+						Pandora.Log.WriteError(null, "Double instance detected");
+						System.Windows.Forms.MessageBox.Show("You can't run two instances of Pandora's Box at the same time");
 					}
 					else
 					{
-						Pandora.Log.WriteEntry( "Double instances check passed" );
+						Pandora.Log.WriteEntry("Double instances check passed");
 						m_Context = new StartingContext();
-						Application.Run( m_Context );
+						Application.Run(m_Context);
 					}
 				}
 			}
-			catch ( Exception err )
+			catch (Exception err)
 			{
-				Clipboard.SetDataObject( err.ToString(), true );
-				MessageBox.Show( "An error occurred. The error text has been placed on your clipboard, use CTRL+V to paste it in a text file." );
+				Clipboard.SetDataObject(err.ToString(), true);
+				MessageBox.Show("An error occurred. The error text has been placed on your clipboard, use CTRL+V to paste it in a text file.");
 			}
 		}
 
@@ -1310,35 +1334,35 @@ namespace TheBox
 		/// </summary>
 		/// <param name="filename">The filename to the .pbp file</param>
 		/// <returns>True if the profile has been imported and loaded successfully</returns>
-		private static bool ImportProfile( string filename )
+		private static bool ImportProfile(string filename)
 		{
-			Splash.SetStatusText( "Importing profile" );
+			Splash.SetStatusText("Importing profile");
 
 			Profile p = null;
 
-			try { p = ProfileIO.Load( filename ); }
-			catch ( Exception err ) { MessageBox.Show( err.ToString() ); }
+			try { p = ProfileIO.Load(filename); }
+			catch (Exception err) { MessageBox.Show(err.ToString()); }
 
-			if ( p == null )
+			if (p == null)
 				return false;
 
 			bool run = false;
 
-			if ( Pandora.ExistingInstance != null )
+			if (Pandora.ExistingInstance != null)
 			{
 				// Already running: Close?
 
-				if ( MessageBox.Show( null,
+				if (MessageBox.Show(null,
 					"Another instance of Pandora's Box is currently running. Would you like to close it and load the profile you have just imported?",
 					"Profile import succesful",
 					MessageBoxButtons.YesNo,
-					MessageBoxIcon.Question ) == DialogResult.Yes )
+					MessageBoxIcon.Question) == DialogResult.Yes)
 				{
-					if ( Pandora.ExistingInstance != null )
+					if (Pandora.ExistingInstance != null)
 					{
 						Pandora.ExistingInstance.Close();
 					}
-					
+
 					run = true;
 				}
 			}
@@ -1347,11 +1371,11 @@ namespace TheBox
 				run = true;
 			}
 
-			if ( run )
+			if (run)
 			{
-				System.Windows.Forms.MessageBox.Show( "Profile imported correctly. Now loading..." );
-				m_Context = new StartingContext( p.Name );
-				Application.Run( m_Context );
+				System.Windows.Forms.MessageBox.Show("Profile imported correctly. Now loading...");
+				m_Context = new StartingContext(p.Name);
+				Application.Run(m_Context);
 			}
 
 			return run;
@@ -1370,27 +1394,27 @@ namespace TheBox
 				DoProfile();
 			}
 
-			public StartingContext( string profile )
+			public StartingContext(string profile)
 			{
-				LoadProfile( profile );
+				LoadProfile(profile);
 			}
 
 			public void DoProfile()
 			{
-				if ( Pandora.DefaultProfile != null )
+				if (Pandora.DefaultProfile != null)
 				{
-					Splash.SetStatusText( "Loading default profile" );
-					LoadProfile( Pandora.DefaultProfile );
+					Splash.SetStatusText("Loading default profile");
+					LoadProfile(Pandora.DefaultProfile);
 				}
 				else
 				{
 					// No default profile specified. Either choose one or create a new one
-					string[] profiles = Directory.GetDirectories( Pandora.ProfilesFolder );
+					string[] profiles = Directory.GetDirectories(Pandora.ProfilesFolder);
 
-					if ( profiles.Length == 0 )
+					if (profiles.Length == 0)
 						MakeNewProfile();
 					else
-						ChooseProfile( profiles );
+						ChooseProfile(profiles);
 				}
 			}
 
@@ -1399,11 +1423,11 @@ namespace TheBox
 			/// </summary>
 			public void MakeNewProfile()
 			{
-				Splash.SetStatusText( "Creating new profile" );
+				Splash.SetStatusText("Creating new profile");
 
 				MainForm = new LanguageSelector();
 
-				if ( m_Started )
+				if (m_Started)
 					MainForm.Show();
 
 				m_Started = true;
@@ -1413,19 +1437,19 @@ namespace TheBox
 			/// Loads a profile
 			/// </summary>
 			/// <param name="name">The name of the profile</param>
-			private void LoadProfile( string name )
+			private void LoadProfile(string name)
 			{
-				Splash.SetStatusText( "Loading profile" );
+				Splash.SetStatusText("Loading profile");
 
 				try
 				{
-					Pandora.m_Profile = Profile.Load( name );
+					Pandora.m_Profile = Profile.Load(name);
 				}
-				catch ( Exception err )
+				catch (Exception err)
 				{
-					Pandora.Log.WriteError( err, "Couldn't load profile {0}", name );
+					Pandora.Log.WriteError(err, "Couldn't load profile {0}", name);
 
-					if ( name == Pandora.DefaultProfile )
+					if (name == Pandora.DefaultProfile)
 					{
 						Pandora.DefaultProfile = "";
 					}
@@ -1434,16 +1458,16 @@ namespace TheBox
 					return;
 				}
 
-				if ( m_Profile == null )
+				if (m_Profile == null)
 				{
-					string msg = string.Format( "The profile {0} is corrupt, therefore it can't be loaded. Would you like to attempt to restore it?", name );
+					string msg = string.Format("The profile {0} is corrupt, therefore it can't be loaded. Would you like to attempt to restore it?", name);
 
-					if ( MessageBox.Show( null, msg, "Profile Error", MessageBoxButtons.YesNo ) == DialogResult.Yes )
+					if (MessageBox.Show(null, msg, "Profile Error", MessageBoxButtons.YesNo) == DialogResult.Yes)
 					{
 						Profile p = new Profile();
 						p.Name = name;
 						p.Save();
-						LoadProfile( name );
+						LoadProfile(name);
 					}
 					else
 						DoProfile();
@@ -1453,16 +1477,16 @@ namespace TheBox
 				try
 				{
 					MainForm = new Box();
-					Pandora.m_TheBox = (Box) MainForm;
+					Pandora.m_TheBox = (Box)MainForm;
 
-					if ( m_Started )
+					if (m_Started)
 						MainForm.Show();
 
 					m_Started = true;
 				}
-				catch ( Exception err )
+				catch (Exception err)
 				{
-					Pandora.Log.WriteError( err, string.Format( "Profile {0} failed.", name ) );
+					Pandora.Log.WriteError(err, string.Format("Profile {0} failed.", name));
 
 					Application.Exit();
 				}
@@ -1471,14 +1495,14 @@ namespace TheBox
 			protected override void OnMainFormClosed(object sender, EventArgs e)
 			{
 				// Action was NEW PROFILE: check if valid, if not exit
-				if ( sender is LanguageSelector )
+				if (sender is LanguageSelector)
 				{
-					if ( Pandora.Profile != null ) // Profile creation succesful
+					if (Pandora.Profile != null) // Profile creation succesful
 					{
 						MainForm = new Box();
-						Pandora.m_TheBox = (Box) MainForm;
+						Pandora.m_TheBox = (Box)MainForm;
 
-						if ( m_Started )
+						if (m_Started)
 							MainForm.Show();
 
 						m_Started = true;
@@ -1487,16 +1511,16 @@ namespace TheBox
 					}
 					else
 					{
-						Pandora.Log.WriteError( null, "Profile creation aborted" );
+						Pandora.Log.WriteError(null, "Profile creation aborted");
 					}
 				}
 
 				// PROFILE CHOOSER: exit/new profile/load profile
-				if ( sender is ProfileChooser )
+				if (sender is ProfileChooser)
 				{
 					ProfileChooser chooser = sender as ProfileChooser;
 
-					switch ( chooser.Action )
+					switch (chooser.Action)
 					{
 						case ProfileChooser.Actions.Exit:
 
@@ -1504,7 +1528,7 @@ namespace TheBox
 
 						case ProfileChooser.Actions.LoadProfile:
 
-							LoadProfile( chooser.SelectedProfile );
+							LoadProfile(chooser.SelectedProfile);
 							return;
 
 						case ProfileChooser.Actions.MakeNewProfile:
@@ -1515,40 +1539,40 @@ namespace TheBox
 					}
 				}
 
-				if ( sender is Box )
+				if (sender is Box)
 				{
-					string next = ( sender as Box ).NextProfile;
+					string next = (sender as Box).NextProfile;
 
-					if ( next != null )
+					if (next != null)
 					{
-						LoadProfile( next );
+						LoadProfile(next);
 						return;
 					}
 				}
 
-				base.OnMainFormClosed( sender, e );
+				base.OnMainFormClosed(sender, e);
 			}
 
 			/// <summary>
 			/// Brings up the choose profile dialog
 			/// </summary>
 			/// <param name="profiles">A list of possible profile names</param>
-			private void ChooseProfile( string[] profiles )
+			private void ChooseProfile(string[] profiles)
 			{
-				Splash.SetStatusText( "Profile selection" );
+				Splash.SetStatusText("Profile selection");
 
-				string[] pnames = new string[ profiles.Length ];
+				string[] pnames = new string[profiles.Length];
 
-				for ( int i = 0; i < profiles.Length; i++ )
+				for (int i = 0; i < profiles.Length; i++)
 				{
-					string[] items = profiles[i].Split( new char[] { Path.DirectorySeparatorChar } );
+					string[] items = profiles[i].Split(new char[] { Path.DirectorySeparatorChar });
 
-					pnames[i] = items[ items.Length - 1 ];
+					pnames[i] = items[items.Length - 1];
 				}
 
-				MainForm = new ProfileChooser( pnames );
+				MainForm = new ProfileChooser(pnames);
 
-				if ( m_Started )
+				if (m_Started)
 					MainForm.Show();
 
 				m_Started = true;
@@ -1563,15 +1587,15 @@ namespace TheBox
 		/// Exports a Pandora's Box profile
 		/// </summary>
 		/// <param name="p">The profile to export</param>
-		public static void ExportProfile( Profile p )
+		public static void ExportProfile(Profile p)
 		{
 			System.Windows.Forms.SaveFileDialog dlg = new SaveFileDialog();
 			dlg.Filter = "Pandora's Box Profile (*.pbp)|*.pbp";
 
-			if ( dlg.ShowDialog() == DialogResult.OK )
+			if (dlg.ShowDialog() == DialogResult.OK)
 			{
-				ProfileIO pio = new ProfileIO( p );
-				pio.Save( dlg.FileName );
+				ProfileIO pio = new ProfileIO(p);
+				pio.Save(dlg.FileName);
 			}
 
 			dlg.Dispose();
@@ -1587,9 +1611,9 @@ namespace TheBox
 			dlg.Filter = "Pandora's Box Profile (*.pbp)|*.pbp";
 			Profile p = null;
 
-			if ( dlg.ShowDialog() == DialogResult.OK )
+			if (dlg.ShowDialog() == DialogResult.OK)
 			{
-				p = ProfileIO.Load( dlg.FileName );
+				p = ProfileIO.Load(dlg.FileName);
 			}
 
 			dlg.Dispose();

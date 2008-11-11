@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.Xml.Serialization;
 using System.Windows.Forms;
 using System.Drawing;
@@ -12,7 +14,9 @@ namespace TheBox.Buttons
 	/// </summary>
 	public class MultiCommandDef : IButtonFunction, IDisposable, ICloneable
 	{
-		private ArrayList m_Commands;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<MenuCommand> m_Commands;
+		// Issue 10 - End
 		private int m_DefaultIndex = -1;
 
 		private ContextMenu m_Menu;
@@ -20,7 +24,9 @@ namespace TheBox.Buttons
 		/// <summary>
 		/// Gets or sets the available commands
 		/// </summary>
-		public ArrayList Commands
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<MenuCommand> Commands
+		// Issue 10 - End
 		{
 			get { return m_Commands; }
 			set { m_Commands = value; }
@@ -50,7 +56,9 @@ namespace TheBox.Buttons
 			{
 				if ( m_DefaultIndex >= 0 && m_DefaultIndex < m_Commands.Count )
 				{
-					return m_Commands[ m_DefaultIndex ] as MenuCommand;
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					return m_Commands[ m_DefaultIndex ];
+					// Issue 10 - End
 				}
 				else
 				{
@@ -64,7 +72,7 @@ namespace TheBox.Buttons
 		/// </summary>
 		public MultiCommandDef()
 		{
-			m_Commands = new ArrayList();
+			m_Commands = new List<MenuCommand>();
 		}
 
 		/// <summary>
@@ -95,7 +103,9 @@ namespace TheBox.Buttons
 
 			for ( int i = 0; i < m_Commands.Count; i++ )
 			{
-				BoxMenuItem bmi = ( m_Commands[ i ] as MenuCommand ).MenuItem;
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				BoxMenuItem bmi = ( m_Commands[ i ]).MenuItem;
+				// Issue 10 - End
 
 				bmi.Checked = ( m_DefaultIndex == i );
 				bmi.Click +=new EventHandler(bmi_Click);
@@ -243,7 +253,9 @@ namespace TheBox.Buttons
 
 			foreach ( MenuCommand mc in this.m_Commands )
 			{
-				mcd.m_Commands.Add( mc.Clone() );
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				mcd.m_Commands.Add( mc.Clone() as MenuCommand );
+				// Issue 10 - End
 			}
 
 			return mcd;

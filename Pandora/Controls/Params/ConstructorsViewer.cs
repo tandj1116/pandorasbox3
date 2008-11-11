@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
@@ -381,7 +380,7 @@ namespace TheBox.Controls.Params
 			{
 				int index = m_CurrentCtor.Param2.EnumValues.IndexOf( m_Param2.Value );
 
-				ItemDef def = m_CurrentCtor.List2[ index ] as ItemDef;
+				ItemDef def = m_CurrentCtor.List2[index] as ItemDef;
 
 				TheBox.Pages.Items.ArtHue = def.Hue;
 				TheBox.Pages.Items.ArtIndex = def.Art;

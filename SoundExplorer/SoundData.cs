@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.Windows.Forms;
 using TheBox.Common;
 using System.Xml.Serialization;
@@ -48,12 +50,16 @@ namespace SoundExplorer
 	/// </summary>
 	public class SoundData
 	{
-		private ArrayList m_Structure;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<GenericNode> m_Structure;
+		// Issue 10 - End
 
 		/// <summary>
 		/// Gets or sets the sounds library structure
 		/// </summary>
-		public ArrayList Structure
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<GenericNode> Structure
+		// Issue 10 - End
 		{
 			get { return m_Structure; }
 			set { m_Structure = value; }
@@ -61,14 +67,18 @@ namespace SoundExplorer
 
 		public SoundData()
 		{
-			m_Structure = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_Structure = new List<GenericNode>();
+			// Issue 10 - End
 		}
 
 		public SoundData( TreeNodeCollection nodes ) : this()
 		{
 			foreach ( TreeNode node in nodes )
 			{
-				m_Structure.Add( DoNode( node ) );
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				m_Structure.Add( DoNode( node ) as GenericNode );
+				// Issue 10 - End
 			}
 		}
 

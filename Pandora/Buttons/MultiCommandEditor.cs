@@ -1,6 +1,5 @@
 using System;
 using System.Drawing;
-using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -256,7 +255,9 @@ namespace TheBox.Buttons
 		{
 			for ( int i = 0; i < m_Def.Commands.Count; i++ )
 			{
-				MenuCommand mc = m_Def.Commands[ i ] as MenuCommand;
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				MenuCommand mc = m_Def.Commands[ i ];
+				// Issue 10 - End
 
 				TreeNode node = new TreeNode( mc.Caption );
 				node.Tag = mc;

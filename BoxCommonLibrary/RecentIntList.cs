@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 
 namespace TheBox.Common
 {
@@ -10,7 +12,9 @@ namespace TheBox.Common
 	public class RecentIntList
 	{
 		private int m_Capacity;
-		private ArrayList m_List;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<int> m_List;
+		// Issue 10 - End
 
 		/// <summary>
 		/// Gets or sets the capacity of the list
@@ -34,7 +38,9 @@ namespace TheBox.Common
 		/// <summary>
 		/// Gets or sets the list of items
 		/// </summary>
-		public ArrayList List
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<int> List
+		// Issue 10 - End
 		{
 			get { return m_List; }
 			set { m_List = value; }
@@ -45,7 +51,9 @@ namespace TheBox.Common
 		/// </summary>
 		public RecentIntList()
 		{
-			m_List = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_List = new List<int>();
+			// Issue 10 - End
 			m_Capacity = 10;
 		}
 
@@ -57,7 +65,9 @@ namespace TheBox.Common
 			get
 			{
 				if ( index < m_List.Count )
-					return (int) m_List[ index ];
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					return m_List[ index ];
+					// Issue 10 - End
 				else
 					return 0;
 			}

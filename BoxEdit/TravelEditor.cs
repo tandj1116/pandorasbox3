@@ -1,6 +1,8 @@
 using System;
 using System.Drawing;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Xml.Serialization;
@@ -629,7 +631,9 @@ namespace TheBox.Editors
 			TreeNode tNode = new TreeNode( newSection );
 
 			if ( currentNode.Parent != null && currentNode.Parent == m_FacetNode )
-				tNode.Tag = new ArrayList();
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				tNode.Tag = new List<object>();
+				// Issue 10 - End
 
 			currentNode.Nodes.Add( tNode );
 
@@ -661,7 +665,9 @@ namespace TheBox.Editors
 
 				tLoc.BeginUpdate();
 				tLoc.Nodes.Clear();
-				tLoc.Nodes.AddRange( TheBox.Data.Location.ArrayToNodes( (ArrayList) tCat.SelectedNode.Tag ) );
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				tLoc.Nodes.AddRange( TheBox.Data.Location.ArrayToNodes( (List<object>) tCat.SelectedNode.Tag ) );
+				// Issue 10 - End
 				tLoc.EndUpdate();
 
 				if ( tLoc.Nodes.Count > 0 )
@@ -707,7 +713,9 @@ namespace TheBox.Editors
 			TreeNode tNode = new TreeNode( name );
 			tNode.Tag = loc;
 
-			( (ArrayList) tCat.SelectedNode.Tag ).Add( loc );
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			( (List<object>) tCat.SelectedNode.Tag ).Add( loc );
+			// Issue 10 - End
 
 			tLoc.Nodes.Add( tNode );
 
@@ -913,8 +921,9 @@ namespace TheBox.Editors
 					if ( tLoc.SelectedNode != null )
 					{
 						Location loc = tLoc.SelectedNode.Tag as Location;
-
-						( (ArrayList) tCat.SelectedNode.Tag ).Remove( loc );
+						// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+						( (List<object>) tCat.SelectedNode.Tag ).Remove( loc );
+						// Issue 10 - End
 
 						tLoc.Nodes.Remove( tLoc.SelectedNode );
 

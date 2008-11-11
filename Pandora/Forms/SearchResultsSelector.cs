@@ -1,6 +1,8 @@
 using System;
 using System.Drawing;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -91,7 +93,9 @@ namespace TheBox.Forms
 		/// <summary>
 		/// Sets the paths available for selection
 		/// </summary>
-		public ArrayList Paths
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<string> Paths
+		// Issue 10 - End
 		{
 			set
 			{

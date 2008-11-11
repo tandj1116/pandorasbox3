@@ -1,6 +1,8 @@
 using System;
 using System.Drawing;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -79,11 +81,13 @@ namespace TheBox.Buttons
 		}
 
 		/// <summary>
-		/// Converts an ArrayList to tree nodes
+		/// Converts a List of objects to tree nodes
 		/// </summary>
 		/// <param name="items">The list of items to convert</param>
 		/// <returns>A collection of corresponding TreeNode objects</returns>
-		private TreeNode[] DoNodes( ArrayList items )
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private TreeNode[] DoNodes( List<object> items )
+		// Issue 10 - End
 		{
 			TreeNode[] nodes = new TreeNode[ items.Count ];
 
@@ -482,9 +486,12 @@ namespace TheBox.Buttons
 		/// </summary>
 		/// <param name="node">The tree node to examine</param>
 		/// <returns>An array list of generic nodes and box menu items</returns>
-		private ArrayList ProcessTreeNode( TreeNode node )
+
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<object> ProcessTreeNode( TreeNode node )
 		{
-			ArrayList list = new ArrayList();
+			List<object> list = new List<object>();
+			// Issue 10 - End
 
 			foreach ( TreeNode n in node.Nodes )
 			{

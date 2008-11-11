@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.IO;
 using System.Xml;
 
@@ -12,14 +14,16 @@ namespace TheBox.Options
 	/// </summary>
 	public class ButtonIndex
 	{
-		private Hashtable m_Table;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private Dictionary<int, int> m_Table;
 
 		/// <summary>
 		/// Creates a new Button Index provider for multi command buttons
 		/// </summary>
 		public ButtonIndex()
 		{
-			m_Table = new Hashtable();
+			m_Table = new Dictionary<int, int>();
+			// Issue 10 - end
 		}
 
 		/// <summary>
@@ -30,7 +34,9 @@ namespace TheBox.Options
 			get
 			{
 				if ( m_Table.ContainsKey( ButtonID ) )
-					return (int) m_Table[ ButtonID ];
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					return m_Table[ ButtonID ];
+					// Issue 10 - End
 				else
 					return -1;
 			}
@@ -137,12 +143,13 @@ namespace TheBox.Options
 		{
 			if ( button.Def != null && button.Def.MultiDef != null && button.ButtonID >= 0 )
 			{
-				object o = m_Table[ button.ButtonID ];
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				int i;
+				m_Table.TryGetValue(button.ButtonID, out i);
 
-				if ( o != null )
-				{
-					button.Def.MultiDef.DefaultIndex = (int) o;
-				}
+				button.Def.MultiDef.DefaultIndex = i;
+				
+				// Issue 10 - End
 			}
 		}
 	}

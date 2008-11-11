@@ -1,7 +1,7 @@
-<?xml version="1.0"?>
-<PropsData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<?xml version="1.0" encoding="utf-8"?>
+<PropsData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Structure>
-    <anyType xsi:type="GenericNode" Name="Item">
+    <GenericNode Name="Item">
       <Elements>
         <anyType xsi:type="BoxProp" Name="LootType" GetAccess="GameMaster" SetAccess="GameMaster" CanGet="true" CanSet="true" ValueType="Enumeration" EnumName="LootType" />
         <anyType xsi:type="BoxProp" Name="DecayTime" GetAccess="GameMaster" SetAccess="GameMaster" CanGet="true" CanSet="false" ValueType="TimeSpan" />
@@ -5744,8 +5744,8 @@
           <Elements />
         </anyType>
       </Elements>
-    </anyType>
-    <anyType xsi:type="GenericNode" Name="Mobile">
+    </GenericNode>
+    <GenericNode Name="Mobile">
       <Elements>
         <anyType xsi:type="BoxProp" Name="PhysicalResistance" GetAccess="Counselor" SetAccess="Counselor" CanGet="true" CanSet="false" ValueType="Numeric" />
         <anyType xsi:type="BoxProp" Name="FireResistance" GetAccess="Counselor" SetAccess="Counselor" CanGet="true" CanSet="false" ValueType="Numeric" />
@@ -7309,882 +7309,882 @@
           <Elements />
         </anyType>
       </Elements>
-    </anyType>
+    </GenericNode>
   </Structure>
   <Enums>
-    <anyType xsi:type="BoxEnum" Name="LootType">
+    <BoxEnum Name="LootType">
       <Values>
-        <anyType xsi:type="xsd:string">Regular</anyType>
-        <anyType xsi:type="xsd:string">Newbied</anyType>
-        <anyType xsi:type="xsd:string">Blessed</anyType>
-        <anyType xsi:type="xsd:string">Cursed</anyType>
+        <string>Regular</string>
+        <string>Newbied</string>
+        <string>Blessed</string>
+        <string>Cursed</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="Layer">
+    </BoxEnum>
+    <BoxEnum Name="Layer">
       <Values>
-        <anyType xsi:type="xsd:string">Invalid</anyType>
-        <anyType xsi:type="xsd:string">FirstValid</anyType>
-        <anyType xsi:type="xsd:string">OneHanded</anyType>
-        <anyType xsi:type="xsd:string">TwoHanded</anyType>
-        <anyType xsi:type="xsd:string">Shoes</anyType>
-        <anyType xsi:type="xsd:string">Pants</anyType>
-        <anyType xsi:type="xsd:string">Shirt</anyType>
-        <anyType xsi:type="xsd:string">Helm</anyType>
-        <anyType xsi:type="xsd:string">Gloves</anyType>
-        <anyType xsi:type="xsd:string">Ring</anyType>
-        <anyType xsi:type="xsd:string">Unused_x9</anyType>
-        <anyType xsi:type="xsd:string">Neck</anyType>
-        <anyType xsi:type="xsd:string">Hair</anyType>
-        <anyType xsi:type="xsd:string">Waist</anyType>
-        <anyType xsi:type="xsd:string">InnerTorso</anyType>
-        <anyType xsi:type="xsd:string">Bracelet</anyType>
-        <anyType xsi:type="xsd:string">Unused_xF</anyType>
-        <anyType xsi:type="xsd:string">FacialHair</anyType>
-        <anyType xsi:type="xsd:string">MiddleTorso</anyType>
-        <anyType xsi:type="xsd:string">Earrings</anyType>
-        <anyType xsi:type="xsd:string">Arms</anyType>
-        <anyType xsi:type="xsd:string">Cloak</anyType>
-        <anyType xsi:type="xsd:string">Backpack</anyType>
-        <anyType xsi:type="xsd:string">OuterTorso</anyType>
-        <anyType xsi:type="xsd:string">OuterLegs</anyType>
-        <anyType xsi:type="xsd:string">InnerLegs</anyType>
-        <anyType xsi:type="xsd:string">LastUserValid</anyType>
-        <anyType xsi:type="xsd:string">Mount</anyType>
-        <anyType xsi:type="xsd:string">ShopBuy</anyType>
-        <anyType xsi:type="xsd:string">ShopResale</anyType>
-        <anyType xsi:type="xsd:string">ShopSell</anyType>
-        <anyType xsi:type="xsd:string">Bank</anyType>
-        <anyType xsi:type="xsd:string">LastValid</anyType>
+        <string>Invalid</string>
+        <string>FirstValid</string>
+        <string>OneHanded</string>
+        <string>TwoHanded</string>
+        <string>Shoes</string>
+        <string>Pants</string>
+        <string>Shirt</string>
+        <string>Helm</string>
+        <string>Gloves</string>
+        <string>Ring</string>
+        <string>Unused_x9</string>
+        <string>Neck</string>
+        <string>Hair</string>
+        <string>Waist</string>
+        <string>InnerTorso</string>
+        <string>Bracelet</string>
+        <string>Unused_xF</string>
+        <string>FacialHair</string>
+        <string>MiddleTorso</string>
+        <string>Earrings</string>
+        <string>Arms</string>
+        <string>Cloak</string>
+        <string>Backpack</string>
+        <string>OuterTorso</string>
+        <string>OuterLegs</string>
+        <string>InnerLegs</string>
+        <string>LastUserValid</string>
+        <string>Mount</string>
+        <string>ShopBuy</string>
+        <string>ShopResale</string>
+        <string>ShopSell</string>
+        <string>Bank</string>
+        <string>LastValid</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="LightType">
+    </BoxEnum>
+    <BoxEnum Name="LightType">
       <Values>
-        <anyType xsi:type="xsd:string">ArchedWindowEast</anyType>
-        <anyType xsi:type="xsd:string">Circle225</anyType>
-        <anyType xsi:type="xsd:string">Circle150</anyType>
-        <anyType xsi:type="xsd:string">DoorSouth</anyType>
-        <anyType xsi:type="xsd:string">DoorEast</anyType>
-        <anyType xsi:type="xsd:string">NorthBig</anyType>
-        <anyType xsi:type="xsd:string">NorthEastBig</anyType>
-        <anyType xsi:type="xsd:string">EastBig</anyType>
-        <anyType xsi:type="xsd:string">WestBig</anyType>
-        <anyType xsi:type="xsd:string">SouthWestBig</anyType>
-        <anyType xsi:type="xsd:string">SouthBig</anyType>
-        <anyType xsi:type="xsd:string">NorthSmall</anyType>
-        <anyType xsi:type="xsd:string">NorthEastSmall</anyType>
-        <anyType xsi:type="xsd:string">EastSmall</anyType>
-        <anyType xsi:type="xsd:string">WestSmall</anyType>
-        <anyType xsi:type="xsd:string">SouthSmall</anyType>
-        <anyType xsi:type="xsd:string">DecorationNorth</anyType>
-        <anyType xsi:type="xsd:string">DecorationNorthEast</anyType>
-        <anyType xsi:type="xsd:string">EastTiny</anyType>
-        <anyType xsi:type="xsd:string">DecorationWest</anyType>
-        <anyType xsi:type="xsd:string">DecorationSouthWest</anyType>
-        <anyType xsi:type="xsd:string">SouthTiny</anyType>
-        <anyType xsi:type="xsd:string">RectWindowSouthNoRay</anyType>
-        <anyType xsi:type="xsd:string">RectWindowEastNoRay</anyType>
-        <anyType xsi:type="xsd:string">RectWindowSouth</anyType>
-        <anyType xsi:type="xsd:string">RectWindowEast</anyType>
-        <anyType xsi:type="xsd:string">ArchedWindowSouthNoRay</anyType>
-        <anyType xsi:type="xsd:string">ArchedWindowEastNoRay</anyType>
-        <anyType xsi:type="xsd:string">ArchedWindowSouth</anyType>
-        <anyType xsi:type="xsd:string">Circle300</anyType>
-        <anyType xsi:type="xsd:string">NorthWestBig</anyType>
-        <anyType xsi:type="xsd:string">DarkSouthEast</anyType>
-        <anyType xsi:type="xsd:string">DarkSouth</anyType>
-        <anyType xsi:type="xsd:string">DarkNorthWest</anyType>
-        <anyType xsi:type="xsd:string">DarkSouthEast2</anyType>
-        <anyType xsi:type="xsd:string">DarkEast</anyType>
-        <anyType xsi:type="xsd:string">DarkCircle300</anyType>
-        <anyType xsi:type="xsd:string">DoorOpenSouth</anyType>
-        <anyType xsi:type="xsd:string">DoorOpenEast</anyType>
-        <anyType xsi:type="xsd:string">SquareWindowEast</anyType>
-        <anyType xsi:type="xsd:string">SquareWindowEastNoRay</anyType>
-        <anyType xsi:type="xsd:string">SquareWindowSouth</anyType>
-        <anyType xsi:type="xsd:string">SquareWindowSouthNoRay</anyType>
-        <anyType xsi:type="xsd:string">Empty</anyType>
-        <anyType xsi:type="xsd:string">SkinnyWindowSouthNoRay</anyType>
-        <anyType xsi:type="xsd:string">SkinnyWindowEast</anyType>
-        <anyType xsi:type="xsd:string">SkinnyWindowEastNoRay</anyType>
-        <anyType xsi:type="xsd:string">HoleSouth</anyType>
-        <anyType xsi:type="xsd:string">HoleEast</anyType>
-        <anyType xsi:type="xsd:string">Moongate</anyType>
-        <anyType xsi:type="xsd:string">Strips</anyType>
-        <anyType xsi:type="xsd:string">SmallHoleSouth</anyType>
-        <anyType xsi:type="xsd:string">SmallHoleEast</anyType>
-        <anyType xsi:type="xsd:string">NorthBig2</anyType>
-        <anyType xsi:type="xsd:string">WestBig2</anyType>
-        <anyType xsi:type="xsd:string">NorthWestBig2</anyType>
+        <string>ArchedWindowEast</string>
+        <string>Circle225</string>
+        <string>Circle150</string>
+        <string>DoorSouth</string>
+        <string>DoorEast</string>
+        <string>NorthBig</string>
+        <string>NorthEastBig</string>
+        <string>EastBig</string>
+        <string>WestBig</string>
+        <string>SouthWestBig</string>
+        <string>SouthBig</string>
+        <string>NorthSmall</string>
+        <string>NorthEastSmall</string>
+        <string>EastSmall</string>
+        <string>WestSmall</string>
+        <string>SouthSmall</string>
+        <string>DecorationNorth</string>
+        <string>DecorationNorthEast</string>
+        <string>EastTiny</string>
+        <string>DecorationWest</string>
+        <string>DecorationSouthWest</string>
+        <string>SouthTiny</string>
+        <string>RectWindowSouthNoRay</string>
+        <string>RectWindowEastNoRay</string>
+        <string>RectWindowSouth</string>
+        <string>RectWindowEast</string>
+        <string>ArchedWindowSouthNoRay</string>
+        <string>ArchedWindowEastNoRay</string>
+        <string>ArchedWindowSouth</string>
+        <string>Circle300</string>
+        <string>NorthWestBig</string>
+        <string>DarkSouthEast</string>
+        <string>DarkSouth</string>
+        <string>DarkNorthWest</string>
+        <string>DarkSouthEast2</string>
+        <string>DarkEast</string>
+        <string>DarkCircle300</string>
+        <string>DoorOpenSouth</string>
+        <string>DoorOpenEast</string>
+        <string>SquareWindowEast</string>
+        <string>SquareWindowEastNoRay</string>
+        <string>SquareWindowSouth</string>
+        <string>SquareWindowSouthNoRay</string>
+        <string>Empty</string>
+        <string>SkinnyWindowSouthNoRay</string>
+        <string>SkinnyWindowEast</string>
+        <string>SkinnyWindowEastNoRay</string>
+        <string>HoleSouth</string>
+        <string>HoleEast</string>
+        <string>Moongate</string>
+        <string>Strips</string>
+        <string>SmallHoleSouth</string>
+        <string>SmallHoleEast</string>
+        <string>NorthBig2</string>
+        <string>WestBig2</string>
+        <string>NorthWestBig2</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="Direction">
+    </BoxEnum>
+    <BoxEnum Name="Direction">
       <Values>
-        <anyType xsi:type="xsd:string">North</anyType>
-        <anyType xsi:type="xsd:string">Right</anyType>
-        <anyType xsi:type="xsd:string">East</anyType>
-        <anyType xsi:type="xsd:string">Down</anyType>
-        <anyType xsi:type="xsd:string">South</anyType>
-        <anyType xsi:type="xsd:string">Left</anyType>
-        <anyType xsi:type="xsd:string">West</anyType>
-        <anyType xsi:type="xsd:string">Up</anyType>
-        <anyType xsi:type="xsd:string">Mask</anyType>
-        <anyType xsi:type="xsd:string">Running</anyType>
-        <anyType xsi:type="xsd:string">ValueMask</anyType>
+        <string>North</string>
+        <string>Right</string>
+        <string>East</string>
+        <string>Down</string>
+        <string>South</string>
+        <string>Left</string>
+        <string>West</string>
+        <string>Up</string>
+        <string>Mask</string>
+        <string>Running</string>
+        <string>ValueMask</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="StatLockType">
+    </BoxEnum>
+    <BoxEnum Name="StatLockType">
       <Values>
-        <anyType xsi:type="xsd:string">Up</anyType>
-        <anyType xsi:type="xsd:string">Down</anyType>
-        <anyType xsi:type="xsd:string">Locked</anyType>
+        <string>Up</string>
+        <string>Down</string>
+        <string>Locked</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="AccessLevel">
+    </BoxEnum>
+    <BoxEnum Name="AccessLevel">
       <Values>
-        <anyType xsi:type="xsd:string">Player</anyType>
-        <anyType xsi:type="xsd:string">Counselor</anyType>
-        <anyType xsi:type="xsd:string">GameMaster</anyType>
-        <anyType xsi:type="xsd:string">Seer</anyType>
-        <anyType xsi:type="xsd:string">Administrator</anyType>
+        <string>Player</string>
+        <string>Counselor</string>
+        <string>GameMaster</string>
+        <string>Seer</string>
+        <string>Administrator</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="PetLoyalty">
+    </BoxEnum>
+    <BoxEnum Name="PetLoyalty">
       <Values>
-        <anyType xsi:type="xsd:string">None</anyType>
-        <anyType xsi:type="xsd:string">Confused</anyType>
-        <anyType xsi:type="xsd:string">ExtremelyUnhappy</anyType>
-        <anyType xsi:type="xsd:string">RatherUnhappy</anyType>
-        <anyType xsi:type="xsd:string">Unhappy</anyType>
-        <anyType xsi:type="xsd:string">SomewhatContent</anyType>
-        <anyType xsi:type="xsd:string">Content</anyType>
-        <anyType xsi:type="xsd:string">Happy</anyType>
-        <anyType xsi:type="xsd:string">RatherHappy</anyType>
-        <anyType xsi:type="xsd:string">VeryHappy</anyType>
-        <anyType xsi:type="xsd:string">ExtremelyHappy</anyType>
-        <anyType xsi:type="xsd:string">WonderfullyHappy</anyType>
+        <string>None</string>
+        <string>Confused</string>
+        <string>ExtremelyUnhappy</string>
+        <string>RatherUnhappy</string>
+        <string>Unhappy</string>
+        <string>SomewhatContent</string>
+        <string>Content</string>
+        <string>Happy</string>
+        <string>RatherHappy</string>
+        <string>VeryHappy</string>
+        <string>ExtremelyHappy</string>
+        <string>WonderfullyHappy</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="AIType">
+    </BoxEnum>
+    <BoxEnum Name="AIType">
       <Values>
-        <anyType xsi:type="xsd:string">AI_Use_Default</anyType>
-        <anyType xsi:type="xsd:string">AI_Melee</anyType>
-        <anyType xsi:type="xsd:string">AI_Animal</anyType>
-        <anyType xsi:type="xsd:string">AI_Archer</anyType>
-        <anyType xsi:type="xsd:string">AI_Healer</anyType>
-        <anyType xsi:type="xsd:string">AI_Vendor</anyType>
-        <anyType xsi:type="xsd:string">AI_Mage</anyType>
-        <anyType xsi:type="xsd:string">AI_Berserk</anyType>
-        <anyType xsi:type="xsd:string">AI_Predator</anyType>
-        <anyType xsi:type="xsd:string">AI_Thief</anyType>
+        <string>AI_Use_Default</string>
+        <string>AI_Melee</string>
+        <string>AI_Animal</string>
+        <string>AI_Archer</string>
+        <string>AI_Healer</string>
+        <string>AI_Vendor</string>
+        <string>AI_Mage</string>
+        <string>AI_Berserk</string>
+        <string>AI_Predator</string>
+        <string>AI_Thief</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="FightMode">
+    </BoxEnum>
+    <BoxEnum Name="FightMode">
       <Values>
-        <anyType xsi:type="xsd:string">None</anyType>
-        <anyType xsi:type="xsd:string">Agressor</anyType>
-        <anyType xsi:type="xsd:string">Strongest</anyType>
-        <anyType xsi:type="xsd:string">Weakest</anyType>
-        <anyType xsi:type="xsd:string">Closest</anyType>
-        <anyType xsi:type="xsd:string">Evil</anyType>
+        <string>None</string>
+        <string>Agressor</string>
+        <string>Strongest</string>
+        <string>Weakest</string>
+        <string>Closest</string>
+        <string>Evil</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="OrderType">
+    </BoxEnum>
+    <BoxEnum Name="OrderType">
       <Values>
-        <anyType xsi:type="xsd:string">None</anyType>
-        <anyType xsi:type="xsd:string">Come</anyType>
-        <anyType xsi:type="xsd:string">Drop</anyType>
-        <anyType xsi:type="xsd:string">Follow</anyType>
-        <anyType xsi:type="xsd:string">Friend</anyType>
-        <anyType xsi:type="xsd:string">Unfriend</anyType>
-        <anyType xsi:type="xsd:string">Guard</anyType>
-        <anyType xsi:type="xsd:string">Attack</anyType>
-        <anyType xsi:type="xsd:string">Patrol</anyType>
-        <anyType xsi:type="xsd:string">Release</anyType>
-        <anyType xsi:type="xsd:string">Stay</anyType>
-        <anyType xsi:type="xsd:string">Stop</anyType>
-        <anyType xsi:type="xsd:string">Transfert</anyType>
+        <string>None</string>
+        <string>Come</string>
+        <string>Drop</string>
+        <string>Follow</string>
+        <string>Friend</string>
+        <string>Unfriend</string>
+        <string>Guard</string>
+        <string>Attack</string>
+        <string>Patrol</string>
+        <string>Release</string>
+        <string>Stay</string>
+        <string>Stop</string>
+        <string>Transfert</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="SecureLevel">
+    </BoxEnum>
+    <BoxEnum Name="SecureLevel">
       <Values>
-        <anyType xsi:type="xsd:string">Owner</anyType>
-        <anyType xsi:type="xsd:string">CoOwners</anyType>
-        <anyType xsi:type="xsd:string">Friends</anyType>
-        <anyType xsi:type="xsd:string">Anyone</anyType>
+        <string>Owner</string>
+        <string>CoOwners</string>
+        <string>Friends</string>
+        <string>Anyone</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="BulkMaterialType">
+    </BoxEnum>
+    <BoxEnum Name="BulkMaterialType">
       <Values>
-        <anyType xsi:type="xsd:string">None</anyType>
-        <anyType xsi:type="xsd:string">DullCopper</anyType>
-        <anyType xsi:type="xsd:string">ShadowIron</anyType>
-        <anyType xsi:type="xsd:string">Copper</anyType>
-        <anyType xsi:type="xsd:string">Bronze</anyType>
-        <anyType xsi:type="xsd:string">Gold</anyType>
-        <anyType xsi:type="xsd:string">Agapite</anyType>
-        <anyType xsi:type="xsd:string">Verite</anyType>
-        <anyType xsi:type="xsd:string">Valorite</anyType>
-        <anyType xsi:type="xsd:string">Spined</anyType>
-        <anyType xsi:type="xsd:string">Horned</anyType>
-        <anyType xsi:type="xsd:string">Barbed</anyType>
+        <string>None</string>
+        <string>DullCopper</string>
+        <string>ShadowIron</string>
+        <string>Copper</string>
+        <string>Bronze</string>
+        <string>Gold</string>
+        <string>Agapite</string>
+        <string>Verite</string>
+        <string>Valorite</string>
+        <string>Spined</string>
+        <string>Horned</string>
+        <string>Barbed</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="ChampionSkullType">
+    </BoxEnum>
+    <BoxEnum Name="ChampionSkullType">
       <Values>
-        <anyType xsi:type="xsd:string">Power</anyType>
-        <anyType xsi:type="xsd:string">Enlightenment</anyType>
-        <anyType xsi:type="xsd:string">Venom</anyType>
-        <anyType xsi:type="xsd:string">Pain</anyType>
-        <anyType xsi:type="xsd:string">Greed</anyType>
-        <anyType xsi:type="xsd:string">Death</anyType>
+        <string>Power</string>
+        <string>Enlightenment</string>
+        <string>Venom</string>
+        <string>Pain</string>
+        <string>Greed</string>
+        <string>Death</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="ChampionSpawnType">
+    </BoxEnum>
+    <BoxEnum Name="ChampionSpawnType">
       <Values>
-        <anyType xsi:type="xsd:string">Abyss</anyType>
-        <anyType xsi:type="xsd:string">Arachnid</anyType>
-        <anyType xsi:type="xsd:string">ColdBlood</anyType>
-        <anyType xsi:type="xsd:string">ForestLord</anyType>
-        <anyType xsi:type="xsd:string">VerminHorde</anyType>
-        <anyType xsi:type="xsd:string">UnholyTerror</anyType>
+        <string>Abyss</string>
+        <string>Arachnid</string>
+        <string>ColdBlood</string>
+        <string>ForestLord</string>
+        <string>VerminHorde</string>
+        <string>UnholyTerror</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="GauntletSpawnerState">
+    </BoxEnum>
+    <BoxEnum Name="GauntletSpawnerState">
       <Values>
-        <anyType xsi:type="xsd:string">InSequence</anyType>
-        <anyType xsi:type="xsd:string">InProgress</anyType>
-        <anyType xsi:type="xsd:string">Completed</anyType>
+        <string>InSequence</string>
+        <string>InProgress</string>
+        <string>Completed</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="TrapType">
+    </BoxEnum>
+    <BoxEnum Name="TrapType">
       <Values>
-        <anyType xsi:type="xsd:string">None</anyType>
-        <anyType xsi:type="xsd:string">MagicTrap</anyType>
-        <anyType xsi:type="xsd:string">ExplosionTrap</anyType>
-        <anyType xsi:type="xsd:string">DartTrap</anyType>
-        <anyType xsi:type="xsd:string">PoisonTrap</anyType>
+        <string>None</string>
+        <string>MagicTrap</string>
+        <string>ExplosionTrap</string>
+        <string>DartTrap</string>
+        <string>PoisonTrap</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="TreasureLevel">
+    </BoxEnum>
+    <BoxEnum Name="TreasureLevel">     
       <Values>
-        <anyType xsi:type="xsd:string">Level1</anyType>
-        <anyType xsi:type="xsd:string">Level2</anyType>
-        <anyType xsi:type="xsd:string">Level3</anyType>
-        <anyType xsi:type="xsd:string">Level4</anyType>
-        <anyType xsi:type="xsd:string">Level5</anyType>
-        <anyType xsi:type="xsd:string">Level6</anyType>
+        <string>Level1</string>
+        <string>Level2</string>
+        <string>Level3</string>
+        <string>Level4</string>
+        <string>Level5</string>
+        <string>Level6</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="PlantStatus">
+    </BoxEnum>
+    <BoxEnum Name="PlantStatus">      
       <Values>
-        <anyType xsi:type="xsd:string">BowlOfDirt</anyType>
-        <anyType xsi:type="xsd:string">Stage1</anyType>
-        <anyType xsi:type="xsd:string">Seed</anyType>
-        <anyType xsi:type="xsd:string">Stage2</anyType>
-        <anyType xsi:type="xsd:string">Sapling</anyType>
-        <anyType xsi:type="xsd:string">Stage3</anyType>
-        <anyType xsi:type="xsd:string">Stage4</anyType>
-        <anyType xsi:type="xsd:string">Plant</anyType>
-        <anyType xsi:type="xsd:string">Stage5</anyType>
-        <anyType xsi:type="xsd:string">Stage6</anyType>
-        <anyType xsi:type="xsd:string">FullGrownPlant</anyType>
-        <anyType xsi:type="xsd:string">Stage7</anyType>
-        <anyType xsi:type="xsd:string">Stage8</anyType>
-        <anyType xsi:type="xsd:string">Stage9</anyType>
-        <anyType xsi:type="xsd:string">DecorativePlant</anyType>
-        <anyType xsi:type="xsd:string">DeadTwigs</anyType>
+        <string>BowlOfDirt</string>
+        <string>Stage1</string>
+        <string>Seed</string>
+        <string>Stage2</string>
+        <string>Sapling</string>
+        <string>Stage3</string>
+        <string>Stage4</string>
+        <string>Plant</string>
+        <string>Stage5</string>
+        <string>Stage6</string>
+        <string>FullGrownPlant</string>
+        <string>Stage7</string>
+        <string>Stage8</string>
+        <string>Stage9</string>
+        <string>DecorativePlant</string>
+        <string>DeadTwigs</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="PlantType">
+    </BoxEnum>
+    <BoxEnum Name="PlantType">      
       <Values>
-        <anyType xsi:type="xsd:string">CampionFlowers</anyType>
-        <anyType xsi:type="xsd:string">Poppies</anyType>
-        <anyType xsi:type="xsd:string">Snowdrops</anyType>
-        <anyType xsi:type="xsd:string">Bulrushes</anyType>
-        <anyType xsi:type="xsd:string">Lilies</anyType>
-        <anyType xsi:type="xsd:string">PampasGrass</anyType>
-        <anyType xsi:type="xsd:string">Rushes</anyType>
-        <anyType xsi:type="xsd:string">ElephantEarPlant</anyType>
-        <anyType xsi:type="xsd:string">Fern</anyType>
-        <anyType xsi:type="xsd:string">PonytailPalm</anyType>
-        <anyType xsi:type="xsd:string">SmallPalm</anyType>
-        <anyType xsi:type="xsd:string">CenturyPlant</anyType>
-        <anyType xsi:type="xsd:string">WaterPlant</anyType>
-        <anyType xsi:type="xsd:string">SnakePlant</anyType>
-        <anyType xsi:type="xsd:string">PricklyPearCactus</anyType>
-        <anyType xsi:type="xsd:string">BarrelCactus</anyType>
-        <anyType xsi:type="xsd:string">TribarrelCactus</anyType>
-        <anyType xsi:type="xsd:string">CommonGreenBonsai</anyType>
-        <anyType xsi:type="xsd:string">CommonPinkBonsai</anyType>
-        <anyType xsi:type="xsd:string">UncommonGreenBonsai</anyType>
-        <anyType xsi:type="xsd:string">UncommonPinkBonsai</anyType>
-        <anyType xsi:type="xsd:string">RareGreenBonsai</anyType>
-        <anyType xsi:type="xsd:string">RarePinkBonsai</anyType>
-        <anyType xsi:type="xsd:string">ExceptionalBonsai</anyType>
-        <anyType xsi:type="xsd:string">ExoticBonsai</anyType>
+        <string>CampionFlowers</string>
+        <string>Poppies</string>
+        <string>Snowdrops</string>
+        <string>Bulrushes</string>
+        <string>Lilies</string>
+        <string>PampasGrass</string>
+        <string>Rushes</string>
+        <string>ElephantEarPlant</string>
+        <string>Fern</string>
+        <string>PonytailPalm</string>
+        <string>SmallPalm</string>
+        <string>CenturyPlant</string>
+        <string>WaterPlant</string>
+        <string>SnakePlant</string>
+        <string>PricklyPearCactus</string>
+        <string>BarrelCactus</string>
+        <string>TribarrelCactus</string>
+        <string>CommonGreenBonsai</string>
+        <string>CommonPinkBonsai</string>
+        <string>UncommonGreenBonsai</string>
+        <string>UncommonPinkBonsai</string>
+        <string>RareGreenBonsai</string>
+        <string>RarePinkBonsai</string>
+        <string>ExceptionalBonsai</string>
+        <string>ExoticBonsai</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="PlantHue">
+    </BoxEnum>
+    <BoxEnum Name="PlantHue">      
       <Values>
-        <anyType xsi:type="xsd:string">None</anyType>
-        <anyType xsi:type="xsd:string">Black</anyType>
-        <anyType xsi:type="xsd:string">White</anyType>
-        <anyType xsi:type="xsd:string">Pink</anyType>
-        <anyType xsi:type="xsd:string">Magenta</anyType>
-        <anyType xsi:type="xsd:string">Aqua</anyType>
-        <anyType xsi:type="xsd:string">FireRed</anyType>
-        <anyType xsi:type="xsd:string">Crossable</anyType>
-        <anyType xsi:type="xsd:string">Plain</anyType>
-        <anyType xsi:type="xsd:string">Red</anyType>
-        <anyType xsi:type="xsd:string">Blue</anyType>
-        <anyType xsi:type="xsd:string">Purple</anyType>
-        <anyType xsi:type="xsd:string">Yellow</anyType>
-        <anyType xsi:type="xsd:string">Orange</anyType>
-        <anyType xsi:type="xsd:string">Green</anyType>
-        <anyType xsi:type="xsd:string">Bright</anyType>
-        <anyType xsi:type="xsd:string">BrightRed</anyType>
-        <anyType xsi:type="xsd:string">BrightBlue</anyType>
-        <anyType xsi:type="xsd:string">BrightPurple</anyType>
-        <anyType xsi:type="xsd:string">BrightYellow</anyType>
-        <anyType xsi:type="xsd:string">BrightOrange</anyType>
-        <anyType xsi:type="xsd:string">BrightGreen</anyType>
+        <string>None</string>
+        <string>Black</string>
+        <string>White</string>
+        <string>Pink</string>
+        <string>Magenta</string>
+        <string>Aqua</string>
+        <string>FireRed</string>
+        <string>Crossable</string>
+        <string>Plain</string>
+        <string>Red</string>
+        <string>Blue</string>
+        <string>Purple</string>
+        <string>Yellow</string>
+        <string>Orange</string>
+        <string>Green</string>
+        <string>Bright</string>
+        <string>BrightRed</string>
+        <string>BrightBlue</string>
+        <string>BrightPurple</string>
+        <string>BrightYellow</string>
+        <string>BrightOrange</string>
+        <string>BrightGreen</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="ImageType">
+    </BoxEnum>
+    <BoxEnum Name="ImageType">      
       <Values>
-        <anyType xsi:type="xsd:string">Betrayer</anyType>
-        <anyType xsi:type="xsd:string">Bogling</anyType>
-        <anyType xsi:type="xsd:string">BogThing</anyType>
-        <anyType xsi:type="xsd:string">Gazer</anyType>
-        <anyType xsi:type="xsd:string">Beetle</anyType>
-        <anyType xsi:type="xsd:string">GiantBlackWidow</anyType>
-        <anyType xsi:type="xsd:string">Scorpion</anyType>
-        <anyType xsi:type="xsd:string">JukaMage</anyType>
-        <anyType xsi:type="xsd:string">JukaWarrior</anyType>
-        <anyType xsi:type="xsd:string">Lich</anyType>
-        <anyType xsi:type="xsd:string">MeerMage</anyType>
-        <anyType xsi:type="xsd:string">MeerWarrior</anyType>
-        <anyType xsi:type="xsd:string">Mongbat</anyType>
-        <anyType xsi:type="xsd:string">Mummy</anyType>
-        <anyType xsi:type="xsd:string">Pixie</anyType>
-        <anyType xsi:type="xsd:string">PlagueBeast</anyType>
-        <anyType xsi:type="xsd:string">SandVortex</anyType>
-        <anyType xsi:type="xsd:string">StoneGargoyle</anyType>
-        <anyType xsi:type="xsd:string">SwampDragon</anyType>
-        <anyType xsi:type="xsd:string">Wisp</anyType>
-        <anyType xsi:type="xsd:string">Juggernaut</anyType>
+        <string>Betrayer</string>
+        <string>Bogling</string>
+        <string>BogThing</string>
+        <string>Gazer</string>
+        <string>Beetle</string>
+        <string>GiantBlackWidow</string>
+        <string>Scorpion</string>
+        <string>JukaMage</string>
+        <string>JukaWarrior</string>
+        <string>Lich</string>
+        <string>MeerMage</string>
+        <string>MeerWarrior</string>
+        <string>Mongbat</string>
+        <string>Mummy</string>
+        <string>Pixie</string>
+        <string>PlagueBeast</string>
+        <string>SandVortex</string>
+        <string>StoneGargoyle</string>
+        <string>SwampDragon</string>
+        <string>Wisp</string>
+        <string>Juggernaut</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="WeaponQuality">
+    </BoxEnum>
+    <BoxEnum Name="WeaponQuality">      
       <Values>
-        <anyType xsi:type="xsd:string">Low</anyType>
-        <anyType xsi:type="xsd:string">Regular</anyType>
-        <anyType xsi:type="xsd:string">Exceptional</anyType>
+        <string>Low</string>
+        <string>Regular</string>
+        <string>Exceptional</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="SlayerName">
+    </BoxEnum>
+    <BoxEnum Name="SlayerName">      
       <Values>
-        <anyType xsi:type="xsd:string">None</anyType>
-        <anyType xsi:type="xsd:string">Silver</anyType>
-        <anyType xsi:type="xsd:string">OrcSlaying</anyType>
-        <anyType xsi:type="xsd:string">TrollSlaughter</anyType>
-        <anyType xsi:type="xsd:string">OgreTrashing</anyType>
-        <anyType xsi:type="xsd:string">Repond</anyType>
-        <anyType xsi:type="xsd:string">DragonSlaying</anyType>
-        <anyType xsi:type="xsd:string">Terathan</anyType>
-        <anyType xsi:type="xsd:string">SnakesBane</anyType>
-        <anyType xsi:type="xsd:string">LizardmanSlaughter</anyType>
-        <anyType xsi:type="xsd:string">ReptilianDeath</anyType>
-        <anyType xsi:type="xsd:string">DaemonDismissal</anyType>
-        <anyType xsi:type="xsd:string">GargoylesFoe</anyType>
-        <anyType xsi:type="xsd:string">BalronDamnation</anyType>
-        <anyType xsi:type="xsd:string">Exorcism</anyType>
-        <anyType xsi:type="xsd:string">Ophidian</anyType>
-        <anyType xsi:type="xsd:string">SpidersDeath</anyType>
-        <anyType xsi:type="xsd:string">ScorpionsBane</anyType>
-        <anyType xsi:type="xsd:string">ArachnidDoom</anyType>
-        <anyType xsi:type="xsd:string">FlameDousing</anyType>
-        <anyType xsi:type="xsd:string">WaterDissipation</anyType>
-        <anyType xsi:type="xsd:string">Vacuum</anyType>
-        <anyType xsi:type="xsd:string">ElementalHealth</anyType>
-        <anyType xsi:type="xsd:string">EarthShatter</anyType>
-        <anyType xsi:type="xsd:string">BloodDrinking</anyType>
-        <anyType xsi:type="xsd:string">SummerWind</anyType>
-        <anyType xsi:type="xsd:string">ElementalBan</anyType>
-        <anyType xsi:type="xsd:string">Fey</anyType>
+        <string>None</string>
+        <string>Silver</string>
+        <string>OrcSlaying</string>
+        <string>TrollSlaughter</string>
+        <string>OgreTrashing</string>
+        <string>Repond</string>
+        <string>DragonSlaying</string>
+        <string>Terathan</string>
+        <string>SnakesBane</string>
+        <string>LizardmanSlaughter</string>
+        <string>ReptilianDeath</string>
+        <string>DaemonDismissal</string>
+        <string>GargoylesFoe</string>
+        <string>BalronDamnation</string>
+        <string>Exorcism</string>
+        <string>Ophidian</string>
+        <string>SpidersDeath</string>
+        <string>ScorpionsBane</string>
+        <string>ArachnidDoom</string>
+        <string>FlameDousing</string>
+        <string>WaterDissipation</string>
+        <string>Vacuum</string>
+        <string>ElementalHealth</string>
+        <string>EarthShatter</string>
+        <string>BloodDrinking</string>
+        <string>SummerWind</string>
+        <string>ElementalBan</string>
+        <string>Fey</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="CraftResource">
+    </BoxEnum>
+    <BoxEnum Name="CraftResource">      
       <Values>
-        <anyType xsi:type="xsd:string">None</anyType>
-        <anyType xsi:type="xsd:string">Iron</anyType>
-        <anyType xsi:type="xsd:string">DullCopper</anyType>
-        <anyType xsi:type="xsd:string">ShadowIron</anyType>
-        <anyType xsi:type="xsd:string">Copper</anyType>
-        <anyType xsi:type="xsd:string">Bronze</anyType>
-        <anyType xsi:type="xsd:string">Gold</anyType>
-        <anyType xsi:type="xsd:string">Agapite</anyType>
-        <anyType xsi:type="xsd:string">Verite</anyType>
-        <anyType xsi:type="xsd:string">Valorite</anyType>
-        <anyType xsi:type="xsd:string">RegularLeather</anyType>
-        <anyType xsi:type="xsd:string">SpinedLeather</anyType>
-        <anyType xsi:type="xsd:string">HornedLeather</anyType>
-        <anyType xsi:type="xsd:string">BarbedLeather</anyType>
-        <anyType xsi:type="xsd:string">RedScales</anyType>
-        <anyType xsi:type="xsd:string">YellowScales</anyType>
-        <anyType xsi:type="xsd:string">BlackScales</anyType>
-        <anyType xsi:type="xsd:string">GreenScales</anyType>
-        <anyType xsi:type="xsd:string">WhiteScales</anyType>
-        <anyType xsi:type="xsd:string">BlueScales</anyType>
+        <string>None</string>
+        <string>Iron</string>
+        <string>DullCopper</string>
+        <string>ShadowIron</string>
+        <string>Copper</string>
+        <string>Bronze</string>
+        <string>Gold</string>
+        <string>Agapite</string>
+        <string>Verite</string>
+        <string>Valorite</string>
+        <string>RegularLeather</string>
+        <string>SpinedLeather</string>
+        <string>HornedLeather</string>
+        <string>BarbedLeather</string>
+        <string>RedScales</string>
+        <string>YellowScales</string>
+        <string>BlackScales</string>
+        <string>GreenScales</string>
+        <string>WhiteScales</string>
+        <string>BlueScales</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="WeaponDamageLevel">
+    </BoxEnum>
+    <BoxEnum Name="WeaponDamageLevel">     
       <Values>
-        <anyType xsi:type="xsd:string">Regular</anyType>
-        <anyType xsi:type="xsd:string">Ruin</anyType>
-        <anyType xsi:type="xsd:string">Might</anyType>
-        <anyType xsi:type="xsd:string">Force</anyType>
-        <anyType xsi:type="xsd:string">Power</anyType>
-        <anyType xsi:type="xsd:string">Vanq</anyType>
+        <string>Regular</string>
+        <string>Ruin</string>
+        <string>Might</string>
+        <string>Force</string>
+        <string>Power</string>
+        <string>Vanq</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="WeaponDurabilityLevel">
+    </BoxEnum>
+    <BoxEnum Name="WeaponDurabilityLevel">      
       <Values>
-        <anyType xsi:type="xsd:string">Regular</anyType>
-        <anyType xsi:type="xsd:string">Durable</anyType>
-        <anyType xsi:type="xsd:string">Substantial</anyType>
-        <anyType xsi:type="xsd:string">Massive</anyType>
-        <anyType xsi:type="xsd:string">Fortified</anyType>
-        <anyType xsi:type="xsd:string">Indestructible</anyType>
+        <string>Regular</string>
+        <string>Durable</string>
+        <string>Substantial</string>
+        <string>Massive</string>
+        <string>Fortified</string>
+        <string>Indestructible</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="WeaponAnimation">
+    </BoxEnum>
+    <BoxEnum Name="WeaponAnimation">     
       <Values>
-        <anyType xsi:type="xsd:string">Slash1H</anyType>
-        <anyType xsi:type="xsd:string">Pierce1H</anyType>
-        <anyType xsi:type="xsd:string">Bash1H</anyType>
-        <anyType xsi:type="xsd:string">Bash2H</anyType>
-        <anyType xsi:type="xsd:string">Slash2H</anyType>
-        <anyType xsi:type="xsd:string">Pierce2H</anyType>
-        <anyType xsi:type="xsd:string">ShootBow</anyType>
-        <anyType xsi:type="xsd:string">ShootXBow</anyType>
-        <anyType xsi:type="xsd:string">Wrestle</anyType>
+        <string>Slash1H</string>
+        <string>Pierce1H</string>
+        <string>Bash1H</string>
+        <string>Bash2H</string>
+        <string>Slash2H</string>
+        <string>Pierce2H</string>
+        <string>ShootBow</string>
+        <string>ShootXBow</string>
+        <string>Wrestle</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="WeaponType">
+    </BoxEnum>
+    <BoxEnum Name="WeaponType">     
       <Values>
-        <anyType xsi:type="xsd:string">Axe</anyType>
-        <anyType xsi:type="xsd:string">Slashing</anyType>
-        <anyType xsi:type="xsd:string">Staff</anyType>
-        <anyType xsi:type="xsd:string">Bashing</anyType>
-        <anyType xsi:type="xsd:string">Piercing</anyType>
-        <anyType xsi:type="xsd:string">Polearm</anyType>
-        <anyType xsi:type="xsd:string">Ranged</anyType>
-        <anyType xsi:type="xsd:string">Fists</anyType>
+        <string>Axe</string>
+        <string>Slashing</string>
+        <string>Staff</string>
+        <string>Bashing</string>
+        <string>Piercing</string>
+        <string>Polearm</string>
+        <string>Ranged</string>
+        <string>Fists</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="SkillName">
+    </BoxEnum>
+    <BoxEnum Name="SkillName">     
       <Values>
-        <anyType xsi:type="xsd:string">Alchemy</anyType>
-        <anyType xsi:type="xsd:string">Anatomy</anyType>
-        <anyType xsi:type="xsd:string">AnimalLore</anyType>
-        <anyType xsi:type="xsd:string">ItemID</anyType>
-        <anyType xsi:type="xsd:string">ArmsLore</anyType>
-        <anyType xsi:type="xsd:string">Parry</anyType>
-        <anyType xsi:type="xsd:string">Begging</anyType>
-        <anyType xsi:type="xsd:string">Blacksmith</anyType>
-        <anyType xsi:type="xsd:string">Fletching</anyType>
-        <anyType xsi:type="xsd:string">Peacemaking</anyType>
-        <anyType xsi:type="xsd:string">Camping</anyType>
-        <anyType xsi:type="xsd:string">Carpentry</anyType>
-        <anyType xsi:type="xsd:string">Cartography</anyType>
-        <anyType xsi:type="xsd:string">Cooking</anyType>
-        <anyType xsi:type="xsd:string">DetectHidden</anyType>
-        <anyType xsi:type="xsd:string">Discordance</anyType>
-        <anyType xsi:type="xsd:string">EvalInt</anyType>
-        <anyType xsi:type="xsd:string">Healing</anyType>
-        <anyType xsi:type="xsd:string">Fishing</anyType>
-        <anyType xsi:type="xsd:string">Forensics</anyType>
-        <anyType xsi:type="xsd:string">Herding</anyType>
-        <anyType xsi:type="xsd:string">Hiding</anyType>
-        <anyType xsi:type="xsd:string">Provocation</anyType>
-        <anyType xsi:type="xsd:string">Inscribe</anyType>
-        <anyType xsi:type="xsd:string">Lockpicking</anyType>
-        <anyType xsi:type="xsd:string">Magery</anyType>
-        <anyType xsi:type="xsd:string">MagicResist</anyType>
-        <anyType xsi:type="xsd:string">Tactics</anyType>
-        <anyType xsi:type="xsd:string">Snooping</anyType>
-        <anyType xsi:type="xsd:string">Musicianship</anyType>
-        <anyType xsi:type="xsd:string">Poisoning</anyType>
-        <anyType xsi:type="xsd:string">Archery</anyType>
-        <anyType xsi:type="xsd:string">SpiritSpeak</anyType>
-        <anyType xsi:type="xsd:string">Stealing</anyType>
-        <anyType xsi:type="xsd:string">Tailoring</anyType>
-        <anyType xsi:type="xsd:string">AnimalTaming</anyType>
-        <anyType xsi:type="xsd:string">TasteID</anyType>
-        <anyType xsi:type="xsd:string">Tinkering</anyType>
-        <anyType xsi:type="xsd:string">Tracking</anyType>
-        <anyType xsi:type="xsd:string">Veterinary</anyType>
-        <anyType xsi:type="xsd:string">Swords</anyType>
-        <anyType xsi:type="xsd:string">Macing</anyType>
-        <anyType xsi:type="xsd:string">Fencing</anyType>
-        <anyType xsi:type="xsd:string">Wrestling</anyType>
-        <anyType xsi:type="xsd:string">Lumberjacking</anyType>
-        <anyType xsi:type="xsd:string">Mining</anyType>
-        <anyType xsi:type="xsd:string">Meditation</anyType>
-        <anyType xsi:type="xsd:string">Stealth</anyType>
-        <anyType xsi:type="xsd:string">RemoveTrap</anyType>
-        <anyType xsi:type="xsd:string">Necromancy</anyType>
-        <anyType xsi:type="xsd:string">Focus</anyType>
-        <anyType xsi:type="xsd:string">Chivalry</anyType>
-        <anyType xsi:type="xsd:string">Bushido</anyType>
-        <anyType xsi:type="xsd:string">Ninjitsu</anyType>
+        <string>Alchemy</string>
+        <string>Anatomy</string>
+        <string>AnimalLore</string>
+        <string>ItemID</string>
+        <string>ArmsLore</string>
+        <string>Parry</string>
+        <string>Begging</string>
+        <string>Blacksmith</string>
+        <string>Fletching</string>
+        <string>Peacemaking</string>
+        <string>Camping</string>
+        <string>Carpentry</string>
+        <string>Cartography</string>
+        <string>Cooking</string>
+        <string>DetectHidden</string>
+        <string>Discordance</string>
+        <string>EvalInt</string>
+        <string>Healing</string>
+        <string>Fishing</string>
+        <string>Forensics</string>
+        <string>Herding</string>
+        <string>Hiding</string>
+        <string>Provocation</string>
+        <string>Inscribe</string>
+        <string>Lockpicking</string>
+        <string>Magery</string>
+        <string>MagicResist</string>
+        <string>Tactics</string>
+        <string>Snooping</string>
+        <string>Musicianship</string>
+        <string>Poisoning</string>
+        <string>Archery</string>
+        <string>SpiritSpeak</string>
+        <string>Stealing</string>
+        <string>Tailoring</string>
+        <string>AnimalTaming</string>
+        <string>TasteID</string>
+        <string>Tinkering</string>
+        <string>Tracking</string>
+        <string>Veterinary</string>
+        <string>Swords</string>
+        <string>Macing</string>
+        <string>Fencing</string>
+        <string>Wrestling</string>
+        <string>Lumberjacking</string>
+        <string>Mining</string>
+        <string>Meditation</string>
+        <string>Stealth</string>
+        <string>RemoveTrap</string>
+        <string>Necromancy</string>
+        <string>Focus</string>
+        <string>Chivalry</string>
+        <string>Bushido</string>
+        <string>Ninjitsu</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="WeaponAccuracyLevel">
+    </BoxEnum>
+    <BoxEnum Name="WeaponAccuracyLevel">     
       <Values>
-        <anyType xsi:type="xsd:string">Regular</anyType>
-        <anyType xsi:type="xsd:string">Accurate</anyType>
-        <anyType xsi:type="xsd:string">Surpassingly</anyType>
-        <anyType xsi:type="xsd:string">Eminently</anyType>
-        <anyType xsi:type="xsd:string">Exceedingly</anyType>
-        <anyType xsi:type="xsd:string">Supremely</anyType>
+        <string>Regular</string>
+        <string>Accurate</string>
+        <string>Surpassingly</string>
+        <string>Eminently</string>
+        <string>Exceedingly</string>
+        <string>Supremely</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="CannonDirection">
+    </BoxEnum>
+    <BoxEnum Name="CannonDirection">     
       <Values>
-        <anyType xsi:type="xsd:string">North</anyType>
-        <anyType xsi:type="xsd:string">East</anyType>
-        <anyType xsi:type="xsd:string">South</anyType>
-        <anyType xsi:type="xsd:string">West</anyType>
+        <string>North</string>
+        <string>East</string>
+        <string>South</string>
+        <string>West</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="ArmorMeditationAllowance">
+    </BoxEnum>
+    <BoxEnum Name="ArmorMeditationAllowance">     
       <Values>
-        <anyType xsi:type="xsd:string">All</anyType>
-        <anyType xsi:type="xsd:string">Half</anyType>
-        <anyType xsi:type="xsd:string">None</anyType>
+        <string>All</string>
+        <string>Half</string>
+        <string>None</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="ArmorQuality">
+    </BoxEnum>
+    <BoxEnum Name="ArmorQuality">     
       <Values>
-        <anyType xsi:type="xsd:string">Low</anyType>
-        <anyType xsi:type="xsd:string">Regular</anyType>
-        <anyType xsi:type="xsd:string">Exceptional</anyType>
+        <string>Low</string>
+        <string>Regular</string>
+        <string>Exceptional</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="ArmorDurabilityLevel">
+    </BoxEnum>
+    <BoxEnum Name="ArmorDurabilityLevel">     
       <Values>
-        <anyType xsi:type="xsd:string">Regular</anyType>
-        <anyType xsi:type="xsd:string">Durable</anyType>
-        <anyType xsi:type="xsd:string">Substantial</anyType>
-        <anyType xsi:type="xsd:string">Massive</anyType>
-        <anyType xsi:type="xsd:string">Fortified</anyType>
-        <anyType xsi:type="xsd:string">Indestructible</anyType>
+        <string>Regular</string>
+        <string>Durable</string>
+        <string>Substantial</string>
+        <string>Massive</string>
+        <string>Fortified</string>
+        <string>Indestructible</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="ArmorProtectionLevel">
+    </BoxEnum>
+    <BoxEnum Name="ArmorProtectionLevel">     
       <Values>
-        <anyType xsi:type="xsd:string">Regular</anyType>
-        <anyType xsi:type="xsd:string">Defense</anyType>
-        <anyType xsi:type="xsd:string">Guarding</anyType>
-        <anyType xsi:type="xsd:string">Hardening</anyType>
-        <anyType xsi:type="xsd:string">Fortification</anyType>
-        <anyType xsi:type="xsd:string">Invulnerability</anyType>
+        <string>Regular</string>
+        <string>Defense</string>
+        <string>Guarding</string>
+        <string>Hardening</string>
+        <string>Fortification</string>
+        <string>Invulnerability</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="ArmorBodyType">
+    </BoxEnum>
+    <BoxEnum Name="ArmorBodyType">     
       <Values>
-        <anyType xsi:type="xsd:string">Gorget</anyType>
-        <anyType xsi:type="xsd:string">Gloves</anyType>
-        <anyType xsi:type="xsd:string">Helmet</anyType>
-        <anyType xsi:type="xsd:string">Arms</anyType>
-        <anyType xsi:type="xsd:string">Legs</anyType>
-        <anyType xsi:type="xsd:string">Chest</anyType>
-        <anyType xsi:type="xsd:string">Shield</anyType>
+        <string>Gorget</string>
+        <string>Gloves</string>
+        <string>Helmet</string>
+        <string>Arms</string>
+        <string>Legs</string>
+        <string>Chest</string>
+        <string>Shield</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="ClothingQuality">
+    </BoxEnum>
+    <BoxEnum Name="ClothingQuality">     
       <Values>
-        <anyType xsi:type="xsd:string">Low</anyType>
-        <anyType xsi:type="xsd:string">Regular</anyType>
-        <anyType xsi:type="xsd:string">Exceptional</anyType>
+        <string>Low</string>
+        <string>Regular</string>
+        <string>Exceptional</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="DoorFacing">
+    </BoxEnum>
+    <BoxEnum Name="DoorFacing">     
       <Values>
-        <anyType xsi:type="xsd:string">WestCW</anyType>
-        <anyType xsi:type="xsd:string">EastCCW</anyType>
-        <anyType xsi:type="xsd:string">WestCCW</anyType>
-        <anyType xsi:type="xsd:string">EastCW</anyType>
-        <anyType xsi:type="xsd:string">SouthCW</anyType>
-        <anyType xsi:type="xsd:string">NorthCCW</anyType>
-        <anyType xsi:type="xsd:string">SouthCCW</anyType>
-        <anyType xsi:type="xsd:string">NorthCW</anyType>
-        <anyType xsi:type="xsd:string">SouthSW</anyType>
-        <anyType xsi:type="xsd:string">SouthSE</anyType>
-        <anyType xsi:type="xsd:string">WestSS</anyType>
-        <anyType xsi:type="xsd:string">WestSN</anyType>
+        <string>WestCW</string>
+        <string>EastCCW</string>
+        <string>WestCCW</string>
+        <string>EastCW</string>
+        <string>SouthCW</string>
+        <string>NorthCCW</string>
+        <string>SouthCCW</string>
+        <string>NorthCW</string>
+        <string>SouthSW</string>
+        <string>SouthSE</string>
+        <string>WestSS</string>
+        <string>WestSN</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="BeverageType">
+    </BoxEnum>
+    <BoxEnum Name="BeverageType">    
       <Values>
-        <anyType xsi:type="xsd:string">Ale</anyType>
-        <anyType xsi:type="xsd:string">Cider</anyType>
-        <anyType xsi:type="xsd:string">Liquor</anyType>
-        <anyType xsi:type="xsd:string">Milk</anyType>
-        <anyType xsi:type="xsd:string">Wine</anyType>
-        <anyType xsi:type="xsd:string">Water</anyType>
+        <string>Ale</string>
+        <string>Cider</string>
+        <string>Liquor</string>
+        <string>Milk</string>
+        <string>Wine</string>
+        <string>Water</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="GemType">
+    </BoxEnum>
+    <BoxEnum Name="GemType">    
       <Values>
-        <anyType xsi:type="xsd:string">None</anyType>
-        <anyType xsi:type="xsd:string">StarSapphire</anyType>
-        <anyType xsi:type="xsd:string">Emerald</anyType>
-        <anyType xsi:type="xsd:string">Sapphire</anyType>
-        <anyType xsi:type="xsd:string">Ruby</anyType>
-        <anyType xsi:type="xsd:string">Citrine</anyType>
-        <anyType xsi:type="xsd:string">Amethyst</anyType>
-        <anyType xsi:type="xsd:string">Tourmaline</anyType>
-        <anyType xsi:type="xsd:string">Amber</anyType>
-        <anyType xsi:type="xsd:string">Diamond</anyType>
+        <string>None</string>
+        <string>StarSapphire</string>
+        <string>Emerald</string>
+        <string>Sapphire</string>
+        <string>Ruby</string>
+        <string>Citrine</string>
+        <string>Amethyst</string>
+        <string>Tourmaline</string>
+        <string>Amber</string>
+        <string>Diamond</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="InstrumentQuality">
+    </BoxEnum>
+    <BoxEnum Name="InstrumentQuality">     
       <Values>
-        <anyType xsi:type="xsd:string">Low</anyType>
-        <anyType xsi:type="xsd:string">Regular</anyType>
-        <anyType xsi:type="xsd:string">Exceptional</anyType>
+        <string>Low</string>
+        <string>Regular</string>
+        <string>Exceptional</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="MonsterStatuetteType">
+    </BoxEnum>
+    <BoxEnum Name="MonsterStatuetteType">  
       <Values>
-        <anyType xsi:type="xsd:string">Crocodile</anyType>
-        <anyType xsi:type="xsd:string">Daemon</anyType>
-        <anyType xsi:type="xsd:string">Dragon</anyType>
-        <anyType xsi:type="xsd:string">EarthElemental</anyType>
-        <anyType xsi:type="xsd:string">Ettin</anyType>
-        <anyType xsi:type="xsd:string">Gargoyle</anyType>
-        <anyType xsi:type="xsd:string">Gorilla</anyType>
-        <anyType xsi:type="xsd:string">Lich</anyType>
-        <anyType xsi:type="xsd:string">Lizardman</anyType>
-        <anyType xsi:type="xsd:string">Ogre</anyType>
-        <anyType xsi:type="xsd:string">Orc</anyType>
-        <anyType xsi:type="xsd:string">Ratman</anyType>
-        <anyType xsi:type="xsd:string">Skeleton</anyType>
-        <anyType xsi:type="xsd:string">Troll</anyType>
-        <anyType xsi:type="xsd:string">Cow</anyType>
-        <anyType xsi:type="xsd:string">Zombie</anyType>
-        <anyType xsi:type="xsd:string">Llama</anyType>
-        <anyType xsi:type="xsd:string">Ophidian</anyType>
-        <anyType xsi:type="xsd:string">Reaper</anyType>
-        <anyType xsi:type="xsd:string">Mongbat</anyType>
-        <anyType xsi:type="xsd:string">Gazer</anyType>
-        <anyType xsi:type="xsd:string">FireElemental</anyType>
-        <anyType xsi:type="xsd:string">Wolf</anyType>
-        <anyType xsi:type="xsd:string">PhillipsWoodenSteed</anyType>
-        <anyType xsi:type="xsd:string">Seahorse</anyType>
+        <string>Crocodile</string>
+        <string>Daemon</string>
+        <string>Dragon</string>
+        <string>EarthElemental</string>
+        <string>Ettin</string>
+        <string>Gargoyle</string>
+        <string>Gorilla</string>
+        <string>Lich</string>
+        <string>Lizardman</string>
+        <string>Ogre</string>
+        <string>Orc</string>
+        <string>Ratman</string>
+        <string>Skeleton</string>
+        <string>Troll</string>
+        <string>Cow</string>
+        <string>Zombie</string>
+        <string>Llama</string>
+        <string>Ophidian</string>
+        <string>Reaper</string>
+        <string>Mongbat</string>
+        <string>Gazer</string>
+        <string>FireElemental</string>
+        <string>Wolf</string>
+        <string>PhillipsWoodenSteed</string>
+        <string>Seahorse</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="ECEffectType">
+    </BoxEnum>
+    <BoxEnum Name="ECEffectType">    
       <Values>
-        <anyType xsi:type="xsd:string">None</anyType>
-        <anyType xsi:type="xsd:string">Moving</anyType>
-        <anyType xsi:type="xsd:string">Location</anyType>
-        <anyType xsi:type="xsd:string">Target</anyType>
-        <anyType xsi:type="xsd:string">Lightning</anyType>
+        <string>None</string>
+        <string>Moving</string>
+        <string>Location</string>
+        <string>Target</string>
+        <string>Lightning</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="EffectTriggerType">
+    </BoxEnum>
+    <BoxEnum Name="EffectTriggerType">    
       <Values>
-        <anyType xsi:type="xsd:string">None</anyType>
-        <anyType xsi:type="xsd:string">Sequenced</anyType>
-        <anyType xsi:type="xsd:string">DoubleClick</anyType>
-        <anyType xsi:type="xsd:string">InRange</anyType>
+        <string>None</string>
+        <string>Sequenced</string>
+        <string>DoubleClick</string>
+        <string>InRange</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="EffectLayer">
+    </BoxEnum>
+    <BoxEnum Name="EffectLayer">    
       <Values>
-        <anyType xsi:type="xsd:string">Head</anyType>
-        <anyType xsi:type="xsd:string">RightHand</anyType>
-        <anyType xsi:type="xsd:string">LeftHand</anyType>
-        <anyType xsi:type="xsd:string">Waist</anyType>
-        <anyType xsi:type="xsd:string">LeftFoot</anyType>
-        <anyType xsi:type="xsd:string">RightFoot</anyType>
-        <anyType xsi:type="xsd:string">CenterFeet</anyType>
+        <string>Head</string>
+        <string>RightHand</string>
+        <string>LeftHand</string>
+        <string>Waist</string>
+        <string>LeftFoot</string>
+        <string>RightFoot</string>
+        <string>CenterFeet</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="DecorateCommand">
+    </BoxEnum>
+    <BoxEnum Name="DecorateCommand">    
       <Values>
-        <anyType xsi:type="xsd:string">None</anyType>
-        <anyType xsi:type="xsd:string">Turn</anyType>
-        <anyType xsi:type="xsd:string">Up</anyType>
-        <anyType xsi:type="xsd:string">Down</anyType>
+        <string>None</string>
+        <string>Turn</string>
+        <string>Up</string>
+        <string>Down</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="MoonstoneType">
+    </BoxEnum>
+    <BoxEnum Name="MoonstoneType">   
       <Values>
-        <anyType xsi:type="xsd:string">Felucca</anyType>
-        <anyType xsi:type="xsd:string">Trammel</anyType>
+        <string>Felucca</string>
+        <string>Trammel</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="CampfireStatus">
+    </BoxEnum>
+    <BoxEnum Name="CampfireStatus">     
       <Values>
-        <anyType xsi:type="xsd:string">Burning</anyType>
-        <anyType xsi:type="xsd:string">Extinguishing</anyType>
-        <anyType xsi:type="xsd:string">Off</anyType>
+        <string>Burning</string>
+        <string>Extinguishing</string>
+        <string>Off</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="PotionEffect">
+    </BoxEnum>
+    <BoxEnum Name="PotionEffect">     
       <Values>
-        <anyType xsi:type="xsd:string">Nightsight</anyType>
-        <anyType xsi:type="xsd:string">CureLesser</anyType>
-        <anyType xsi:type="xsd:string">Cure</anyType>
-        <anyType xsi:type="xsd:string">CureGreater</anyType>
-        <anyType xsi:type="xsd:string">Agility</anyType>
-        <anyType xsi:type="xsd:string">AgilityGreater</anyType>
-        <anyType xsi:type="xsd:string">Strength</anyType>
-        <anyType xsi:type="xsd:string">StrengthGreater</anyType>
-        <anyType xsi:type="xsd:string">PoisonLesser</anyType>
-        <anyType xsi:type="xsd:string">Poison</anyType>
-        <anyType xsi:type="xsd:string">PoisonGreater</anyType>
-        <anyType xsi:type="xsd:string">PoisonDeadly</anyType>
-        <anyType xsi:type="xsd:string">Refresh</anyType>
-        <anyType xsi:type="xsd:string">RefreshTotal</anyType>
-        <anyType xsi:type="xsd:string">HealLesser</anyType>
-        <anyType xsi:type="xsd:string">Heal</anyType>
-        <anyType xsi:type="xsd:string">HealGreater</anyType>
-        <anyType xsi:type="xsd:string">ExplosionLesser</anyType>
-        <anyType xsi:type="xsd:string">Explosion</anyType>
-        <anyType xsi:type="xsd:string">ExplosionGreater</anyType>
+        <string>Nightsight</string>
+        <string>CureLesser</string>
+        <string>Cure</string>
+        <string>CureGreater</string>
+        <string>Agility</string>
+        <string>AgilityGreater</string>
+        <string>Strength</string>
+        <string>StrengthGreater</string>
+        <string>PoisonLesser</string>
+        <string>Poison</string>
+        <string>PoisonGreater</string>
+        <string>PoisonDeadly</string>
+        <string>Refresh</string>
+        <string>RefreshTotal</string>
+        <string>HealLesser</string>
+        <string>Heal</string>
+        <string>HealGreater</string>
+        <string>ExplosionLesser</string>
+        <string>Explosion</string>
+        <string>ExplosionGreater</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="BagOfSendingHue">
+    </BoxEnum>
+    <BoxEnum Name="BagOfSendingHue">     
       <Values>
-        <anyType xsi:type="xsd:string">Yellow</anyType>
-        <anyType xsi:type="xsd:string">Blue</anyType>
-        <anyType xsi:type="xsd:string">Red</anyType>
+        <string>Yellow</string>
+        <string>Blue</string>
+        <string>Red</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="MiniHouseType">
+    </BoxEnum>
+    <BoxEnum Name="MiniHouseType">     
       <Values>
-        <anyType xsi:type="xsd:string">StoneAndPlaster</anyType>
-        <anyType xsi:type="xsd:string">FieldStone</anyType>
-        <anyType xsi:type="xsd:string">SmallBrick</anyType>
-        <anyType xsi:type="xsd:string">Wooden</anyType>
-        <anyType xsi:type="xsd:string">WoodAndPlaster</anyType>
-        <anyType xsi:type="xsd:string">ThatchedRoof</anyType>
-        <anyType xsi:type="xsd:string">Brick</anyType>
-        <anyType xsi:type="xsd:string">TwoStoryWoodAndPlaster</anyType>
-        <anyType xsi:type="xsd:string">TwoStoryStoneAndPlaster</anyType>
-        <anyType xsi:type="xsd:string">Tower</anyType>
-        <anyType xsi:type="xsd:string">SmallStoneKeep</anyType>
-        <anyType xsi:type="xsd:string">Castle</anyType>
-        <anyType xsi:type="xsd:string">LargeHouseWithPatio</anyType>
-        <anyType xsi:type="xsd:string">MarbleHouseWithPatio</anyType>
-        <anyType xsi:type="xsd:string">SmallStoneTower</anyType>
-        <anyType xsi:type="xsd:string">TwoStoryLogCabin</anyType>
-        <anyType xsi:type="xsd:string">TwoStoryVilla</anyType>
-        <anyType xsi:type="xsd:string">SandstoneHouseWithPatio</anyType>
-        <anyType xsi:type="xsd:string">SmallStoneWorkshop</anyType>
-        <anyType xsi:type="xsd:string">SmallMarbleWorkshop</anyType>
+        <string>StoneAndPlaster</string>
+        <string>FieldStone</string>
+        <string>SmallBrick</string>
+        <string>Wooden</string>
+        <string>WoodAndPlaster</string>
+        <string>ThatchedRoof</string>
+        <string>Brick</string>
+        <string>TwoStoryWoodAndPlaster</string>
+        <string>TwoStoryStoneAndPlaster</string>
+        <string>Tower</string>
+        <string>SmallStoneKeep</string>
+        <string>Castle</string>
+        <string>LargeHouseWithPatio</string>
+        <string>MarbleHouseWithPatio</string>
+        <string>SmallStoneTower</string>
+        <string>TwoStoryLogCabin</string>
+        <string>TwoStoryVilla</string>
+        <string>SandstoneHouseWithPatio</string>
+        <string>SmallStoneWorkshop</string>
+        <string>SmallMarbleWorkshop</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="GasTrapType">
+    </BoxEnum>
+    <BoxEnum Name="GasTrapType">     
       <Values>
-        <anyType xsi:type="xsd:string">NorthWall</anyType>
-        <anyType xsi:type="xsd:string">WestWall</anyType>
-        <anyType xsi:type="xsd:string">Floor</anyType>
+        <string>NorthWall</string>
+        <string>WestWall</string>
+        <string>Floor</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="SawTrapType">
+    </BoxEnum>
+    <BoxEnum Name="SawTrapType">     
       <Values>
-        <anyType xsi:type="xsd:string">WestWall</anyType>
-        <anyType xsi:type="xsd:string">NorthWall</anyType>
-        <anyType xsi:type="xsd:string">WestFloor</anyType>
-        <anyType xsi:type="xsd:string">NorthFloor</anyType>
+        <string>WestWall</string>
+        <string>NorthWall</string>
+        <string>WestFloor</string>
+        <string>NorthFloor</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="SpikeTrapType">
+    </BoxEnum>
+    <BoxEnum Name="SpikeTrapType">    
       <Values>
-        <anyType xsi:type="xsd:string">WestWall</anyType>
-        <anyType xsi:type="xsd:string">NorthWall</anyType>
-        <anyType xsi:type="xsd:string">WestFloor</anyType>
-        <anyType xsi:type="xsd:string">NorthFloor</anyType>
+        <string>WestWall</string>
+        <string>NorthWall</string>
+        <string>WestFloor</string>
+        <string>NorthFloor</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="StoneFaceTrapType">
+    </BoxEnum>
+    <BoxEnum Name="StoneFaceTrapType">   
       <Values>
-        <anyType xsi:type="xsd:string">NorthWestWall</anyType>
-        <anyType xsi:type="xsd:string">NorthWall</anyType>
-        <anyType xsi:type="xsd:string">WestWall</anyType>
+        <string>NorthWestWall</string>
+        <string>NorthWall</string>
+        <string>WestWall</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="WandEffect">
+    </BoxEnum>
+    <BoxEnum Name="WandEffect">     
       <Values>
-        <anyType xsi:type="xsd:string">Clumsiness</anyType>
-        <anyType xsi:type="xsd:string">Identification</anyType>
-        <anyType xsi:type="xsd:string">Healing</anyType>
-        <anyType xsi:type="xsd:string">Feeblemindedness</anyType>
-        <anyType xsi:type="xsd:string">Weakness</anyType>
-        <anyType xsi:type="xsd:string">MagicArrow</anyType>
-        <anyType xsi:type="xsd:string">Harming</anyType>
-        <anyType xsi:type="xsd:string">Fireball</anyType>
-        <anyType xsi:type="xsd:string">GreaterHealing</anyType>
-        <anyType xsi:type="xsd:string">Lightning</anyType>
-        <anyType xsi:type="xsd:string">ManaDraining</anyType>
+        <string>Clumsiness</string>
+        <string>Identification</string>
+        <string>Healing</string>
+        <string>Feeblemindedness</string>
+        <string>Weakness</string>
+        <string>MagicArrow</string>
+        <string>Harming</string>
+        <string>Fireball</string>
+        <string>GreaterHealing</string>
+        <string>Lightning</string>
+        <string>ManaDraining</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="NpcGuild">
+    </BoxEnum>
+    <BoxEnum Name="NpcGuild">      
       <Values>
-        <anyType xsi:type="xsd:string">None</anyType>
-        <anyType xsi:type="xsd:string">MagesGuild</anyType>
-        <anyType xsi:type="xsd:string">WarriorsGuild</anyType>
-        <anyType xsi:type="xsd:string">ThievesGuild</anyType>
-        <anyType xsi:type="xsd:string">RangersGuild</anyType>
-        <anyType xsi:type="xsd:string">HealersGuild</anyType>
-        <anyType xsi:type="xsd:string">MinersGuild</anyType>
-        <anyType xsi:type="xsd:string">MerchantsGuild</anyType>
-        <anyType xsi:type="xsd:string">TinkersGuild</anyType>
-        <anyType xsi:type="xsd:string">TailorsGuild</anyType>
-        <anyType xsi:type="xsd:string">FishermensGuild</anyType>
-        <anyType xsi:type="xsd:string">BardsGuild</anyType>
-        <anyType xsi:type="xsd:string">BlacksmithsGuild</anyType>
+        <string>None</string>
+        <string>MagesGuild</string>
+        <string>WarriorsGuild</string>
+        <string>ThievesGuild</string>
+        <string>RangersGuild</string>
+        <string>HealersGuild</string>
+        <string>MinersGuild</string>
+        <string>MerchantsGuild</string>
+        <string>TinkersGuild</string>
+        <string>TailorsGuild</string>
+        <string>FishermensGuild</string>
+        <string>BardsGuild</string>
+        <string>BlacksmithsGuild</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="SolenFriendship">
+    </BoxEnum>
+    <BoxEnum Name="SolenFriendship">      
       <Values>
-        <anyType xsi:type="xsd:string">None</anyType>
-        <anyType xsi:type="xsd:string">Red</anyType>
-        <anyType xsi:type="xsd:string">Black</anyType>
+        <string>None</string>
+        <string>Red</string>
+        <string>Black</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="BoatOrder">
+    </BoxEnum>
+    <BoxEnum Name="BoatOrder">      
       <Values>
-        <anyType xsi:type="xsd:string">Move</anyType>
-        <anyType xsi:type="xsd:string">Course</anyType>
-        <anyType xsi:type="xsd:string">Single</anyType>
+        <string>Move</string>
+        <string>Course</string>
+        <string>Single</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="PlankSide">
+    </BoxEnum>
+    <BoxEnum Name="PlankSide">     
       <Values>
-        <anyType xsi:type="xsd:string">Port</anyType>
-        <anyType xsi:type="xsd:string">Starboard</anyType>
+        <string>Port</string>
+        <string>Starboard</string>
       </Values>
-    </anyType>
-    <anyType xsi:type="BoxEnum" Name="DecayLevel">
+    </BoxEnum>
+    <BoxEnum Name="DecayLevel">     
       <Values>
-        <anyType xsi:type="xsd:string">Ageless</anyType>
-        <anyType xsi:type="xsd:string">LikeNew</anyType>
-        <anyType xsi:type="xsd:string">Slightly</anyType>
-        <anyType xsi:type="xsd:string">Somewhat</anyType>
-        <anyType xsi:type="xsd:string">Fairly</anyType>
-        <anyType xsi:type="xsd:string">Greatly</anyType>
-        <anyType xsi:type="xsd:string">IDOC</anyType>
-        <anyType xsi:type="xsd:string">Collapsed</anyType>
-        <anyType xsi:type="xsd:string">DemolitionPending</anyType>
+        <string>Ageless</string>
+        <string>LikeNew</string>
+        <string>Slightly</string>
+        <string>Somewhat</string>
+        <string>Fairly</string>
+        <string>Greatly</string>
+        <string>IDOC</string>
+        <string>Collapsed</string>
+        <string>DemolitionPending</string>
       </Values>
-    </anyType>
+    </BoxEnum>
   </Enums>
 </PropsData>

@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.IO;
 using System.Reflection;
 using System.Xml.Serialization;
@@ -65,13 +67,17 @@ namespace TheBox.Data
 		/// Searches for a specified class name (or part of it)
 		/// </summary>
 		/// <param name="text">The text to search for</param>
-		/// <returns>An ArrayList of paths on the structure node. Path elements are separated by a dot.</returns>
-		public ArrayList FindClass( string text )
+		/// <returns>A List of paths on the structure node. Path elements are separated by a dot.</returns>ù
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<string> FindClass( string text )
+		// Issue 10 - End
 		{
 			text = text.ToLower();
 
 			string path = "";
-			ArrayList results = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			List<string> results = new List<string>();
+			// Issue 10 - End
 			
 			foreach( GenericNode gNode in m_Structure )
 			{
@@ -85,10 +91,12 @@ namespace TheBox.Data
 		/// Searches a GenericNode for a class name
 		/// </summary>
 		/// <param name="text">The string to search for</param>
-		/// <param name="results">The ArrayList containing the results</param>
+		/// <param name="results">The List of strings containing the results</param>
 		/// <param name="path">The current path on the structure tree</param>
 		/// <param name="node">The GenericNode to search</param>
-		private void SearchNode( string text, ArrayList results, string path, GenericNode node )
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private void SearchNode( string text, List<string> results, string path, GenericNode node )
+		// Issue 10 - End
 		{
 			if ( path == "" )
 				path += node.Name;
@@ -146,6 +154,7 @@ namespace TheBox.Data
 				FileStream stream = new FileStream( file, FileMode.Open, FileAccess.Read, FileShare.ReadWrite );
 				XmlSerializer serializer = new XmlSerializer( typeof( PropsData ) );
 				pd = serializer.Deserialize( stream ) as PropsData;
+
 				return pd;
 			}
 			catch ( Exception err )
@@ -187,7 +196,9 @@ namespace TheBox.Data
 
 				for ( int i = 0; i < 2; i++ )
 				{
-					nodes[ i ] = DoNodeSimple( m_Structure[ i ] as GenericNode );
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					nodes[ i ] = DoNodeSimple( m_Structure[ i ] );
+					// Issue 10 - End
 				}
 			}
 			else
@@ -206,7 +217,9 @@ namespace TheBox.Data
 		private TreeNode DoNodeSimple( GenericNode gNode )
 		{
 			TreeNode node = new TreeNode( gNode.Name );
-			node.Tag = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			node.Tag = new List<object>();
+			// Issue 10 - End
 
 			for ( int i = 0; i < gNode.Elements.Count; i++ )
 			{
@@ -214,13 +227,15 @@ namespace TheBox.Data
 
 				if ( obj is BoxProp )
 				{
-					( node.Tag as ArrayList ).Add( obj as BoxProp );
+					( node.Tag as List<object> ).Add( obj as BoxProp );
 				}
 				else if ( obj is GenericNode )
 				{
 					TreeNode sub = DoNodeSimple( obj as GenericNode );
 
-					if ( ( sub.Tag as ArrayList ).Count > 0 || sub.Nodes.Count > 0 )
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					if ( ( sub.Tag as List<object> ).Count > 0 || sub.Nodes.Count > 0 )
+					// Issue 10 - End
 					{
 						node.Nodes.Add( sub );
 					}
@@ -244,7 +259,9 @@ namespace TheBox.Data
 
 				for ( int i = 0; i < 2; i++ )
 				{
-					nodes[ i ] = DoNode( m_Structure[ i ] as GenericNode );
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					nodes[ i ] = DoNode( m_Structure[ i ] );
+					// Issue 10 - End
 				}
 			}
 			else
@@ -263,7 +280,9 @@ namespace TheBox.Data
 		private TreeNode DoNode( GenericNode gNode )
 		{
 			TreeNode node = new TreeNode( gNode.Name );
-			node.Tag = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			node.Tag = new List<object>();
+			// Issue 10 - End
 
 			for ( int i = 0; i < gNode.Elements.Count; i++ )
 			{
@@ -271,7 +290,9 @@ namespace TheBox.Data
 
 				if ( obj is BoxProp )
 				{
-					( node.Tag as ArrayList ).Add( obj as BoxProp );
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					( node.Tag as List<object> ).Add( obj as BoxProp );
+					// Issue 10 - End
 				}
 				else if ( obj is GenericNode )
 				{
@@ -281,17 +302,18 @@ namespace TheBox.Data
 
 			return node;
 		}
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<GenericNode> m_Structure;
+		private List<BoxEnum> m_Enums;
 
-		private ArrayList m_Structure;
-		private ArrayList m_Enums;
-
-		public ArrayList Structure
+		public List<GenericNode> Structure
 		{
 			get { return m_Structure; }
 			set { m_Structure = value; }
 		}
 
-		public ArrayList Enums
+		public List<BoxEnum> Enums
+		// Issue 10 - End
 		{
 			get { return m_Enums; }
 			set { m_Enums = value; }
@@ -299,8 +321,10 @@ namespace TheBox.Data
 
 		public PropsData()
 		{
-			m_Structure = new ArrayList();
-			m_Enums = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_Structure = new List<GenericNode>();
+			m_Enums = new List<BoxEnum>();
+			// Issue 10 - End
 		}
 	}
 
@@ -387,7 +411,9 @@ namespace TheBox.Data
 	public class BoxEnum
 	{
 		private string m_Name;
-		private ArrayList m_Values;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<string> m_Values;
+		// Issue 10 - End
 
 		[ XmlAttribute ]
 		/// <summary>
@@ -402,7 +428,9 @@ namespace TheBox.Data
 		/// <summary>
 		/// Gets or sets the possible values for this enum
 		/// </summary>
-		public ArrayList Values
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<string> Values
+		// Issue 10 - End
 		{
 			get { return m_Values; }
 			set { m_Values = value; }
@@ -413,7 +441,46 @@ namespace TheBox.Data
 		/// </summary>
 		public BoxEnum()
 		{
-			m_Values = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_Values = new List<string>();
+			// Issue 10 - End
 		}
 	}
+
+	/*public class SupportProps : PropsData
+	{
+		private List<GenericNode> m_Structure;
+		private List<SupportBoxEnum> m_Enums;
+
+		public List<GenericNode> StructureS
+		{
+			get { return m_Structure; }
+			set { m_Structure = value; }
+		}
+
+		public List<SupportBoxEnum> EnumsS
+		{
+			get { return m_Enums; }
+			set { m_Enums = value; }
+		}
+		public SupportProps()
+		{
+
+		}
+	}
+
+	public class SupportBoxEnum : BoxEnum
+	{
+		private List<string> m_Values;
+
+		public List<string> ValuesS
+		{
+			get { return m_Values; }
+			set { m_Values = value; }
+		}
+		public SupportBoxEnum()
+		{
+
+		}
+	}*/
 }

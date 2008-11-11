@@ -1,6 +1,8 @@
 using System;
 using System.Xml.Serialization;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.Windows.Forms;
 
 namespace TheBox.Data
@@ -52,13 +54,16 @@ namespace TheBox.Data
 		{
 			get { return m_Ascending; }
 		}
-
-		private ArrayList m_Notes;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<Note> m_Notes;
+		// Issue 10 - End
 
 		/// <summary>
 		/// Gets or sets the list of available notes
 		/// </summary>
-		public ArrayList NotesList
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<Note> NotesList
+		// Issue 10 - End
 		{
 			get { return m_Notes; }
 			set { m_Notes = value; }
@@ -107,7 +112,9 @@ namespace TheBox.Data
 		/// </summary>
 		public Notes()
 		{
-			m_Notes = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_Notes = new List<Note>();
+			// Issue 10 - End
 		}
 
 		public TreeNode[] TreeNodes
@@ -118,7 +125,9 @@ namespace TheBox.Data
 
 				for ( int i = 0; i < nodes.Length; i++ )
 				{
-					Note note = m_Notes[ i ] as Note;
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					Note note = m_Notes[ i ];
+					// Issue 10 - End
 
 					nodes[ i ] = new TreeNode( note.Name );
 					nodes[ i ].Tag = note;
@@ -138,7 +147,9 @@ namespace TheBox.Data
 		private string[] m_Text;
 		private NotePriority m_Priority = NotePriority.Normal;
 		private DateTime m_Date;
-		private ArrayList m_Locations = null;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<Location> m_Locations = null;
+		// Issue 10 - End
 		private ContextMenu m_LocationsMenu = null;
 
 		[ XmlAttribute ]
@@ -183,7 +194,9 @@ namespace TheBox.Data
 		/// <summary>
 		/// Gets or sets the locations associated with this note
 		/// </summary>
-		public ArrayList Locations
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<Location> Locations
+		// Issue 10 - End
 		{
 			get { return m_Locations; }
 			set { m_Locations = value; }
@@ -200,18 +213,20 @@ namespace TheBox.Data
 			}
 		}
 
-		public Note( string name )
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public Note( string name ) : base()
 		{
-			m_Date = DateTime.Now;
+			//m_Date = DateTime.Now;
 			m_Name = name;
-			m_Locations = new ArrayList();
+			//m_Locations = new ArrayList();
 		}
 
 		public Note()
 		{
 			m_Date = DateTime.Now;
-			m_Locations = new ArrayList();
+			m_Locations = new List<Location>();
 		}
+		// Issue 10 - End
 
 		/// <summary>
 		/// Gets the locations menu
@@ -353,7 +368,9 @@ namespace TheBox.Data
 		{
 			int index = m_LocationsMenu.MenuItems.IndexOf( sender as MenuItem ) - 3;
 
-			Location loc = m_Locations[ index ] as Location;
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			Location loc = m_Locations[ index ];
+			// Issue 10 - End
 
 			Pandora.Profile.Commands.DoGo( loc.X, loc.Y, loc.Z, loc.Map );
 		}

@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
@@ -484,7 +486,9 @@ namespace TheBox.Pages
 
 			if ( Pandora.Profile.Props.ShowAllProps )
 			{
-				ArrayList nodes = new ArrayList();
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				List<TreeNode> nodes = new List<TreeNode>();
+				// Issue 10 - End
 
 				nodes.AddRange( GetDeclaredProps( cNode ) );
 
@@ -492,7 +496,9 @@ namespace TheBox.Pages
 
 				while( parent != null )
 				{
-					ArrayList newNodes = new ArrayList( GetDeclaredProps( parent ) );					
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					List<TreeNode> newNodes = new List<TreeNode>( GetDeclaredProps( parent ) );
+					// Issue 10 - End
 					RemoveDuplicates( newNodes, nodes );
 
 					if ( newNodes.Count > 0 )
@@ -515,11 +521,13 @@ namespace TheBox.Pages
 		}
 
 		/// <summary>
-		/// Removes the duplicates in an ArrayList
+		/// Removes the duplicates in a List of TreeNode
 		/// </summary>
-		/// <param name="from">The ArrayList from which the duplicates should be removed</param>
-		/// <param name="existing">The ArrayList the should be used as comparison</param>
-		private void RemoveDuplicates( ArrayList from, ArrayList existing )
+		/// <param name="from">The List from which the duplicates should be removed</param>
+		/// <param name="existing">The List the should be used as comparison</param>
+		/// // Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private void RemoveDuplicates( List<TreeNode> from, List<TreeNode> existing )
+		// Issue 10 - End
 		{
 			foreach ( TreeNode n in existing )
 			{
@@ -538,7 +546,9 @@ namespace TheBox.Pages
 		/// <param name="text">The text to search for</param>
 		/// <param name="nodes">The collection of nodes to search</param>
 		/// <returns>The TreeNode if found, null otherwise</returns>
-		private TreeNode NodeExists( string text, ArrayList nodes )
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private TreeNode NodeExists( string text, List<TreeNode> nodes )
+		// Issue 10 - End
 		{
 			foreach ( TreeNode node in nodes )
 			{
@@ -558,9 +568,11 @@ namespace TheBox.Pages
 		/// <returns>An array of TreeNodes</returns>
 		private TreeNode[] GetDeclaredProps( TreeNode cNode )
 		{
-			ArrayList props = cNode.Tag as ArrayList;
-
-			ArrayList nodes = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			List<object> props = cNode.Tag as List<object>;
+			
+			List<TreeNode> nodes = new List<TreeNode>();
+			// Issue 10 - End
 
 			foreach ( BoxProp p in props )
 			{
@@ -683,7 +695,9 @@ namespace TheBox.Pages
 				RefreshSearches();
 
 				// Do the search
-				ArrayList results = PropsData.Props.FindClass( search );
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				List<string> results = PropsData.Props.FindClass( search );
+				// Issue 10 - End
 
 				if ( results.Count == 0 )
 				{
@@ -691,7 +705,9 @@ namespace TheBox.Pages
 				}
 				else if ( results.Count == 1 )
 				{
-					DisplaySearchResult( (string) results[ 0 ] );
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					DisplaySearchResult( results[ 0 ] );
+					// Issue 10 - End
 				}
 				else
 				{
@@ -705,8 +721,9 @@ namespace TheBox.Pages
 					selector.ShowDialog();
 
 					int index = selector.SelectedClass;
-
-					DisplaySearchResult( (string) results[ index ] );
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					DisplaySearchResult( results[ index ] );
+					// Issue 10 - End
 				}
 
 				cmbSearch.Text = "";

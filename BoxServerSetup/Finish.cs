@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
@@ -82,7 +81,9 @@ namespace BoxServerSetup
 			
 			for( int i = 0; i < lines.Length; i++ )
 			{
-				lines[ i ] = (string) Setup.Log[ i ];
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				lines[ i ] = Setup.Log[ i ];
+				// Issue 10 - End
 			}
 
 			tx.Lines = lines;

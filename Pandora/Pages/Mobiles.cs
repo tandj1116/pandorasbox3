@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
@@ -705,10 +707,12 @@ namespace TheBox.Pages
 
 				if ( NodeIsGroup( e.Node ) )
 				{
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 					// Spawn Groups
-					if ( e.Node.Tag is ArrayList )
+					if ( e.Node.Tag is List<object> )
 					{
-						ArrayList list = e.Node.Tag as ArrayList;
+						List<object> list = e.Node.Tag as List<object>;
+						// Issue 10 - End
 
 						foreach ( BoxSpawn spawn in list )
 						{
@@ -720,12 +724,16 @@ namespace TheBox.Pages
 				}
 				else
 				{
-					if ( e.Node.Tag is ArrayList )
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					if ( e.Node.Tag is List<object> )
+					// Issue 10 - End
 					{
 						tMob.BeginUpdate();
 						tMob.Nodes.Clear();
 
-						TreeNode[] nodes = Pandora.Mobiles.GetDataNodes( e.Node.Tag as ArrayList );
+						// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+						TreeNode[] nodes = Pandora.Mobiles.GetDataNodes( e.Node.Tag as List<object> );
+						// Issue 10 - End
 
 						if ( nodes != null )
 						{
@@ -1220,7 +1228,9 @@ namespace TheBox.Pages
 		private void mCatAddCat_Click(object sender, System.EventArgs e)
 		{
 			TreeNode node = new TreeNode( "NewCategory" );
-			node.Tag = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			node.Tag = new List<object>();
+			// Issue 10 - End
 
 			tCat.Nodes.Add( node );
 
@@ -1266,7 +1276,9 @@ namespace TheBox.Pages
 		private void mCatAddSub_Click(object sender, System.EventArgs e)
 		{
 			TreeNode node = new TreeNode( "NewSubsection" );
-			node.Tag = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			node.Tag = new List<object>();
+			// Issue 10 - End
 
 			if ( m_SpawnNode )
 			{
@@ -1383,7 +1395,9 @@ namespace TheBox.Pages
 
 			if ( qm.ShowDialog() == DialogResult.OK )
 			{
-				ArrayList list = tCat.SelectedNode.Tag as ArrayList;
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				List<object> list = tCat.SelectedNode.Tag as List<object>;
+				// Issue 10 - End
 
 				list.Add( qm.Mobile );
 				list.Sort();
@@ -1410,7 +1424,9 @@ namespace TheBox.Pages
 
 				if ( qm.ShowDialog() == DialogResult.OK )
 				{
-					ArrayList list = tCat.SelectedNode.Tag as ArrayList;
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					List<object> list = tCat.SelectedNode.Tag as List<object>;
+					// Issue 10 - End
 
 					list.Sort();
 
@@ -1455,8 +1471,10 @@ namespace TheBox.Pages
 				bool spawn = ( tMob.SelectedNode.Tag is BoxSpawn );
 
 				int index = tMob.Nodes.IndexOf( tMob.SelectedNode );
-			
-				( tCat.SelectedNode.Tag as ArrayList ).RemoveAt( index );
+
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				( tCat.SelectedNode.Tag as List<object> ).RemoveAt( index );
+				// Issue 10 - End
 			
 				TreeNode next = tMob.SelectedNode.NextNode;
 				if ( next == null )
@@ -1557,9 +1575,11 @@ namespace TheBox.Pages
 
 			if ( ! m_SpawnEdit )
 			{
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 				// Add a new spawn
-				( m_SpawnParent.Tag as ArrayList ).Add( m_SpawnForm.Spawn );
-				( m_SpawnParent.Tag as ArrayList ).Sort();
+				( m_SpawnParent.Tag as List<object> ).Add( m_SpawnForm.Spawn );
+				( m_SpawnParent.Tag as List<object> ).Sort();
+				// Issue 10 - End
 			}
 
 			if ( tCat.SelectedNode == m_SpawnParent )

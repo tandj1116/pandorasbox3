@@ -1,11 +1,14 @@
 using System;
 using System.IO;
-using System.Collections;
+// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+using System.Collections.Generic;
+// Issue 10 - End
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Xml.Serialization;
 using System.Text.RegularExpressions;
 using System.Reflection;
+using System.Windows.Forms;
 
 using TheBox.Common;
 
@@ -20,22 +23,28 @@ namespace TheBox.Data
 	[ XmlInclude( typeof( GenericNode ) ) ]
 	public class BoxData
 	{
-		private ArrayList m_Items;
-		private ArrayList m_Mobiles;
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<object> m_Items;
+		private List<object> m_Mobiles;
+		// Issue 10 - End
 
 		/// <summary>
 		/// Creates a new BoxData object
 		/// </summary>
 		public BoxData()
 		{
-			m_Items = new ArrayList();
-			m_Mobiles = new ArrayList();
+			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+			m_Items = new List<object>();
+			m_Mobiles = new List<object>();
+			// Issue 10 - End
 		}
 
 		/// <summary>
 		/// Gets or sets the Items structure
 		/// </summary>
-		public ArrayList Items
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<object> Items
+		// Issue 10 - End
 		{
 			get { return m_Items; }
 			set { m_Items = value; }
@@ -44,7 +53,9 @@ namespace TheBox.Data
 		/// <summary>
 		/// Gets or sets the Mobiles structure
 		/// </summary>
-		public ArrayList Mobiles
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		public List<object> Mobiles
+		// Issue 10 - End
 		{
 			get { return m_Mobiles; }
 			set { m_Mobiles = value; }
@@ -83,9 +94,11 @@ namespace TheBox.Data
 		/// <param name="where">The list to search for the node</param>
 		/// <param name="path"></param>
 		/// <returns></returns>
-		private GenericNode GetNode( ArrayList where, StringCollection path )
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private GenericNode GetNode( List<object> where, StringCollection path )
 		{
-			ArrayList list = where;
+			List<object> list = where;
+			// Issue 10 - End
 			GenericNode node = null;
 
 			foreach ( string s in path )
@@ -121,7 +134,9 @@ namespace TheBox.Data
 		/// <param name="where">The list of items to search for the node</param>
 		/// <param name="name">The name of the node to search for</param>
 		/// <returns>The node, if found. Null otherwise.</returns>
-		private GenericNode FindNode( ArrayList where, string name )
+		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private GenericNode FindNode( List<object> where, string name )
+		// Issue 10 - End
 		{
 			name = name.ToLower();
 
@@ -275,4 +290,66 @@ namespace TheBox.Data
 	}
 
 	#endregion
+
+	[XmlInclude(typeof(SupportBoxItem))]
+	public class SupportBoxData : BoxData
+	{
+		private List<GenericNode> m_Items;
+		private List<GenericNode> m_Mobiles;
+		
+		public List<GenericNode> ItemsS
+		{
+			get { return m_Items; }
+			set { m_Items = value; }
+		}
+
+		public List<GenericNode> MobilesS
+		{
+			get { return m_Mobiles; }
+			set { m_Mobiles = value; }
+		}
+
+		public SupportBoxData()
+		{
+
+		}
+	}
+	[XmlInclude(typeof(SupportConstructorDef))]
+	public class SupportBoxItem : BoxItem
+	{
+		private List<SupportConstructorDef> m_AdditionalConstructors;
+		
+		public List<SupportConstructorDef> AdditionalConstructorsS
+		{
+			get { return m_AdditionalConstructors; }
+			set { m_AdditionalConstructors = value; }
+		}
+
+		public SupportBoxItem()
+		{
+
+		}
+	}
+	[XmlInclude(typeof(ItemDef))]
+	public class SupportConstructorDef : ConstructorDef
+	{
+		private List<ItemDef> m_List1;
+		private List<ItemDef> m_List2;
+
+		public List<ItemDef> List1S
+		{
+			get { return m_List1; }
+			set { m_List1 = value; }
+		}
+		public List<ItemDef> List2S
+		{
+			get { return m_List2; }
+			set { m_List2 = value; }
+		}
+
+		public SupportConstructorDef()
+		{
+
+		}
+	}
 }
