@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 // associated with an assembly.
 //
 [assembly: AssemblyTitle("Pandora's Box")]
-[assembly: AssemblyDescription("Pandora's Box 2")]
+[assembly: AssemblyDescription("Pandora's Box 3")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("")]
