@@ -183,7 +183,7 @@
     <EmbeddedResource Include="rooftiles.cfg" />
     <EmbeddedResource Include="Skills.ini" />
     <EmbeddedResource Include="SoundData.xml" />
-    <Content Include="map4.xml" />
+    <EmbeddedResource Include="map4.xml" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
