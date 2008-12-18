@@ -531,6 +531,12 @@ namespace TheBox
 			m_Context.MakeNewProfile();
 		}
 
+		public static void ClosePandora()
+		{
+			Process process = Process.GetCurrentProcess();
+			process.Kill();
+		}
+
 		/// <summary>
 		/// Restarts Pandora's Box
 		/// </summary>
@@ -658,7 +664,9 @@ namespace TheBox
 		{
 			get
 			{
-				string folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Pandora's Box 2");
+				// Issue 11 - Change profile directory - http://code.google.com/p/pandorasbox3/issues/detail?id=11 - Smjert
+				string folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Pandora's Box 3");
+				// Issue 11 - End
 				Utility.EnsureDirectory(folder);
 				return folder;
 			}
