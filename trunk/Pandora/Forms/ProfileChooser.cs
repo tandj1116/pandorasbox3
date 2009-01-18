@@ -102,7 +102,7 @@ namespace TheBox.Forms
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(ProfileChooser));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProfileChooser));
 			this.bNew = new System.Windows.Forms.Button();
 			this.bChoose = new System.Windows.Forms.Button();
 			this.bExit = new System.Windows.Forms.Button();
@@ -147,8 +147,8 @@ namespace TheBox.Forms
 			this.list.Name = "list";
 			this.list.Size = new System.Drawing.Size(152, 147);
 			this.list.TabIndex = 4;
-			this.list.MouseDown += new System.Windows.Forms.MouseEventHandler(this.list_MouseDown);
 			this.list.SelectedIndexChanged += new System.EventHandler(this.list_SelectedIndexChanged);
+			this.list.MouseDown += new System.Windows.Forms.MouseEventHandler(this.list_MouseDown);
 			// 
 			// chkDefault
 			// 
@@ -175,6 +175,9 @@ namespace TheBox.Forms
 			this.Name = "ProfileChooser";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Profile Chooser";
+			//Kons - Issue 5 - Choosing profile box appears behind splash screen - http://code.google.com/p/pandorasbox3/issues/detail?id=5
+			this.TopMost = true;
+			//End Issue 5
 			this.Load += new System.EventHandler(this.ProfileChooser_Load);
 			this.ResumeLayout(false);
 
