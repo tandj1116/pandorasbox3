@@ -4,6 +4,75 @@
         <name>MapViewer</name>
     </assembly>
     <members>
+        <member name="T:TheBox.MapViewer.MapSizes">
+            <summary>
+            Provides the sizes of the UO maps
+            </summary>
+        </member>
+        <member name="M:TheBox.MapViewer.MapSizes.GetSize(System.Int32)">
+            <summary>
+            Gets the size of a map
+            </summary>
+            <param name="mapfile">The index of the map</param>
+            <returns>A Size object representing the size of the map</returns>
+        </member>
+        <member name="P:TheBox.MapViewer.MapSizes.FeluccaML">
+            <summary>
+            Gets the size of the Felucca ML map
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapSizes.Felucca">
+            <summary>
+            Gets the size of the Felucca map
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapSizes.Trammel">
+            <summary>
+            Gets the size of the Trammel map
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapSizes.Ilshenar">
+            <summary>
+            Gets the size of the Ilshenar map
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapSizes.Malas">
+            <summary>
+            Gets the size of the Malas map
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapSizes.Tokuno">
+            <summary>
+            Gets the size of the Tokuno islands map
+            </summary>
+        </member>
+        <member name="T:TheBox.MapViewer.MouseOnDrawObjectEventHandler">
+            <summary>
+            Occurs when a mouse pointer hovers over a draw object
+            </summary>
+        </member>
+        <member name="T:TheBox.MapViewer.DrawObjectEventArgs">
+            <summary>
+            Contains data for events related to map draw objects
+            </summary>
+        </member>
+        <member name="M:TheBox.MapViewer.DrawObjectEventArgs.#ctor(TheBox.MapViewer.DrawObjects.IMapDrawable,System.Drawing.Point)">
+            <summary>
+            Creates a new EventArgs for use with draw objects
+            </summary>
+            <param name="drawobject">The IMapDrawable object used as data for this args</param>
+            <param name="point">The point that originated the event</param>
+        </member>
+        <member name="P:TheBox.MapViewer.DrawObjectEventArgs.DrawObject">
+            <summary>
+            Gets the IMapDrawable object contained in this args
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.DrawObjectEventArgs.Point">
+            <summary>
+            Gets the location on the control surface of the draw object
+            </summary>
+        </member>
         <member name="T:TheBox.MapViewer.Maps">
             <summary>
             List of supported maps as of Age of Shadows
@@ -993,33 +1062,6 @@
             Gets the size of a StaticData object
             </summary>
         </member>
-        <member name="T:TheBox.MapViewer.MouseOnDrawObjectEventHandler">
-            <summary>
-            Occurs when a mouse pointer hovers over a draw object
-            </summary>
-        </member>
-        <member name="T:TheBox.MapViewer.DrawObjectEventArgs">
-            <summary>
-            Contains data for events related to map draw objects
-            </summary>
-        </member>
-        <member name="M:TheBox.MapViewer.DrawObjectEventArgs.#ctor(TheBox.MapViewer.DrawObjects.IMapDrawable,System.Drawing.Point)">
-            <summary>
-            Creates a new EventArgs for use with draw objects
-            </summary>
-            <param name="drawobject">The IMapDrawable object used as data for this args</param>
-            <param name="point">The point that originated the event</param>
-        </member>
-        <member name="P:TheBox.MapViewer.DrawObjectEventArgs.DrawObject">
-            <summary>
-            Gets the IMapDrawable object contained in this args
-            </summary>
-        </member>
-        <member name="P:TheBox.MapViewer.DrawObjectEventArgs.Point">
-            <summary>
-            Gets the location on the control surface of the draw object
-            </summary>
-        </member>
         <member name="T:TheBox.MapViewer.DrawObjects.IMapDrawable">
             <summary>
             The interface that must be implemented by any draw object used on a MapViewer
@@ -1268,43 +1310,6 @@
         <member name="P:TheBox.MapViewer.DrawObjects.MapCircle.FillColor">
             <summary>
             Gets or sets the fill color of the circle
-            </summary>
-        </member>
-        <member name="T:TheBox.MapViewer.MapSizes">
-            <summary>
-            Provides the sizes of the UO maps
-            </summary>
-        </member>
-        <member name="M:TheBox.MapViewer.MapSizes.GetSize(System.Int32)">
-            <summary>
-            Gets the size of a map
-            </summary>
-            <param name="mapfile">The index of the map</param>
-            <returns>A Size object representing the size of the map</returns>
-        </member>
-        <member name="P:TheBox.MapViewer.MapSizes.Felucca">
-            <summary>
-            Gets the size of the Felucca map
-            </summary>
-        </member>
-        <member name="P:TheBox.MapViewer.MapSizes.Trammel">
-            <summary>
-            Gets the size of the Trammel map
-            </summary>
-        </member>
-        <member name="P:TheBox.MapViewer.MapSizes.Ilshenar">
-            <summary>
-            Gets the size of the Ilshenar map
-            </summary>
-        </member>
-        <member name="P:TheBox.MapViewer.MapSizes.Malas">
-            <summary>
-            Gets the size of the Malas map
-            </summary>
-        </member>
-        <member name="P:TheBox.MapViewer.MapSizes.Tokuno">
-            <summary>
-            Gets the size of the Tokuno islands map
             </summary>
         </member>
     </members>
