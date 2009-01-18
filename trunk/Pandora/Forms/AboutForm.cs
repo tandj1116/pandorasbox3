@@ -296,7 +296,9 @@ namespace TheBox.Forms
 			this.labVersion.Name = "labVersion";
 			this.labVersion.Size = new System.Drawing.Size(109, 16);
 			this.labVersion.TabIndex = 13;
-			this.labVersion.Text = "3.0.0.0 pre-Alpha";
+			//Kons - Version - Issue 16 : http://code.google.com/p/pandorasbox3/issues/detail?id=16
+			this.labVersion.Text = Application.ProductVersion;
+			//End Issue 16
 			// 
 			// groupBox2
 			// 
