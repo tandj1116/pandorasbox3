@@ -2,7 +2,9 @@ Pandora's Box 3.0.0.1
 - Fixed Profile appearing behind splash screen
 - Fixed Mondain's Legacy maps Sizes.
 - Now the Box will read from map1.mul statics1.mul informations about Trammel.
-- Changed Profile directory : now you'll find profiles at "\User\AppData\Roaming\Pandora's Box 3"
+- Changed Profile directory : now you'll find profiles at
+	VISTA USERS: "..\Users\YOURUSER\AppData\Roaming\Pandora's Box 3" 
+	XP USERS: "..\Documents And Settings\YOURUSER\ApplicationData\Pandora's Box 3" 
 - About Box will display version correctly.
 
 Pandora's Box 3.0 alpha version:
