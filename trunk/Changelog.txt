@@ -1,0 +1,13 @@
+Pandora's Box 3.0.0.1
+- Fixed Profile appearing behind splash screen
+- Fixed Mondain's Legacy maps Sizes.
+- Now the Box will read from map1.mul statics1.mul informations about Trammel.
+- Changed Profile directory : now you'll find profiles at "\User\AppData\Roaming\Pandora's Box 3"
+- About Box will display version correctly.
+
+Pandora's Box 3.0 alpha version:
+
+- Fixed some compile/performance errors
+- Disabled Next button when creating a new profile and map rendering.
+- Remove obsolete code
+- Converted all the code (except for BoxServer) from Net Framework 2.0 to Net Framework 3.5.
