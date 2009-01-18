@@ -236,13 +236,15 @@ namespace TheBox.MapViewer
 			string stadifi = m_MulManager[ "stadifi{0}.mul", index ];
 			string stadifl = m_MulManager[ "stadifl.mul", index ];
 			string col = m_MulManager[ "radarcol.mul", index ];
-
-			if ( index == 1 )
+			//Kons - Issue 15 - Trammel - http://code.google.com/p/pandorasbox3/issues/detail?id=15
+			//Deleted:
+			/*if ( index == 1 )
 			{
 				mapfile = m_MulManager[ "map0.mul" ];
 				sta = m_MulManager[ "statics0.mul" ];
 				staidx =m_MulManager[ "staidx0.mul" ];
-			}
+			}*/
+			//Kons Issue End.
 
 			if ( !File.Exists( col ) )
 			{
@@ -287,7 +289,7 @@ namespace TheBox.MapViewer
 			fixed ( short* pColorMap = ColorMap )
 			{
 				// Issue 7 - Handle Warnings - http://code.google.com/p/pandorasbox3/issues/detail?id=7&can=1 - Kons
-        ReadFile(colstream.SafeFileHandle.DangerousGetHandle(), pColorMap, 131072, &n, 0);
+				ReadFile(colstream.SafeFileHandle.DangerousGetHandle(), pColorMap, 131072, &n, 0);
 				// Issue 7 - End
 			}
 
