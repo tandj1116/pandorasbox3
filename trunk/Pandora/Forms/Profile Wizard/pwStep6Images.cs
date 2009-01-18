@@ -78,7 +78,7 @@ namespace TheBox.Forms.ProfileWizard
 		{
 			ProfileWizard wiz = Wizard as ProfileWizard;
 			// Issue 2 - Next button enabled in wizard - http://code.google.com/p/pandorasbox3/issues/detail?id=2&can=1 - Kons
-      wiz.NextEnabled = false;
+			wiz.NextEnabled = false;
 			// Issue 2 - End
 			wiz.Profile.GenerateMaps( PBar );
 			wiz.Profile.CreateMapFiles();
