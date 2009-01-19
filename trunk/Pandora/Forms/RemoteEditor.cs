@@ -157,9 +157,9 @@ namespace TheBox.Forms
 
 		private void tb_TextChanged(object sender, System.EventArgs e)
 		{
-            //Kons - Issue 3: useless
+			// Issue 3 - useless - http://code.google.com/p/pandorasbox3/issues/detail?id=3 - Kons
 			//m_Modified = true;
-            //Kons End
+			// Issue 3 - End
 			m_Text = tb.Text;
 		}
 

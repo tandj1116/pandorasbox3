@@ -8,7 +8,7 @@ namespace TheBox.MapViewer
 	/// </summary>
 	public class MapSizes
 	{
-		//Kons - Issue 13 - ML map sizes - http://code.google.com/p/pandorasbox3/issues/detail?id=13
+		// Issue 13 - ML map sizes - http://code.google.com/p/pandorasbox3/issues/detail?id=13 - Kons
 		/// <summary>
 		/// Gets the size of the Felucca ML map
 		/// </summary>
@@ -16,7 +16,7 @@ namespace TheBox.MapViewer
 		{
 			get { return new Size(7168, 4096); }
 		}
-		//End Issue 13
+		// Issue 13 - End
 
 		/// <summary>
 		/// Gets the size of the Felucca map
