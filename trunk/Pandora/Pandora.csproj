@@ -25,7 +25,8 @@
     <OldToolsVersion>0.0</OldToolsVersion>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -38,7 +39,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -92,9 +92,6 @@
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
-    <Reference Include="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
     <Reference Include="System.Data">
       <Name>System.Data</Name>
     </Reference>
@@ -145,262 +142,353 @@
     <EmbeddedResource Include="App.ico" />
     <EmbeddedResource Include="Box.resx">
       <DependentUpon>Box.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Buttons\BoxButton.resx">
       <DependentUpon>BoxButton.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Buttons\BoxMenuEditor.resx">
       <DependentUpon>BoxMenuEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Buttons\BoxMenuItem.resx">
       <DependentUpon>BoxMenuItem.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Buttons\ButtonEditor.resx">
       <DependentUpon>ButtonEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Buttons\MultiCommandEditor.resx">
       <DependentUpon>MultiCommandEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Buttons\SimpleCommand.resx">
       <DependentUpon>SimpleCommand.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\BooleanControl.resx">
       <DependentUpon>BooleanControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\DateTimeControl.resx">
       <DependentUpon>DateTimeControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\DecoMover.resx">
       <DependentUpon>DecoMover.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\EnumControl.resx">
       <DependentUpon>EnumControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\HueMenuItem.resx">
       <DependentUpon>HueMenuItem.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Params\BoolParam.resx">
       <DependentUpon>BoolParam.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Params\ConstructorsViewer.resx">
       <DependentUpon>ConstructorsViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Params\DateTimeParam.resx">
       <DependentUpon>DateTimeParam.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Params\EnumParam.resx">
       <DependentUpon>EnumParam.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Params\MapParam.resx">
       <DependentUpon>MapParam.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Params\NumericParam.resx">
       <DependentUpon>NumericParam.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Params\Point3DForm.resx">
       <DependentUpon>Point3DForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Params\Point3DParam.resx">
       <DependentUpon>Point3DParam.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Params\TextParam.resx">
       <DependentUpon>TextParam.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Params\TimeSpanForm.resx">
       <DependentUpon>TimeSpanForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Params\TimeSpanParam.resx">
       <DependentUpon>TimeSpanParam.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Point3DControl.resx">
       <DependentUpon>Point3DControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\PropManager.resx">
       <DependentUpon>PropManager.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\RecentHuesMenu.resx">
       <DependentUpon>RecentHuesMenu.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\TileList.resx">
       <DependentUpon>TileList.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\TimeSpanControl.resx">
       <DependentUpon>TimeSpanControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\UOGrid.resx">
       <DependentUpon>UOGrid.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\BoxServerForm.resx">
       <DependentUpon>BoxServerForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\BuilderControl.resx">
       <DependentUpon>BuilderControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CapForm.resx">
       <DependentUpon>CapForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ClientList.resx">
       <DependentUpon>ClientList.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Editors\QuickDeco.resx">
       <DependentUpon>QuickDeco.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Editors\QuickItem.resx">
       <DependentUpon>QuickItem.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Editors\QuickLocation.resx">
       <DependentUpon>QuickLocation.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Editors\QuickMobile.resx">
       <DependentUpon>QuickMobile.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Editors\QuickSpawnGroup.resx">
       <DependentUpon>QuickSpawnGroup.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FilterBuilder.resx">
       <DependentUpon>FilterBuilder.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\GenericLongMessage.resx">
       <DependentUpon>GenericLongMessage.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\HuePicker.resx">
       <DependentUpon>HuePicker.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\HueSelector.resx">
       <DependentUpon>HueSelector.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LauncherForm.resx">
       <DependentUpon>LauncherForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MapFilesForm.resx">
       <DependentUpon>MapFilesForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MulManagerForm.resx">
       <DependentUpon>MulManagerForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OptionsForm.resx">
       <DependentUpon>OptionsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PointForm.resx">
       <DependentUpon>PointForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PopUpForm.resx">
       <DependentUpon>PopUpForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Profile Wizard\LanguageSelector.resx">
       <DependentUpon>LanguageSelector.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Profile Wizard\ProfileWizard.resx">
       <DependentUpon>ProfileWizard.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Profile Wizard\pwStep1.resx">
       <DependentUpon>pwStep1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Profile Wizard\pwStep3Name.resx">
       <DependentUpon>pwStep3Name.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Profile Wizard\pwStep4Folder.resx">
       <DependentUpon>pwStep4Folder.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Profile Wizard\pwStep5aMapNames.resx">
       <DependentUpon>pwStep5aMapNames.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Profile Wizard\pwStep6bServer.resx">
       <DependentUpon>pwStep6bServer.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Profile Wizard\pwStep6Images.resx">
       <DependentUpon>pwStep6Images.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Profile Wizard\pwStep7End.resx">
       <DependentUpon>pwStep7End.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Profile Wizard\Step5CustomMap.resx">
       <DependentUpon>Step5CustomMap.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ProfileChooser.resx">
       <DependentUpon>ProfileChooser.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\QuickHue.resx">
       <DependentUpon>QuickHue.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RandomTiler.resx">
       <DependentUpon>RandomTiler.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RandomTileTemplate.resx">
       <DependentUpon>RandomTileTemplate.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RemoteEditor.resx">
       <DependentUpon>RemoteEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ScriptViewer.resx">
       <DependentUpon>ScriptViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SearchForm.resx">
       <DependentUpon>SearchForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SearchResultsSelector.resx">
       <DependentUpon>SearchResultsSelector.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SimpleTextEntry.resx">
       <DependentUpon>SimpleTextEntry.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SpawnForm.resx">
       <DependentUpon>SpawnForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\StringListForm.resx">
       <DependentUpon>StringListForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\VisualClientList.resx">
       <DependentUpon>VisualClientList.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\WorldMap.resx">
       <DependentUpon>WorldMap.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Deco.resx">
       <DependentUpon>Deco.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Doors.resx">
       <DependentUpon>Doors.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\General.resx">
       <DependentUpon>General.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Items.resx">
       <DependentUpon>Items.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Lights.resx">
       <DependentUpon>Lights.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Mobiles.resx">
       <DependentUpon>Mobiles.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Notes.resx">
       <DependentUpon>Notes.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Props.resx">
       <DependentUpon>Props.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Tools.resx">
       <DependentUpon>Tools.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Travel.resx">
       <DependentUpon>Travel.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Pandora.resx">
       <DependentUpon>Pandora.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="pbp.ico" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Roofing\RoofingForm.resx">
       <DependentUpon>RoofingForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -595,7 +683,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Data\BoxData.cs">
-      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Data\BoxDeco.cs">
       <SubType>Code</SubType>
@@ -607,7 +694,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Data\Decorator.cs">
-      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Data\DoorsData.cs">
       <SubType>Code</SubType>
@@ -876,6 +962,11 @@
     <Compile Include="Pandora.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Roofing\Roof.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -906,25 +997,18 @@
     <Compile Include="Utility\Splash.cs">
       <SubType>Code</SubType>
     </Compile>
+    <None Include="BoxServer\Builder\vssver.scc" />
+    <None Include="BoxServer\Explorer\vssver.scc" />
+    <None Include="BoxServer\Messages\vssver.scc" />
+    <None Include="BoxServer\vssver.scc" />
     <None Include="Pandora.exe.config" />
     <None Include="Pandora.exe.manifest" />
     <Content Include="Library\TSWizards.dll" />
     <Content Include="Library\Ultima.dll" />
     <Content Include="Library\zlib.dll" />
-    <Content Include="Reference\Beta03.txt" />
-    <Content Include="Reference\Beta05.txt" />
-    <Content Include="Reference\Beta07.txt">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="Reference\Beta2.txt" />
-    <Content Include="Reference\RC1.txt" />
-    <Content Include="Reference\Release 2.htm" />
-    <Content Include="Reference\Release 3.htm" />
-    <Content Include="Reference\Release 4.htm" />
     <Content Include="Reference\Roofing.cs">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="Reference\Sizes.txt" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
