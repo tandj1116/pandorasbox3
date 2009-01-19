@@ -236,15 +236,15 @@ namespace TheBox.MapViewer
 			string stadifi = m_MulManager[ "stadifi{0}.mul", index ];
 			string stadifl = m_MulManager[ "stadifl.mul", index ];
 			string col = m_MulManager[ "radarcol.mul", index ];
-			//Kons - Issue 15 - Trammel - http://code.google.com/p/pandorasbox3/issues/detail?id=15
-			//Deleted:
-			/*if ( index == 1 )
+
+			// Issue 15 - Trammel has own map after ML - http://code.google.com/p/pandorasbox3/issues/detail?id=15 - Kons
+			if (index == 1 && (!File.Exists(mapfile)))
 			{
-				mapfile = m_MulManager[ "map0.mul" ];
-				sta = m_MulManager[ "statics0.mul" ];
-				staidx =m_MulManager[ "staidx0.mul" ];
-			}*/
-			//Kons Issue End.
+				mapfile = m_MulManager["map0.mul"];
+				sta = m_MulManager["statics0.mul"];
+				staidx = m_MulManager["staidx0.mul"];
+			}
+			// Issue 15 - End.
 
 			if ( !File.Exists( col ) )
 			{
