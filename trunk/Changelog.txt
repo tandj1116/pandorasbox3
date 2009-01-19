@@ -1,3 +1,9 @@
+Pandora's Box 3.0.0.2
+- All project will compile with Net Framework 2.0
+- Trammel has own map after ML
+- Fixed LanguageSelector appearing behind splash screen
+- Corrected AboutForm staff names
+
 Pandora's Box 3.0.0.1
 - Fixed Profile appearing behind splash screen
 - Fixed Mondain's Legacy maps Sizes.
@@ -12,4 +18,4 @@ Pandora's Box 3.0 alpha version:
 - Fixed some compile/performance errors
 - Disabled Next button when creating a new profile and map rendering.
 - Remove obsolete code
-- Converted all the code (except for BoxServer) from Net Framework 2.0 to Net Framework 3.5.
+- Converted all the code (except for BoxServer) from Net Framework 1.0 to Net Framework 2.0.
