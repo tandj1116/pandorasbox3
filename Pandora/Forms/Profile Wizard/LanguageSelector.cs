@@ -83,6 +83,10 @@ namespace TheBox.Forms.ProfileWizard
 			this.Load += new System.EventHandler(this.LanguageSelector_Load);
 			this.ResumeLayout(false);
 
+			// Issue 17 - Language selector appears behind SplashScreen - http://code.google.com/p/pandorasbox3/issues/detail?id=17 - Smjert
+			this.TopMost = true;
+			// Issue 17 - End
+
 		}
 		#endregion
 
