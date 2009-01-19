@@ -73,6 +73,8 @@ namespace TheBox.Forms
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.pnl = new System.Windows.Forms.Panel();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.label1 = new System.Windows.Forms.Label();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.label14 = new System.Windows.Forms.Label();
 			this.label13 = new System.Windows.Forms.Label();
@@ -87,13 +89,11 @@ namespace TheBox.Forms
 			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
 			this.label2 = new System.Windows.Forms.Label();
 			this.labVersion = new System.Windows.Forms.Label();
-			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.label1 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.pnl.SuspendLayout();
 			this.panel1.SuspendLayout();
-			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
+			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// bClose
@@ -137,6 +137,25 @@ namespace TheBox.Forms
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(431, 179);
 			this.panel1.TabIndex = 0;
+			// 
+			// groupBox2
+			// 
+			this.groupBox2.Controls.Add(this.label1);
+			this.groupBox2.Location = new System.Drawing.Point(8, 32);
+			this.groupBox2.Name = "groupBox2";
+			this.groupBox2.Size = new System.Drawing.Size(124, 131);
+			this.groupBox2.TabIndex = 8;
+			this.groupBox2.TabStop = false;
+			this.groupBox2.Text = "Pandora\'s 3.0 staff:";
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(7, 18);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(55, 52);
+			this.label1.TabIndex = 0;
+			this.label1.Text = "- Smjert\r\n- Kons\r\n- Neo\r\n- Dies Irae";
 			// 
 			// groupBox1
 			// 
@@ -300,25 +319,6 @@ namespace TheBox.Forms
 			this.labVersion.Text = Application.ProductVersion;
 			//End Issue 16
 			// 
-			// groupBox2
-			// 
-			this.groupBox2.Controls.Add(this.label1);
-			this.groupBox2.Location = new System.Drawing.Point(8, 32);
-			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(124, 131);
-			this.groupBox2.TabIndex = 8;
-			this.groupBox2.TabStop = false;
-			this.groupBox2.Text = "Pandora\'s 3.0 staff:";
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(7, 18);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(55, 78);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "- Smjert\r\n- Kons\r\n- Neo\r\n- Midnight\r\n- Volturno\r\n- Dies Irae";
-			// 
 			// AboutForm
 			// 
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
@@ -341,10 +341,10 @@ namespace TheBox.Forms
 			this.pnl.ResumeLayout(false);
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
-			this.groupBox1.ResumeLayout(false);
-			this.groupBox1.PerformLayout();
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox2.PerformLayout();
+			this.groupBox1.ResumeLayout(false);
+			this.groupBox1.PerformLayout();
 			this.ResumeLayout(false);
 
 		}

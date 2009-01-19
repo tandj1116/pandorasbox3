@@ -175,9 +175,9 @@ namespace TheBox.Forms
 			this.Name = "ProfileChooser";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Profile Chooser";
-			//Kons - Issue 5 - Choosing profile box appears behind splash screen - http://code.google.com/p/pandorasbox3/issues/detail?id=5
+			// Issue 5 - Choosing profile box appears behind splash screen - http://code.google.com/p/pandorasbox3/issues/detail?id=5 - Kons
 			this.TopMost = true;
-			//End Issue 5
+			// Issue 5 - End
 			this.Load += new System.EventHandler(this.ProfileChooser_Load);
 			this.ResumeLayout(false);
 

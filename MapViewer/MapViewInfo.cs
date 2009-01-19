@@ -411,19 +411,19 @@ namespace TheBox.MapViewer
 			{
 				case Maps.Felucca:
 				case Maps.Trammel:
-					//Kons - Issue 13 - ML map sizes - http://code.google.com/p/pandorasbox3/issues/detail?id=13
+					// Issue 13 - ML map sizes - http://code.google.com/p/pandorasbox3/issues/detail?id=13 - Kons
 					m_MapSize = MapSizes.FeluccaML;
-					//End
+					// Issue 13 - End
 					break;
 				case Maps.Ilshenar:
-					//Kons - Issue 13 - ML map sizes - http://code.google.com/p/pandorasbox3/issues/detail?id=13
+					// Issue 13 - ML map sizes - http://code.google.com/p/pandorasbox3/issues/detail?id=13 - Kons
 					m_MapSize = MapSizes.Ilshenar;
-					//End
+					// Issue 13- End
 					break;
 				case Maps.Malas:
-					//Kons - Issue 13 - ML map sizes - http://code.google.com/p/pandorasbox3/issues/detail?id=13
+					// Issue 13 - ML map sizes - http://code.google.com/p/pandorasbox3/issues/detail?id=13 - Kons
 					m_MapSize = MapSizes.Malas;
-					//End
+					// Issue 13 - End
 					break;
 				case Maps.Tokuno:
 					m_MapSize = MapSizes.Tokuno;

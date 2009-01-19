@@ -62,11 +62,12 @@ namespace TheBox.Forms
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(SplashScreen));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SplashScreen));
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.labVersion = new System.Windows.Forms.Label();
 			this.m_ActionLabel = new System.Windows.Forms.Label();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// pictureBox1
@@ -90,18 +91,18 @@ namespace TheBox.Forms
 			// 
 			// labVersion
 			// 
-			this.labVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.labVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.labVersion.ForeColor = System.Drawing.Color.White;
 			this.labVersion.Location = new System.Drawing.Point(56, 352);
 			this.labVersion.Name = "labVersion";
 			this.labVersion.Size = new System.Drawing.Size(48, 16);
 			this.labVersion.TabIndex = 2;
-			this.labVersion.Text = "2.0.0.3";
+			this.labVersion.Text = "3.0.0.2";
 			this.labVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// m_ActionLabel
 			// 
-			this.m_ActionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.m_ActionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.m_ActionLabel.ForeColor = System.Drawing.Color.White;
 			this.m_ActionLabel.Location = new System.Drawing.Point(320, 352);
 			this.m_ActionLabel.Name = "m_ActionLabel";
@@ -124,6 +125,7 @@ namespace TheBox.Forms
 			this.Name = "SplashScreen";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Pandora\'s Box 2";
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 
 		}
