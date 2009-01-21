@@ -9,7 +9,7 @@ namespace TheBox.Data
 		GameMaster = 2,
 		Seer = 3,
 		Administrator = 4,
-		//Update Access Level -Neo
+		//Update Skill - Issue 18 http://code.google.com/p/pandorasbox3/issues/detail?id=18 -Neo
 		Developer = 5,
 		Owner =6
 		//Update Access Level -End
