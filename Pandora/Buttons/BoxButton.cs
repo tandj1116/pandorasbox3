@@ -21,13 +21,16 @@ namespace TheBox.Buttons
 
 		private void BuildMenu()
 		{
-			mEdit = new MenuItem( Pandora.TextProvider[ "Common.Edit" ], new EventHandler( EditButton ) );
-			mClear = new MenuItem( Pandora.TextProvider[ "Common.Clear" ], new EventHandler( ClearButton ) );
-			mImport = new MenuItem( Pandora.TextProvider[ "Common.Import" ], new EventHandler( ImportButton ) );
-			mExport = new MenuItem( Pandora.TextProvider[ "Common.Export" ], new EventHandler( ExportButton ) );
-			mRestore = new MenuItem( Pandora.TextProvider[ "Common.RestoreDefault" ], new EventHandler( RestoreDefault ) );
+            if (Pandora.TextProvider != null)
+            {
+                mEdit = new MenuItem(Pandora.TextProvider["Common.Edit"], new EventHandler(EditButton));
+                mEdit = new MenuItem(Pandora.TextProvider["Common.Edit"], new EventHandler(EditButton));
+                mClear = new MenuItem(Pandora.TextProvider["Common.Clear"], new EventHandler(ClearButton));
+                mImport = new MenuItem(Pandora.TextProvider["Common.Import"], new EventHandler(ImportButton));
+                mExport = new MenuItem(Pandora.TextProvider["Common.Export"], new EventHandler(ExportButton));
+                mRestore = new MenuItem(Pandora.TextProvider["Common.RestoreDefault"], new EventHandler(RestoreDefault));
 
-			m_Menu = new ContextMenu( new MenuItem[]
+                m_Menu = new ContextMenu(new MenuItem[]
 				{
 					mEdit,
 					mClear,
@@ -36,9 +39,10 @@ namespace TheBox.Buttons
 					mExport,
 					new MenuItem( "-" ),
 					mRestore
-				} );
+				});
 
-			m_Menu.Popup += new EventHandler( MenuPopup );
+                m_Menu.Popup += new EventHandler(MenuPopup);
+            }
 		}
 
 		private void MenuPopup( object sender, EventArgs e )
@@ -233,9 +237,12 @@ namespace TheBox.Buttons
 			{
 				BuildMenu();
 			}
-			catch
+			catch (Exception ex)
 			{
-				// Only to avoid issues with VS
+                // Issue 6:  	 Improve error management - Tarion
+                //Pandora.Log.WriteError(ex, "BuildMenu() failed");
+                throw new Exception("BuildMenu() failed", ex);
+                // End Issue 6
 			}
 		}
 
