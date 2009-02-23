@@ -280,9 +280,14 @@ namespace TheBox.Lang
 					// English doesn't exist either. This is wrong.
 					System.Windows.Forms.MessageBox.Show( "Pandora's Box couldn't locate a required component (English.dll). Please reinstall the program to address this issue." );
 					Pandora.Log.WriteError( null, "English.dll not found. Closing." );
+                    // Issue 6:  	 Improve error management - Tarion
+                    Pandora.ClosePandora();
+                    // Is this executed?
 					throw new Exception( "Default language file not found" );
+                    // End Issue 6
 				}
 			}
+
 
 			try
 			{

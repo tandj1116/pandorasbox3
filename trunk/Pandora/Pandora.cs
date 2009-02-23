@@ -139,8 +139,16 @@ namespace TheBox
 				if (m_TextProvider == null)
 				{
 					// m_TextProvider = TheBox.Lang.TextProvider.Deserialize( @"D:\Dev\Pandora 2.0\Pandora\Language\English.xml" );
-
-					m_TextProvider = TheBox.Lang.TextProvider.GetLanguage();
+                    // Issue 6:  	 Improve error management - Tarion
+                    try
+                    {
+                        m_TextProvider = TheBox.Lang.TextProvider.GetLanguage();
+                    }
+                    catch
+                    {
+                        return null;
+                    }
+                    // End Issue 6
 				}
 
 				return m_TextProvider;
@@ -1334,7 +1342,10 @@ namespace TheBox
 			{
 				Clipboard.SetDataObject(err.ToString(), true);
 				MessageBox.Show("An error occurred. The error text has been placed on your clipboard, use CTRL+V to paste it in a text file.");
-			}
+                // Issue 6:  	 Improve error management - Tarion
+                Environment.Exit(1);
+                // End Issue 6:
+            }
 		}
 
 		/// <summary>
@@ -1495,8 +1506,12 @@ namespace TheBox
 				catch (Exception err)
 				{
 					Pandora.Log.WriteError(err, string.Format("Profile {0} failed.", name));
-
-					Application.Exit();
+                    // Issue 6:  	 Improve error management - Tarion
+                    // Application.Exit(); Did not worked correctly
+                    // We could use:  Environment.Exit(1);
+                    // But better forward the exception to the main function an cancel program there
+                    throw err;
+                    // End Issue 6
 				}
 			}
 

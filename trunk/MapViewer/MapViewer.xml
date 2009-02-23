@@ -4,5 +4,1313 @@
         <name>MapViewer</name>
     </assembly>
     <members>
+        <member name="T:TheBox.MapViewer.DrawObjects.IMapDrawable">
+            <summary>
+            The interface that must be implemented by any draw object used on a MapViewer
+            </summary>
+        </member>
+        <member name="M:TheBox.MapViewer.DrawObjects.IMapDrawable.IsVisible(System.Drawing.Rectangle,TheBox.MapViewer.Maps)">
+            <summary>
+            Evaluates the visibility of the object on the portion of the map currently displayed
+            </summary>
+            <param name="bounds">The bounds of the current map view</param>
+            <param name="map">The current map</param>
+            <returns></returns>
+        </member>
+        <member name="M:TheBox.MapViewer.DrawObjects.IMapDrawable.Draw(System.Drawing.Graphics,TheBox.MapViewer.MapViewInfo)">
+            <summary>
+            Draws a draw object on the map viewer
+            </summary>
+            <param name="g">The graphics object on which the drawing happens</param>
+            <param name="ViewInfo">Information about the map view currently used on the control</param>
+        </member>
+        <member name="T:TheBox.MapViewer.DrawObjects.MapRectangle">
+            <summary>
+            A rectangle displayed on the map
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.DrawObjects.MapRectangle.m_Location">
+            <summary>
+            The rectangle coordinates (on the map)
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.DrawObjects.MapRectangle.m_Map">
+            <summary>
+            The map on which the object is drawn
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.DrawObjects.MapRectangle.m_Color">
+            <summary>
+            The color for the rectangle border
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.DrawObjects.MapRectangle.m_FillColor">
+            <summary>
+            The color for the fill of the rectangle
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.DrawObjects.MapRectangle.m_Fill">
+            <summary>
+            States whether to fill the rectangle or not
+            </summary>
+        </member>
+        <member name="M:TheBox.MapViewer.DrawObjects.MapRectangle.#ctor(System.Drawing.Rectangle,TheBox.MapViewer.Maps,System.Drawing.Color,System.Drawing.Color)">
+            <summary>
+            Creates a new Rectangle object that can be drawn on the mapviewer and that is filled inside
+            </summary>
+            <param name="location">The rectangle in map coordinates</param>
+            <param name="map"></param>
+            <param name="color">The color for the border of the rectangle</param>
+            <param name="fillColor">The color for the fill of the rectangle</param>
+        </member>
+        <member name="M:TheBox.MapViewer.DrawObjects.MapRectangle.#ctor(System.Drawing.Rectangle,TheBox.MapViewer.Maps,System.Drawing.Color)">
+            <summary>
+            Creates a non-filled rectangle that can be drawn on the map viewer
+            </summary>
+            <param name="location">The rectangle in map coordinates</param>
+            <param name="map">The map on which this object is drawn</param>
+            <param name="color">The color for the border</param>
+        </member>
+        <member name="M:TheBox.MapViewer.DrawObjects.MapRectangle.IsVisible(System.Drawing.Rectangle,TheBox.MapViewer.Maps)">
+            <summary>
+            Calculates whether the rectangle is visible on the given map portion
+            </summary>
+            <param name="bounds">A rectangle object describing the bounds of the map portion currently displayed</param>
+            <param name="map">The map on which the rectangle is drawn</param>
+            <returns>True if the object is visible on the map porion or not</returns>
+        </member>
+        <member name="M:TheBox.MapViewer.DrawObjects.MapRectangle.Draw(System.Drawing.Graphics,TheBox.MapViewer.MapViewInfo)">
+            <summary>
+            Draws the rectangle on the provided Graphics
+            </summary>
+            <param name="g">The graphics on which the drawing happens</param>
+            <param name="ViewInfo">Information about the current map view</param>
+        </member>
+        <member name="P:TheBox.MapViewer.DrawObjects.MapRectangle.Rectangle">
+            <summary>
+            The rectangle coordinates (in map units)
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.DrawObjects.MapRectangle.Color">
+            <summary>
+            Gets or sets the color of the border
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.DrawObjects.MapRectangle.FillColor">
+            <summary>
+            Gets or sets the color of the fill
+            </summary>
+        </member>
+        <member name="T:TheBox.MapViewer.DrawObjects.MapCross">
+            <summary>
+            A cross displayed either at a given location or at the center of the screen
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.DrawObjects.MapCross.m_Location">
+            <summary>
+            The map coordinates at which the cross is drawn
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.DrawObjects.MapCross.m_Color">
+            <summary>
+            The color that the cross should use
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.DrawObjects.MapCross.m_Map">
+            <summary>
+            The map on which the object is drawn
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.DrawObjects.MapCross.m_Length">
+            <summary>
+            The length of a segment composing the cross in pixels
+            </summary>
+        </member>
+        <member name="M:TheBox.MapViewer.DrawObjects.MapCross.#ctor(System.Int32,System.Drawing.Color,System.Drawing.Point,TheBox.MapViewer.Maps)">
+            <summary>
+            Creates a cross that is displayed at a given location on a given map
+            </summary>
+            <param name="segmentLength">The length of each cross segment</param>
+            <param name="color">The color of the cross</param>
+            <param name="location">The location of the cross</param>
+            <param name="map">The map on which the cross lies on</param>
+        </member>
+        <member name="M:TheBox.MapViewer.DrawObjects.MapCross.IsVisible(System.Drawing.Rectangle,TheBox.MapViewer.Maps)">
+            <summary>
+            Evaluates whether the cross is visible on the given view
+            </summary>
+            <param name="bounds">The bounds of the map view (in map coordinates)</param>
+            <param name="map">The map displayed</param>
+            <returns>True is the cross is visible, false otherwise</returns>
+        </member>
+        <member name="M:TheBox.MapViewer.DrawObjects.MapCross.Draw(System.Drawing.Graphics,TheBox.MapViewer.MapViewInfo)">
+            <summary>
+            Draws the rectangle on the provided Graphics
+            </summary>
+            <param name="g">The graphics on which the drawing happens</param>
+            <param name="ViewInfo">Information about the current map view</param>
+        </member>
+        <member name="P:TheBox.MapViewer.DrawObjects.MapCross.Color">
+            <summary>
+            The color of the cross
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.DrawObjects.MapCross.Length">
+            <summary>
+            The length of each segment composing the cross ( in pixels )
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.DrawObjects.MapCross.Location">
+            <summary>
+            The point at which the cross is drawn
+            </summary>
+        </member>
+        <member name="T:TheBox.MapViewer.DrawObjects.MapCircle">
+            <summary>
+            A circle displayed ont he map
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.DrawObjects.MapCircle.m_Map">
+            <summary>
+            The map on which the circle is drawn
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.DrawObjects.MapCircle.m_Location">
+            <summary>
+            The location at which the circle is drawn
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.DrawObjects.MapCircle.m_Radius">
+            <summary>
+            The radius of the circle
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.DrawObjects.MapCircle.m_Color">
+            <summary>
+            The color of the border
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.DrawObjects.MapCircle.m_FillColor">
+            <summary>
+            The color of the fill
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.DrawObjects.MapCircle.m_Fill">
+            <summary>
+            States whether the circle should be filled or not
+            </summary>
+        </member>
+        <member name="M:TheBox.MapViewer.DrawObjects.MapCircle.#ctor(System.Int32,System.Drawing.Point,TheBox.MapViewer.Maps,System.Drawing.Color)">
+            <summary>
+            Creates a MapCircle object at a given location, without any fill
+            </summary>
+            <param name="radius">The radius of the circle</param>
+            <param name="location">The location at which the circle is displayed</param>
+            <param name="map">The map on which the circle is displayed</param>
+            <param name="color">The color of the border</param>
+        </member>
+        <member name="M:TheBox.MapViewer.DrawObjects.MapCircle.#ctor(System.Int32,System.Drawing.Point,TheBox.MapViewer.Maps,System.Drawing.Color,System.Drawing.Color)">
+            <summary>
+            Creates a MapCircle object at a given location, filled inside
+            </summary>
+            <param name="radius">The radius of the circle</param>
+            <param name="location">The location at which the circle is displayed</param>
+            <param name="map">The map on which the circle is displayed</param>
+            <param name="color">The color of the border</param>
+            <param name="fillColor">The color of the fill</param>
+        </member>
+        <member name="M:TheBox.MapViewer.DrawObjects.MapCircle.IsVisible(System.Drawing.Rectangle,TheBox.MapViewer.Maps)">
+            <summary>
+            Decided whether the circle is visible on the specified map view
+            </summary>
+            <param name="bounds">The bounds of the map portion currently displayed</param>
+            <param name="map">The map currently displayed</param>
+            <returns>True if the circle is visible, false otherwise</returns>
+        </member>
+        <member name="M:TheBox.MapViewer.DrawObjects.MapCircle.Draw(System.Drawing.Graphics,TheBox.MapViewer.MapViewInfo)">
+            <summary>
+            Draws the circle
+            </summary>
+            <param name="g">The Graphics object used for the drawing</param>
+            <param name="ViewInfo">Information about the current map view</param>
+        </member>
+        <member name="P:TheBox.MapViewer.DrawObjects.MapCircle.Location">
+            <summary>
+            The location of the center of the circle
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.DrawObjects.MapCircle.Radius">
+            <summary>
+            The radius of the circle in map units
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.DrawObjects.MapCircle.Color">
+            <summary>
+            Gets or sets the color for circle border
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.DrawObjects.MapCircle.FillColor">
+            <summary>
+            Gets or sets the fill color of the circle
+            </summary>
+        </member>
+        <member name="T:TheBox.MapViewer.Maps">
+            <summary>
+            List of supported maps as of Age of Shadows
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.Maps.AllMaps">
+            <summary>
+            This identifies all the maps. Should be used only to create draw objects that display on all maps
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.Maps.Felucca">
+            <summary>
+            Map defined by the 0 index
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.Maps.Trammel">
+            <summary>
+            Map defined by the 0 index for the base files and 1 for the patch files
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.Maps.Ilshenar">
+            <summary>
+            Map defined by the 2 index
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.Maps.Malas">
+            <summary>
+            Map defined by the 3 index
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.Maps.Tokuno">
+            <summary>
+            Map defined by index 4, the Tokuno Islands
+            </summary>
+        </member>
+        <member name="T:TheBox.MapViewer.MapNavigation">
+            <summary>
+            Specifies the map navigation mode
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapNavigation.None">
+            <summary>
+            No built in navigation is used
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapNavigation.LeftMouseButton">
+            <summary>
+            Navigation by left mouse button
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapNavigation.RightMouseButton">
+            <summary>
+            Navigation by right mouse button
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapNavigation.MiddleMouseButton">
+            <summary>
+            Navigation by middle mouse button
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapNavigation.AnyMouseButton">
+            <summary>
+            Navigation by any mouse button
+            </summary>
+        </member>
+        <member name="T:TheBox.MapViewer.MapViewer">
+            <summary>
+            Ultima Online map viewer
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewer.StaticOffset">
+            <summary>
+            The offset used to lookup colors for static objects in Radarcol.mul
+            </summary>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.#ctor">
+            <summary>
+            Creates a MapViewer control
+            </summary>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.OnMapLocationChanged(System.EventArgs)">
+            <summary>
+            Occurs when the location corresponding to the center of the control changes
+            </summary>
+            <param name="e">Standard EventArgs</param>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.OnMapChanged(System.EventArgs)">
+            <summary>
+            Occurs when the map is changed
+            </summary>
+            <param name="e">Standard EventArgs</param>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.OnZoomLevelChanged(System.EventArgs)">
+            <summary>
+            Fires the ZoomLevelChanged event
+            </summary>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.ExtractMap(TheBox.MapViewer.Maps,TheBox.MapViewer.MapViewer.MapScale,System.String)">
+            <summary>
+            Extracts an image displaying the full map
+            </summary>
+            <param name="map">The map that should be extracted</param>
+            <param name="scale">The scale value</param>
+            <param name="FileName">The target filename</param>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            This does the actual drawing of the control
+            </summary>
+            <param name="e">The Event Args for the OnPaint event</param>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.CreateImage">
+            <summary>
+            Creates the image used for drawing the control
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewer.m_Map">
+            <summary>
+            The map currently displayed
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewer.m_isRefreshed">
+            <summary>
+            Specifies whether the control has been refreshed and doesn't need to be redrawn
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewer.m_drawStatics">
+            <summary>
+            Specifies whether the map should draw statics or not
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewer.m_ColorMap">
+            <summary>
+            The list of the colors for the map display
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewer.m_MapBlocks">
+            <summary>
+            The blocks used to display the current map part
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewer.m_Image">
+            <summary>
+            The image used to draw the control
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewer.m_LeftBlock">
+            <summary>
+            The leftmost valid block read from file
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewer.m_RightBlock">
+            <summary>
+            The rightmost block read from file
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewer.m_TopBlock">
+            <summary>
+            The topmost block read from file
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewer.m_BottomBlock">
+            <summary>
+            The bottom block read from file
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewer.m_MapPatch">
+            <summary>
+            Patch information for the map
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewer.m_StaPatch">
+            <summary>
+            Patch information for the statics
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewer.m_DisplayErrors">
+            <summary>
+            Error display on the control surface
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewer.m_DrawObjects">
+            <summary>
+            The list of the objects drawn on the map
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewer.m_ShowCross">
+            <summary>
+            Displays the cross at the center of the map
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewer.m_ViewInfo">
+            <summary>
+            Contains all the information about the current view of the map on the control
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewer.m_MulManager">
+            <summary>
+            The file manager to use with Pandora's Box
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewer.m_WheelZoom">
+            <summary>
+            Specifies whether the map viewer should zoom when using the mouse wheel
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewer.m_Navigation">
+            <summary>
+            Specifies the built in navigation mode
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewer.m_XRayView">
+            <summary>
+            Specifies the X-Ray mode where statics below the map are displayed
+            </summary>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.OnResize(System.EventArgs)">
+            <summary>
+            Overriden OnResize event handler
+            </summary>
+            <param name="e">Provided by the framework</param>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.OnMouseWheel(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Handles zooming with the wheel
+            </summary>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.OnMouseDown(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Handles the mouse down event to provide built in map navigation
+            </summary>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.GetMulFile(TheBox.MapViewer.MapViewer.MulFileType,TheBox.MapViewer.Maps)">
+            <summary>
+            Gets the string corresponding to the specified file for a given map
+            </summary>
+            <param name="MulType">The MulFileType value stating which file is being requested</param>
+            <param name="map">The map referenced by the requested file</param>
+            <returns></returns>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.GetMapIndex">
+            <summary>
+            Gets the value corresponding to the map currently selected. 1 for Trammel
+            </summary>
+            <returns>The progressive number of the selected map</returns>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.GetMulFile(TheBox.MapViewer.MapViewer.MulFileType,System.Int32)">
+            <summary>
+            Gets the full path of the specified mul file
+            </summary>
+            <param name="MulType">The type of mul file</param>
+            <param name="MapIndex">The map index that will be appended in the filename</param>
+            <returns>The full path of the chosen file</returns>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.MulTypeToString(TheBox.MapViewer.MapViewer.MulFileType)">
+            <summary>
+            Retrieves the string corresponding to the given MulFileType
+            </summary>
+            <param name="MulType">The MulFileType that must be converted to string</param>
+            <returns>A string that represents the initial name of the mul file specified by MulFileType</returns>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.ValidatePath">
+            <summary>
+            Ensures that the currently selected path includes the files necessary to display the map
+            </summary>
+            <returns>True if the required files are on the path, false otherwise</returns>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.GeneratePatchData">
+            <summary>
+            Reads the Difl files needed for patching purposes
+            </summary>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.LoadRadarcol">
+            <summary>
+            Reads the Radarcol.mul file to retrieve the color
+            </summary>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.ControlToMap(System.Drawing.Point)">
+            <summary>
+            Converts a point on the control surface to map coordinates
+            </summary>
+            <param name="point">A point on the surface of the control</param>
+            <returns>The point in map coordinates</returns>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.ControlToMapX(System.Int32)">
+            <summary>
+            Converts a horizontal coordinate from the control to map
+            </summary>
+            <param name="x">The x coordinate on the control</param>
+            <returns>The x coordinate on the map</returns>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.ControlToMapY(System.Int32)">
+            <summary>
+            Converts a vertical coordinate on the control to map coordinates
+            </summary>
+            <param name="y">The y coordinate on the control</param>
+            <returns>The corresponding y coordinate on the map</returns>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.InvalidateMap">
+            <summary>
+            Invalidates the control and forces it to redraw
+            </summary>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.ZoomIn">
+            <summary>
+            Increases the zoom level by one point
+            </summary>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.ZoomOut">
+            <summary>
+            Decreases the zoom level by one point
+            </summary>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.AddDrawObject(TheBox.MapViewer.DrawObjects.IMapDrawable)">
+            <summary>
+            Adds a new draw object to the map and redraws the map
+            </summary>
+            <param name="drawObject">The IMapDrawable object that should be added</param>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.AddDrawObject(TheBox.MapViewer.DrawObjects.IMapDrawable,System.Boolean)">
+            <summary>
+            Adds a new draw object to the map
+            </summary>
+            <param name="drawObject">The IMapDrawable object that is being added to the map</param>
+            <param name="refresh">Specifies whether the map should be redrawn after the object is added</param>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.RemoveDrawObject(TheBox.MapViewer.DrawObjects.IMapDrawable)">
+            <summary>
+            Removes a draw object from the list of displayed objects
+            </summary>
+            <param name="drawObject">The draw object to be removed</param>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.RemoveAllDrawObjects">
+            <summary>
+            Removes all draw objects
+            </summary>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.GetMapHeight">
+            <summary>
+            Gets the height of the map at the center point of the control
+            </summary>
+            <returns>The height of the map at its center location</returns>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.GetMapHeight(System.Drawing.Point,System.Int32)">
+            <summary>
+            Gets the height of the map at a given point in the control and on a given map
+            </summary>
+            <param name="point">The point to search for height</param>
+            <param name="mapIndex">The map on which the point is</param>
+            <returns>The height corresponding to the point</returns>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.GetMapHeight(System.Drawing.Point)">
+            <summary>
+            Calculates the height of the map at a given location
+            </summary>
+            <param name="point">The point of the map (in map units)</param>
+            <returns>The height of the given point</returns>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewer.FindDrawObject(System.Drawing.Point,System.Int32)">
+            <summary>
+            Finds the draw object located at a given spot
+            </summary>
+            <param name="location">A point on the control surface</param>
+            <param name="range">The number of pixels to consider as range for the search</param>
+            <returns>A IMapDrawable object, or null</returns>
+        </member>
+        <member name="E:TheBox.MapViewer.MapViewer.MapLocationChanged">
+            <summary>
+            The coordinates of the center of the control have been changed
+            </summary>
+        </member>
+        <member name="E:TheBox.MapViewer.MapViewer.MapChanged">
+            <summary>
+            The map displayed by the control has changed
+            </summary>
+        </member>
+        <member name="E:TheBox.MapViewer.MapViewer.ZoomLevelChanged">
+            <summary>
+            Occurs when the zoom level in the map viewer has been changed
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewer.Navigation">
+            <summary>
+            Gets or sets the navigation style
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewer.RotateView">
+            <summary>
+            States whether the view should be rotated
+            This feature is NOT supported and currently buggy because it doesn't work properly on all sizes
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewer.ZoomLevel">
+            <summary>
+            The zoom level of the map. Acceptable values are from -3 to 4.
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewer.DrawStatics">
+            <summary>
+            Gets or sets a value specifying whether the map viewer should display statics or not
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewer.MapWidth">
+            <summary>
+            Gets the width of the current map
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewer.MapHeight">
+            <summary>
+            Gets the height of the current map
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewer.XBlocks">
+            <summary>
+            Gets the number of horizontal map blocks for the current map
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewer.YBlocks">
+            <summary>
+            Gets the number of vertical map blocks for the current map
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewer.Center">
+            <summary>
+            Gets or sets the coordinates of the center of the map
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewer.Map">
+            <summary>
+            Gets or sets the displayed map
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewer.DisplayErrors">
+            <summary>
+            Gets or sets a value stating whether error messages get displayed on the control surface
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewer.ShowCross">
+            <summary>
+            Controls the display of a small cross at the center of the control
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewer.DrawObjects">
+            <summary>
+            Gets or sets the list of drawing objects on the map
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewer.MulManager">
+            <summary>
+            Gets or sets the mul file manager
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewer.MulFileManager">
+            <summary>
+            Gets the mul file manager
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewer.WheelZoom">
+            <summary>
+            States whether the map viewer can use the mouse wheel for zoom purposes
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewer.XRayView">
+            <summary>
+            Specifies the X-Ray view mode
+            </summary>
+        </member>
+        <member name="T:TheBox.MapViewer.MapViewer.MapScale">
+            <summary>
+            Scale for the extracted image from the map
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewer.MapScale.Full">
+            <summary>
+            Each pixel is extracted
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewer.MapScale.Half">
+            <summary>
+            One pixel in two is drawn
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewer.MapScale.Fourth">
+            <summary>
+            One pixel in four is drawn
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewer.MapScale.Eigth">
+            <summary>
+            One pixel in eight is drawn
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewer.MapScale.Sixteenth">
+            <summary>
+            One pixel in two blocks is drawn
+            </summary>
+        </member>
+        <member name="T:TheBox.MapViewer.MapViewer.MulFileType">
+            <summary>
+            Types of mul files used to describe maps
+            </summary>
+        </member>
+        <member name="T:TheBox.MapViewer.MapSizes">
+            <summary>
+            Provides the sizes of the UO maps
+            </summary>
+        </member>
+        <member name="M:TheBox.MapViewer.MapSizes.GetSize(System.Int32)">
+            <summary>
+            Gets the size of a map
+            </summary>
+            <param name="mapfile">The index of the map</param>
+            <returns>A Size object representing the size of the map</returns>
+        </member>
+        <member name="P:TheBox.MapViewer.MapSizes.FeluccaML">
+            <summary>
+            Gets the size of the Felucca ML map
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapSizes.Felucca">
+            <summary>
+            Gets the size of the Felucca map
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapSizes.Trammel">
+            <summary>
+            Gets the size of the Trammel map
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapSizes.Ilshenar">
+            <summary>
+            Gets the size of the Ilshenar map
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapSizes.Malas">
+            <summary>
+            Gets the size of the Malas map
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapSizes.Tokuno">
+            <summary>
+            Gets the size of the Tokuno islands map
+            </summary>
+        </member>
+        <member name="T:TheBox.MapViewer.MapViewInfo">
+            <summary>
+            Provides information about the current view provided by the MapViewer control
+            </summary>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewInfo.#ctor(TheBox.MapViewer.Maps,System.Drawing.Size,System.Drawing.Point,System.Int32,TheBox.MapViewer.MapViewer)">
+            <summary>
+            Creates a new MapViewInfo object
+            </summary>
+            <param name="map">The map currently displayed</param>
+            <param name="controlSize">The size of the control</param>
+            <param name="center">The location of the center of the control</param>
+            <param name="zoomLevel">The current zoom level</param>
+            <param name="viewer">The MapViewer owner of this view</param>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewInfo.#ctor(TheBox.MapViewer.MapViewer)">
+            <summary>
+            Creates a new MapViewInfo object with default values
+            </summary>
+            <param name="viewer">The MapViewer owner of this view</param>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewInfo.m_ControlSize">
+            <summary>
+            The Size of the control visible area
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewInfo.m_MapSize">
+            <summary>
+            The size of the current map
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewInfo.m_Center">
+            <summary>
+            The map coordinates of center of the control
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewInfo.m_ControlCenter">
+            <summary>
+            The coordinates of the center of the control
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewInfo.m_ZoomLevel">
+            <summary>
+            The zoom level of the control
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewInfo.m_CellsPerBlock">
+            <summary>
+            The number of cells used (horizontally or vertically) to display each block
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewInfo.m_PixelsPerCell">
+            <summary>
+            The number of pixels used to display each cell
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewInfo.m_Map">
+            <summary>
+            The map currently displayed by the control
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewInfo.m_CellsPerPixel">
+            <summary>
+            Represents the number of map units included in each pixel
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewInfo.m_Start">
+            <summary>
+            The top left block information
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewInfo.m_End">
+            <summary>
+            The bottom right block information
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewInfo.m_ValidStart">
+            <summary>
+            The first valid top left block
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewInfo.m_ValidEnd">
+            <summary>
+            The last valid bottom right block
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewInfo.m_TopPixels">
+            <summary>
+            The number of pixels needed to represent the topmost cell
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewInfo.m_LeftPixels">
+            <summary>
+            The number of pixels needed to represent the leftmost cell
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewInfo.m_CurrentPoint">
+            <summary>
+            The current point being drawn on the control
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewInfo.m_CurrentXBlock">
+            <summary>
+            The X coordinate for the current block
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewInfo.m_CurrentYBlock">
+            <summary>
+            The Y coordinate for the current block
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewInfo.m_CurrentXCell">
+            <summary>
+            The X coordinate for the current cell
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewInfo.m_CurrentYCell">
+            <summary>
+            The Y coordinate for the current cell
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewInfo.m_ValidXBlocks">
+            <summary>
+            The number of X blocks read into the array
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewInfo.m_ValidYBlocks">
+            <summary>
+            The number of Y blocks read into the array
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewInfo.m_Bounds">
+            <summary>
+            The visible area of the map
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewInfo.m_RotateView">
+            <summary>
+            States whether the map should be displayed rotated
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewInfo.m_Viewer">
+            <summary>
+            The MapViewer owner of this view info
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewInfo.m_Transform">
+            <summary>
+            The transform matrix applied to the MapViewer
+            </summary>
+        </member>
+        <member name="F:TheBox.MapViewer.MapViewInfo.m_ImageSize">
+            <summary>
+            The size of the image calculated by the map viewer
+            </summary>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewInfo.Calculate">
+            <summary>
+            Calculates all the parameters needed for this class to function. It assumes Center, ZoomLevel, ControlSize and Map as given.
+            </summary>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewInfo.InternalControlToMap(System.Drawing.Point)">
+            <summary>
+            Converts a point of the map image to map coordinates
+            </summary>
+            <param name="screenPoint">The point on the non rotaded image</param>
+            <returns>The point on the map</returns>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewInfo.ControlToMap(System.Drawing.Point)">
+            <summary>
+            Converts a point on the screen to map coordinates
+            </summary>
+            <param name="screenPoint">The point on the surface of the control</param>
+            <returns>A point on the map. This value can be outside the bounds of the map</returns>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewInfo.ControlToMap(System.Int32)">
+            <summary>
+            Converts a distance from screen units to map units
+            </summary>
+            <param name="screenDistance">A length in screen units</param>
+            <returns>The corresponding length in map units</returns>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewInfo.MapToControl(System.Drawing.Point)">
+            <summary>
+            Converts a point on the map to a point on the control
+            </summary>
+            <param name="mapPoint">The point in map coordinates</param>
+            <returns>A point on the control. This value can be outside the bounds of the control.</returns>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewInfo.MapToControl(System.Int32)">
+            <summary>
+            Converts a distance from map units to screen units
+            </summary>
+            <param name="mapDistance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewInfo.Initialize">
+            <summary>
+            Initializes the object to provide information for the image drawing
+            </summary>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewInfo.GetInfo">
+            <summary>
+            Gets the BlockInformation for the current pixel
+            </summary>
+            <returns>The BlockInfo for the current view</returns>
+        </member>
+        <member name="M:TheBox.MapViewer.MapViewInfo.CurrentBlockIsValid">
+            <summary>
+            Verifies whether the current block is valid or is outside the bounds of the map
+            </summary>
+            <returns>True if the block should be displayed, false if it's outside the bounds</returns>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewInfo.Bounds">
+            <summary>
+            Gets the bounds of the visible map region
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewInfo.LeftCell">
+            <summary>
+            Gets the width in pixels of the leftmost cell on the control
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewInfo.TopCell">
+            <summary>
+            Gets the height in pixels of the topmost cell on the control
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewInfo.CellsPerBlock">
+            <summary>
+            Gets the number of cells displayed for each block
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewInfo.PixelsPerCell">
+            <summary>
+            Gets the number of pixels used to display each cell
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewInfo.ValidXBlocks">
+            <summary>
+            Gets the number of X blocks read into the array
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewInfo.ValidYBlocks">
+            <summary>
+            Gets the number of Y blocks read into the array
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewInfo.Center">
+            <summary>
+            Sets the point corresponding to the center of the control
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewInfo.Map">
+            <summary>
+            Sets the map currently displayed by the control
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewInfo.ControlSize">
+            <summary>
+            Sets the size of the control
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewInfo.ZoomLevel">
+            <summary>
+            Gets or sets the zoom level on the control
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewInfo.Zoom">
+            <summary>
+            Gets the zoom level for the current map view
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewInfo.MapSize">
+            <summary>
+            Gets the size of the map currently displayed
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewInfo.TopLeft">
+            <summary>
+            Gets the BlockInfo for the top left corner of the control
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewInfo.BottomRight">
+            <summary>
+            Gets the BlockInfo for the bottom right corner of the control
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewInfo.RotateView">
+            <summary>
+            States whether the map is being drawn rotated
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.MapViewInfo.ImageSize">
+            <summary>
+            Gets the size of the image needed to produce the control output
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.PixelCoordinate.Block">
+            <summary>
+            Gets the number of the block in the array stored in memory
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.PixelCoordinate.Cell">
+            <summary>
+            Gets the number of the cell correpsonding to the pixl in the block
+            </summary>
+        </member>
+        <member name="T:TheBox.MapViewer.BlockInfo">
+            <summary>
+            Provides information about block and cell location of a given point on a map.
+            </summary>
+        </member>
+        <member name="M:TheBox.MapViewer.BlockInfo.#ctor(System.Drawing.Point,System.Drawing.Size)">
+            <summary>
+            Creates a new BlockInfo structure that provides information for file access to a given point
+            </summary>
+            <param name="point">The point referenced by this BlockInfo structure</param>
+            <param name="mapSize">The size of the map file in cells</param>
+        </member>
+        <member name="M:TheBox.MapViewer.BlockInfo.Validate">
+            <summary>
+            Verifies the block information to make sure it's a valid block for the map
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.BlockInfo.BlockNumber">
+            <summary>
+            Gets the map file block number for the referenced point
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.BlockInfo.XBlock">
+            <summary>
+            Gets the X coordinate of the block in a block matrix
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.BlockInfo.YBlock">
+            <summary>
+            Gets the Y coordinate of the block in a block matrix
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.BlockInfo.Cell">
+            <summary>
+            Gets the number of the cell representing the referenced point
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.BlockInfo.XCell">
+            <summary>
+            Gets the X coordinate of the referenced point in the cells matrix
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.BlockInfo.YCell">
+            <summary>
+            Gets the Y coordinate of the referenced point in the cells matrix
+            </summary>
+        </member>
+        <member name="T:TheBox.MapViewer.MouseOnDrawObjectEventHandler">
+            <summary>
+            Occurs when a mouse pointer hovers over a draw object
+            </summary>
+        </member>
+        <member name="T:TheBox.MapViewer.DrawObjectEventArgs">
+            <summary>
+            Contains data for events related to map draw objects
+            </summary>
+        </member>
+        <member name="M:TheBox.MapViewer.DrawObjectEventArgs.#ctor(TheBox.MapViewer.DrawObjects.IMapDrawable,System.Drawing.Point)">
+            <summary>
+            Creates a new EventArgs for use with draw objects
+            </summary>
+            <param name="drawobject">The IMapDrawable object used as data for this args</param>
+            <param name="point">The point that originated the event</param>
+        </member>
+        <member name="P:TheBox.MapViewer.DrawObjectEventArgs.DrawObject">
+            <summary>
+            Gets the IMapDrawable object contained in this args
+            </summary>
+        </member>
+        <member name="P:TheBox.MapViewer.DrawObjectEventArgs.Point">
+            <summary>
+            Gets the location on the control surface of the draw object
+            </summary>
+        </member>
+        <member name="T:TheBox.MulData.MapCell">
+            <summary>
+            A single map cell
+            </summary>
+        </member>
+        <member name="F:TheBox.MulData.MapCell.Color">
+            <summary>
+            The cell graphics, looked up in RadarCol
+            </summary>
+        </member>
+        <member name="F:TheBox.MulData.MapCell.Altitude">
+            <summary>
+            The altitude of the cell
+            </summary>
+        </member>
+        <member name="M:TheBox.MulData.MapCell.#ctor(System.UInt16,System.SByte)">
+            <summary>
+            Creates a new MapCell
+            </summary>
+        </member>
+        <member name="P:TheBox.MulData.MapCell.Size">
+            <summary>
+            Gets the size of a MapCell object
+            </summary>
+        </member>
+        <member name="T:TheBox.MulData.MapBlock">
+            <summary>
+            Map block representing a matrix of 8x8 map cells
+            </summary>
+        </member>
+        <member name="F:TheBox.MulData.MapBlock.Cells">
+            <summary>
+            The 64 map cells that are part of this block
+            </summary>
+        </member>
+        <member name="M:TheBox.MulData.MapBlock.#ctor">
+            <summary>
+            Creates a new MapBlock
+            </summary>
+        </member>
+        <member name="M:TheBox.MulData.MapBlock.ReadFromStream(System.IO.FileStream)">
+            <summary>
+            Reads a MapBlock from a stream
+            </summary>
+            <param name="stream">The stream containing the data to read</param>
+            <returns>The MapBlock object read from the stream</returns>
+        </member>
+        <member name="P:TheBox.MulData.MapBlock.Size">
+            <summary>
+            Gets the size of a MapBlock object
+            </summary>
+        </member>
+        <member name="T:TheBox.MulData.StaticIdx">
+            <summary>
+            Index entries for Statics.mul
+            </summary>
+        </member>
+        <member name="F:TheBox.MulData.StaticIdx.Start">
+            <summary>
+            The start position. OxFFFFFFFF if there is no static object
+            </summary>
+        </member>
+        <member name="F:TheBox.MulData.StaticIdx.Length">
+            <summary>
+            The length of the data segment
+            </summary>
+        </member>
+        <member name="F:TheBox.MulData.StaticIdx.Unkown">
+            <summary>
+            The use of this field is still unknown
+            </summary>
+        </member>
+        <member name="M:TheBox.MulData.StaticIdx.ReadFromStream(System.IO.FileStream)">
+            <summary>
+            Reads a StaticIdx object from a stream
+            </summary>
+            <param name="stream">The stream containing data about a StaticIdx object</param>
+            <returns>The StaticIdx object read from the stream</returns>
+        </member>
+        <member name="P:TheBox.MulData.StaticIdx.Size">
+            <summary>
+            Gets the size of a StaticIdx object
+            </summary>
+        </member>
+        <member name="T:TheBox.MulData.StaticData">
+            <summary>
+            A static object
+            </summary>
+        </member>
+        <member name="F:TheBox.MulData.StaticData.Color">
+            <summary>
+            The graphics for this block. Look up in RadarCol adding an offset of 16384
+            </summary>
+        </member>
+        <member name="F:TheBox.MulData.StaticData.XOffest">
+            <summary>
+            X offset in the block
+            </summary>
+        </member>
+        <member name="F:TheBox.MulData.StaticData.YOffset">
+            <summary>
+            Y offset in the block
+            </summary>
+        </member>
+        <member name="F:TheBox.MulData.StaticData.Altitude">
+            <summary>
+            Altitude
+            </summary>
+        </member>
+        <member name="F:TheBox.MulData.StaticData.Hue">
+            <summary>
+            The use of this field is still unkown
+            </summary>
+        </member>
+        <member name="M:TheBox.MulData.StaticData.ReadFromStream(System.IO.FileStream,System.Int32)">
+            <summary>
+            Reads StaticData from a stream
+            </summary>
+            <param name="stream">The stream containing information about StaticData</param>
+            <param name="NumberOfStatics">The number of statics that should be read from the stream</param>
+            <returns>The StaticData object read from the stream</returns>
+        </member>
+        <member name="P:TheBox.MulData.StaticData.Size">
+            <summary>
+            Gets the size of a StaticData object
+            </summary>
+        </member>
     </members>
 </doc>
