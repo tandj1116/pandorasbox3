@@ -100,215 +100,215 @@ namespace TheBox.Pages
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Notes));
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.txText = new System.Windows.Forms.TextBox();
-			this.panel3 = new System.Windows.Forms.Panel();
-			this.labCreated = new System.Windows.Forms.Label();
-			this.lnkLocations = new System.Windows.Forms.LinkLabel();
-			this.panel2 = new System.Windows.Forms.Panel();
-			this.txName = new System.Windows.Forms.TextBox();
-			this.cmbPriority = new System.Windows.Forms.ComboBox();
-			this.splitter1 = new System.Windows.Forms.Splitter();
-			this.tNotes = new System.Windows.Forms.TreeView();
-			this.imgPriority = new System.Windows.Forms.ImageList(this.components);
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.cmbType = new System.Windows.Forms.ComboBox();
-			this.cmbAscending = new System.Windows.Forms.ComboBox();
-			this.bAdd = new System.Windows.Forms.Button();
-			this.bDelete = new System.Windows.Forms.Button();
-			this.panel1.SuspendLayout();
-			this.panel3.SuspendLayout();
-			this.panel2.SuspendLayout();
-			this.groupBox1.SuspendLayout();
-			this.SuspendLayout();
-			// 
-			// panel1
-			// 
-			this.panel1.Controls.Add(this.txText);
-			this.panel1.Controls.Add(this.panel3);
-			this.panel1.Controls.Add(this.panel2);
-			this.panel1.Controls.Add(this.splitter1);
-			this.panel1.Controls.Add(this.tNotes);
-			this.panel1.Location = new System.Drawing.Point(112, 2);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(382, 138);
-			this.panel1.TabIndex = 1;
-			// 
-			// txText
-			// 
-			this.txText.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.txText.Enabled = false;
-			this.txText.Location = new System.Drawing.Point(124, 24);
-			this.txText.Multiline = true;
-			this.txText.Name = "txText";
-			this.txText.Size = new System.Drawing.Size(258, 94);
-			this.txText.TabIndex = 8;
-			this.txText.TextChanged += new System.EventHandler(this.txText_TextChanged);
-			// 
-			// panel3
-			// 
-			this.panel3.Controls.Add(this.labCreated);
-			this.panel3.Controls.Add(this.lnkLocations);
-			this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panel3.Location = new System.Drawing.Point(124, 118);
-			this.panel3.Name = "panel3";
-			this.panel3.Size = new System.Drawing.Size(258, 20);
-			this.panel3.TabIndex = 9;
-			// 
-			// labCreated
-			// 
-			this.labCreated.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.labCreated.Location = new System.Drawing.Point(0, 0);
-			this.labCreated.Name = "labCreated";
-			this.labCreated.Size = new System.Drawing.Size(202, 20);
-			this.labCreated.TabIndex = 7;
-			this.labCreated.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
-			// lnkLocations
-			// 
-			this.lnkLocations.Dock = System.Windows.Forms.DockStyle.Right;
-			this.lnkLocations.Location = new System.Drawing.Point(202, 0);
-			this.lnkLocations.Name = "lnkLocations";
-			this.lnkLocations.Size = new System.Drawing.Size(56, 20);
-			this.lnkLocations.TabIndex = 8;
-			this.lnkLocations.TabStop = true;
-			this.lnkLocations.Text = "Notes.Locs";
-			this.lnkLocations.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.lnkLocations.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lnkLocations_MouseDown);
-			// 
-			// panel2
-			// 
-			this.panel2.Controls.Add(this.txName);
-			this.panel2.Controls.Add(this.cmbPriority);
-			this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel2.Location = new System.Drawing.Point(124, 0);
-			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(258, 24);
-			this.panel2.TabIndex = 5;
-			// 
-			// txName
-			// 
-			this.txName.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.txName.Enabled = false;
-			this.txName.Location = new System.Drawing.Point(0, 0);
-			this.txName.Name = "txName";
-			this.txName.Size = new System.Drawing.Size(174, 20);
-			this.txName.TabIndex = 4;
-			this.txName.TextChanged += new System.EventHandler(this.txName_TextChanged);
-			// 
-			// cmbPriority
-			// 
-			this.cmbPriority.Dock = System.Windows.Forms.DockStyle.Right;
-			this.cmbPriority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cmbPriority.Enabled = false;
-			this.cmbPriority.Location = new System.Drawing.Point(174, 0);
-			this.cmbPriority.Name = "cmbPriority";
-			this.cmbPriority.Size = new System.Drawing.Size(84, 21);
-			this.cmbPriority.TabIndex = 3;
-			this.cmbPriority.SelectedIndexChanged += new System.EventHandler(this.cmbPriority_SelectedIndexChanged);
-			// 
-			// splitter1
-			// 
-			this.splitter1.Location = new System.Drawing.Point(121, 0);
-			this.splitter1.Name = "splitter1";
-			this.splitter1.Size = new System.Drawing.Size(3, 138);
-			this.splitter1.TabIndex = 2;
-			this.splitter1.TabStop = false;
-			this.splitter1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitter1_SplitterMoved);
-			// 
-			// tNotes
-			// 
-			this.tNotes.Dock = System.Windows.Forms.DockStyle.Left;
-			this.tNotes.HideSelection = false;
-			this.tNotes.ImageIndex = 0;
-			this.tNotes.ImageList = this.imgPriority;
-			this.tNotes.Location = new System.Drawing.Point(0, 0);
-			this.tNotes.Name = "tNotes";
-			this.tNotes.SelectedImageIndex = 0;
-			this.tNotes.ShowLines = false;
-			this.tNotes.ShowPlusMinus = false;
-			this.tNotes.ShowRootLines = false;
-			this.tNotes.Size = new System.Drawing.Size(121, 138);
-			this.tNotes.TabIndex = 1;
-			this.tNotes.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tNotes_AfterSelect);
-			// 
-			// imgPriority
-			// 
-			this.imgPriority.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgPriority.ImageStream")));
-			this.imgPriority.TransparentColor = System.Drawing.Color.Transparent;
-			this.imgPriority.Images.SetKeyName(0, "");
-			this.imgPriority.Images.SetKeyName(1, "");
-			this.imgPriority.Images.SetKeyName(2, "");
-			this.imgPriority.Images.SetKeyName(3, "");
-			// 
-			// groupBox1
-			// 
-			this.groupBox1.Controls.Add(this.cmbType);
-			this.groupBox1.Controls.Add(this.cmbAscending);
-			this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.groupBox1.Location = new System.Drawing.Point(4, 72);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(104, 68);
-			this.groupBox1.TabIndex = 2;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "Sorting";
-			// 
-			// cmbType
-			// 
-			this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cmbType.Location = new System.Drawing.Point(4, 44);
-			this.cmbType.Name = "cmbType";
-			this.cmbType.Size = new System.Drawing.Size(96, 21);
-			this.cmbType.TabIndex = 1;
-			this.cmbType.SelectedIndexChanged += new System.EventHandler(this.cmbType_SelectedIndexChanged);
-			// 
-			// cmbAscending
-			// 
-			this.cmbAscending.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cmbAscending.Location = new System.Drawing.Point(4, 16);
-			this.cmbAscending.Name = "cmbAscending";
-			this.cmbAscending.Size = new System.Drawing.Size(96, 21);
-			this.cmbAscending.TabIndex = 0;
-			this.cmbAscending.SelectedIndexChanged += new System.EventHandler(this.cmbAscending_SelectedIndexChanged);
-			// 
-			// bAdd
-			// 
-			this.bAdd.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.bAdd.Location = new System.Drawing.Point(20, 8);
-			this.bAdd.Name = "bAdd";
-			this.bAdd.Size = new System.Drawing.Size(72, 23);
-			this.bAdd.TabIndex = 3;
-			this.bAdd.Text = "Notes.New";
-			this.bAdd.Click += new System.EventHandler(this.bAdd_Click);
-			// 
-			// bDelete
-			// 
-			this.bDelete.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.bDelete.Location = new System.Drawing.Point(20, 40);
-			this.bDelete.Name = "bDelete";
-			this.bDelete.Size = new System.Drawing.Size(72, 23);
-			this.bDelete.TabIndex = 4;
-			this.bDelete.Text = "Common.Delete";
-			this.bDelete.Click += new System.EventHandler(this.bDelete_Click);
-			// 
-			// Notes
-			// 
-			this.Controls.Add(this.bDelete);
-			this.Controls.Add(this.bAdd);
-			this.Controls.Add(this.groupBox1);
-			this.Controls.Add(this.panel1);
-			this.Name = "Notes";
-			this.Size = new System.Drawing.Size(496, 142);
-			this.Load += new System.EventHandler(this.Notes_Load);
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
-			this.panel3.ResumeLayout(false);
-			this.panel2.ResumeLayout(false);
-			this.panel2.PerformLayout();
-			this.groupBox1.ResumeLayout(false);
-			this.ResumeLayout(false);
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Notes));
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.txText = new System.Windows.Forms.TextBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.labCreated = new System.Windows.Forms.Label();
+            this.lnkLocations = new System.Windows.Forms.LinkLabel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.txName = new System.Windows.Forms.TextBox();
+            this.cmbPriority = new System.Windows.Forms.ComboBox();
+            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.tNotes = new System.Windows.Forms.TreeView();
+            this.imgPriority = new System.Windows.Forms.ImageList(this.components);
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbType = new System.Windows.Forms.ComboBox();
+            this.cmbAscending = new System.Windows.Forms.ComboBox();
+            this.bAdd = new System.Windows.Forms.Button();
+            this.bDelete = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.txText);
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.splitter1);
+            this.panel1.Controls.Add(this.tNotes);
+            this.panel1.Location = new System.Drawing.Point(112, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(382, 138);
+            this.panel1.TabIndex = 1;
+            // 
+            // txText
+            // 
+            this.txText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txText.Enabled = false;
+            this.txText.Location = new System.Drawing.Point(124, 24);
+            this.txText.Multiline = true;
+            this.txText.Name = "txText";
+            this.txText.Size = new System.Drawing.Size(258, 94);
+            this.txText.TabIndex = 8;
+            this.txText.TextChanged += new System.EventHandler(this.txText_TextChanged);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.labCreated);
+            this.panel3.Controls.Add(this.lnkLocations);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(124, 118);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(258, 20);
+            this.panel3.TabIndex = 9;
+            // 
+            // labCreated
+            // 
+            this.labCreated.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labCreated.Location = new System.Drawing.Point(0, 0);
+            this.labCreated.Name = "labCreated";
+            this.labCreated.Size = new System.Drawing.Size(202, 20);
+            this.labCreated.TabIndex = 7;
+            this.labCreated.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lnkLocations
+            // 
+            this.lnkLocations.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lnkLocations.Location = new System.Drawing.Point(202, 0);
+            this.lnkLocations.Name = "lnkLocations";
+            this.lnkLocations.Size = new System.Drawing.Size(56, 20);
+            this.lnkLocations.TabIndex = 8;
+            this.lnkLocations.TabStop = true;
+            this.lnkLocations.Text = "Notes.Locs";
+            this.lnkLocations.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lnkLocations.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lnkLocations_MouseDown);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.txName);
+            this.panel2.Controls.Add(this.cmbPriority);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(124, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(258, 24);
+            this.panel2.TabIndex = 5;
+            // 
+            // txName
+            // 
+            this.txName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txName.Enabled = false;
+            this.txName.Location = new System.Drawing.Point(0, 0);
+            this.txName.Name = "txName";
+            this.txName.Size = new System.Drawing.Size(174, 20);
+            this.txName.TabIndex = 4;
+            this.txName.TextChanged += new System.EventHandler(this.txName_TextChanged);
+            // 
+            // cmbPriority
+            // 
+            this.cmbPriority.Dock = System.Windows.Forms.DockStyle.Right;
+            this.cmbPriority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPriority.Enabled = false;
+            this.cmbPriority.Location = new System.Drawing.Point(174, 0);
+            this.cmbPriority.Name = "cmbPriority";
+            this.cmbPriority.Size = new System.Drawing.Size(84, 21);
+            this.cmbPriority.TabIndex = 3;
+            this.cmbPriority.SelectedIndexChanged += new System.EventHandler(this.cmbPriority_SelectedIndexChanged);
+            // 
+            // splitter1
+            // 
+            this.splitter1.Location = new System.Drawing.Point(121, 0);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(3, 138);
+            this.splitter1.TabIndex = 2;
+            this.splitter1.TabStop = false;
+            this.splitter1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitter1_SplitterMoved);
+            // 
+            // tNotes
+            // 
+            this.tNotes.Dock = System.Windows.Forms.DockStyle.Left;
+            this.tNotes.HideSelection = false;
+            this.tNotes.ImageIndex = 0;
+            this.tNotes.ImageList = this.imgPriority;
+            this.tNotes.Location = new System.Drawing.Point(0, 0);
+            this.tNotes.Name = "tNotes";
+            this.tNotes.SelectedImageIndex = 0;
+            this.tNotes.ShowLines = false;
+            this.tNotes.ShowPlusMinus = false;
+            this.tNotes.ShowRootLines = false;
+            this.tNotes.Size = new System.Drawing.Size(121, 138);
+            this.tNotes.TabIndex = 1;
+            this.tNotes.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tNotes_AfterSelect);
+            // 
+            // imgPriority
+            // 
+            this.imgPriority.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgPriority.ImageStream")));
+            this.imgPriority.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgPriority.Images.SetKeyName(0, "");
+            this.imgPriority.Images.SetKeyName(1, "");
+            this.imgPriority.Images.SetKeyName(2, "");
+            this.imgPriority.Images.SetKeyName(3, "");
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.cmbType);
+            this.groupBox1.Controls.Add(this.cmbAscending);
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.groupBox1.Location = new System.Drawing.Point(4, 72);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(104, 68);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Sorting";
+            // 
+            // cmbType
+            // 
+            this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbType.Location = new System.Drawing.Point(4, 44);
+            this.cmbType.Name = "cmbType";
+            this.cmbType.Size = new System.Drawing.Size(96, 21);
+            this.cmbType.TabIndex = 1;
+            this.cmbType.SelectedIndexChanged += new System.EventHandler(this.cmbType_SelectedIndexChanged);
+            // 
+            // cmbAscending
+            // 
+            this.cmbAscending.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAscending.Location = new System.Drawing.Point(4, 16);
+            this.cmbAscending.Name = "cmbAscending";
+            this.cmbAscending.Size = new System.Drawing.Size(96, 21);
+            this.cmbAscending.TabIndex = 0;
+            this.cmbAscending.SelectedIndexChanged += new System.EventHandler(this.cmbAscending_SelectedIndexChanged);
+            // 
+            // bAdd
+            // 
+            this.bAdd.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.bAdd.Location = new System.Drawing.Point(20, 8);
+            this.bAdd.Name = "bAdd";
+            this.bAdd.Size = new System.Drawing.Size(72, 23);
+            this.bAdd.TabIndex = 3;
+            this.bAdd.Text = "Notes.New";
+            this.bAdd.Click += new System.EventHandler(this.bAdd_Click);
+            // 
+            // bDelete
+            // 
+            this.bDelete.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.bDelete.Location = new System.Drawing.Point(20, 40);
+            this.bDelete.Name = "bDelete";
+            this.bDelete.Size = new System.Drawing.Size(72, 23);
+            this.bDelete.TabIndex = 4;
+            this.bDelete.Text = "Common.Delete";
+            this.bDelete.Click += new System.EventHandler(this.bDelete_Click);
+            // 
+            // Notes
+            // 
+            this.Controls.Add(this.bDelete);
+            this.Controls.Add(this.bAdd);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.panel1);
+            this.Name = "Notes";
+            this.Size = new System.Drawing.Size(496, 142);
+            this.Load += new System.EventHandler(this.Notes_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.ResumeLayout(false);
 
 		}
 		#endregion

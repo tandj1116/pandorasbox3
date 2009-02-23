@@ -350,10 +350,11 @@ namespace TheBox.Controls
 
 		private void PropManager_Load(object sender, System.EventArgs e)
 		{
-			chkType.Checked = Options.UseType;
-
 			try
 			{
+                //  Issue 27: Designer warnings - Tarion
+                chkType.Checked = Options.UseType;
+                // End Issue 27
 				UpdateValues( false );
 				UpdateProps( false );
 				UpdateTypes( true );
@@ -362,7 +363,7 @@ namespace TheBox.Controls
 			}
 			catch
 			{
-			}
+			} // VS
 		}
 
 		private void chkType_CheckedChanged(object sender, System.EventArgs e)

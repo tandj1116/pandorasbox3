@@ -393,8 +393,6 @@ namespace TheBox.Pages
 			this.labServer.Text = "Admin.ProcessNotFound";
 			this.labServer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.labServer.Paint += new System.Windows.Forms.PaintEventHandler(this.labServer_Paint);
-			// Button has to be disabled if no process found
-			EnableServerButtons();
 			// 
 			// bGetServ
 			// 
@@ -461,6 +459,11 @@ namespace TheBox.Pages
 		{
 			try
 			{
+                // Button has to be disabled if no process found
+                // Issue 27: Designer warnings - Tarion
+                EnableServerButtons();
+                // End Issue 27
+
 				UpdateFindCombo();
 				UpdateRecentArgs();
 
@@ -472,6 +475,7 @@ namespace TheBox.Pages
 				}
 			}
 			catch {} // VS
+
 		}
 
 		/// <summary>

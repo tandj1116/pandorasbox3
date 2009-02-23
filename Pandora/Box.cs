@@ -1454,17 +1454,12 @@ namespace TheBox
 			switch ( tab )
 			{
 				case SmallTabs.Art:
-
 					page = tabArt;
 					break;
-
 				case SmallTabs.Map:
-
 					page = tabMap;
 					break;
-
 				case SmallTabs.Props:
-
 					page = tabProps;
 					break;
 			}
