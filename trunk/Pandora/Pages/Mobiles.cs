@@ -755,10 +755,19 @@ namespace TheBox.Pages
 		/// </summary>
 		private void Mobiles_Enter(object sender, System.EventArgs e)
 		{
-			Pandora.BoxForm.SelectSmallTab( SmallTabs.Art );
-			Pandora.Art.Art = ArtViewer.Art.NPCs;
-			Pandora.Art.ArtIndex = Pandora.Profile.Mobiles.ArtIndex;
-			Pandora.Art.Hue = 0;
+            // Issue 27:  	 Designer warnings - Tarion
+            try
+            {
+                Pandora.BoxForm.SelectSmallTab(SmallTabs.Art);
+                if (Pandora.Art != null)
+                {
+                    Pandora.Art.Art = ArtViewer.Art.NPCs;
+                    Pandora.Art.ArtIndex = Pandora.Profile.Mobiles.ArtIndex;
+                    Pandora.Art.Hue = 0;
+                }
+            }
+            catch { }
+            // End Issue 27
 		}
 
 		#region Update spawn information

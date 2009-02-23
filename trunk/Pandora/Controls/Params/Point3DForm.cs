@@ -40,7 +40,13 @@ namespace TheBox.Controls.Params
 			//
 			InitializeComponent();
 
-			Pandora.LocalizeControl( this );
+            //Issue 27:  	 Designer warnings - Tarion
+            try
+            {
+                Pandora.LocalizeControl(this);
+            }
+            catch { } // VS
+            // End Issue 27
 		}
 
 		/// <summary>
