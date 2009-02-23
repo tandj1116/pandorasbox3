@@ -43,7 +43,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\Build\Debug\</OutputPath>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
@@ -66,7 +66,7 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\Build\Release\</OutputPath>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
@@ -130,6 +130,18 @@
       <Name>BoxRemote</Name>
       <Project>{585A8775-F9A4-411D-8550-DA6B66814EF8}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+    <ProjectReference Include="..\Datafiles\Data\Data.csproj">
+      <Project>{3E20BA2C-177C-4141-8BE4-3010D9DF7959}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Datafiles\DefaultButtons\DefaultButtons.csproj">
+      <Project>{BB9DAC32-3B08-4C03-905B-9AE7CC55A10F}</Project>
+      <Name>DefaultButtons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Datafiles\English\English.csproj">
+      <Project>{360959F7-14DD-4C76-BD61-72525B378EF3}</Project>
+      <Name>English</Name>
     </ProjectReference>
     <ProjectReference Include="..\MapViewer\MapViewer.csproj">
       <Name>MapViewer</Name>
@@ -481,11 +493,6 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="pbp.ico" />
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Roofing\RoofingForm.resx">
       <DependentUpon>RoofingForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -962,11 +969,6 @@
     <Compile Include="Pandora.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Roofing\Roof.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -1026,6 +1028,9 @@
       <ProductName>.NET Framework 3.5</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

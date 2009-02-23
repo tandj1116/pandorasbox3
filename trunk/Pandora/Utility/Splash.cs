@@ -52,8 +52,9 @@ namespace TheBox.Common
 		{
 			if ( m_Form != null )
 			{
-				// Issue 1 - CrossThread operation exception - http://code.google.com/p/pandorasbox3/issues/detail?id=1 - Smjert
-				m_Form.Invoke( new SetText(m_Form.SetActionText), text);
+                // Issue 1 - CrossThread operation exception - http://code.google.com/p/pandorasbox3/issues/detail?id=1 - Smjert
+                // Threadsave for every access see SetActionText - Tarion
+                m_Form.SetActionText(text);
 				// Issue 1 - End
 			}
 		}
