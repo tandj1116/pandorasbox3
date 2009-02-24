@@ -1407,7 +1407,13 @@ namespace TheBox.MapViewer
 		/// </summary>
 		private unsafe void LoadRadarcol()
 		{
-			FileStream stream = new FileStream( GetMulFile( MulFileType.RadarCol, m_Map ), FileMode.Open, FileAccess.Read, FileShare.ReadWrite );
+            //  Issue 37:  	 Profile error - Tarion
+            string mulFile = GetMulFile( MulFileType.RadarCol, m_Map );
+            if (mulFile == null || mulFile == String.Empty)
+                return;
+
+            FileStream stream = new FileStream(mulFile, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+            // End  Issue 37
 
 			int n = 0;
 
