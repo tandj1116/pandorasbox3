@@ -990,6 +990,7 @@
     <Compile Include="Roofing\TileSet.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="StartingContext.cs" />
     <Compile Include="Utility\BoxLog.cs">
       <SubType>Code</SubType>
     </Compile>
