@@ -3246,7 +3246,7 @@
             </anyType>
           </AdditionalCtors>
         </anyType>
-        <anyType xsi:type="BoxItem" Name="AnkhEast" EmptyCtor="true">
+        <anyType xsi:type="BoxItem" Name="AnkhNorth" EmptyCtor="true">
           <Item Art="4" Hue="0" />
           <AdditionalCtors>
             <anyType xsi:type="ConstructorDef">
