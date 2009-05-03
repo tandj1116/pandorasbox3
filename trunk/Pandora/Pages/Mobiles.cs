@@ -759,7 +759,8 @@ namespace TheBox.Pages
             try
             {
                 Pandora.BoxForm.SelectSmallTab(SmallTabs.Art);
-                if (Pandora.Art != null)
+                // Issue 31:  	 Pandora.Art exception on null - Tarion
+                if (Pandora.ArtLoaded)
                 {
                     Pandora.Art.Art = ArtViewer.Art.NPCs;
                     Pandora.Art.ArtIndex = Pandora.Profile.Mobiles.ArtIndex;
