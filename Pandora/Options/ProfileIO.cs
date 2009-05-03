@@ -333,7 +333,18 @@ namespace TheBox.Options
 
 				File.Delete( filename );
 
-				byte[] compressed = TheBox.Common.BoxZLib.Compress( data );
+
+                // Issue 4:  	 Profile Exporting does not work - Tarion
+                byte[] compressed = null;
+                try
+                {
+                    compressed = TheBox.Common.BoxZLib.Compress(data);
+                }
+                catch
+                {
+                    System.Windows.Forms.MessageBox.Show("Missing zlib.dll, can not export profile.", "Missing library", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                }
+                // End Issue 4:
 
 				if ( compressed != null )
 				{

@@ -1009,9 +1009,13 @@
     <None Include="Pandora.exe.manifest" />
     <Content Include="Library\TSWizards.dll" />
     <Content Include="Library\Ultima.dll" />
-    <Content Include="Library\zlib.dll" />
+    <Content Include="Library\zlib.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Reference\Roofing.cs">
       <SubType>Code</SubType>
+    </Content>
+    <Content Include="zlib.dll">
     </Content>
   </ItemGroup>
   <ItemGroup>

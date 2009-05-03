@@ -171,10 +171,21 @@ namespace TheBox.Common
 			int destLength = data.Length;
 			byte[] dest = new byte[ data.Length ];
 
-			ZLibError result = compress( dest, ref destLength, data, data.Length );
+            try
+            {
+                ZLibError result;
+                result = compress(dest, ref destLength, data, data.Length);
 
-			if ( result != ZLibError.Z_OK )
+                if ( result != ZLibError.Z_OK )
 				return null;
+            }
+            catch (DllNotFoundException ex)
+            {
+                throw ex;
+            }
+            
+
+			
 
 			byte[] res = new byte[ destLength + 4 ];
 			Array.Copy( dest, 0, res, 4, destLength );
