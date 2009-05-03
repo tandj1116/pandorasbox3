@@ -100,8 +100,7 @@ namespace TheBox.Buttons
                 SendLastCommand(this, e);
             }
         }
-
-        //  Issue 9:  	 Warnings - Interface - Tarion
+         //  Issue 9:  	 Warnings - Interface - Tarion
         protected virtual void OnCommandChanged(CommandChangedEventArgs e)
         {
             if (CommandChanged != null)
