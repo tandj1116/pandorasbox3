@@ -86,6 +86,19 @@ namespace TheBox
 			}
 		}
 
+
+        // Issue 31:  	 Pandora.Art exception on null - Tarion
+        /// <summary>
+        /// To check if the Art property is null
+        /// </summary>
+        public static bool ArtLoaded
+        {
+            get
+            {
+                return (m_Art != null);
+            }
+        }
+
 		/// <summary>
 		/// Gets or sets the ArtViewer control used to display the art in Pandora's Box
 		/// </summary>
