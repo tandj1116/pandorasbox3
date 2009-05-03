@@ -77,20 +77,20 @@ namespace TheBox.Forms
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Arya = new System.Windows.Forms.LinkLabel();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.labVersion = new System.Windows.Forms.Label();
-            this.Arya = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnl.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -181,6 +181,17 @@ namespace TheBox.Forms
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Credits till 2.0";
             // 
+            // Arya
+            // 
+            this.Arya.AutoSize = true;
+            this.Arya.Location = new System.Drawing.Point(9, 32);
+            this.Arya.Name = "Arya";
+            this.Arya.Size = new System.Drawing.Size(126, 13);
+            this.Arya.TabIndex = 9;
+            this.Arya.TabStop = true;
+            this.Arya.Text = "http://arya.altervista.org/";
+            this.Arya.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Arya_LinkClicked);
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -214,6 +225,15 @@ namespace TheBox.Forms
             this.label12.Size = new System.Drawing.Size(62, 13);
             this.label12.TabIndex = 9;
             this.label12.Text = "TSWizard";
+            // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(76, 54);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(70, 16);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Knightshade";
             // 
             // label11
             // 
@@ -264,15 +284,6 @@ namespace TheBox.Forms
             this.label7.TabIndex = 4;
             this.label7.Text = "Code";
             // 
-            // label6
-            // 
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(76, 54);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 16);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Knightshade";
-            // 
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -320,17 +331,6 @@ namespace TheBox.Forms
             this.labVersion.TabIndex = 13;
             this.labVersion.Text = "9.0.21022.8";
             // 
-            // Arya
-            // 
-            this.Arya.AutoSize = true;
-            this.Arya.Location = new System.Drawing.Point(9, 32);
-            this.Arya.Name = "Arya";
-            this.Arya.Size = new System.Drawing.Size(126, 13);
-            this.Arya.TabIndex = 9;
-            this.Arya.TabStop = true;
-            this.Arya.Text = "http://arya.altervista.org/";
-            this.Arya.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Arya_LinkClicked);
-            // 
             // AboutForm
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
@@ -345,6 +345,7 @@ namespace TheBox.Forms
             this.Name = "AboutForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pandora\'s Box";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.AboutForm_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.AboutForm_Paint);
             this.Closed += new System.EventHandler(this.AboutForm_Closed);
