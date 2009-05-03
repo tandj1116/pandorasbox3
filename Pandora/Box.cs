@@ -1233,7 +1233,8 @@ namespace TheBox
 		/// </summary>
 		private void TrayBox_Click(object sender, System.EventArgs e)
 		{
-			System.Diagnostics.Process.Start( "http://arya.runuo.com/" );
+            // Issue 34:  	 Visit Website - Tarion
+            System.Diagnostics.Process.Start("http://code.google.com/p/pandorasbox3/");
 		}
 
 		/// <summary>
