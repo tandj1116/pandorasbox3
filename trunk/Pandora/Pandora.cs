@@ -398,25 +398,34 @@ namespace TheBox
 		/// <summary>
 		/// Gets the instance of Pandora that is already running
 		/// </summary>
-		private static Process ExistingInstance
+		public static Process ExistingInstance
 		{
 			get
 			{
-				Splash.SetStatusText("Searching existing instances");
+                // Issue 6:  	 Improve error management - Tarion
+                // Catch a possible exception here and return null.
+                try
+                {
+				    Splash.SetStatusText("Searching existing instances");
 
-				Process current = Process.GetCurrentProcess();
+				    Process current = Process.GetCurrentProcess();
 
-				Process[] processes = Process.GetProcessesByName(current.ProcessName);
+				    Process[] processes = Process.GetProcessesByName(current.ProcessName);
 
-				//Loop through the running processes in with the same name 
-				foreach (Process process in processes)
-				{
-					//Ignore the current process 
-					if (process.Id != current.Id)
-					{
-						return process;
-					}
-				}
+				    //Loop through the running processes in with the same name 
+				    foreach (Process process in processes)
+				    {
+					    //Ignore the current process 
+					    if (process.Id != current.Id)
+					    {
+						    return process;
+					    }
+				    }
+                }
+                catch (Exception err)
+                {
+                    Pandora.Log.WriteError(err, "Error when enumerating instances");
+                }
 
 				return null;
 			}
@@ -514,43 +523,7 @@ namespace TheBox
             }
 		}
 
-		/// <summary>
-		/// Gets an array of string representing the names of the existing profiles
-		/// </summary>
-		public static string[] ExistingProfiles
-		{
-			get
-			{
-				string[] dirs = Directory.GetDirectories(Pandora.ProfilesFolder);
-
-				string[] profiles = new string[dirs.Length];
-
-				for (int i = 0; i < dirs.Length; i++)
-				{
-					string[] path = dirs[i].Split(Path.DirectorySeparatorChar);
-
-					profiles[i] = path[path.Length - 1];
-				}
-
-				return profiles;
-			}
-		}
-
-		/// <summary>
-		/// Closes Pandora's Box and creates a new profile
-		/// </summary>
-		public static void CreateNewProfile()
-		{
-			m_Context.MainForm = null;
-
-			if (m_TheBox != null)
-			{
-				m_TheBox.Close();
-				m_TheBox.Dispose();
-			}
-
-			m_Context.MakeNewProfile();
-		}
+        
 
 		public static void ClosePandora()
 		{
@@ -570,25 +543,6 @@ namespace TheBox
 				m_TheBox.Close();
 				m_TheBox.Dispose();
 			}
-
-			m_Context.DoProfile();
-		}
-
-		/// <summary>
-		/// Closes the current application, deletes the current profile and restarts Pandora
-		/// </summary>
-		public static void DeleteCurrentProfile()
-		{
-			m_Context.MainForm = null;
-
-			if (m_TheBox != null)
-			{
-				m_TheBox.Close();
-				m_TheBox.Dispose();
-			}
-
-			Profile.DeleteProfile(Pandora.Profile.Name);
-			Pandora.Profile = null;
 
 			m_Context.DoProfile();
 		}
@@ -664,21 +618,6 @@ namespace TheBox
 		}
 
 		/// <summary>
-		/// Gets the location of the Profiles folder for this machine
-		/// </summary>
-		public static string ProfilesFolder
-		{
-			get
-			{
-				string folder = Path.Combine(ApplicationDataFolder, "Profiles");
-
-				TheBox.Common.Utility.EnsureDirectory(folder);
-
-				return folder;
-			}
-		}
-
-		/// <summary>
 		/// Gets the location of the PB2 application data folder
 		/// </summary>
 		public static string ApplicationDataFolder
@@ -693,132 +632,7 @@ namespace TheBox
 			}
 		}
 
-		/// <summary>
-		/// Moves the profiles from the old program file based profiles folder to the application data folder
-		/// </summary>
-		private static void MoveProfiles()
-		{
-			#region Move Log.txt
-
-			string log = Path.Combine(Pandora.Folder, "Log.txt");
-
-			if (File.Exists(log))
-			{
-				Splash.SetStatusText("Removing old log file");
-				try
-				{
-					File.Delete(log);
-				}
-				catch { }
-			}
-
-			#endregion
-
-			#region Move INI file
-
-			string iniFile = Path.Combine(Pandora.Folder, "Pandora.ini");
-
-			if (File.Exists(iniFile))
-			{
-				Splash.SetStatusText("Removing old ini file");
-
-				string newIni = Path.Combine(Pandora.ApplicationDataFolder, "Pandora.ini");
-
-				if (!File.Exists(newIni))
-				{
-					try
-					{
-						File.Move(iniFile, newIni);
-						Pandora.Log.WriteEntry("Ini file moved to application data folder");
-					}
-					catch (Exception err)
-					{
-						Pandora.Log.WriteError(err, "Couldn't move ini file from {0} to {1}", iniFile, newIni);
-					}
-				}
-				else
-				{
-					try
-					{
-						File.Delete(iniFile);
-						Pandora.Log.WriteEntry("Ini file {0} deleted", iniFile);
-					}
-					catch (Exception err)
-					{
-						Pandora.Log.WriteError(err, "Couldn't delete ini file {0}", iniFile);
-					}
-				}
-			}
-
-			#endregion
-
-			string oldFolder = Path.Combine(Pandora.Folder, "Profiles");
-
-			if (!Directory.Exists(oldFolder))
-				return;
-
-			string[] profiles = Directory.GetDirectories(oldFolder);
-
-			if (profiles.Length == 0)
-				return;
-
-			Splash.SetStatusText("Moving old profiles");
-
-			Pandora.Log.WriteEntry("Found {0} profiles in the old profiles folder", profiles.Length);
-
-			foreach (string profile in profiles)
-			{
-				string name = Utility.GetDirectoryName(profile);
-				string newFolder = Path.Combine(Pandora.ProfilesFolder, name);
-
-				int index = 1; // Adjust name if there's already a match
-				while (Directory.Exists(newFolder))
-				{
-					newFolder = Path.Combine(Pandora.ProfilesFolder, string.Format("{0} {1}", name, index++));
-				}
-
-				try
-				{
-					if (Utility.CopyDirectory(profile, newFolder))
-					{
-						Pandora.Log.WriteEntry("Profile {0} copied from {1} to {2}", name, profile, newFolder);
-
-						// Profile copied. Now delete.
-						try
-						{
-							Directory.Delete(profile, true);
-							Pandora.Log.WriteEntry("Old profile folder deleted: {0}", profile);
-						}
-						catch (Exception err)
-						{
-							Pandora.Log.WriteError(err, "Couldn't delete old profile folder: {0}", profile);
-						}
-					}
-				}
-				catch (Exception err)
-				{
-					Pandora.Log.WriteError(err, "Couldn't move profile {0} to {1}", name, newFolder);
-				}
-			}
-
-			// Finally delete folder (if empty)
-			try
-			{
-				if (Directory.GetDirectories(oldFolder).Length == 0)
-				{
-					Directory.Delete(oldFolder, true);
-					Pandora.Log.WriteEntry("Deleted old profile directory: {0}", oldFolder);
-				}
-				else
-				{
-					Pandora.Log.WriteEntry("Can't delete profiles folder because some profiles hasn't been moved");
-				}
-			}
-			catch (Exception err)
-			{
-				Pandora.Log.WriteError(err, "Couldn't delete old profiles folder: {0}", oldFolder);
-			}
-		}
+		
 
 		#endregion
 
@@ -829,54 +643,43 @@ namespace TheBox
 		/// </summary>
 		public static Profile Profile
 		{
-			get { return m_Profile; }
-			set { m_Profile = value; }
+            // Workaround, there are over 640 refferences... - Tarion
+			get { return ProfileManager.Instance.Profile; }
 		}
 
-		/// <summary>
-		/// Gets or sets the default profile
-		/// </summary>
-		public static string DefaultProfile
-		{
-			get
-			{
-				string ini = Path.Combine(Pandora.ApplicationDataFolder, "Pandora.ini");
+        /// <summary>
+        /// Closes Pandora's Box and creates a new profile
+        /// </summary>
+        public static void CreateNewProfile()
+        {
+            m_Context.MainForm = null;
 
-				if (File.Exists(ini))
-				{
-					StreamReader reader = new StreamReader(ini);
+            if (m_TheBox != null)
+            {
+                m_TheBox.Close();
+                m_TheBox.Dispose();
+            }
 
-					try
-					{
-						string defaultprofile = reader.ReadLine();
-						reader.Close();
+            m_Context.MakeNewProfile();
+        }
 
-						string[] args = defaultprofile.Split(new char[] { '=' });
+        /// <summary>
+        /// Closes the current application, deletes the current profile and restarts Pandora
+        /// </summary>
+        public static void DeleteCurrentProfile()
+        {
+            // Have to be refactored when we have a more global GUI handling - Tarion
+            m_Context.MainForm = null;
 
-						if (args.Length == 2 && args[0].ToLower() == "defaultprofile")
-						{
-							if (args[1].Length > 0)
-								return args[1];
-							else
-								return null;
-						}
-					}
-					catch { }
-				}
+            if (m_TheBox != null)
+            {
+                m_TheBox.Close();
+                m_TheBox.Dispose();
+            }
 
-				return null;
-			}
-			set
-			{
-				string ini = Path.Combine(Pandora.ApplicationDataFolder, "Pandora.ini");
-
-				StreamWriter writer = new StreamWriter(ini);
-
-				writer.WriteLine(string.Format("DefaultProfile={0}", value));
-
-				writer.Close();
-			}
-		}
+            ProfileManager.Instance.DeleteCurrentProfile();
+            m_Context.DoProfile();
+        }
 
 		#endregion
 
@@ -1311,34 +1114,28 @@ namespace TheBox
 					File.Delete(temp);
 				}
 
+                // Issue 28:  	 Refactoring Pandora.cs - Tarion
 				// Move any profiles resulting from previous versions
-				MoveProfiles();
-
-				bool newProfile = false;
+                ProfileManager.Instance.MoveOldProfiles();
+                // End Issue 28:
 
 				if (args.Length == 1 && File.Exists(args[0]) && Path.GetExtension(args[0]).ToLower() == ".pbp")
 				{
-					Pandora.Log.WriteEntry("Importing Profile...");
-					newProfile = ImportProfile(args[0]);
+                    ProfileManager.Instance.ImportProfile(args[0]);
 				}
 
-				if (!newProfile)
+                if (ProfileManager.Instance.ProfileLoaded)
+                {
+                    Pandora.Log.WriteEntry("Import startup initiated");
+                    m_Context = new StartingContext(ProfileManager.Instance.Profile.Name);
+                    Application.Run(m_Context);
+                }
+				else
 				{
 					Pandora.Log.WriteEntry("Normal startup initiated");
 
-					Process existing = null;
-
-					try
-					{
-						existing = Pandora.ExistingInstance;
-					}
-					catch (Exception err)
-					{
-						Pandora.Log.WriteError(err, "Error when enumerating instances");
-					}
-
 					// Move on with normal startup
-					if (existing != null)
+					if (Pandora.ExistingInstance != null) // Single instance check
 					{
 						Pandora.Log.WriteError(null, "Double instance detected");
 						System.Windows.Forms.MessageBox.Show("You can't run two instances of Pandora's Box at the same time");
@@ -1360,101 +1157,6 @@ namespace TheBox
                 // End Issue 6:
             }
 		}
-
-		/// <summary>
-		/// Imports a new profile
-		/// </summary>
-		/// <param name="filename">The filename to the .pbp file</param>
-		/// <returns>True if the profile has been imported and loaded successfully</returns>
-		private static bool ImportProfile(string filename)
-		{
-			Splash.SetStatusText("Importing profile");
-
-			Profile p = null;
-
-			try { p = ProfileIO.Load(filename); }
-			catch (Exception err) { MessageBox.Show(err.ToString()); }
-
-			if (p == null)
-				return false;
-
-			bool run = false;
-
-			if (Pandora.ExistingInstance != null)
-			{
-				// Already running: Close?
-
-				if (MessageBox.Show(null,
-					"Another instance of Pandora's Box is currently running. Would you like to close it and load the profile you have just imported?",
-					"Profile import succesful",
-					MessageBoxButtons.YesNo,
-					MessageBoxIcon.Question) == DialogResult.Yes)
-				{
-					if (Pandora.ExistingInstance != null)
-					{
-						Pandora.ExistingInstance.Close();
-					}
-
-					run = true;
-				}
-			}
-			else
-			{
-				run = true;
-			}
-
-			if (run)
-			{
-				System.Windows.Forms.MessageBox.Show("Profile imported correctly. Now loading...");
-				m_Context = new StartingContext(p.Name);
-				Application.Run(m_Context);
-			}
-
-			return run;
-		}
-
 		
-
-		#region Profile Import/Export
-
-		/// <summary>
-		/// Exports a Pandora's Box profile
-		/// </summary>
-		/// <param name="p">The profile to export</param>
-		public static void ExportProfile(Profile p)
-		{
-			System.Windows.Forms.SaveFileDialog dlg = new SaveFileDialog();
-			dlg.Filter = "Pandora's Box Profile (*.pbp)|*.pbp";
-
-			if (dlg.ShowDialog() == DialogResult.OK)
-			{
-				ProfileIO pio = new ProfileIO(p);
-				pio.Save(dlg.FileName);
-			}
-
-			dlg.Dispose();
-		}
-
-		/// <summary>
-		/// Imports a profile from a PBP file
-		/// </summary>
-		/// <returns>The Profile object imported</returns>
-		public static Profile ImportProfile()
-		{
-			System.Windows.Forms.OpenFileDialog dlg = new OpenFileDialog();
-			dlg.Filter = "Pandora's Box Profile (*.pbp)|*.pbp";
-			Profile p = null;
-
-			if (dlg.ShowDialog() == DialogResult.OK)
-			{
-				p = ProfileIO.Load(dlg.FileName);
-			}
-
-			dlg.Dispose();
-
-			return p;
-		}
-
-		#endregion
 	}
 }

@@ -1679,7 +1679,7 @@ namespace TheBox.Forms
 		/// </summary>
 		private void SetDefaultProfile()
 		{
-			string defProf = Pandora.DefaultProfile;
+			string defProf = ProfileManager.Instance.DefaultProfile;
 
 			if ( defProf != null && defProf.Length > 0 )
 			{
@@ -1699,7 +1699,7 @@ namespace TheBox.Forms
 			lstProfiles.BeginUpdate();
 			lstProfiles.Items.Clear();
 
-			lstProfiles.Items.AddRange( Pandora.ExistingProfiles );
+			lstProfiles.Items.AddRange( ProfileManager.Instance.ExistingProfiles );
 			lstProfiles.SelectedItem = Pandora.Profile.Name;
 
 			lstProfiles.EndUpdate();
@@ -2561,7 +2561,7 @@ namespace TheBox.Forms
 				try
 				{
 					old = Pandora.Profile.BaseFolder;
-					newFolder = Path.Combine( Pandora.ProfilesFolder, txProfName.Text );
+					newFolder = Path.Combine( ProfileManager.Instance.ProfilesFolder, txProfName.Text );
 
 					if ( old == newFolder )
 					{
@@ -2611,7 +2611,7 @@ namespace TheBox.Forms
 		/// <param name="e"></param>
 		private void bResetDefaultProfile_Click(object sender, System.EventArgs e)
 		{
-			Pandora.DefaultProfile = null;
+            ProfileManager.Instance.DefaultProfile = null;
 			SetDefaultProfile();
 		}
 
@@ -2622,7 +2622,7 @@ namespace TheBox.Forms
 		{
 			if ( lstProfiles.SelectedIndex > -1 )
 			{
-				Pandora.DefaultProfile = lstProfiles.Text;
+                ProfileManager.Instance.DefaultProfile = lstProfiles.Text;
 				SetDefaultProfile();
 			}
 		}
@@ -2671,7 +2671,7 @@ namespace TheBox.Forms
 		/// </summary>
 		private void bExportProfile_Click(object sender, System.EventArgs e)
 		{
-			Pandora.ExportProfile( Pandora.Profile );
+            ProfileManager.Instance.ExportProfile(Pandora.Profile);
 		}
 
 		/// <summary>
@@ -2679,7 +2679,7 @@ namespace TheBox.Forms
 		/// </summary>
 		private void bImportProfile_Click(object sender, System.EventArgs e)
 		{
-			TheBox.Options.Profile p = Pandora.ImportProfile();
+            TheBox.Options.Profile p = ProfileManager.Instance.ImportProfile();
 
 			if ( p != null )
 			{

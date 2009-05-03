@@ -196,7 +196,7 @@ namespace TheBox.Forms
 			m_Action = Actions.LoadProfile;
 
 			if ( chkDefault.Checked )
-				Pandora.DefaultProfile = m_SelectedProfile;
+                ProfileManager.Instance.DefaultProfile = m_SelectedProfile;
 
 			Close();
 		}

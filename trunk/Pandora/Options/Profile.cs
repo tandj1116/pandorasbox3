@@ -192,13 +192,14 @@ namespace TheBox.Options
 		{
 			get
 			{
+                string profilesFolder = ProfileManager.Instance.ProfilesFolder;
 				StringCollection list = new StringCollection();
 
-				if ( Directory.Exists( Pandora.ProfilesFolder ) )
+                if (Directory.Exists(profilesFolder))
 				{
-					string[] profiles = Directory.GetDirectories( Pandora.ProfilesFolder );
+                    string[] profiles = Directory.GetDirectories(profilesFolder);
 
-					int index = Pandora.ProfilesFolder.Length + 1;
+                    int index = profilesFolder.Length + 1;
 
 					foreach ( string pro in profiles )
 					{
@@ -250,7 +251,7 @@ namespace TheBox.Options
 		{
 			get
 			{
-				return Path.Combine( Pandora.ProfilesFolder, m_Name );
+                return Path.Combine(ProfileManager.Instance.ProfilesFolder, m_Name);
 			}
 		}
 
@@ -403,7 +404,7 @@ namespace TheBox.Options
 		/// <returns>The profile loaded. Null if the profile was not found</returns>
 		public static Profile Load( string name )
 		{
-			string file = Path.Combine( Path.Combine( Pandora.ProfilesFolder, name ), "Profile.xml"  );
+            string file = Path.Combine(Path.Combine(ProfileManager.Instance.ProfilesFolder, name), "Profile.xml");
 
 			if ( !File.Exists( file ) )
 			{
@@ -526,7 +527,7 @@ namespace TheBox.Options
 
 		public static void DeleteProfile( string profile )
 		{
-			string folder = Path.Combine( Pandora.ProfilesFolder, profile );
+            string folder = Path.Combine(ProfileManager.Instance.ProfilesFolder, profile);
 
 			if ( Directory.Exists( folder ) )
 			{

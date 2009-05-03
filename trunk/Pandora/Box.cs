@@ -1283,7 +1283,7 @@ namespace TheBox
 		/// </summary>
 		private void miExportProfile_Click(object sender, EventArgs e)
 		{
-			Pandora.ExportProfile( Pandora.Profile );
+            ProfileManager.Instance.ExportProfile(Pandora.Profile);
 		}
 
 		/// <summary>
@@ -1291,7 +1291,7 @@ namespace TheBox
 		/// </summary>
 		private void miImportProfile_Click(object sender, EventArgs e)
 		{
-			TheBox.Options.Profile p = Pandora.ImportProfile();
+            TheBox.Options.Profile p = ProfileManager.Instance.ImportProfile();
 
 			if ( p != null )
 			{
