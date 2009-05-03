@@ -69,13 +69,16 @@ namespace TheBox.Common
 		/// Sends a string message to the UO window
 		/// </summary>
 		/// <param name="message">A string message that will be sent to UO</param>
-		public static void SendToUO( string message )
+		// Issue 38:  	 Message when client not found - Tarion
+        // Changed return value to boolean
+        // End Issue 38
+        public static bool SendToUO( string message )
 		{
 			IntPtr handle = GetClientWindow();
 
 			if ( handle.ToInt32() == 0 )
 			{
-				return;
+				return false;
 			}
 
 			// We have a window
@@ -83,6 +86,7 @@ namespace TheBox.Common
 				SendMessage( handle.ToInt32(), WM_CHAR, c, 0 );
 
 			SetForegroundWindow( handle.ToInt32() );
+            return true;
 		}
 
 		/// <summary>
