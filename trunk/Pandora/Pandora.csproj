@@ -1016,6 +1016,7 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="zlib.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
