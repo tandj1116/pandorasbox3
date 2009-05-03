@@ -995,6 +995,7 @@
     <Compile Include="Utility\BoxLog.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Utility\ProcessExtension.cs" />
     <Compile Include="Utility\ScreenCapture.cs">
       <SubType>Code</SubType>
     </Compile>

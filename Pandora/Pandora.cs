@@ -1148,10 +1148,13 @@ namespace TheBox
 					Pandora.Log.WriteEntry("Normal startup initiated");
 
 					// Move on with normal startup
-					if (Pandora.ExistingInstance != null) // Single instance check
+                    Process proc = Pandora.ExistingInstance;
+					if (proc != null) // Single instance check
 					{
 						Pandora.Log.WriteError(null, "Double instance detected");
 						System.Windows.Forms.MessageBox.Show("You can't run two instances of Pandora's Box at the same time");
+                        //  Issue 33:  	 Bring to front if already started - Tarion
+                        ProcessExtension.BringToFront(proc);
 					}
 					else
 					{
