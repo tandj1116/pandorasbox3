@@ -493,16 +493,25 @@ namespace TheBox
 		/// </summary>
 		/// <param name="text">The text that must be sent</param>
 		/// <param name="UsePrefix">Specifies whether to send the command prefix in front of the text</param>
+        // Issue 38:  	 Message when client not found - Tarion
+        // Use SendToUO return value, and warn user if false
+        // End Issue 38
 		public static void SendToUO(string text, bool UsePrefix)
 		{
+            bool success = false;
 			if (UsePrefix)
 			{
-				Utility.SendToUO(string.Format("{0}{1}\r\n", m_Profile.General.CommandPrefix, text));
+                success = Utility.SendToUO(string.Format("{0}{1}\r\n", m_Profile.General.CommandPrefix, text));
 			}
 			else
 			{
-				Utility.SendToUO(string.Format("{0}\r\n", text));
+                success = Utility.SendToUO(string.Format("{0}\r\n", text));
 			}
+
+            if (!success)
+            {
+                MessageBox.Show("Client handle not found. If UO is running, try to set Options -> Advanced -> Use a custom client");
+            }
 		}
 
 		/// <summary>
