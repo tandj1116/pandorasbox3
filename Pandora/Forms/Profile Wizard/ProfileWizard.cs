@@ -136,7 +136,7 @@ namespace TheBox.Forms.ProfileWizard
 					c.StepTitle = m_TextProvider[ c.StepTitle ];
 			}
 
-			Pandora.Profile = null;
+			//Pandora.Profile = null;
 		}
 
 		/// <summary>

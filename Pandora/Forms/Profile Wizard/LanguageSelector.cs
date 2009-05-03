@@ -12,7 +12,7 @@ namespace TheBox.Forms.ProfileWizard
 	/// </summary>
 	public class LanguageSelector : System.Windows.Forms.Form
 	{
-		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button btnOK;
 		private System.Windows.Forms.ComboBox cmbLang;
 		/// <summary>
 		/// Required designer variable.
@@ -47,45 +47,43 @@ namespace TheBox.Forms.ProfileWizard
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(LanguageSelector));
-			this.cmbLang = new System.Windows.Forms.ComboBox();
-			this.button1 = new System.Windows.Forms.Button();
-			this.SuspendLayout();
-			// 
-			// cmbLang
-			// 
-			this.cmbLang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cmbLang.Location = new System.Drawing.Point(24, 16);
-			this.cmbLang.Name = "cmbLang";
-			this.cmbLang.Size = new System.Drawing.Size(152, 21);
-			this.cmbLang.TabIndex = 0;
-			// 
-			// button1
-			// 
-			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.button1.Location = new System.Drawing.Point(64, 48);
-			this.button1.Name = "button1";
-			this.button1.TabIndex = 1;
-			this.button1.Text = "OK";
-			this.button1.Click += new System.EventHandler(this.button1_Click);
-			// 
-			// LanguageSelector
-			// 
-			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-			this.ClientSize = new System.Drawing.Size(202, 82);
-			this.Controls.Add(this.button1);
-			this.Controls.Add(this.cmbLang);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Name = "LanguageSelector";
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "Pandora\'s Box";
-			this.Load += new System.EventHandler(this.LanguageSelector_Load);
-			this.ResumeLayout(false);
-
-			// Issue 17 - Language selector appears behind SplashScreen - http://code.google.com/p/pandorasbox3/issues/detail?id=17 - Smjert
-			this.TopMost = true;
-			// Issue 17 - End
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LanguageSelector));
+            this.cmbLang = new System.Windows.Forms.ComboBox();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // cmbLang
+            // 
+            this.cmbLang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbLang.Location = new System.Drawing.Point(24, 16);
+            this.cmbLang.Name = "cmbLang";
+            this.cmbLang.Size = new System.Drawing.Size(152, 21);
+            this.cmbLang.TabIndex = 0;
+            // 
+            // btnOK
+            // 
+            this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnOK.Location = new System.Drawing.Point(64, 48);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(75, 23);
+            this.btnOK.TabIndex = 1;
+            this.btnOK.Text = "OK";
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            // 
+            // LanguageSelector
+            // 
+            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+            this.ClientSize = new System.Drawing.Size(202, 82);
+            this.Controls.Add(this.btnOK);
+            this.Controls.Add(this.cmbLang);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "LanguageSelector";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Pandora\'s Box";
+            this.TopMost = true;
+            this.Load += new System.EventHandler(this.LanguageSelector_Load);
+            this.ResumeLayout(false);
 
 		}
 		#endregion
@@ -113,17 +111,14 @@ namespace TheBox.Forms.ProfileWizard
 			BringToFront();
 		}
 
-		private void button1_Click(object sender, System.EventArgs e)
+		private void btnOK_Click(object sender, System.EventArgs e)
 		{
 			// Close and run the profile wizard
-			TheBox.Options.Profile profile = new TheBox.Options.Profile();
-			profile.Language = cmbLang.Text;
+            this.Visible = false;
+            ProfileManager.Instance.CreateNewProfile(cmbLang.Text);
 
-			ProfileWizard wiz = new ProfileWizard( profile );
-			Visible = false;
-			wiz.ShowDialog();
-			DialogResult = DialogResult.OK;
-			Close();
+			this.DialogResult = DialogResult.OK;
+			this.Close();
 		}
 	}
 }

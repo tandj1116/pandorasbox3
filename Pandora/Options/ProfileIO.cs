@@ -148,7 +148,7 @@ namespace TheBox.Options
 				}
 			}
 
-			string folder = Path.Combine( Pandora.ProfilesFolder, Name );
+            string folder = Path.Combine(ProfileManager.Instance.ProfilesFolder, Name);
 			string mapsFolder = Path.Combine( folder, "Maps" );
 			string locFolder = Path.Combine( folder, "Locations" );
 			string butFolder = Path.Combine( folder, "Buttons" );

@@ -3,6 +3,7 @@ using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using TheBox.Options;
 
 namespace TheBox.Forms.ProfileWizard
 {
@@ -33,6 +34,25 @@ namespace TheBox.Forms.ProfileWizard
 			}
 			base.Dispose( disposing );
 		}
+
+        private void pwStep7End_ValidateStep(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            ProfileWizard wiz = Wizard as ProfileWizard;
+            wiz.Succesful = true;
+
+            if (chkDefault.Checked)
+            {
+                // Default profile
+                ProfileManager.Instance.DefaultProfile = wiz.Profile.Name;
+            }
+
+            Pandora.Log.WriteEntry("pwStep7End_ValidateStep not saving the porfile now!");
+            /*
+            profile = wiz.Profile;
+            profile.Save();
+            profile.CreateData();
+             * */
+        }
 
 		#region Designer generated code
 		/// <summary>
@@ -75,20 +95,6 @@ namespace TheBox.Forms.ProfileWizard
 		}
 		#endregion
 
-		private void pwStep7End_ValidateStep(object sender, System.ComponentModel.CancelEventArgs e)
-		{
-			ProfileWizard wiz = Wizard as ProfileWizard;
-			wiz.Succesful = true;
-
-			if ( chkDefault.Checked )
-			{
-				// Default profile
-				Pandora.DefaultProfile = wiz.Profile.Name;
-			}
-
-			Pandora.Profile = wiz.Profile;
-			Pandora.Profile.Save();
-			Pandora.Profile.CreateData();
-		}
+		
 	}
 }

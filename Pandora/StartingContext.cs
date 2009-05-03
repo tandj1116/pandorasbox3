@@ -13,7 +13,7 @@ namespace TheBox
 {
     
     /// <summary>
-    /// The class dealing with tha Pandora's startup
+    /// The class dealing with the Pandora's startup
     /// </summary>
     public class StartingContext : ApplicationContext
     {
@@ -31,15 +31,15 @@ namespace TheBox
 
         public void DoProfile()
         {
-            if (Pandora.DefaultProfile != null)
+            if (ProfileManager.Instance.DefaultProfile != null)
             {
                 Splash.SetStatusText("Loading default profile");
-                LoadProfile(Pandora.DefaultProfile);
+                LoadProfile(ProfileManager.Instance.DefaultProfile);
             }
             else
             {
                 // No default profile specified. Either choose one or create a new one
-                string[] profiles = Directory.GetDirectories(Pandora.ProfilesFolder);
+                string[] profiles = Directory.GetDirectories(ProfileManager.Instance.ProfilesFolder);
 
                 if (profiles.Length == 0)
                     MakeNewProfile();
@@ -73,15 +73,15 @@ namespace TheBox
 
             try
             {
-                Pandora.Profile = Profile.Load(name);
+                ProfileManager.Instance.LoadProfile(name);
             }
             catch (Exception err)
             {
                 Pandora.Log.WriteError(err, "Couldn't load profile {0}", name);
 
-                if (name == Pandora.DefaultProfile)
+                if (name == ProfileManager.Instance.DefaultProfile)
                 {
-                    Pandora.DefaultProfile = "";
+                    ProfileManager.Instance.DefaultProfile = "";
                 }
 
                 DoProfile();

@@ -969,6 +969,7 @@
     <Compile Include="Pandora.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ProfileManager.cs" />
     <Compile Include="Roofing\Roof.cs">
       <SubType>Code</SubType>
     </Compile>
