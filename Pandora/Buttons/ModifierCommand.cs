@@ -92,6 +92,24 @@ namespace TheBox.Buttons
 			}
 		}
 
+        //  Issue 9:  	 Warnings - Interface - Tarion
+        protected virtual void OnSendLastCommand(EventArgs e)
+        {
+            if (SendLastCommand != null)
+            {
+                SendLastCommand(this, e);
+            }
+        }
+
+        //  Issue 9:  	 Warnings - Interface - Tarion
+        protected virtual void OnCommandChanged(CommandChangedEventArgs e)
+        {
+            if (CommandChanged != null)
+            {
+                CommandChanged(this, e);
+            }
+        }
+
 		public event TheBox.SendCommandEventHandler SendCommand;
 
 		public event System.EventHandler SendLastCommand;
