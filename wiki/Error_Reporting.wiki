@@ -1,7 +1,7 @@
 #labels Featured,Phase-QA
 = How to report errors =
 
-== Post you Logfile ==
+== Post your Logfile ==
 
 I just have the german path, there you can find a logfile here:
   * C:\Dokumente und Einstellungen\USERNAME\Anwendungsdaten\Pandora's Box 3
