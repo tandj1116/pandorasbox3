@@ -1,0 +1,12 @@
+#labels Featured,Phase-QA
+= How to report errors =
+
+== Post you Logfile ==
+
+I just have the german path, there you can find a logfile here:
+C:\Dokumente und Einstellungen\***\Anwendungsdaten\Pandora's Box 3
+
+English must be like (someone can correct it please):
+C:\Documants and Settings\***\ApplicationData\Pandora's Box 3
+
+there must be a file named **Log.txt**. The content may be useful to find bugs, especialy when where is no exception thrown.
