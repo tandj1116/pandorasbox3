@@ -1117,6 +1117,7 @@ namespace TheBox
 			{
 				Log.WriteEntry("Starting");
 				Splash.Show();
+                AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
 
 				// Delete any temp files created during compilation of profile IO
 				string temp = Path.Combine(Pandora.Folder, "temp.dll");
@@ -1173,6 +1174,14 @@ namespace TheBox
                 // End Issue 6:
             }
 		}
+
+        // Issue 6:  	 Improve error management - Tarion
+        static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            Clipboard.SetDataObject("UnhandledException: \n" + e.ToString(), true);
+            MessageBox.Show("An error occurred. The error text has been placed on your clipboard, use CTRL+V to paste it in a text file.");
+            Environment.Exit(1);
+        }
 		
 	}
 }
