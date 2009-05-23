@@ -1,11 +1,21 @@
+Pandora's Box 3.0.0.3
+- Added a way to fix the Ultima Online registry key if missing or corrupted.
+- Added a message when you use commands that needs client and it isn't found.
+- Fixed Profile Exporting, now should work.
+- Corrected the link to Arya and our website.
+- Corrected the name of AnkhNorth, now is AnkhWest.
+- About form should be TopMost.
+- Cleaned up and refactored a bit the code.
+- Fixed random bugs.
+
 Pandora's Box 3.0.0.2
-- All project will compile with Net Framework 2.0
-- Trammel has own map after ML
-- Fixed LanguageSelector appearing behind splash screen
-- Corrected AboutForm staff names
+- All project will compile with Net Framework 2.0.
+- Trammel has own map after ML.
+- Fixed LanguageSelector appearing behind splash screen.
+- Corrected AboutForm staff names.
 
 Pandora's Box 3.0.0.1
-- Fixed Profile appearing behind splash screen
+- Fixed Profile appearing behind splash screen.
 - Fixed Mondain's Legacy maps Sizes.
 - Now the Box will read from map1.mul statics1.mul informations about Trammel.
 - Changed Profile directory : now you'll find profiles at
@@ -15,7 +25,7 @@ Pandora's Box 3.0.0.1
 
 Pandora's Box 3.0 alpha version:
 
-- Fixed some compile/performance errors
+- Fixed some compile/performance errors.
 - Disabled Next button when creating a new profile and map rendering.
-- Remove obsolete code
+- Remove obsolete code.
 - Converted all the code (except for BoxServer) from Net Framework 1.0 to Net Framework 2.0.
