@@ -70,9 +70,9 @@ namespace TheBox.Common
 		/// </summary>
 		/// <param name="message">A string message that will be sent to UO</param>
 		// Issue 38:  	 Message when client not found - Tarion
-        // Changed return value to boolean
-        // End Issue 38
-        public static bool SendToUO( string message )
+		// Changed return value to boolean
+		// End Issue 38
+		public static bool SendToUO( string message )
 		{
 			IntPtr handle = GetClientWindow();
 
@@ -86,7 +86,7 @@ namespace TheBox.Common
 				SendMessage( handle.ToInt32(), WM_CHAR, c, 0 );
 
 			SetForegroundWindow( handle.ToInt32() );
-            return true;
+			return true;
 		}
 
 		/// <summary>

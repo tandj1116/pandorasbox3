@@ -515,28 +515,31 @@ namespace TheBox
 		/// </summary>
 		/// <param name="text">The text that must be sent</param>
 		/// <param name="UsePrefix">Specifies whether to send the command prefix in front of the text</param>
-        // Issue 38:  	 Message when client not found - Tarion
-        // Use SendToUO return value, and warn user if false
-        // End Issue 38
+		// Issue 38:  	 Message when client not found - Tarion
+		// Use SendToUO return value, and warn user if false
+		// End Issue 38
 		public static void SendToUO(string text, bool UsePrefix)
 		{
-            bool success = false;
-			if (UsePrefix)
+			bool success = false;
+
+			if (m_Profile != null)
 			{
-                success = Utility.SendToUO(string.Format("{0}{1}\r\n", m_Profile.General.CommandPrefix, text));
-			}
-			else
-			{
-                success = Utility.SendToUO(string.Format("{0}\r\n", text));
+				if (UsePrefix)
+				{
+					success = Utility.SendToUO(string.Format("{0}{1}\r\n", m_Profile.General.CommandPrefix, text));
+				}
+				else
+				{
+					success = Utility.SendToUO(string.Format("{0}\r\n", text));
+				}
 			}
 
-            if (!success)
-            {
-                MessageBox.Show("Client handle not found. If UO is running, try to set Options -> Advanced -> Use a custom client");
-            }
+			if (!success)
+			{
+				MessageBox.Show("Client handle not found. If UO is running, try to set Tools -> Options -> Advanced -> Use a custom client");
+			}
+
 		}
-
-        
 
 		public static void ClosePandora()
 		{
@@ -1117,7 +1120,7 @@ namespace TheBox
 			{
 				Log.WriteEntry("Starting");
 				Splash.Show();
-                AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+				AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
 
 				// Delete any temp files created during compilation of profile IO
 				string temp = Path.Combine(Pandora.Folder, "temp.dll");
@@ -1128,34 +1131,34 @@ namespace TheBox
 					File.Delete(temp);
 				}
 
-                // Issue 28:  	 Refactoring Pandora.cs - Tarion
+				// Issue 28:  	 Refactoring Pandora.cs - Tarion
 				// Move any profiles resulting from previous versions
-                ProfileManager.Instance.MoveOldProfiles();
-                // End Issue 28:
+				ProfileManager.Instance.MoveOldProfiles();
+				// End Issue 28:
 
 				if (args.Length == 1 && File.Exists(args[0]) && Path.GetExtension(args[0]).ToLower() == ".pbp")
 				{
-                    ProfileManager.Instance.ImportProfile(args[0]);
+					ProfileManager.Instance.ImportProfile(args[0]);
 				}
 
-                if (ProfileManager.Instance.ProfileLoaded)
-                {
-                    Pandora.Log.WriteEntry("Import startup initiated");
-                    m_Context = new StartingContext(ProfileManager.Instance.Profile.Name);
-                    Application.Run(m_Context);
-                }
+				if (ProfileManager.Instance.ProfileLoaded)
+				{
+					Pandora.Log.WriteEntry("Import startup initiated");
+					m_Context = new StartingContext(ProfileManager.Instance.Profile.Name);
+					Application.Run(m_Context);
+				}
 				else
 				{
 					Pandora.Log.WriteEntry("Normal startup initiated");
 
 					// Move on with normal startup
-                    Process proc = Pandora.ExistingInstance;
+					Process proc = Pandora.ExistingInstance;
 					if (proc != null) // Single instance check
 					{
 						Pandora.Log.WriteError(null, "Double instance detected");
 						System.Windows.Forms.MessageBox.Show("You can't run two instances of Pandora's Box at the same time");
-                        //  Issue 33:  	 Bring to front if already started - Tarion
-                        ProcessExtension.BringToFront(proc);
+						//  Issue 33:  	 Bring to front if already started - Tarion
+						ProcessExtension.BringToFront(proc);
 					}
 					else
 					{
@@ -1169,19 +1172,19 @@ namespace TheBox
 			{
 				Clipboard.SetDataObject(err.ToString(), true);
 				MessageBox.Show("An error occurred. The error text has been placed on your clipboard, use CTRL+V to paste it in a text file.");
-                // Issue 6:  	 Improve error management - Tarion
-                Environment.Exit(1);
-                // End Issue 6:
-            }
+				// Issue 6:  	 Improve error management - Tarion
+				Environment.Exit(1);
+				// End Issue 6:
+			}
 		}
 
-        // Issue 6:  	 Improve error management - Tarion
-        static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
-        {
-            Clipboard.SetDataObject("UnhandledException: \n" + e.ToString(), true);
-            MessageBox.Show("An error occurred. The error text has been placed on your clipboard, use CTRL+V to paste it in a text file.");
-            Environment.Exit(1);
-        }
+		// Issue 6:  	 Improve error management - Tarion
+		static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+		{
+			Clipboard.SetDataObject("UnhandledException: \n" + e.ToString(), true);
+			MessageBox.Show("An error occurred. The error text has been placed on your clipboard, use CTRL+V to paste it in a text file.");
+			Environment.Exit(1);
+		}
 		
 	}
 }

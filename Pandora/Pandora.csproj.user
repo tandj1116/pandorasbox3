@@ -3,16 +3,16 @@
     <LastOpenVersion>7.10.3077</LastOpenVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ReferencePath>D:\Dev\Projects\TSWizard\bin\Release\;D:\Dev\Pandora 2.0\Pandora\bin\Debug\Library;D:\Dev\Pandora 2.0\Library\;D:\Dev\Projects\MapViewer\bin\Release\;D:\Dev\Pandora 2.0\BoxCommonLibrary\bin\Debug\</ReferencePath>
+    <ReferencePath>
+    </ReferencePath>
     <CopyProjectDestinationFolder>
     </CopyProjectDestinationFolder>
     <CopyProjectUncPath>
     </CopyProjectUncPath>
     <CopyProjectOption>0</CopyProjectOption>
-    <ProjectView>ShowAllFiles</ProjectView>
+    <ProjectView>ProjectFiles</ProjectView>
     <ProjectTrust>0</ProjectTrust>
-    <PublishUrlHistory>
-    </PublishUrlHistory>
+    <PublishUrlHistory>publish\</PublishUrlHistory>
     <InstallUrlHistory>
     </InstallUrlHistory>
     <SupportUrlHistory>

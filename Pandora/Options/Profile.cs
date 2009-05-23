@@ -432,7 +432,7 @@ namespace TheBox.Options
 				Pandora.Log.WriteError( err, string.Format( "Can't read profile {0}", name ) );
 			}
 
-            // Close the already closed stream if there is no error... Can be better ;) - Tarion
+			// Close the already closed stream if there is no error... Can be better ;) - Tarion
 			if ( stream != null )
 				stream.Close();
 
