@@ -17,15 +17,15 @@ namespace TheBox.Forms
 		/// <param name="action">The action text</param>
 		public void SetActionText( string action )
 		{
-            // Issue 25 - CrossThread Operation in Splash screen - http://code.google.com/p/pandorasbox3/issues/detail?id=25 - Tarion
-            // Issue 1 - CrossThread operation exception - http://code.google.com/p/pandorasbox3/issues/detail?id=1 - Smjert
-            if (this.InvokeRequired)
-            {
-                this.BeginInvoke((MethodInvoker)delegate { SetActionText(action); });
-                return;
-            }
-            // Issue 1 - End
-            // Issue 25 - End
+			// Issue 25 - CrossThread Operation in Splash screen - http://code.google.com/p/pandorasbox3/issues/detail?id=25 - Tarion
+			// Issue 1 - CrossThread operation exception - http://code.google.com/p/pandorasbox3/issues/detail?id=1 - Smjert
+			if (this.InvokeRequired)
+			{
+				this.BeginInvoke((MethodInvoker)delegate { SetActionText(action); });
+				return;
+			}
+			// Issue 1 - End
+			// Issue 25 - End
 
 			if ( m_ActionLabel != null )
 			{
@@ -63,6 +63,9 @@ namespace TheBox.Forms
 				}
 			}
 			base.Dispose( disposing );
+
+			if(Pandora.Profile == null)
+				Pandora.ClosePandora();
 		}
 
 		#region Windows Form Designer generated code

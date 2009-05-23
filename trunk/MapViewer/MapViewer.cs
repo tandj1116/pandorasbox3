@@ -31,6 +31,9 @@ using TheBox.MapViewer.DrawObjects;
 using TheBox.MulData;
 using TheBox.Common;
 using System.Drawing.Drawing2D;
+// Issues 43 - Problems when the client path isn't found - http://code.google.com/p/pandorasbox3/issues/detail?id=43 - Smjert
+using TheBox.CustomMessageBox;
+// Issues 43 - End
 
 namespace TheBox.MapViewer
 {
@@ -118,7 +121,14 @@ namespace TheBox.MapViewer
 			GeneratePatchData();
 
 			// Read the colors
-			LoadRadarcol();
+			// Issues 43 - Problems when the client path isn't found - http://code.google.com/p/pandorasbox3/issues/detail?id=43 - Smjert
+			if (!LoadRadarcol())
+			{
+				ErrMsgBox.Show("Impossible to load .mul files", "Error");
+				Environment.Exit(1);
+			}
+			// Issues 43 - End
+			
 
 			// Create the default view. This will be most likely changed by the frame
 			m_ViewInfo = new MapViewInfo( this );
@@ -1405,15 +1415,17 @@ namespace TheBox.MapViewer
 		/// <summary>
 		/// Reads the Radarcol.mul file to retrieve the color
 		/// </summary>
-		private unsafe void LoadRadarcol()
+		// Issues 43 - Problems when the client path isn't found - http://code.google.com/p/pandorasbox3/issues/detail?id=43 - Smjert
+		private unsafe bool LoadRadarcol()
 		{
-            //  Issue 37:  	 Profile error - Tarion
-            string mulFile = GetMulFile( MulFileType.RadarCol, m_Map );
-            if (mulFile == null || mulFile == String.Empty)
-                return;
+			//  Issue 37:  	 Profile error - Tarion
+			string mulFile = GetMulFile( MulFileType.RadarCol, m_Map );
+			if (mulFile == null || mulFile == String.Empty)
+				if (!MulManager.FixClientPath())
+					return false;
 
-            FileStream stream = new FileStream(mulFile, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-            // End  Issue 37
+			FileStream stream = new FileStream(mulFile, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+			// End  Issue 37
 
 			int n = 0;
 
@@ -1425,7 +1437,10 @@ namespace TheBox.MapViewer
 			}
 
 			stream.Close();
+
+			return true;
 		}
+		// Issues 43 - End
 
 		/// <summary>
 		/// Converts a point on the control surface to map coordinates

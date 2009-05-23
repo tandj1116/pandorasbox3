@@ -107,14 +107,13 @@
     <Reference Include="System.Xml">
       <Name>System.XML</Name>
     </Reference>
-    <Reference Include="TSWizards">
-      <Name>TSWizards</Name>
-      <HintPath>..\..\Projects\TSWizard\bin\Release\TSWizards.dll</HintPath>
+    <Reference Include="TSWizards, Version=1.1.0.0, Culture=neutral, PublicKeyToken=8e33d70370d413db">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\TSWizards.dll</HintPath>
     </Reference>
-    <Reference Include="Ultima">
-      <Name>Ultima</Name>
+    <Reference Include="Ultima, Version=2.0.3188.23360, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\Ultima.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <ProjectReference Include="..\ArtViewer\ArtViewer.csproj">
       <Name>ArtViewer</Name>
@@ -134,14 +133,17 @@
     <ProjectReference Include="..\Datafiles\Data\Data.csproj">
       <Project>{3E20BA2C-177C-4141-8BE4-3010D9DF7959}</Project>
       <Name>Data</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Datafiles\DefaultButtons\DefaultButtons.csproj">
       <Project>{BB9DAC32-3B08-4C03-905B-9AE7CC55A10F}</Project>
       <Name>DefaultButtons</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Datafiles\English\English.csproj">
       <Project>{360959F7-14DD-4C76-BD61-72525B378EF3}</Project>
       <Name>English</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\MapViewer\MapViewer.csproj">
       <Name>MapViewer</Name>
@@ -1008,16 +1010,8 @@
     <None Include="BoxServer\vssver.scc" />
     <None Include="Pandora.exe.config" />
     <None Include="Pandora.exe.manifest" />
-    <Content Include="Library\TSWizards.dll" />
-    <Content Include="Library\Ultima.dll" />
-    <Content Include="Library\zlib.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Reference\Roofing.cs">
       <SubType>Code</SubType>
-    </Content>
-    <Content Include="zlib.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

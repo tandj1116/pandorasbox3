@@ -3,6 +3,10 @@ using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
 using System.Collections.Specialized;
+// Issues 43 - Problems when the client path isn't found - http://code.google.com/p/pandorasbox3/issues/detail?id=43 - Smjert
+using System.Windows.Forms;
+using TheBox.CustomMessageBox;
+// Issues 43 - End
 
 namespace TheBox.Common
 {
@@ -35,6 +39,76 @@ namespace TheBox.Common
 			"anim4.idx", "anim4.mul"
 		};
 
+		// Issues 43 - Problems when the client path isn't found - http://code.google.com/p/pandorasbox3/issues/detail?id=43 - Smjert
+		public static bool FixClientPath()
+		{
+			DialogResult reply = ErrMsgBox.Show("The client path has not been found, maybe your registry key is corrupted or is missing, choose a way to fix it:"
+				+ "\n\n Yes: Pandora will try to search where you installed the client automatically" +
+				"\n No: You manually specify the client path", "Client path not found", MessageBoxButtons.YesNo);
+
+			if(reply == DialogResult.Yes)
+			{
+				string directory = @"C:\\Program Files\\EA Games\\Ultima Online 2D Client\\";
+	
+				if(Directory.Exists(directory))
+				{
+					if(File.Exists(directory + @"\client.exe"))
+						WriteRegistryKey(directory);
+				}
+				else 
+				{
+					directory = @"C:\Programmi\EA Games\Ultima Online 2D Client";
+					if(Directory.Exists(directory + @"\client.exe"))
+						WriteRegistryKey(directory);
+					else
+					{
+						ErrMsgBox.Show("The automatic search failed to find the folder, please specify the path manually", "Folder not found");
+						if (!SetCustomPath())
+							return false;
+					}
+				}
+				return true;
+			}
+			else if (reply == DialogResult.No && SetCustomPath())
+							return true;
+
+			return false;
+
+		}
+
+		private static bool SetCustomPath()
+		{
+			FolderBrowserDialog fdialog = new FolderBrowserDialog();
+			DialogResult result = fdialog.ShowDialog();
+
+			if (result == DialogResult.OK)
+			{
+				if (Directory.Exists(fdialog.SelectedPath) && File.Exists(fdialog.SelectedPath + @"\client.exe") )
+				{
+					WriteRegistryKey(fdialog.SelectedPath);
+					return true;
+				}
+				else
+				{
+					result = ErrMsgBox.Show("You selected the wrong folder, do you want to retry?", "Wrong Folder", MessageBoxButtons.YesNo);
+					if (result == DialogResult.Yes)
+						return SetCustomPath();
+				}
+			}
+			return false;
+		}
+
+		private static void WriteRegistryKey(string path)
+		{
+			Microsoft.Win32.RegistryKey key = Microsoft.Win32.Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Origin Worlds Online\Ultima Online\1.0");
+			
+			key.SetValue("ExePath", path + @"\client.exe");
+			key.SetValue("InstCDPath", path);
+			key.SetValue("PatchExePath", path + @"\uopatch.exe");
+			key.SetValue("StartExeParg", path + @"\uo.exe");
+		}
+		// Issues 43 - End
+
 		/// <summary>
 		/// Gets the files supported by Pandora's Box
 		/// </summary>
@@ -53,14 +127,17 @@ namespace TheBox.Common
 		/// </summary>
 		public MulManager()
 		{
-			m_2DFolder = GetExePath( "Ultima Online Samurai Empire BETA\\2d\\1.0" );
-			m_3DFolder = GetExePath( "Ultima Online Samurai Empire BETA\\3d\\1.0" );
+			
+			m_2DFolder = GetExePath( "Ultima Online" );
+			m_3DFolder = GetExePath( "Ultima Online Third Dawn" );
 
-			if ( m_2DFolder == null )
-				m_2DFolder = GetExePath( "Ultima Online" );
-
-			if ( m_3DFolder == null )
-				m_3DFolder = GetExePath( "Ultima Online Third Dawn" );
+			// Issues 43 - Problems when the client path isn't found - http://code.google.com/p/pandorasbox3/issues/detail?id=43 - Smjert
+			if (m_2DFolder == null && !FixClientPath())
+			{
+				ErrMsgBox.Show("Impossible to load .mul files", "Error");
+				Environment.Exit(1);
+			}
+			// Issues 43 - End
 
 			m_Table = new NameValueCollection();
 		}
