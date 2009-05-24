@@ -1,5 +1,8 @@
-#labels Phase-Implementation
+#labels Phase-Implementation,Featured
 = Changelog =
+
+*Pandora's Box 3.0.0.4 | 05-24-09* 
+  * Fixed the bug that makes Pandora think that the client isn't running. 
 
 *Pandora's Box 3.0.0.3 | 05-23-09* 
   * Added a way to fix the Ultima Online registry key if missing or corrupted. 
@@ -11,7 +14,7 @@
   * Cleaned up and refactored a bit the code. 
   * Fixed random bugs. 
 
-*Pandora's Box 3.0.0.2 | 01-19-09 *
+*Pandora's Box 3.0.0.2 | 01-19-09*
   * All project will compile with Net Framework 2.0 
   * Trammel has own map after ML(pre-ML server will have Felucca as source) 
   * Fixed LanguageSelector appearing behind splash screen 
