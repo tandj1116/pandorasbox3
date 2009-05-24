@@ -1,3 +1,6 @@
+Pandora's Box 3.0.0.4
+- Fixed the bug that makes Pandora think that the client isn't running.
+
 Pandora's Box 3.0.0.3
 - Added a way to fix the Ultima Online registry key if missing or corrupted.
 - Added a message when you use commands that needs client and it isn't found.
