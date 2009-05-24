@@ -1,4 +1,4 @@
-#labels Phase-Implementation,Featured
+#labels Phase-Implementation
 = Changelog =
 
 *Pandora's Box 3.0.0.3 | 05-23-09* 
