@@ -325,11 +325,6 @@ namespace TheBox
 		private static TheBox.Lang.TextProvider m_TextProvider = null;
 
 		/// <summary>
-		/// The currently loaded profile
-		/// </summary>
-		private static TheBox.Options.Profile m_Profile = null;
-
-		/// <summary>
 		/// The working folder for the program
 		/// </summary>
 		private static string m_Folder = null;
@@ -522,11 +517,11 @@ namespace TheBox
 		{
 			bool success = false;
 
-			if (m_Profile != null)
+			if (Profile != null)
 			{
 				if (UsePrefix)
 				{
-					success = Utility.SendToUO(string.Format("{0}{1}\r\n", m_Profile.General.CommandPrefix, text));
+					success = Utility.SendToUO(string.Format("{0}{1}\r\n", Profile.General.CommandPrefix, text));
 				}
 				else
 				{
