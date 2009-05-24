@@ -3,10 +3,19 @@
 
 == Post your Logfile ==
 
-I just have the german path, there you can find a logfile here:
-  * C:\Dokumente und Einstellungen\USERNAME\Anwendungsdaten\Pandora's Box 3
+You will find a log file at this path:
 
-English must be like (someone can correct it please):
-  * C:\Documants and Settings\USERNAME\ApplicationData\Pandora's Box 3
+Multilanguage:
+  * VISTA: "..\Users\USERNAME\AppData\Roaming\Pandora's Box 3"
 
-there must be a file named *Log.txt*. The content may be useful to find bugs, especialy when where is no exception thrown.
+English: 
+  * XP: "..\Documents And Settings\USERNAME\ApplicationData\Pandora's Box 3"
+
+German:
+  * XP: "C:\Dokumente und Einstellungen\USERNAME\Anwendungsdaten\Pandora's Box 3"
+
+Italian:
+  * XP: "..\Documents and Settings\USERNAME\Dati applicazioni\Pandora's Box 3"
+
+There must be a file named *Log.txt*. 
+The content may be useful to find bugs, especially when where is no exception thrown.
