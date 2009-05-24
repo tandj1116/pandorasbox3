@@ -28,10 +28,7 @@ namespace TheBox.Lang
 		private System.Windows.Forms.MenuItem menuItem3;
 		private System.Windows.Forms.MenuItem menuItem4;
 		private System.Windows.Forms.MenuItem menuItem5;
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.Container components = null;
+		private IContainer components;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.OpenFileDialog OpenFile;
 		private System.Windows.Forms.SaveFileDialog SaveFile;
@@ -39,6 +36,9 @@ namespace TheBox.Lang
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.CheckBox checkBox1;
 		private System.Windows.Forms.CheckBox CheckMinimize;
+		private Label label3;
+		private Label label4;
+		private Label label5;
 
 		private TextProvider m_TextProvider;
 
@@ -74,6 +74,7 @@ namespace TheBox.Lang
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.lCat = new System.Windows.Forms.ListBox();
 			this.txNewCat = new System.Windows.Forms.TextBox();
 			this.bAddCat = new System.Windows.Forms.Button();
@@ -81,7 +82,7 @@ namespace TheBox.Lang
 			this.txDef = new System.Windows.Forms.TextBox();
 			this.txText = new System.Windows.Forms.TextBox();
 			this.bAddEntry = new System.Windows.Forms.Button();
-			this.mainMenu1 = new System.Windows.Forms.MainMenu();
+			this.mainMenu1 = new System.Windows.Forms.MainMenu(this.components);
 			this.menuItem1 = new System.Windows.Forms.MenuItem();
 			this.menuItem2 = new System.Windows.Forms.MenuItem();
 			this.menuItem3 = new System.Windows.Forms.MenuItem();
@@ -94,24 +95,27 @@ namespace TheBox.Lang
 			this.label2 = new System.Windows.Forms.Label();
 			this.checkBox1 = new System.Windows.Forms.CheckBox();
 			this.CheckMinimize = new System.Windows.Forms.CheckBox();
+			this.label3 = new System.Windows.Forms.Label();
+			this.label4 = new System.Windows.Forms.Label();
+			this.label5 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// lCat
 			// 
-			this.lCat.Location = new System.Drawing.Point(8, 32);
+			this.lCat.Location = new System.Drawing.Point(8, 58);
 			this.lCat.Name = "lCat";
 			this.lCat.Size = new System.Drawing.Size(144, 316);
 			this.lCat.Sorted = true;
 			this.lCat.TabIndex = 0;
-			this.lCat.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lCat_KeyDown);
 			this.lCat.SelectedIndexChanged += new System.EventHandler(this.lCat_SelectedIndexChanged);
+			this.lCat.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lCat_KeyDown);
 			// 
 			// txNewCat
 			// 
 			this.txNewCat.Location = new System.Drawing.Point(8, 8);
 			this.txNewCat.Name = "txNewCat";
+			this.txNewCat.Size = new System.Drawing.Size(100, 20);
 			this.txNewCat.TabIndex = 1;
-			this.txNewCat.Text = "";
 			// 
 			// bAddCat
 			// 
@@ -125,14 +129,14 @@ namespace TheBox.Lang
 			// 
 			// lDef
 			// 
-			this.lDef.Location = new System.Drawing.Point(160, 32);
+			this.lDef.Location = new System.Drawing.Point(158, 58);
 			this.lDef.Name = "lDef";
 			this.lDef.Size = new System.Drawing.Size(144, 316);
 			this.lDef.Sorted = true;
 			this.lDef.TabIndex = 3;
-			this.lDef.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lDef_KeyDown);
-			this.lDef.DoubleClick += new System.EventHandler(this.lDef_DoubleClick);
 			this.lDef.SelectedIndexChanged += new System.EventHandler(this.lDef_SelectedIndexChanged);
+			this.lDef.DoubleClick += new System.EventHandler(this.lDef_DoubleClick);
+			this.lDef.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lDef_KeyDown);
 			// 
 			// txDef
 			// 
@@ -140,21 +144,19 @@ namespace TheBox.Lang
 			this.txDef.Name = "txDef";
 			this.txDef.Size = new System.Drawing.Size(136, 20);
 			this.txDef.TabIndex = 4;
-			this.txDef.Text = "";
 			// 
 			// txText
 			// 
-			this.txText.Location = new System.Drawing.Point(312, 56);
+			this.txText.Location = new System.Drawing.Point(312, 96);
 			this.txText.Multiline = true;
 			this.txText.Name = "txText";
 			this.txText.Size = new System.Drawing.Size(272, 136);
 			this.txText.TabIndex = 5;
-			this.txText.Text = "";
 			// 
 			// bAddEntry
 			// 
 			this.bAddEntry.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.bAddEntry.Location = new System.Drawing.Point(400, 200);
+			this.bAddEntry.Location = new System.Drawing.Point(400, 238);
 			this.bAddEntry.Name = "bAddEntry";
 			this.bAddEntry.Size = new System.Drawing.Size(88, 23);
 			this.bAddEntry.TabIndex = 6;
@@ -164,16 +166,16 @@ namespace TheBox.Lang
 			// mainMenu1
 			// 
 			this.mainMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-																											 this.menuItem1});
+            this.menuItem1});
 			// 
 			// menuItem1
 			// 
 			this.menuItem1.Index = 0;
 			this.menuItem1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-																											 this.menuItem2,
-																											 this.menuItem3,
-																											 this.menuItem4,
-																											 this.menuItem5});
+            this.menuItem2,
+            this.menuItem3,
+            this.menuItem4,
+            this.menuItem5});
 			this.menuItem1.Text = "File";
 			// 
 			// menuItem2
@@ -221,7 +223,6 @@ namespace TheBox.Lang
 			this.txLanguage.Name = "txLanguage";
 			this.txLanguage.Size = new System.Drawing.Size(216, 20);
 			this.txLanguage.TabIndex = 8;
-			this.txLanguage.Text = "";
 			this.txLanguage.TextChanged += new System.EventHandler(this.txLanguage_TextChanged);
 			// 
 			// label2
@@ -251,10 +252,40 @@ namespace TheBox.Lang
 			this.CheckMinimize.TabIndex = 11;
 			this.CheckMinimize.Text = "Minimize on set";
 			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(5, 39);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(48, 13);
+			this.label3.TabIndex = 12;
+			this.label3.Text = "Sections";
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(155, 39);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(30, 13);
+			this.label4.TabIndex = 13;
+			this.label4.Text = "Keys";
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(308, 70);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(28, 13);
+			this.label5.TabIndex = 14;
+			this.label5.Text = "Text";
+			// 
 			// Localizer
 			// 
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-			this.ClientSize = new System.Drawing.Size(592, 357);
+			this.ClientSize = new System.Drawing.Size(592, 386);
+			this.Controls.Add(this.label5);
+			this.Controls.Add(this.label4);
+			this.Controls.Add(this.label3);
 			this.Controls.Add(this.CheckMinimize);
 			this.Controls.Add(this.checkBox1);
 			this.Controls.Add(this.label2);
@@ -269,8 +300,9 @@ namespace TheBox.Lang
 			this.Controls.Add(this.lCat);
 			this.Menu = this.mainMenu1;
 			this.Name = "Localizer";
-			this.Text = "Form1";
+			this.Text = "Localizer";
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 		#endregion
@@ -396,17 +428,20 @@ namespace TheBox.Lang
 				return;
 
 			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+
+			// Issue 45 - Localizer isn't totally working - http://code.google.com/p/pandorasbox3/issues/detail?id=45 - Smjert
+			lDef.Items.Clear();
+			txDef.Text = "";
+			txText.Text = "";
+			// Issue 45 - End
+
 			Dictionary<string, string> hash;
 			if (!m_TextProvider.Data.TryGetValue((string)lCat.SelectedItem, out hash))
 				return;
 
-			lDef.Items.Clear();
-
 			if ( hash != null )
 				foreach ( string s in hash.Keys )
 					lDef.Items.Add( s );
-			txDef.Text = "";
-			txText.Text = "";
 		}
 
 		private void lDef_SelectedIndexChanged(object sender, System.EventArgs e)

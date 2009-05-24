@@ -92,23 +92,25 @@ namespace TheBox.Lang
 		{
 			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 			Dictionary<string, string> loc = null;
-			
 
+
+			// Issue 45 - Localizer isn't totally working - http://code.google.com/p/pandorasbox3/issues/detail?id=45 - Smjert
 			if ( m_Sections.ContainsKey( category ) )
 			{
 				loc = m_Sections[category];
+
+				loc[definition] = text;
 			}
 			else
 			{
 				loc = new Dictionary<string, string>();
 
+				loc[definition] = text;
+
 				m_Sections.Add( category, loc );
 			}
+			// Issue 45 - End
 			
-			if(loc.ContainsKey(definition))
-			{
-				loc[definition] = text;
-			}
 			// Issue 10 - End
 		}
 
