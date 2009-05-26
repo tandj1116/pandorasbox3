@@ -39,6 +39,8 @@ namespace TheBox.Lang
 		private Label label3;
 		private Label label4;
 		private Label label5;
+		private Button bRemoveEntry;
+		private Button bRemoveCat;
 
 		private TextProvider m_TextProvider;
 
@@ -98,11 +100,13 @@ namespace TheBox.Lang
 			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
+			this.bRemoveEntry = new System.Windows.Forms.Button();
+			this.bRemoveCat = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// lCat
 			// 
-			this.lCat.Location = new System.Drawing.Point(8, 58);
+			this.lCat.Location = new System.Drawing.Point(8, 85);
 			this.lCat.Name = "lCat";
 			this.lCat.Size = new System.Drawing.Size(144, 316);
 			this.lCat.Sorted = true;
@@ -112,7 +116,7 @@ namespace TheBox.Lang
 			// 
 			// txNewCat
 			// 
-			this.txNewCat.Location = new System.Drawing.Point(8, 8);
+			this.txNewCat.Location = new System.Drawing.Point(8, 7);
 			this.txNewCat.Name = "txNewCat";
 			this.txNewCat.Size = new System.Drawing.Size(100, 20);
 			this.txNewCat.TabIndex = 1;
@@ -120,7 +124,7 @@ namespace TheBox.Lang
 			// bAddCat
 			// 
 			this.bAddCat.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.bAddCat.Location = new System.Drawing.Point(112, 6);
+			this.bAddCat.Location = new System.Drawing.Point(8, 34);
 			this.bAddCat.Name = "bAddCat";
 			this.bAddCat.Size = new System.Drawing.Size(40, 23);
 			this.bAddCat.TabIndex = 2;
@@ -129,7 +133,7 @@ namespace TheBox.Lang
 			// 
 			// lDef
 			// 
-			this.lDef.Location = new System.Drawing.Point(158, 58);
+			this.lDef.Location = new System.Drawing.Point(172, 85);
 			this.lDef.Name = "lDef";
 			this.lDef.Size = new System.Drawing.Size(144, 316);
 			this.lDef.Sorted = true;
@@ -140,14 +144,14 @@ namespace TheBox.Lang
 			// 
 			// txDef
 			// 
-			this.txDef.Location = new System.Drawing.Point(352, 32);
+			this.txDef.Location = new System.Drawing.Point(333, 34);
 			this.txDef.Name = "txDef";
 			this.txDef.Size = new System.Drawing.Size(136, 20);
 			this.txDef.TabIndex = 4;
 			// 
 			// txText
 			// 
-			this.txText.Location = new System.Drawing.Point(312, 96);
+			this.txText.Location = new System.Drawing.Point(333, 85);
 			this.txText.Multiline = true;
 			this.txText.Name = "txText";
 			this.txText.Size = new System.Drawing.Size(272, 136);
@@ -156,7 +160,7 @@ namespace TheBox.Lang
 			// bAddEntry
 			// 
 			this.bAddEntry.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.bAddEntry.Location = new System.Drawing.Point(400, 238);
+			this.bAddEntry.Location = new System.Drawing.Point(352, 227);
 			this.bAddEntry.Name = "bAddEntry";
 			this.bAddEntry.Size = new System.Drawing.Size(88, 23);
 			this.bAddEntry.TabIndex = 6;
@@ -203,9 +207,9 @@ namespace TheBox.Lang
 			// 
 			// label1
 			// 
-			this.label1.Location = new System.Drawing.Point(312, 32);
+			this.label1.Location = new System.Drawing.Point(332, 15);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(40, 16);
+			this.label1.Size = new System.Drawing.Size(26, 16);
 			this.label1.TabIndex = 7;
 			this.label1.Text = "Key";
 			// 
@@ -219,7 +223,7 @@ namespace TheBox.Lang
 			// 
 			// txLanguage
 			// 
-			this.txLanguage.Location = new System.Drawing.Point(368, 304);
+			this.txLanguage.Location = new System.Drawing.Point(395, 323);
 			this.txLanguage.Name = "txLanguage";
 			this.txLanguage.Size = new System.Drawing.Size(216, 20);
 			this.txLanguage.TabIndex = 8;
@@ -227,7 +231,7 @@ namespace TheBox.Lang
 			// 
 			// label2
 			// 
-			this.label2.Location = new System.Drawing.Point(312, 304);
+			this.label2.Location = new System.Drawing.Point(330, 323);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(56, 16);
 			this.label2.TabIndex = 9;
@@ -235,7 +239,7 @@ namespace TheBox.Lang
 			// 
 			// checkBox1
 			// 
-			this.checkBox1.Location = new System.Drawing.Point(312, 328);
+			this.checkBox1.Location = new System.Drawing.Point(333, 377);
 			this.checkBox1.Name = "checkBox1";
 			this.checkBox1.Size = new System.Drawing.Size(112, 24);
 			this.checkBox1.TabIndex = 10;
@@ -246,7 +250,7 @@ namespace TheBox.Lang
 			// 
 			this.CheckMinimize.Checked = true;
 			this.CheckMinimize.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.CheckMinimize.Location = new System.Drawing.Point(424, 328);
+			this.CheckMinimize.Location = new System.Drawing.Point(451, 377);
 			this.CheckMinimize.Name = "CheckMinimize";
 			this.CheckMinimize.Size = new System.Drawing.Size(160, 24);
 			this.CheckMinimize.TabIndex = 11;
@@ -254,35 +258,56 @@ namespace TheBox.Lang
 			// 
 			// label3
 			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(5, 39);
+			this.label3.Location = new System.Drawing.Point(5, 62);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(48, 13);
+			this.label3.Size = new System.Drawing.Size(48, 20);
 			this.label3.TabIndex = 12;
 			this.label3.Text = "Sections";
 			// 
 			// label4
 			// 
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(155, 39);
+			this.label4.Location = new System.Drawing.Point(169, 62);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(30, 13);
+			this.label4.Size = new System.Drawing.Size(30, 20);
 			this.label4.TabIndex = 13;
 			this.label4.Text = "Keys";
 			// 
 			// label5
 			// 
-			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(308, 70);
+			this.label5.Location = new System.Drawing.Point(330, 62);
 			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(28, 13);
+			this.label5.Size = new System.Drawing.Size(28, 20);
 			this.label5.TabIndex = 14;
 			this.label5.Text = "Text";
+			// 
+			// bRemoveEntry
+			// 
+			this.bRemoveEntry.AutoSize = true;
+			this.bRemoveEntry.Location = new System.Drawing.Point(474, 227);
+			this.bRemoveEntry.Name = "bRemoveEntry";
+			this.bRemoveEntry.Size = new System.Drawing.Size(75, 23);
+			this.bRemoveEntry.TabIndex = 15;
+			this.bRemoveEntry.Text = "Remove";
+			this.bRemoveEntry.UseVisualStyleBackColor = true;
+			this.bRemoveEntry.Click += new System.EventHandler(this.bRemoveEntry_Click);
+			// 
+			// bRemoveCat
+			// 
+			this.bRemoveCat.AutoSize = true;
+			this.bRemoveCat.Location = new System.Drawing.Point(54, 34);
+			this.bRemoveCat.Name = "bRemoveCat";
+			this.bRemoveCat.Size = new System.Drawing.Size(57, 23);
+			this.bRemoveCat.TabIndex = 16;
+			this.bRemoveCat.Text = "Remove";
+			this.bRemoveCat.UseVisualStyleBackColor = true;
+			this.bRemoveCat.Click += new System.EventHandler(this.bRemoveCat_Click);
 			// 
 			// Localizer
 			// 
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-			this.ClientSize = new System.Drawing.Size(592, 386);
+			this.ClientSize = new System.Drawing.Size(617, 432);
+			this.Controls.Add(this.bRemoveCat);
+			this.Controls.Add(this.bRemoveEntry);
 			this.Controls.Add(this.label5);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.label3);
@@ -550,6 +575,33 @@ namespace TheBox.Lang
 		private void checkBox1_CheckedChanged(object sender, System.EventArgs e)
 		{
 			this.TopMost = checkBox1.Checked;
+		}
+
+		private void bRemoveCat_Click(object sender, EventArgs e)
+		{
+			if (lCat.SelectedItem != null)
+			{
+				m_TextProvider.Data.Remove((string)lCat.SelectedItem);
+				lCat.Items.Remove(lCat.SelectedItem);
+				lDef.Items.Clear();
+				txDef.Text = "";
+				txText.Text = "";
+			}
+		}
+
+		private void bRemoveEntry_Click(object sender, EventArgs e)
+		{
+			if(lDef.SelectedItem != null)
+			{
+				Dictionary<string, string> hash;
+				if (!m_TextProvider.Data.TryGetValue((string)lCat.SelectedItem, out hash))
+					return;
+
+				hash.Remove((string)lDef.SelectedItem);
+				lDef.Items.Remove(lDef.SelectedItem);
+				txDef.Text = "";
+				txText.Text = "";
+			}
 		}
 	}
 }
