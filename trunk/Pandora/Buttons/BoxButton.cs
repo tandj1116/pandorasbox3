@@ -239,10 +239,10 @@ namespace TheBox.Buttons
 			}
 			catch (Exception ex)
 			{
-                // Issue 6:  	 Improve error management - Tarion
-                //Pandora.Log.WriteError(ex, "BuildMenu() failed");
-                throw new Exception("BuildMenu() failed", ex);
-                // End Issue 6
+				// Issue 6:  	 Improve error management - Tarion
+				//Pandora.Log.WriteError(ex, "BuildMenu() failed");
+				throw new Exception("BuildMenu() failed", ex);
+				// End Issue 6
 			}
 		}
 
