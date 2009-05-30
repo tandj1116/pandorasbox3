@@ -1,6 +1,9 @@
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoxCommonLibrary", "BoxCommonLibrary\BoxCommonLibrary.csproj", "{42C26843-2517-44D5-9ADF-EF5310D7E5B0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FCE8364F-68D4-437A-AAC5-03BF4D6BC4C7} = {FCE8364F-68D4-437A-AAC5-03BF4D6BC4C7}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoxEdit", "BoxEdit\BoxEdit.csproj", "{88322321-AB0D-4EEF-BB10-9B115E952E52}"
 EndProject

@@ -152,7 +152,6 @@
     <entry name="WrongUOFolder" text="The folder you supplied doesn't seem to contain valid MUL files and it hasn't been accepted. Please select a different location." />
     <entry name="DefLoc" text="Restore default location files" />
     <entry name="Taskbar" text="Show in taskbar" />
-    <entry name="Link Color" text="Links Color" />
     <entry name="CustomClient" text="Use a custom client" />
     <entry name="DefLocWarn" text="By performing this operation you're going to discard any changed you made to your current locations datafiles.&#xD;&#xA;&#xD;&#xA;Are you sure you wish to proceed?" />
     <entry name="MulManage" text="UO Files Managment" />
