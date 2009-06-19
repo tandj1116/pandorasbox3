@@ -100,7 +100,7 @@ namespace TheBox.Controls.Params
 		/// Sets the list of the possible values for an enum
 		/// </summary>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-		public List<string> EnumValues
+		public List<object> EnumValues
 		// Issue 10 - End
 		{
 			set
