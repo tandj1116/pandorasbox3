@@ -78,7 +78,7 @@ namespace TheBox.Data
 		private string m_Name;
 		private BoxPropType m_ParamType;
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-		private List<string> m_EnumValues;
+		private List<object> m_EnumValues;
 		// Issue 10 - End
 
 		[ XmlAttribute ]
@@ -105,7 +105,7 @@ namespace TheBox.Data
 		/// Gets or sets the list of values for an enum parameter
 		/// </summary>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-		public List<string> EnumValues
+		public List<object> EnumValues
 		// Issue 10 - End
 		{
 			get { return m_EnumValues; }
