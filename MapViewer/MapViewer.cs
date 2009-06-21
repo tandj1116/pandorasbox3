@@ -1421,7 +1421,8 @@ namespace TheBox.MapViewer
 			//  Issue 37:  	 Profile error - Tarion
 			string mulFile = GetMulFile( MulFileType.RadarCol, m_Map );
 			if (mulFile == null || mulFile == String.Empty)
-				if (!MulManager.FixClientPath())
+                if (!MulManager.FixClientPath())
+                    
 					return false;
 
 			FileStream stream = new FileStream(mulFile, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);

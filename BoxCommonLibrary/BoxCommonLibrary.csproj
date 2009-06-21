@@ -91,7 +91,9 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ErrMsgBox, Version=3.0.0.3, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="ErrMsgBox, Version=3.0.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\ErrMsgBox\bin\Debug\ErrMsgBox.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <Name>System</Name>
     </Reference>

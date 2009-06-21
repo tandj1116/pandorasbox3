@@ -145,6 +145,10 @@
       <Name>English</Name>
       <Private>False</Private>
     </ProjectReference>
+    <ProjectReference Include="..\ErrMsgBox\ErrMsgBox.csproj">
+      <Project>{FCE8364F-68D4-437A-AAC5-03BF4D6BC4C7}</Project>
+      <Name>ErrMsgBox</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MapViewer\MapViewer.csproj">
       <Name>MapViewer</Name>
       <Project>{BCF60001-3CDA-420E-83ED-F1FEAC1E005A}</Project>
