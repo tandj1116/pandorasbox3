@@ -1,0 +1,6 @@
+E:\Ultima Online\7w\Pandora\Pandora 3\log4net\build\bin\net\1.0\debug\log4net.dll
+E:\Ultima Online\7w\Pandora\Pandora 3\log4net\build\bin\net\1.0\debug\log4net.pdb
+E:\Ultima Online\7w\Pandora\Pandora 3\log4net\build\bin\net\1.0\debug\log4net.xml
+E:\Ultima Online\7w\Pandora\Pandora 3\log4net\src\obj\Debug\ResolveAssemblyReference.cache
+E:\Ultima Online\7w\Pandora\Pandora 3\log4net\src\obj\Debug\log4net.dll
+E:\Ultima Online\7w\Pandora\Pandora 3\log4net\src\obj\Debug\log4net.pdb
