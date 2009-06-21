@@ -93,7 +93,7 @@
   <ItemGroup>
     <Reference Include="ErrMsgBox, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Pandora\Library\ErrMsgBox.dll</HintPath>
+      <HintPath>..\ErrMsgBox\bin\Debug\ErrMsgBox.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>
