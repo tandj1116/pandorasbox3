@@ -152,16 +152,16 @@ namespace TheBox
 				if (m_TextProvider == null)
 				{
 					// m_TextProvider = TheBox.Lang.TextProvider.Deserialize( @"D:\Dev\Pandora 2.0\Pandora\Language\English.xml" );
-                    // Issue 6:  	 Improve error management - Tarion
-                    try
-                    {
-                        m_TextProvider = TheBox.Lang.TextProvider.GetLanguage();
-                    }
-                    catch
-                    {
-                        return null;
-                    }
-                    // End Issue 6
+					// Issue 6:  	 Improve error management - Tarion
+					try
+					{
+							m_TextProvider = TheBox.Lang.TextProvider.GetLanguage();
+					}
+					catch
+					{
+							return null;
+					}
+					// End Issue 6
 				}
 
 				return m_TextProvider;

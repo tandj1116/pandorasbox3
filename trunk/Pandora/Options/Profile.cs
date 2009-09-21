@@ -192,10 +192,10 @@ namespace TheBox.Options
 		{
 			get
 			{
-                string profilesFolder = ProfileManager.Instance.ProfilesFolder;
+				string profilesFolder = ProfileManager.Instance.ProfilesFolder;
 				StringCollection list = new StringCollection();
 
-                if (Directory.Exists(profilesFolder))
+				if (Directory.Exists(profilesFolder))
 				{
                     string[] profiles = Directory.GetDirectories(profilesFolder);
 
@@ -251,7 +251,7 @@ namespace TheBox.Options
 		{
 			get
 			{
-                return Path.Combine(ProfileManager.Instance.ProfilesFolder, m_Name);
+				return Path.Combine(ProfileManager.Instance.ProfilesFolder, m_Name);
 			}
 		}
 
