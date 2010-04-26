@@ -629,8 +629,8 @@ namespace TheBox.Roofing
 			bGenerate.Enabled = m_Roof.Rectangles.Count > 0;
 			bTest.Enabled = m_Roof.Rectangles.Count > 0;
 
-			bServerGenerate.Enabled = m_Roof.Rectangles.Count > 0 && Pandora.Connected;
-			bServerControl.Enabled = m_Roof.Rectangles.Count > 0 && Pandora.Connected;
+            bServerGenerate.Enabled = m_Roof.Rectangles.Count > 0 && Pandora.BoxConnection.Connected;
+            bServerControl.Enabled = m_Roof.Rectangles.Count > 0 && Pandora.BoxConnection.Connected;
 		}
 
 		/// <summary>
@@ -691,8 +691,8 @@ namespace TheBox.Roofing
 		/// </summary>
 		private void UpdateServerButtons()
 		{
-			bServerGenerate.Enabled = Pandora.Connected && m_Roof.Rectangles.Count > 0;
-			bServerControl.Enabled = Pandora.Connected && m_Roof.Rectangles.Count > 0;
+            bServerGenerate.Enabled = Pandora.BoxConnection.Connected && m_Roof.Rectangles.Count > 0;
+            bServerControl.Enabled = Pandora.BoxConnection.Connected && m_Roof.Rectangles.Count > 0;
 		}
 
 		/// <summary>
@@ -701,7 +701,7 @@ namespace TheBox.Roofing
 		private void RoofingForm_Load(object sender, System.EventArgs e)
 		{
 			UpdateServerButtons();
-			Pandora.OnlineChanged += new EventHandler(Pandora_OnlineChanged);
+            Pandora.BoxConnection.OnlineChanged += new EventHandler(Pandora_OnlineChanged);
 
 			// Load the rooftiles
 			m_RoofTiles = TileSet.Load();

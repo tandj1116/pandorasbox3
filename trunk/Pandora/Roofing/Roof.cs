@@ -688,7 +688,7 @@ namespace TheBox.Roofing
 			TheBox.BoxServer.BuildMessage msg = new BuildMessage();
 			msg.Items = items;
 
-			Pandora.SendToServer( msg );
+            Pandora.BoxConnection.SendToServer(msg);
 		}
 	}
 }

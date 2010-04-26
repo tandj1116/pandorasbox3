@@ -274,7 +274,7 @@ namespace TheBox.Forms
 		{
 			TheBox.BoxServer.ExplorerRequest msg = new ExplorerRequest();
 
-			BoxMessage result = Pandora.SendToServer( msg );
+            BoxMessage result = Pandora.BoxConnection.SendToServer(msg);
 
 			m_Info = result as FolderInfo;
 
@@ -304,7 +304,7 @@ namespace TheBox.Forms
 		{
 			TheBox.BoxServer.ExplorerRequest msg = new ExplorerRequest();
 
-			BoxMessage result = Pandora.SendToServer( msg );
+            BoxMessage result = Pandora.BoxConnection.SendToServer(msg);
 
 			m_Info = result as FolderInfo;
 
@@ -581,7 +581,7 @@ namespace TheBox.Forms
 				return;
 			}
 
-			GenericOK response =  BoxConnection.ProcessMessage( msg, true ) as GenericOK;
+			GenericOK response =  Pandora.BoxConnection.ProcessMessage( msg, true ) as GenericOK;
 
 			if ( response != null )
 			{
@@ -644,7 +644,7 @@ namespace TheBox.Forms
 
 			msg.Path = target;
 
-			GenericOK response = BoxConnection.ProcessMessage( msg, true ) as GenericOK;
+			GenericOK response = Pandora.BoxConnection.ProcessMessage( msg, true ) as GenericOK;
 
 			if ( response != null )
 			{
@@ -693,7 +693,7 @@ namespace TheBox.Forms
 
 				msg.Folder = Path.Combine( parentpath, e.Label );
 
-				GenericOK response = BoxConnection.ProcessMessage( msg, true ) as GenericOK;
+				GenericOK response = Pandora.BoxConnection.ProcessMessage( msg, true ) as GenericOK;
 
 				if ( response != null )
 				{
@@ -737,7 +737,7 @@ namespace TheBox.Forms
 				msg.OldPath = old;
 				msg.NewPath = Path.Combine( Folder, e.Label );
 
-				GenericOK response = BoxConnection.ProcessMessage( msg, true ) as GenericOK;
+				GenericOK response = Pandora.BoxConnection.ProcessMessage( msg, true ) as GenericOK;
 
 				if ( response != null )
 				{

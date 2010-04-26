@@ -789,7 +789,7 @@ namespace TheBox.Forms
 
 		private bool EnsureConditions()
 		{
-			if ( !Pandora.Connected )
+            if (!Pandora.BoxConnection.Connected)
 			{
 				MessageBox.Show( Pandora.Localization.TextProvider[ "Server.PleaseConnect" ] );
 				return false;
@@ -838,7 +838,7 @@ namespace TheBox.Forms
 				msg = new TheBox.BoxServer.RandomItem( tileset, hues );
 			}
 
-			Pandora.SendToServer( msg );
+            Pandora.BoxConnection.SendToServer(msg);
 		}
 
 		private void labFill_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
@@ -922,7 +922,7 @@ namespace TheBox.Forms
 
 			TheBox.BoxServer.BoxMessage msg = rnd.CreateMessage();
 
-			Pandora.SendToServer( msg );
+            Pandora.BoxConnection.SendToServer(msg);
 		}
 
 		private void button1_Click(object sender, System.EventArgs e)
@@ -981,7 +981,7 @@ namespace TheBox.Forms
 				}
 			}
 
-			Pandora.SendToServer( msg );
+            Pandora.BoxConnection.SendToServer(msg);
 		}
 	}
 }

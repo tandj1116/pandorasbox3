@@ -1759,8 +1759,8 @@ namespace TheBox.Forms
 					MessageBoxIcon.Question ) == DialogResult.Yes )
 				{
 					// Connect
-					BoxConnection.Disconnect();
-					BoxConnection.Connect();
+					Pandora.BoxConnection.Disconnect();
+					Pandora.BoxConnection.Connect();
 				}
 			}
 

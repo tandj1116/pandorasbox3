@@ -169,6 +169,12 @@ namespace TheBox
 
 			Splash.SetStatusText( "Building travel destinations" );
 			InitPages();
+
+            // Update Title when online change!
+            Pandora.BoxConnection.OnlineChanged += new EventHandler(delegate(Object sender, EventArgs e)
+                {
+                    this.Text = string.Format(Pandora.Localization.TextProvider["Misc.BoxTitle"], Pandora.Profile.Name, Pandora.BoxConnection.Connected ? Pandora.Localization.TextProvider["Misc.Online"] : Pandora.Localization.TextProvider["Misc.Offline"]);
+                });
 		}
 
 		/// <summary>
@@ -1550,7 +1556,7 @@ namespace TheBox
 			Splash.SetStatusText( "Launching startup programs" );
 			Pandora.Profile.Launcher.PerformStartup();
 
-			Text = string.Format( Pandora.Localization.TextProvider[ "Misc.BoxTitle" ], Pandora.Profile.Name, Pandora.Connected ? Pandora.Localization.TextProvider[ "Misc.Online" ] : Pandora.Localization.TextProvider[ "Misc.Offline" ] );
+            Text = string.Format(Pandora.Localization.TextProvider["Misc.BoxTitle"], Pandora.Profile.Name, Pandora.BoxConnection.Connected ? Pandora.Localization.TextProvider["Misc.Online"] : Pandora.Localization.TextProvider["Misc.Offline"]);
 
 			// Set startup tab
 			if ( Pandora.Profile.General.StartupTab != null )

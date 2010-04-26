@@ -181,7 +181,6 @@ namespace TheBox
 
         #endregion
 
-
         #region Local Variables
 
         /// <summary>
@@ -260,11 +259,6 @@ namespace TheBox
 		private static SpawnGroups m_SpawnGroups;
 
 		/// <summary>
-		/// Specifies whether Pandora is connected to the BoxServer
-		/// </summary>
-		private static bool m_Connected = false;
-
-		/// <summary>
 		/// The context governing the application
 		/// </summary>
 		private static StartingContext m_Context;
@@ -279,6 +273,10 @@ namespace TheBox
 		/// </summary>
 		private static TheBox.Forms.BuilderControl m_BuilderControl = null;
 
+        /// <summary>
+        /// The connection handler to the BoxServer
+        /// </summary>
+        private static BoxConnection m_BoxConnection;
 
 		#endregion
 
@@ -351,31 +349,6 @@ namespace TheBox
             {
                 m_TheBox = value;
             }
-		}
-
-		/// <summary>
-		/// States whether Pandora is connected to the BoxServer
-		/// </summary>
-		public static bool Connected
-		{
-			get { return m_Connected; }
-			set
-			{
-				if (m_Connected != value)
-				{
-					m_Connected = value;
-
-					if (m_TheBox != null)
-					{
-						m_TheBox.Text = string.Format(Pandora.Localization.TextProvider["Misc.BoxTitle"], Pandora.Profile.Name, Pandora.Connected ? Pandora.Localization.TextProvider["Misc.Online"] : Pandora.Localization.TextProvider["Misc.Offline"]);
-					}
-
-					if (OnlineChanged != null)
-					{
-						OnlineChanged(null, new EventArgs());
-					}
-				}
-			}
 		}
 
 		/// <summary>
@@ -464,37 +437,8 @@ namespace TheBox
 			}
 		}
 
-		/// <summary>
-		/// Sends a message to the BoxServer
-		/// </summary>
-		/// <param name="message">The message that must be sent</param>
-		/// <returns>The message outcome</returns>
-		public static BoxMessage SendToServer(BoxMessage message)
-		{
-			if (!Pandora.Connected)
-			{
-				// Not connected, request connection
-				if (MessageBox.Show(null, Pandora.Localization.TextProvider["Misc.RequestConnection"], "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-				{
-					BoxServerForm form = new BoxServerForm(false);
-					form.ShowDialog();
-				}
 
-				if (!Pandora.Connected)
-				{
-					return null;
-				}
-			}
-
-			Pandora.Profile.Server.FillBoxMessage(message);
-
-			BoxServerForm msgForm = new BoxServerForm(message);
-			msgForm.ShowDialog();
-
-			TheBox.Common.Utility.BringClientToFront();
-
-			return msgForm.Response;
-		}
+        
 
 		/// <summary>
 		/// Shows the Builder Control form
@@ -977,12 +921,22 @@ namespace TheBox
 
 		#endregion
 
-		#region Events
+		#region Pandoras Box
 
-		/// <summary>
-		/// Occurs when the online state of Pandora's Box is changed
-		/// </summary>
-		public static event EventHandler OnlineChanged;
+        public static BoxConnection BoxConnection
+        {
+            get
+            {
+                if (m_BoxConnection == null)
+                {
+                    m_BoxConnection = new BoxConnection(ProfileManager.Instance);
+                }
+                return m_BoxConnection;
+            }
+        }
+
+
+        
 
 		#endregion
 

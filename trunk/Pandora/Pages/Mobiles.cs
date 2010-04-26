@@ -890,10 +890,10 @@ namespace TheBox.Pages
 			
 			if ( SelectedSpawn != null )
 			{
-				if ( !Pandora.Connected )
-					BoxConnection.RequestConnection();
+                if (!Pandora.BoxConnection.Connected)
+					Pandora.BoxConnection.RequestConnection();
 
-				if ( Pandora.Connected )
+                if (Pandora.BoxConnection.Connected)
 				{
 					// Spawn group
 					BoxSpawn spawn = SelectedSpawn.Clone() as BoxSpawn;
@@ -909,7 +909,7 @@ namespace TheBox.Pages
 
 					msg.Spawn = spawn;
 
-					if ( BoxConnection.ProcessMessage( msg ) == null ) // null answer = ok
+					if ( Pandora.BoxConnection.ProcessMessage( msg ) == null ) // null answer = ok
 						Utility.BringClientToFront();
 				}
 			}
@@ -938,19 +938,19 @@ namespace TheBox.Pages
 
 			if ( SelectedSpawn != null )
 			{
-				if ( ! Pandora.Connected )
+                if (!Pandora.BoxConnection.Connected)
 				{
-					BoxConnection.RequestConnection();
+					Pandora.BoxConnection.RequestConnection();
 				}
 
-				if ( Pandora.Connected )
+                if (Pandora.BoxConnection.Connected)
 				{
 					TheBox.BoxServer.SpawnMessage msg = new SpawnMessage();
 					Pandora.Profile.Server.FillBoxMessage( msg );
 
 					msg.Spawn = SelectedSpawn;
 
-					object response = BoxConnection.ProcessMessage( msg );
+					object response = Pandora.BoxConnection.ProcessMessage( msg );
 
 					// null outcome means that the spawn has been processed
 					if ( response == null )

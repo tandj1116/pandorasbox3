@@ -171,7 +171,7 @@ namespace TheBox.Forms
 			Pandora.Profile.Server.FillBoxMessage( msg );
 			msg.Text = m_Text;
 
-			GenericOK response =  BoxConnection.ProcessMessage( msg, true ) as GenericOK;
+			GenericOK response =  Pandora.BoxConnection.ProcessMessage( msg, true ) as GenericOK;
 
 			if ( response != null )
 			{

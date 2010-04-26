@@ -355,7 +355,7 @@ namespace TheBox.Pages
 				RefreshPrograms();
 				EnableServer();
 
-				Pandora.OnlineChanged += new EventHandler(Pandora_OnlineChanged);
+                Pandora.BoxConnection.OnlineChanged += new EventHandler(Pandora_OnlineChanged);
 				Pandora.Localization.LocalizeMenu( cmDatafiles );
 			}
 			catch {} // VS
@@ -486,10 +486,10 @@ namespace TheBox.Pages
 		{
 			foreach( Control c in grpServer.Controls )
 			{
-				c.Enabled = Pandora.Profile.Server.Enabled && Pandora.Connected;
+                c.Enabled = Pandora.Profile.Server.Enabled && Pandora.BoxConnection.Connected;
 			}
 
-			bLogin.Enabled = Pandora.Profile.Server.Enabled && !Pandora.Connected;
+            bLogin.Enabled = Pandora.Profile.Server.Enabled && !Pandora.BoxConnection.Connected;
 		}
 
 		private void Pandora_OnlineChanged(object sender, EventArgs e)
