@@ -196,17 +196,17 @@ namespace TheBox.Forms
 		private delegate void CloseForm();
 		private void Connect( object o )
 		{
-			bool response = BoxConnection.Connect( !m_Silent );
+			bool response = Pandora.BoxConnection.Connect( !m_Silent );
 			Invoke(new CloseForm(Close));
 		}
 
 		private void SendMessage( object o )
 		{
-			BoxMessage result = BoxConnection.ProcessMessage( m_Message );
+			BoxMessage result = Pandora.BoxConnection.ProcessMessage( m_Message );
 			
 			if ( result != null )
 			{
-				if ( BoxConnection.CheckErrors( result ) )
+				if ( Pandora.BoxConnection.CheckErrors( result ) )
 				{
 					DialogResult = DialogResult.OK;
 					m_Response = result;
@@ -217,7 +217,7 @@ namespace TheBox.Forms
 				}
 			}
 
-			if ( !Pandora.Connected )
+            if (!Pandora.BoxConnection.Connected)
 				DialogResult = DialogResult.Cancel; // Account for communication error
 
 			Close();

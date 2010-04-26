@@ -361,7 +361,7 @@ namespace TheBox.Forms
 		private void RefreshList()
 		{
 			TheBox.BoxServer.ClientListRequest msg = new ClientListRequest();
-			ClientListMessage list = Pandora.SendToServer( msg ) as ClientListMessage;
+			ClientListMessage list = Pandora.BoxConnection.SendToServer( msg ) as ClientListMessage;
 
 			if ( list != null )
 			{
@@ -466,7 +466,7 @@ namespace TheBox.Forms
 		{
 			if ( Client != null )
 			{
-				Pandora.SendToServer( new ClientListCommand( Client.Serial, "go" ) );
+                Pandora.BoxConnection.SendToServer(new ClientListCommand(Client.Serial, "go"));
 			}
 		}
 
@@ -474,7 +474,7 @@ namespace TheBox.Forms
 		{
 			if ( Client != null )
 			{
-				Pandora.SendToServer( new ClientListCommand( Client.Serial, "props" ) );
+                Pandora.BoxConnection.SendToServer(new ClientListCommand(Client.Serial, "props"));
 			}
 		}
 
@@ -482,7 +482,7 @@ namespace TheBox.Forms
 		{
 			if ( Client != null )
 			{
-				Pandora.SendToServer( new ClientListCommand( Client.Serial, "client" ) );
+                Pandora.BoxConnection.SendToServer(new ClientListCommand(Client.Serial, "client"));
 			}
 		}
 
@@ -490,7 +490,7 @@ namespace TheBox.Forms
 		{
 			if ( Client != null )
 			{
-				Pandora.SendToServer( new ClientListCommand( Client.Serial, "account" ) );
+                Pandora.BoxConnection.SendToServer(new ClientListCommand(Client.Serial, "account"));
 			}
 		}
 	}

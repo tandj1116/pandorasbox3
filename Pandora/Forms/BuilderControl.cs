@@ -175,7 +175,7 @@ namespace TheBox.Forms
 		private void bDelete_Click(object sender, System.EventArgs e)
 		{
 			TheBox.BoxServer.BuilderDeleteMessage msg = new BuilderDeleteMessage();
-			Pandora.SendToServer( msg );
+            Pandora.BoxConnection.SendToServer(msg);
 		}
 
 		private void dMover_OnDecoMove(int xOffset, int yOffset)
@@ -185,7 +185,7 @@ namespace TheBox.Forms
 			msg.XOffset = xOffset;
 			msg.YOffset = yOffset;
 
-			Pandora.SendToServer( msg );
+            Pandora.BoxConnection.SendToServer(msg);
 		}
 
 		private void bNudgeUp_Click(object sender, System.EventArgs e)
@@ -194,7 +194,7 @@ namespace TheBox.Forms
 
 			msg.ZOffset = (int) numNudge.Value;
 
-			Pandora.SendToServer( msg );
+            Pandora.BoxConnection.SendToServer(msg);
 		}
 
 		private void bNudgeDown_Click(object sender, System.EventArgs e)
@@ -203,21 +203,21 @@ namespace TheBox.Forms
 
 			msg.ZOffset = - (int) numNudge.Value;
 
-			Pandora.SendToServer( msg );
+            Pandora.BoxConnection.SendToServer(msg);
 		}
 
 		private void bHue_Click(object sender, System.EventArgs e)
 		{
 			TheBox.BoxServer.HueMessage msg = new HueMessage( Pandora.Profile.Hues.SelectedIndex );
 
-			Pandora.SendToServer( msg );
+            Pandora.BoxConnection.SendToServer(msg);
 		}
 
 		private void bRemoveHue_Click(object sender, System.EventArgs e)
 		{
 			TheBox.BoxServer.HueMessage msg = new HueMessage( 0 );
-			
-			Pandora.SendToServer( msg );
+
+            Pandora.BoxConnection.SendToServer(msg);
 		}
 
 		private void BuilderControl_Closing(object sender, System.ComponentModel.CancelEventArgs e)

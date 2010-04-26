@@ -191,7 +191,7 @@ namespace TheBox.Forms
 				}
 			}
 
-			TheBox.BoxServer.BoxMessage msg = Pandora.SendToServer( new TheBox.BoxServer.ClientListRequest() );
+            TheBox.BoxServer.BoxMessage msg = Pandora.BoxConnection.SendToServer(new TheBox.BoxServer.ClientListRequest());
 
 			TheBox.BoxServer.ClientListMessage list = msg as ClientListMessage;
 
@@ -306,7 +306,7 @@ namespace TheBox.Forms
 
 			if ( e.Button == bRefresh )
 			{
-				TheBox.BoxServer.BoxMessage msg = Pandora.SendToServer( new TheBox.BoxServer.ClientListRequest() );
+                TheBox.BoxServer.BoxMessage msg = Pandora.BoxConnection.SendToServer(new TheBox.BoxServer.ClientListRequest());
 				TheBox.BoxServer.ClientListMessage list = msg as ClientListMessage;
 
 				if ( msg != null )

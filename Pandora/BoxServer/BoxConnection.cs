@@ -1,246 +1,319 @@
 using System;
 using System.Windows.Forms;
+using TheBox.Forms;
 
 namespace TheBox.BoxServer
 {
-	/// <summary>
-	/// Provides methods for managing interaction with the BoxServer
-	/// </summary>
-	public class BoxConnection
-	{
-		private static BoxRemote m_Remote;
+    /// <summary>
+    /// Provides methods for managing interaction with the BoxServer
+    /// </summary>
+    public class BoxConnection
+    {
+        /// <summary>
+        /// Occurs when the online state of Pandora's Box is changed
+        /// </summary>
+        public event EventHandler OnlineChanged;
 
-		public static void RequestConnection()
-		{
-			if ( Pandora.Profile.Server.Enabled )
-			{
-				if ( MessageBox.Show( Pandora.BoxForm,
-					Pandora.Localization.TextProvider[ "Misc.RequestConnection" ],
-					null,
-					MessageBoxButtons.YesNo,
-					MessageBoxIcon.Question ) == DialogResult.Yes )
-				{
-					Disconnect();
+        private BoxRemote m_Remote;
+        private ProfileManager m_Profiles;
 
-					TheBox.Forms.BoxServerForm form = new TheBox.Forms.BoxServerForm( false );
-					form.ShowDialog();
-				}
-			}
-			else
-			{
-				MessageBox.Show( Pandora.Localization.TextProvider[ "Errors.NoServer" ] );
-			}
-		}
+        /// <summary>
+        /// Specifies whether Pandora is connected to the BoxServer
+        /// </summary>
+        private static bool m_Connected = false;
 
-		/// <summary>
-		/// Checks a BoxMessage and processes any errors occurred
-		/// </summary>
-		/// <param name="msg">The BoxMessage returned by the server</param>
-		/// <returns>True if the message is OK, false if errors have been found</returns>
-		public static bool CheckErrors( BoxMessage msg )
-		{
-			if ( msg == null )
-				return true; // null message means no error
+        /// <summary>
+        /// States whether Pandora is connected to the BoxServer
+        /// </summary>
+        public bool Connected
+        {
+            get { return m_Connected; }
+            private set
+            {
+                if (m_Connected != value)
+                {
+                    m_Connected = value;
 
-			if ( msg is ErrorMessage )
-			{
-				// Generic error message
-				MessageBox.Show( string.Format( Pandora.Localization.TextProvider[ "Errors.GenServErr" ], ( msg as ErrorMessage ).Message ) );
-				return false;
-			}
-			else if ( msg is LoginError )
-			{
-				LoginError logErr = msg as LoginError;
+                    if (OnlineChanged != null)
+                    {
+                        OnlineChanged(null, new EventArgs());
+                    }
+                }
+            }
+        }
 
-				string err = null;
+        public BoxConnection(ProfileManager profiles)
+        {
+            m_Profiles = profiles;
+        }
 
-				switch ( logErr.Error )
-				{
-					case AuthenticationResult.AccessLevelError :
-						
-						err = Pandora.Localization.TextProvider[ "Errors.LoginAccess" ];
-						break;
+        public void RequestConnection()
+        {
+            if (Pandora.Profile.Server.Enabled)
+            {
+                if (MessageBox.Show(Pandora.BoxForm,
+                    Pandora.Localization.TextProvider["Misc.RequestConnection"],
+                    null,
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Disconnect();
 
-					case AuthenticationResult.OnlineMobileRequired:
+                    TheBox.Forms.BoxServerForm form = new TheBox.Forms.BoxServerForm(false);
+                    form.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show(Pandora.Localization.TextProvider["Errors.NoServer"]);
+            }
+        }
 
-						err = Pandora.Localization.TextProvider[ "Errors.NotOnline" ];
-						break;
+        /// <summary>
+        /// Checks a BoxMessage and processes any errors occurred
+        /// </summary>
+        /// <param name="msg">The BoxMessage returned by the server</param>
+        /// <returns>True if the message is OK, false if errors have been found</returns>
+        public bool CheckErrors(BoxMessage msg)
+        {
+            if (msg == null)
+                return true; // null message means no error
 
-					case AuthenticationResult.UnregisteredUser:
+            if (msg is ErrorMessage)
+            {
+                // Generic error message
+                MessageBox.Show(string.Format(Pandora.Localization.TextProvider["Errors.GenServErr"], (msg as ErrorMessage).Message));
+                return false;
+            }
+            else if (msg is LoginError)
+            {
+                LoginError logErr = msg as LoginError;
 
-						err = Pandora.Localization.TextProvider[ "Errors.LogUnregistered" ];
-						break;
+                string err = null;
 
-					case AuthenticationResult.WrongCredentials:
+                switch (logErr.Error)
+                {
+                    case AuthenticationResult.AccessLevelError:
 
-						err = Pandora.Localization.TextProvider[ "Errors.WrongCredentials" ];
-						break;
+                        err = Pandora.Localization.TextProvider["Errors.LoginAccess"];
+                        break;
 
-					case AuthenticationResult.Success:
+                    case AuthenticationResult.OnlineMobileRequired:
 
-						return true;
-				}
+                        err = Pandora.Localization.TextProvider["Errors.NotOnline"];
+                        break;
 
-				MessageBox.Show( err );
-				return false;
-			}
-			else if ( msg is FeatureNotSupported )
-			{
-				MessageBox.Show( Pandora.Localization.TextProvider[ "Errors.NotSupported" ] );
-				return false;
-			}
+                    case AuthenticationResult.UnregisteredUser:
 
-			return true;
-		}
+                        err = Pandora.Localization.TextProvider["Errors.LogUnregistered"];
+                        break;
 
-		/// <summary>
-		/// Tries to connect to the BoxServer
-		/// </summary>
-		/// <returns>True if succesful</returns>
-		public static bool Connect()
-		{
-			return Connect( true );
-		}
+                    case AuthenticationResult.WrongCredentials:
 
-		/// <summary>
-		/// Tries to connect to the BoxServer
-		/// </summary>
-		/// <param name="ProcessErrors">Specifies whether to process errors and display them to the user</param>
-		/// <returns>True if succesful</returns>
-		public static bool Connect( bool ProcessErrors )
-		{
-			try
-			{
-				string ConnectionString = string.Format( "tcp://{0}:{1}/BoxRemote", Pandora.Profile.Server.Address, Pandora.Profile.Server.Port );
+                        err = Pandora.Localization.TextProvider["Errors.WrongCredentials"];
+                        break;
 
-				m_Remote = Activator.GetObject( typeof( BoxRemote ), ConnectionString ) as BoxRemote;
+                    case AuthenticationResult.Success:
 
-				// Perform Login
-				BoxMessage msg = new LoginMessage();
+                        return true;
+                }
 
-				msg.Username = Pandora.Profile.Server.Username;
-				msg.Password = Pandora.Profile.Server.Password;
-				byte[] data = msg.Compress();
-				string outType = null;
+                MessageBox.Show(err);
+                return false;
+            }
+            else if (msg is FeatureNotSupported)
+            {
+                MessageBox.Show(Pandora.Localization.TextProvider["Errors.NotSupported"]);
+                return false;
+            }
 
-				byte[] result = m_Remote.PerformRemoteRequest( msg.GetType().FullName, data, out outType );
+            return true;
+        }
 
-				if ( result == null )
-				{
-					MessageBox.Show( Pandora.Localization.TextProvider[ "Errors.ServerError" ] );
-					Pandora.Connected = false;
-					return false;
-				}
+        /// <summary>
+        /// Tries to connect to the BoxServer
+        /// </summary>
+        /// <returns>True if succesful</returns>
+        public bool Connect()
+        {
+            return Connect(true);
+        }
 
-				Type t = Type.GetType( outType );
+        /// <summary>
+        /// Tries to connect to the BoxServer
+        /// </summary>
+        /// <param name="ProcessErrors">Specifies whether to process errors and display them to the user</param>
+        /// <returns>True if succesful</returns>
+        public bool Connect(bool ProcessErrors)
+        {
+            try
+            {
+                string ConnectionString = string.Format("tcp://{0}:{1}/BoxRemote", Pandora.Profile.Server.Address, Pandora.Profile.Server.Port);
 
-				BoxMessage outcome = BoxMessage.Decompress( result, t );
+                m_Remote = Activator.GetObject(typeof(BoxRemote), ConnectionString) as BoxRemote;
 
-				if ( ProcessErrors )
-				{
-					if ( !CheckErrors( outcome ) )
-					{
-						Pandora.Connected = false;
-						return false;
-					}
-				}
+                // Perform Login
+                BoxMessage msg = new LoginMessage();
 
-				if ( outcome is LoginSuccess )
-				{
-					Pandora.Connected = true;
-					return true;
-				}
-				else
-				{
-					Pandora.Connected = false;
-					return false;
-				}
-			}
-			catch( Exception err )
-			{
-				Pandora.Log.WriteError( err, "Connection failed to box server" );
-				Pandora.Connected = false;
-			}
+                msg.Username = Pandora.Profile.Server.Username;
+                msg.Password = Pandora.Profile.Server.Password;
+                byte[] data = msg.Compress();
+                string outType = null;
 
-			return false;
-		}
+                byte[] result = m_Remote.PerformRemoteRequest(msg.GetType().FullName, data, out outType);
 
-		/// <summary>
-		/// Closes the connection with the server
-		/// </summary>
-		public static void Disconnect()
-		{
-			if ( m_Remote != null )
-			{
-				m_Remote = null;
-				Pandora.Connected = false;
-			}
-		}
+                if (result == null)
+                {
+                    MessageBox.Show(Pandora.Localization.TextProvider["Errors.ServerError"]);
+                    Connected = false;
+                    return false;
+                }
 
-		/// <summary>
-		/// Sends a message to the server
-		/// </summary>
-		/// <param name="msg">The message being sent to the server</param>
-		/// <param name="window">Specifies whether to use the connection form</param>
-		/// <returns>The outcome of the transaction</returns>
-		public static BoxMessage ProcessMessage( BoxMessage msg, bool window )
-		{
-			if ( window )
-			{
-				TheBox.Forms.BoxServerForm form = new TheBox.Forms.BoxServerForm( msg );
-				form.ShowDialog();
-				return form.Response;
-			}
-			else
-			{
-				return ProcessMessage( msg );
-			}
-		}
-	
-		/// <summary>
-		/// Sends a message to the server. Processes errors too.
-		/// </summary>
-		/// <param name="msg">The message to send to the server</param>
-		/// <returns>A BoxMessage if there is one</returns>
-		public static BoxMessage ProcessMessage( BoxMessage msg )
-		{
-			BoxMessage outcome = null;
+                Type t = Type.GetType(outType);
 
-			if ( !Pandora.Connected )
-				Connect();
+                BoxMessage outcome = BoxMessage.Decompress(result, t);
 
-			if ( !Pandora.Connected )
-				return null;
+                if (ProcessErrors)
+                {
+                    if (!CheckErrors(outcome))
+                    {
+                        Connected = false;
+                        return false;
+                    }
+                }
 
-			byte[] data = msg.Compress();
-			string outType = null;
+                if (outcome is LoginSuccess)
+                {
+                    Connected = true;
+                    return true;
+                }
+                else
+                {
+                    Connected = false;
+                    return false;
+                }
+            }
+            catch (Exception err)
+            {
+                Pandora.Log.WriteError(err, "Connection failed to box server");
+                Connected = false;
+            }
 
-			try
-			{
-				byte[] result = m_Remote.PerformRemoteRequest( msg.GetType().FullName, data, out outType );
+            return false;
+        }
 
-				if ( result == null )
-				{
-					return null;
-				}
+        /// <summary>
+        /// Closes the connection with the server
+        /// </summary>
+        public void Disconnect()
+        {
+            if (m_Remote != null)
+            {
+                m_Remote = null;
+                Connected = false;
+            }
+        }
 
-				Type t = Type.GetType( outType );
-				outcome = BoxMessage.Decompress( result, t );
-				
-				if ( !CheckErrors( outcome ) )
-				{
-					outcome = null;
-				}
-			}
-			catch ( Exception err )
-			{
-				Pandora.Log.WriteError( err, "Error when processing a BoxMessage of type: {0}", msg.GetType().FullName );
-				MessageBox.Show( Pandora.Localization.TextProvider[ "Errors.ConnectionLost" ] );
-				Pandora.Connected = false;
-				outcome = null;
-			}
+        /// <summary>
+        /// Sends a message to the server
+        /// </summary>
+        /// <param name="msg">The message being sent to the server</param>
+        /// <param name="window">Specifies whether to use the connection form</param>
+        /// <returns>The outcome of the transaction</returns>
+        public BoxMessage ProcessMessage(BoxMessage msg, bool window)
+        {
+            if (window)
+            {
+                TheBox.Forms.BoxServerForm form = new TheBox.Forms.BoxServerForm(msg);
+                form.ShowDialog();
+                return form.Response;
+            }
+            else
+            {
+                return ProcessMessage(msg);
+            }
+        }
 
-			return outcome;
-		}
-	}
+        /// <summary>
+        /// Sends a message to the server. Processes errors too.
+        /// </summary>
+        /// <param name="msg">The message to send to the server</param>
+        /// <returns>A BoxMessage if there is one</returns>
+        public BoxMessage ProcessMessage(BoxMessage msg)
+        {
+            BoxMessage outcome = null;
+
+            if (!Connected)
+                Connect();
+
+            if (!Connected)
+                return null;
+
+            byte[] data = msg.Compress();
+            string outType = null;
+
+            try
+            {
+                byte[] result = m_Remote.PerformRemoteRequest(msg.GetType().FullName, data, out outType);
+
+                if (result == null)
+                {
+                    return null;
+                }
+
+                Type t = Type.GetType(outType);
+                outcome = BoxMessage.Decompress(result, t);
+
+                if (!CheckErrors(outcome))
+                {
+                    outcome = null;
+                }
+            }
+            catch (Exception err)
+            {
+                Pandora.Log.WriteError(err, "Error when processing a BoxMessage of type: {0}", msg.GetType().FullName);
+                MessageBox.Show(Pandora.Localization.TextProvider["Errors.ConnectionLost"]);
+                Connected = false;
+                outcome = null;
+            }
+
+            return outcome;
+        }
+
+        
+
+        /// <summary>
+        /// Sends a message to the BoxServer
+        /// </summary>
+        /// <param name="message">The message that must be sent</param>
+        /// <returns>The message outcome</returns>
+        public BoxMessage SendToServer(BoxMessage message)
+        {
+            if (!Connected)
+            {
+                // Not connected, request connection
+                if (MessageBox.Show(null, Pandora.Localization.TextProvider["Misc.RequestConnection"], "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    BoxServerForm form = new BoxServerForm(false);
+                    form.ShowDialog();
+                }
+
+                if (!Connected)
+                {
+                    return null;
+                }
+            }
+
+            Pandora.Profile.Server.FillBoxMessage(message);
+
+            BoxServerForm msgForm = new BoxServerForm(message);
+            msgForm.ShowDialog();
+
+            TheBox.Common.Utility.BringClientToFront();
+
+            return msgForm.Response;
+        }
+
+        
+    }
 }
