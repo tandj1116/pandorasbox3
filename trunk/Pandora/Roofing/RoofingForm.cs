@@ -54,7 +54,7 @@ namespace TheBox.Roofing
 		public RoofingForm()
 		{
 			InitializeComponent();
-			Pandora.LocalizeControl( this );
+			Pandora.Localization.LocalizeControl( this );
 
 			m_Roof = new Roof();
 			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
@@ -544,14 +544,14 @@ namespace TheBox.Roofing
 				if ( chkUp.Checked )
 				{
 					// Goes up: Left/Right
-					cmbSlope.Items.Add( Pandora.TextProvider[ "Roofing.Left" ] );
-					cmbSlope.Items.Add( Pandora.TextProvider[ "Roofing.Right" ] );
+					cmbSlope.Items.Add( Pandora.Localization.TextProvider[ "Roofing.Left" ] );
+					cmbSlope.Items.Add( Pandora.Localization.TextProvider[ "Roofing.Right" ] );
 				}
 				else
 				{
 					// NO Goes up: // Top Bottom
-					cmbSlope.Items.Add( Pandora.TextProvider[ "Roofing.Top" ] );
-					cmbSlope.Items.Add( Pandora.TextProvider[ "Roofing.Bottom" ] );
+					cmbSlope.Items.Add( Pandora.Localization.TextProvider[ "Roofing.Top" ] );
+					cmbSlope.Items.Add( Pandora.Localization.TextProvider[ "Roofing.Bottom" ] );
 				}
 
 				cmbSlope.SelectedIndex = 0;
@@ -758,7 +758,7 @@ namespace TheBox.Roofing
 			if ( m_Roof.GenerateClassic( Roof.TestMode.Test, (int) numHeight.Value, chkHue.Checked ? Pandora.Profile.Hues.SelectedIndex : 0 ) )
 			{
 				if ( MessageBox.Show( this,
-					Pandora.TextProvider[ "Roofing.TestRest" ],
+					Pandora.Localization.TextProvider[ "Roofing.TestRest" ],
 					"",
 					MessageBoxButtons.YesNo,
 					MessageBoxIcon.Question ) == DialogResult.Yes )
@@ -784,7 +784,7 @@ namespace TheBox.Roofing
 		private void bClearAll_Click(object sender, System.EventArgs e)
 		{
 			if ( MessageBox.Show( this,
-				Pandora.TextProvider[ "Roofing.ClearAll" ],
+				Pandora.Localization.TextProvider[ "Roofing.ClearAll" ],
 				"",
 				MessageBoxButtons.YesNo,
 				MessageBoxIcon.Question ) == DialogResult.Yes )

@@ -69,7 +69,7 @@ namespace TheBox.Forms
 		{
 			InitializeComponent();
 
-			Pandora.LocalizeControl( this );
+			Pandora.Localization.LocalizeControl( this );
 		}
 
 		/// <summary>
@@ -720,8 +720,8 @@ namespace TheBox.Forms
 
 		private void UpdateFillText()
 		{
-			labFill.Text = string.Format( Pandora.TextProvider[ "Random.labFill" ], slideFill.Value );
-			labFill2.Text = string.Format( Pandora.TextProvider[ "Random.labFill" ], pBarFill2.Value );
+			labFill.Text = string.Format( Pandora.Localization.TextProvider[ "Random.labFill" ], slideFill.Value );
+			labFill2.Text = string.Format( Pandora.Localization.TextProvider[ "Random.labFill" ], pBarFill2.Value );
 		}
 
 		private void rRandomHue_CheckedChanged(object sender, System.EventArgs e)
@@ -791,7 +791,7 @@ namespace TheBox.Forms
 		{
 			if ( !Pandora.Connected )
 			{
-				MessageBox.Show( Pandora.TextProvider[ "Server.PleaseConnect" ] );
+				MessageBox.Show( Pandora.Localization.TextProvider[ "Server.PleaseConnect" ] );
 				return false;
 			}
 
@@ -799,7 +799,7 @@ namespace TheBox.Forms
 
 			if ( tileset == null )
 			{
-				MessageBox.Show( Pandora.TextProvider[ "Random.NoTile" ] );
+				MessageBox.Show( Pandora.Localization.TextProvider[ "Random.NoTile" ] );
 				return false;
 			}
 
@@ -807,7 +807,7 @@ namespace TheBox.Forms
 
 			if ( rRandomHue.Checked && hues == null )
 			{
-				MessageBox.Show( Pandora.TextProvider[ "Random.NoRndHue" ] );
+				MessageBox.Show( Pandora.Localization.TextProvider[ "Random.NoRndHue" ] );
 				return false;
 			}
 
@@ -890,7 +890,7 @@ namespace TheBox.Forms
 
 			if ( cmbMap.SelectedIndex == -1 )
 			{
-				MessageBox.Show( Pandora.TextProvider[ "Random.NoMap" ] );
+				MessageBox.Show( Pandora.Localization.TextProvider[ "Random.NoMap" ] );
 				return;
 			}
 

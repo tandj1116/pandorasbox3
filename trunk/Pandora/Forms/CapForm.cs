@@ -202,9 +202,9 @@ namespace TheBox.Forms
 		{
 			InitializeComponent();
 
-			Pandora.LocalizeControl( this );
-			Pandora.LocalizeMenu( cmCat );
-			Pandora.LocalizeMenu( cmImg );
+			Pandora.Localization.LocalizeControl( this );
+			Pandora.Localization.LocalizeMenu( cmCat );
+			Pandora.Localization.LocalizeMenu( cmImg );
 		}
 
 		private ImageInfo m_Image;
@@ -639,7 +639,7 @@ namespace TheBox.Forms
 
 		private bool DeleteDirectory( string path )
 		{
-			if ( MessageBox.Show( this, Pandora.TextProvider[ "Cap.DelFolder" ], "",
+			if ( MessageBox.Show( this, Pandora.Localization.TextProvider[ "Cap.DelFolder" ], "",
 				MessageBoxButtons.YesNo, MessageBoxIcon.Warning ) == DialogResult.Yes )
 			{
 				try

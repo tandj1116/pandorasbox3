@@ -29,7 +29,7 @@ namespace TheBox.Forms
 			//
 			InitializeComponent();
 
-			Pandora.LocalizeControl( this );
+			Pandora.Localization.LocalizeControl( this );
 
 			Art.MulFileManager = Pandora.Profile.MulManager;
 		}

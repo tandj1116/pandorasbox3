@@ -43,7 +43,7 @@ namespace TheBox.Forms
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
-			Pandora.LocalizeControl( this );
+			Pandora.Localization.LocalizeControl( this );
 
 			// Hues
 			Chart.Hues = Pandora.Hues;
@@ -383,7 +383,7 @@ namespace TheBox.Forms
 
 			if ( SelectedHue == 0 )
 			{
-				labName.Text = Pandora.TextProvider[ "Common.None" ];
+				labName.Text = Pandora.Localization.TextProvider[ "Common.None" ];
 			}
 		}
 
@@ -437,7 +437,7 @@ namespace TheBox.Forms
 			if ( SelectedHue == 0 )
 			{
 				imgSpectrum.Image = null;
-				labName.Text = Pandora.TextProvider[ "Common.None" ];
+				labName.Text = Pandora.Localization.TextProvider[ "Common.None" ];
 			}
 		}
 

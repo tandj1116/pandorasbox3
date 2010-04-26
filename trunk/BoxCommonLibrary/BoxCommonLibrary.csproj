@@ -129,6 +129,9 @@
     <Compile Include="HuesChart.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Localization\TextProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MulManager.cs">
       <SubType>Code</SubType>
     </Compile>

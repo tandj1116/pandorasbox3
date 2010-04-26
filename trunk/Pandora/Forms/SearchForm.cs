@@ -53,7 +53,7 @@ namespace TheBox.Forms
 		{
 			InitializeComponent();
 
-			Pandora.LocalizeControl( this );
+			Pandora.Localization.LocalizeControl( this );
 
 			if ( type != SearchType.Deco )
 			{
@@ -71,12 +71,12 @@ namespace TheBox.Forms
 
 				case SearchType.Location:
 
-					Text = Pandora.TextProvider[ "Misc.FindLoc" ];
+					Text = Pandora.Localization.TextProvider[ "Misc.FindLoc" ];
 					break;
 
 				case SearchType.Mobile:
 
-					Text = Pandora.TextProvider[ "Misc.FindMob" ];
+					Text = Pandora.Localization.TextProvider[ "Misc.FindMob" ];
 					break;
 			}
 		}

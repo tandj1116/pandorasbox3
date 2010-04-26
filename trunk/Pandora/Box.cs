@@ -1298,7 +1298,7 @@ namespace TheBox
 			{
 				if ( MessageBox.Show(
 					this,
-					Pandora.TextProvider[ "Misc.ProfileImport" ],
+					Pandora.Localization.TextProvider[ "Misc.ProfileImport" ],
 					"",
 					MessageBoxButtons.YesNo,
 					MessageBoxIcon.Question ) == DialogResult.Yes )
@@ -1515,8 +1515,8 @@ namespace TheBox
 		private void Box_Load(object sender, System.EventArgs e)
 		{
 			Splash.SetStatusText( "Choosing language" );
-			Pandora.LocalizeControl( this );
-			Pandora.LocalizeMenu( TrayMenu );
+			Pandora.Localization.LocalizeControl( this );
+			Pandora.Localization.LocalizeMenu( TrayMenu );
 
 			Splash.SetStatusText( "Repositioning" );
 			// Set position
@@ -1550,7 +1550,7 @@ namespace TheBox
 			Splash.SetStatusText( "Launching startup programs" );
 			Pandora.Profile.Launcher.PerformStartup();
 
-			Text = string.Format( Pandora.TextProvider[ "Misc.BoxTitle" ], Pandora.Profile.Name, Pandora.Connected ? Pandora.TextProvider[ "Misc.Online" ] : Pandora.TextProvider[ "Misc.Offline" ] );
+			Text = string.Format( Pandora.Localization.TextProvider[ "Misc.BoxTitle" ], Pandora.Profile.Name, Pandora.Connected ? Pandora.Localization.TextProvider[ "Misc.Online" ] : Pandora.Localization.TextProvider[ "Misc.Offline" ] );
 
 			// Set startup tab
 			if ( Pandora.Profile.General.StartupTab != null )
@@ -1568,18 +1568,18 @@ namespace TheBox
 			Splash.SetStatusText( "Building tips and menus" );
 
 			// Tooltips
-			Pandora.ToolTip.SetToolTip( pctCap, Pandora.TextProvider[ "Tips.Screenshot" ] );
+			Pandora.ToolTip.SetToolTip( pctCap, Pandora.Localization.TextProvider[ "Tips.Screenshot" ] );
 
 			// Build profiles menu items
-			MenuItem miNewProfile = new MenuItem( Pandora.TextProvider[ "Common.New" ] );
+			MenuItem miNewProfile = new MenuItem( Pandora.Localization.TextProvider[ "Common.New" ] );
 			miNewProfile.Click += new EventHandler(miNewProfile_Click);
 			miProfile.MenuItems.Add( miNewProfile );
 
-			MenuItem miExportProfile = new MenuItem( Pandora.TextProvider[ "Common.Export" ] );
+			MenuItem miExportProfile = new MenuItem( Pandora.Localization.TextProvider[ "Common.Export" ] );
 			miExportProfile.Click += new EventHandler(miExportProfile_Click);
 			miProfile.MenuItems.Add( miExportProfile );
 
-			MenuItem miImportProfile = new MenuItem( Pandora.TextProvider[ "Common.Import" ] );
+			MenuItem miImportProfile = new MenuItem( Pandora.Localization.TextProvider[ "Common.Import" ] );
 			miImportProfile.Click += new EventHandler(miImportProfile_Click);
 			miProfile.MenuItems.Add( miImportProfile );
 

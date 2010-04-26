@@ -114,9 +114,6 @@
     <Compile Include="Localizer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TextProvider.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <EmbeddedResource Include="Localizer.resx">
       <DependentUpon>Localizer.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -138,6 +135,12 @@
       <ProductName>.NET Framework 3.5</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BoxCommonLibrary\BoxCommonLibrary.csproj">
+      <Project>{42C26843-2517-44D5-9ADF-EF5310D7E5B0}</Project>
+      <Name>BoxCommonLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

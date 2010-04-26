@@ -77,7 +77,7 @@ namespace TheBox.Forms.Editors
 		{
 			InitializeComponent();
 
-			Pandora.LocalizeControl( this );
+			Pandora.Localization.LocalizeControl( this );
 
 			txName.Text = "";
 			m_CurrentLocation = new Location();
@@ -387,7 +387,7 @@ namespace TheBox.Forms.Editors
 
 			if ( facet != (int) Map.Map )
 			{
-				MessageBox.Show( Pandora.TextProvider[ "Travel.WrongMap" ] );
+				MessageBox.Show( Pandora.Localization.TextProvider[ "Travel.WrongMap" ] );
 			}
 
 			m_CurrentLocation.X = (short) x;

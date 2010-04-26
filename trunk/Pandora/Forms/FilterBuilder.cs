@@ -50,8 +50,8 @@ namespace TheBox.Forms
 			m_Conditions = new List<string>();
 			// Issue 10 - End
 
-			Pandora.LocalizeControl( this );
-			Pandora.ToolTip.SetToolTip( cmbOp, Pandora.TextProvider[ "Tips.Operators" ] );
+			Pandora.Localization.LocalizeControl( this );
+			Pandora.ToolTip.SetToolTip( cmbOp, Pandora.Localization.TextProvider[ "Tips.Operators" ] );
 		}
 
 		/// <summary>
@@ -396,7 +396,7 @@ namespace TheBox.Forms
 
 			if ( cmbType.Text.Length == 0 )
 			{
-				labOutput.Text = Pandora.TextProvider[ "Props.NoType" ];
+				labOutput.Text = Pandora.Localization.TextProvider[ "Props.NoType" ];
 				return;
 			}
 

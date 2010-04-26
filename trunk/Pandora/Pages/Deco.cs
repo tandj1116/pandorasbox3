@@ -463,12 +463,12 @@ namespace TheBox.Pages
 
 			try
 			{
-				Pandora.LocalizeMenu( cmCustom );
-				Pandora.LocalizeMenu( cmItem );
+				Pandora.Localization.LocalizeMenu( cmCustom );
+				Pandora.Localization.LocalizeMenu( cmItem );
 
 				// Tool tips for nudge button
-				Pandora.ToolTip.SetToolTip( bNudgeUp, Pandora.TextProvider[ "Deco.TipNudgeUp" ] );
-				Pandora.ToolTip.SetToolTip( bNudgeDown, Pandora.TextProvider[ "Deco.TipNudgeDown" ] );
+				Pandora.ToolTip.SetToolTip( bNudgeUp, Pandora.Localization.TextProvider[ "Deco.TipNudgeUp" ] );
+				Pandora.ToolTip.SetToolTip( bNudgeDown, Pandora.Localization.TextProvider[ "Deco.TipNudgeDown" ] );
 
 				if ( Pandora.Profile.General.DecoSplitter > 0 )
 				{
@@ -725,7 +725,7 @@ namespace TheBox.Pages
 		/// </summary>
 		private void cmCustomDel_Click(object sender, System.EventArgs e)
 		{
-			if ( MessageBox.Show( this, Pandora.TextProvider[ "Deco.ConfirmDelCat" ], "",
+			if ( MessageBox.Show( this, Pandora.Localization.TextProvider[ "Deco.ConfirmDelCat" ], "",
 				MessageBoxButtons.YesNo, MessageBoxIcon.Question ) == DialogResult.Yes )
 			{
 				tCat.SelectedNode.Parent.Nodes.Remove( tCat.SelectedNode );
@@ -919,7 +919,7 @@ namespace TheBox.Pages
 			}
 			else
 			{
-				MessageBox.Show( string.Format( Pandora.TextProvider[ "Deco.NoIDFound" ], id ) );
+				MessageBox.Show( string.Format( Pandora.Localization.TextProvider[ "Deco.NoIDFound" ], id ) );
 			}
 		}
 
@@ -957,7 +957,7 @@ namespace TheBox.Pages
 			}
 			else
 			{
-				MessageBox.Show( Pandora.TextProvider[ "Deco.NoResults" ] );
+				MessageBox.Show( Pandora.Localization.TextProvider[ "Deco.NoResults" ] );
 			}
 		}
 

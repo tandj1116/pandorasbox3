@@ -26,7 +26,7 @@ namespace TheBox.Forms.Editors
 		{
 			InitializeComponent();
 
-			Pandora.LocalizeControl( this );
+			Pandora.Localization.LocalizeControl( this );
 
 			art.MulFileManager = Pandora.Profile.MulManager;
 		}
@@ -144,7 +144,7 @@ namespace TheBox.Forms.Editors
 		{
 			if ( Deco.Name == null || Deco.Name.Length == 0 )
 			{
-				MessageBox.Show( Pandora.TextProvider[ "Deco.NoName" ] );
+				MessageBox.Show( Pandora.Localization.TextProvider[ "Deco.NoName" ] );
 				return;
 			}
 

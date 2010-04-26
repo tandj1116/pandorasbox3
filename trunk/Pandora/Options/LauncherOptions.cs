@@ -242,7 +242,7 @@ namespace TheBox.Options
 				catch ( Exception err )
 				{
 					Pandora.Log.WriteError( err, "Error occurred when trying to run {0}", m_Name );
-					System.Windows.Forms.MessageBox.Show( Pandora.TextProvider[ "Tools.LaunchErr" ] );
+					System.Windows.Forms.MessageBox.Show( Pandora.Localization.TextProvider[ "Tools.LaunchErr" ] );
 				}
 			}
 		}

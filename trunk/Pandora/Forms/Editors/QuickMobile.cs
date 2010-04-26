@@ -29,7 +29,7 @@ namespace TheBox.Forms.Editors
 			//
 			InitializeComponent();
 
-			Pandora.LocalizeControl( this );
+			Pandora.Localization.LocalizeControl( this );
 
 			m_Preview.MulFileManager = Pandora.Profile.MulManager;
 		}
@@ -172,7 +172,7 @@ namespace TheBox.Forms.Editors
 		{
 			if ( m_Mobile.Name.Length == 0 )
 			{
-				MessageBox.Show( Pandora.TextProvider[ "NPCs.NameError" ] );
+				MessageBox.Show( Pandora.Localization.TextProvider[ "NPCs.NameError" ] );
 				return;
 			}
 

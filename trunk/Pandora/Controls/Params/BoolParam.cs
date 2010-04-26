@@ -88,8 +88,8 @@ namespace TheBox.Controls.Params
 		{
 			try
 			{
-				cmb.Items.Add( Pandora.TextProvider[ "Common.True" ] );
-				cmb.Items.Add( Pandora.TextProvider[ "Common.False" ] );
+				cmb.Items.Add( Pandora.Localization.TextProvider[ "Common.True" ] );
+				cmb.Items.Add( Pandora.Localization.TextProvider[ "Common.False" ] );
 
 				cmb.SelectedIndex = 0;
 			}

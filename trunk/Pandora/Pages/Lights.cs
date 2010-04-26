@@ -515,7 +515,7 @@ namespace TheBox.Pages
 		/// </summary>
 		private void lnkDecoLight_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
 		{
-			MessageBox.Show( Pandora.TextProvider[ "Lights.SetMsg" ] );
+			MessageBox.Show( Pandora.Localization.TextProvider[ "Lights.SetMsg" ] );
 			m_SelectingDecoLight = true;
 		}
 	}

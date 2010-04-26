@@ -648,7 +648,7 @@ namespace TheBox.Pages
 			}
 			else
 			{
-				MessageBox.Show( Pandora.TextProvider[ "Travel.NoMaps" ] );
+				MessageBox.Show( Pandora.Localization.TextProvider[ "Travel.NoMaps" ] );
 			}
 		}
 
@@ -814,7 +814,7 @@ namespace TheBox.Pages
 
 			if ( m_Results.Count == 0 )
 			{
-				MessageBox.Show( Pandora.TextProvider[ "Misc.NoResults" ] );
+				MessageBox.Show( Pandora.Localization.TextProvider[ "Misc.NoResults" ] );
 				m_Results = null;
 			}
 			else
@@ -868,7 +868,7 @@ namespace TheBox.Pages
 			}
 			catch
 			{
-				MessageBox.Show( Pandora.TextProvider[ "Misc.SearchError" ] );
+				MessageBox.Show( Pandora.Localization.TextProvider[ "Misc.SearchError" ] );
 				m_Results = null;
 			}
 		}
@@ -1020,7 +1020,7 @@ namespace TheBox.Pages
 		private void mLocDel_Click(object sender, System.EventArgs e)
 		{
 			// A location and category is selected
-			if ( MessageBox.Show( this, Pandora.TextProvider[ "Travel.ConfirmDelLoc" ], "", MessageBoxButtons.YesNo, MessageBoxIcon.Question ) == DialogResult.Yes )
+			if ( MessageBox.Show( this, Pandora.Localization.TextProvider[ "Travel.ConfirmDelLoc" ], "", MessageBoxButtons.YesNo, MessageBoxIcon.Question ) == DialogResult.Yes )
 			{
 				try
 				{
@@ -1055,7 +1055,7 @@ namespace TheBox.Pages
 				catch ( Exception err )
 				{
 					Pandora.Log.WriteError( err, "Deleting location" );
-					MessageBox.Show( Pandora.TextProvider[ "Messages.GenericError" ] );
+					MessageBox.Show( Pandora.Localization.TextProvider[ "Messages.GenericError" ] );
 				}
 			}
 		}
@@ -1101,7 +1101,7 @@ namespace TheBox.Pages
 				else
 				{
 					Pandora.Log.WriteError( null, string.Format( "Couldn't add location because the tCat node wasn't a subsection node" ) );
-					MessageBox.Show( Pandora.TextProvider[ "Messages.NewLocErr" ] );
+					MessageBox.Show( Pandora.Localization.TextProvider[ "Messages.NewLocErr" ] );
 				}
 			}
 		}
@@ -1273,7 +1273,7 @@ namespace TheBox.Pages
 		/// </summary>
 		private void mCatDelete_Click(object sender, System.EventArgs e)
 		{
-			if ( MessageBox.Show( this, Pandora.TextProvider[ "Travel.ConfirmDelCat" ], "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning ) == DialogResult.Yes )
+			if ( MessageBox.Show( this, Pandora.Localization.TextProvider[ "Travel.ConfirmDelCat" ], "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning ) == DialogResult.Yes )
 			{
 				tCat.Nodes.Remove( tCat.SelectedNode );
 				UpdateMap();
@@ -1382,8 +1382,8 @@ namespace TheBox.Pages
 		{
 			try
 			{
-				Pandora.LocalizeMenu( CatMenu );
-				Pandora.LocalizeMenu( LocMenu );
+				Pandora.Localization.LocalizeMenu( CatMenu );
+				Pandora.Localization.LocalizeMenu( LocMenu );
 
 				if ( Pandora.Profile.General.TravelSplitter > 0 )
 				{

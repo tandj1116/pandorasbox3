@@ -292,7 +292,7 @@ namespace TheBox.Data
 			get
 			{
 				return 
-					string.Format( Pandora.TextProvider[ "Travel.SpawnTipDetailed" ],
+					string.Format( Pandora.Localization.TextProvider[ "Travel.SpawnTipDetailed" ],
 					m_Count,
 					m_Range,
 					m_Team,

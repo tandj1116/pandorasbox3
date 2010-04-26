@@ -77,7 +77,7 @@ namespace TheBox.Roofing
 					( !rect.Sloped && rect.GoesUp && ( rect.Rectangle.Width % 2 > 0 ) ) )
 				{
 					// This rectangle isn't odd wide and itsn't sloped
-					if ( MessageBox.Show( Pandora.TextProvider[ "Roofing.NotOddWide" ], "", MessageBoxButtons.YesNo, MessageBoxIcon.Question )
+					if ( MessageBox.Show( Pandora.Localization.TextProvider[ "Roofing.NotOddWide" ], "", MessageBoxButtons.YesNo, MessageBoxIcon.Question )
 						== DialogResult.No )
 					{
 						return false;
@@ -86,7 +86,7 @@ namespace TheBox.Roofing
 			}
 			else
 			{
-				MessageBox.Show( Pandora.TextProvider[ "Roofing.EmptyRoof" ] );
+				MessageBox.Show( Pandora.Localization.TextProvider[ "Roofing.EmptyRoof" ] );
 				return false;
 			}
 			
@@ -94,7 +94,7 @@ namespace TheBox.Roofing
 			{
 				if ( rr.Rectangle.Equals( rect.Rectangle ) && rect.GoesUp == rr.GoesUp && rect.Sloped && rr.Sloped )
 				{
-					MessageBox.Show( Pandora.TextProvider[ "Roofing.AlreadyAdded"  ] );
+					MessageBox.Show( Pandora.Localization.TextProvider[ "Roofing.AlreadyAdded"  ] );
 					return false;
 				}
 			}
@@ -103,7 +103,7 @@ namespace TheBox.Roofing
 
 			if ( ! Calculate() )
 			{
-				MessageBox.Show( Pandora.TextProvider[ "Roofing.CantAdd" ] );
+				MessageBox.Show( Pandora.Localization.TextProvider[ "Roofing.CantAdd" ] );
 				m_Edges.Remove( rect );
 				Calculate();
 
@@ -478,7 +478,7 @@ namespace TheBox.Roofing
 				}
 
 				if ( MessageBox.Show(
-					Pandora.TextProvider[ "Roofing.MissTiles" ],
+					Pandora.Localization.TextProvider[ "Roofing.MissTiles" ],
 					"",
 					MessageBoxButtons.YesNo,
 					MessageBoxIcon.Question ) == DialogResult.No )
@@ -643,7 +643,7 @@ namespace TheBox.Roofing
 				}
 
 				if ( MessageBox.Show(
-					Pandora.TextProvider[ "Roofing.MissTiles" ],
+					Pandora.Localization.TextProvider[ "Roofing.MissTiles" ],
 					"",
 					MessageBoxButtons.YesNo,
 					MessageBoxIcon.Question ) == DialogResult.No )

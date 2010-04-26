@@ -27,7 +27,7 @@ namespace TheBox.Buttons
 			//
 			InitializeComponent();
 
-			Pandora.LocalizeControl( this );
+			Pandora.Localization.LocalizeControl( this );
 		}
 
 		/// <summary>
@@ -146,7 +146,7 @@ namespace TheBox.Buttons
 		{
 			if ( txCommand.Text.Length == 0 )
 			{
-				MessageBox.Show( Pandora.TextProvider[ "Buttons.ErrCommand" ] );
+				MessageBox.Show( Pandora.Localization.TextProvider[ "Buttons.ErrCommand" ] );
 				return;
 			}
 

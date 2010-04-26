@@ -107,7 +107,8 @@ namespace TheBox.Forms
 			TheImage.Image = Chart;
 			SelectionChart = (Bitmap) Chart.Clone();
 
-			Pandora.LocalizeControl( this );
+            Pandora.Localization.LocalizeControl(this);
+			//Pandora.Localization.LocalizeControl( this );
 		}
 
 		/// <summary>
@@ -747,7 +748,8 @@ namespace TheBox.Forms
 
 		private void bDelete_Click(object sender, System.EventArgs e)
 		{
-			if ( MessageBox.Show( this, "", Pandora.TextProvider[ "HuePicker.DeleteGroup" ],
+            
+			if ( MessageBox.Show( this, "", Pandora.Localization.TextProvider[ "HuePicker.DeleteGroup" ],
 				MessageBoxButtons.YesNo ) == DialogResult.Yes )
 			{
 				m_Groups.Groups.Remove( m_SelectedGroup );

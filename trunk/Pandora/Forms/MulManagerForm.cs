@@ -4,7 +4,7 @@ using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
 using TheBox.Common;
-using TheBox.Lang;
+using TheBox.Common.Localization;
 
 namespace TheBox.Forms
 {
@@ -39,8 +39,8 @@ namespace TheBox.Forms
 		public MulManagerForm( MulManager manager )
 		{
 			InitializeComponent();
-			m_Text = Pandora.TextProvider;
-			Pandora.LocalizeControl( this );
+            m_Text = Pandora.Localization.TextProvider;
+			Pandora.Localization.LocalizeControl( this );
 			m_Manager = manager;
 		}
 

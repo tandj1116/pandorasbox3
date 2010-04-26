@@ -322,17 +322,17 @@ namespace TheBox.Pages
 					splitter1.SplitPosition = Pandora.Profile.General.NotesSplitter;
 				}
 
-				cmbAscending.Items.Add( Pandora.TextProvider[ "Notes.Ascending" ] );
-				cmbAscending.Items.Add( Pandora.TextProvider[ "Notes.Descending" ] );
+				cmbAscending.Items.Add( Pandora.Localization.TextProvider[ "Notes.Ascending" ] );
+				cmbAscending.Items.Add( Pandora.Localization.TextProvider[ "Notes.Descending" ] );
 
-				cmbType.Items.Add( Pandora.TextProvider[ "Common.Name" ] );
-				cmbType.Items.Add( Pandora.TextProvider[ "Notes.Date" ] );
-				cmbType.Items.Add( Pandora.TextProvider[ "Notes.Priority" ] );
+				cmbType.Items.Add( Pandora.Localization.TextProvider[ "Common.Name" ] );
+				cmbType.Items.Add( Pandora.Localization.TextProvider[ "Notes.Date" ] );
+				cmbType.Items.Add( Pandora.Localization.TextProvider[ "Notes.Priority" ] );
 	
-				cmbPriority.Items.Add( Pandora.TextProvider[ "Notes.Low" ] );
-				cmbPriority.Items.Add( Pandora.TextProvider[ "Notes.Normal" ] );	
-				cmbPriority.Items.Add( Pandora.TextProvider[ "Notes.High" ] );
-				cmbPriority.Items.Add( Pandora.TextProvider[ "Notes.Urgent" ] );
+				cmbPriority.Items.Add( Pandora.Localization.TextProvider[ "Notes.Low" ] );
+				cmbPriority.Items.Add( Pandora.Localization.TextProvider[ "Notes.Normal" ] );	
+				cmbPriority.Items.Add( Pandora.Localization.TextProvider[ "Notes.High" ] );
+				cmbPriority.Items.Add( Pandora.Localization.TextProvider[ "Notes.Urgent" ] );
 				cmbPriority.SelectedIndex = 1;
 
 				// Read the stored notes

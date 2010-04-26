@@ -356,7 +356,7 @@ namespace TheBox.Pages
 				EnableServer();
 
 				Pandora.OnlineChanged += new EventHandler(Pandora_OnlineChanged);
-				Pandora.LocalizeMenu( cmDatafiles );
+				Pandora.Localization.LocalizeMenu( cmDatafiles );
 			}
 			catch {} // VS
 		}
