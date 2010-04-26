@@ -2117,10 +2117,29 @@ namespace TheBox.Forms
 				Pandora.Profile.General.Links.Color = ColorChooser.Color;
 				txLinkColor.BackColor = ColorChooser.Color;
 
-				Pandora.UpdateLinks( this );
-				Pandora.UpdateLinks( Pandora.BoxForm );
+				UpdateLinks( this );
+				UpdateLinks( Pandora.BoxForm );
 			}
 		}
+
+        //  Issue 28:  	 Refactoring Pandora.cs - Tarion
+        /// <summary>
+        /// Updates the color used to display links
+        /// </summary>
+        /// <param name="c">The Control that contains links to be changed</param>
+        private void UpdateLinks(Control control)
+        {
+            if (control is LinkLabel)
+            {
+                (control as LinkLabel).LinkColor = Pandora.Profile.General.Links.Color;
+                (control as LinkLabel).VisitedLinkColor = Pandora.Profile.General.Links.Color;
+            }
+
+            foreach (Control c in control.Controls)
+            {
+                UpdateLinks(c);
+            }
+        }
 
 		/// <summary>
 		/// Draw border

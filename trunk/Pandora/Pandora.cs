@@ -42,7 +42,7 @@ namespace TheBox
 		}
 		#endregion
 
-		#region Map, Art, Hues, Props
+		#region Map, Art, Hues, Props (Data & GUI)
 
 		/// <summary>
 		/// Gets or sets the Property manager panel
@@ -141,49 +141,29 @@ namespace TheBox
 
 		#endregion
 
-		#region Localization and TextProvider
-
-        private static LocalizationHelper localization;
+		#region Localization
 
         public static LocalizationHelper Localization
         {
             get
             {
-                if (localization == null)
+                if (m_Localization == null)
                 {
-                    localization = new LocalizationHelper();
+                    m_Localization = new LocalizationHelper();
                 }
-                return localization;
+                return m_Localization;
             }
         }
 
         
         #endregion
 
-        #region options & gui
-
-        /// <summary>
-        /// Updates the color used to display links
-        /// </summary>
-        /// <param name="c">The Control that contains links to be changed</param>
-        public static void UpdateLinks(Control control)
-        {
-            if (control is LinkLabel)
-            {
-                (control as LinkLabel).LinkColor = Pandora.Profile.General.Links.Color;
-                (control as LinkLabel).VisitedLinkColor = Pandora.Profile.General.Links.Color;
-            }
-
-            foreach (Control c in control.Controls)
-            {
-                UpdateLinks(c);
-            }
-        }
+        #region ToolTip
 
         /// <summary>
         /// Gets the tool tip provider for this instance of Pandora
         /// </summary>
-        public static System.Windows.Forms.ToolTip ToolTip
+        public static ToolTip ToolTip
         {
             get
             {
@@ -202,7 +182,7 @@ namespace TheBox
         #endregion
 
 
-        #region Variables
+        #region Local Variables
 
         /// <summary>
 		/// The log provider for Pandora
@@ -219,10 +199,10 @@ namespace TheBox
 		/// </summary>
 		private static TheBox.ArtViewer.ArtViewer m_Art = null;
 
-		/// <summary>
-		/// The localization provider
-		/// </summary>
-		//private static TheBox.Common.Localization.TextProvider m_TextProvider = null;
+        /// <summary>
+        /// The localization provider
+        /// </summary>
+        private static LocalizationHelper m_Localization;
 
 		/// <summary>
 		/// The working folder for the program
@@ -298,6 +278,7 @@ namespace TheBox
 		/// The form used to manipulate builder structures on the server
 		/// </summary>
 		private static TheBox.Forms.BuilderControl m_BuilderControl = null;
+
 
 		#endregion
 
