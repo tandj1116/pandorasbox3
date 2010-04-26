@@ -41,7 +41,7 @@ namespace TheBox.Forms
 		{
 			InitializeComponent();
 
-			Pandora.LocalizeControl( this );
+			Pandora.Localization.LocalizeControl( this );
 
 			m_Login = true;
 			m_Silent = silent;
@@ -51,7 +51,7 @@ namespace TheBox.Forms
 		{
 			InitializeComponent();
 
-			Pandora.LocalizeControl( this );
+			Pandora.Localization.LocalizeControl( this );
 
 			m_Message = message;
 			m_Login = false;

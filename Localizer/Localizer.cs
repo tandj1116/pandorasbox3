@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using System.Data;
 using System.Xml;
+using TheBox.Common.Localization;
 
 namespace TheBox.Lang
 {

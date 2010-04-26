@@ -34,8 +34,8 @@ namespace TheBox.Controls
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
-
-			Pandora.LocalizeMenu( cmFilters );
+            
+			Pandora.Localization.LocalizeMenu( cmFilters );
 
 			bSet.Tag = new CommandCallback( DoSet );
 			bSet.ContextMenu = Pandora.cmModifiers;
@@ -442,11 +442,11 @@ namespace TheBox.Controls
 
 			cmFilters = new ContextMenu();
 
-			MenuItem add = new MenuItem( Pandora.TextProvider[ "Props.AddPreset" ] );
+			MenuItem add = new MenuItem( Pandora.Localization.TextProvider[ "Props.AddPreset" ] );
 			add.Click += new EventHandler(add_Click);
 			cmFilters.MenuItems.Add( add );
 
-			MenuItem del = new MenuItem( Pandora.TextProvider[ "Props.DelPreset" ] );
+			MenuItem del = new MenuItem( Pandora.Localization.TextProvider[ "Props.DelPreset" ] );
 
 			foreach( string s in Pandora.Profile.Props.Filters )
 			{

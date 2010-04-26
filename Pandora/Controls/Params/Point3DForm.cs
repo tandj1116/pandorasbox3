@@ -43,7 +43,7 @@ namespace TheBox.Controls.Params
             //Issue 27:  	 Designer warnings - Tarion
             try
             {
-                Pandora.LocalizeControl(this);
+                Pandora.Localization.LocalizeControl(this);
             }
             catch { } // VS
             // End Issue 27

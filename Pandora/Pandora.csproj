@@ -751,9 +751,6 @@
     <Compile Include="Data\SpawnGroups.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Data\TextProvider.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Data\TravelAgent.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -898,6 +895,7 @@
     <Compile Include="Forms\WorldMap.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Localization\LocalizationHelper.cs" />
     <Compile Include="Options\AdminOptions.cs">
       <SubType>Code</SubType>
     </Compile>

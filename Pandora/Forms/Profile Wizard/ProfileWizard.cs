@@ -12,10 +12,10 @@ namespace TheBox.Forms.ProfileWizard
 		private System.ComponentModel.IContainer components = null;
 
 		private bool m_Succesful = false;
-		private static TheBox.Lang.TextProvider m_TextProvider = null;
+		private static TheBox.Common.Localization.TextProvider m_TextProvider = null;
 		private TheBox.Options.Profile m_Profile;
 
-		public static TheBox.Lang.TextProvider TextProvider
+		public static TheBox.Common.Localization.TextProvider TextProvider
 		{
 			get
 			{
@@ -124,7 +124,8 @@ namespace TheBox.Forms.ProfileWizard
 			this.AddStep( "Step6bServer", new pwStep6bServer() );
 			this.AddStep( "Step7End", new pwStep7End() );
 
-			m_TextProvider = TheBox.Lang.TextProvider.GetLanguage( m_Profile.Language );
+
+            m_TextProvider = Pandora.Localization.GetLanguage(m_Profile.Language);
 
 			LocalizeControl( this );
 

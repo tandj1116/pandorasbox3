@@ -44,8 +44,8 @@ namespace TheBox.Buttons
 		{
 			InitializeComponent();
 
-			Pandora.LocalizeControl( this );
-			Pandora.LocalizeMenu( cMenu );
+			Pandora.Localization.LocalizeControl( this );
+			Pandora.Localization.LocalizeMenu( cMenu );
 
 			m_Def = new ButtonDef();
 			bPreview.Def = m_Def;
@@ -316,7 +316,7 @@ namespace TheBox.Buttons
 				cmd += Pandora.Profile.General.CommandPrefix;
 			cmd += e.Command;
 
-			MessageBox.Show( string.Format( Pandora.TextProvider[ "ButtonMenuEditor.PreviewMsg" ], cmd ) );
+			MessageBox.Show( string.Format( Pandora.Localization.TextProvider[ "ButtonMenuEditor.PreviewMsg" ], cmd ) );
 		}
 
 		/// <summary>
@@ -344,7 +344,7 @@ namespace TheBox.Buttons
 					return true;
 			}
 
-			if ( MessageBox.Show( this, Pandora.TextProvider[ "Buttons.ErasePrevious" ], "", MessageBoxButtons.YesNo ) == DialogResult.Yes )
+			if ( MessageBox.Show( this, Pandora.Localization.TextProvider[ "Buttons.ErasePrevious" ], "", MessageBoxButtons.YesNo ) == DialogResult.Yes )
 				return true;
 			else
 				return false;
@@ -417,12 +417,12 @@ namespace TheBox.Buttons
 				if ( m_EditLeft )
 				{
 					m_Def.Left = null;
-					linkLeft.Text = Pandora.TextProvider[ "Common.None" ];
+					linkLeft.Text = Pandora.Localization.TextProvider[ "Common.None" ];
 				}
 				else
 				{
 					m_Def.Right = null;
-					linkRight.Text = Pandora.TextProvider[ "Common.None" ];
+					linkRight.Text = Pandora.Localization.TextProvider[ "Common.None" ];
 				}
 			}
 		}
@@ -520,12 +520,12 @@ namespace TheBox.Buttons
 					if ( m_EditLeft )
 					{
 						m_Def.Left = mc;
-						linkLeft.Text = Pandora.TextProvider[ "Buttons.Single" ];
+						linkLeft.Text = Pandora.Localization.TextProvider[ "Buttons.Single" ];
 					}
 					else
 					{
 						m_Def.Right = mc;
-						linkRight.Text = Pandora.TextProvider[ "Buttons.Single" ];
+						linkRight.Text = Pandora.Localization.TextProvider[ "Buttons.Single" ];
 					}
 				}
 			}
@@ -548,12 +548,12 @@ namespace TheBox.Buttons
 					if ( m_EditLeft )
 					{
 						m_Def.Left = mc;
-						linkLeft.Text = Pandora.TextProvider[ "Buttons.Modifiers" ];
+						linkLeft.Text = Pandora.Localization.TextProvider[ "Buttons.Modifiers" ];
 					}
 					else
 					{
 						m_Def.Right = mc;
-						linkRight.Text = Pandora.TextProvider[ "Buttons.Modifiers" ];
+						linkRight.Text = Pandora.Localization.TextProvider[ "Buttons.Modifiers" ];
 					}
 				}
 			}
@@ -573,12 +573,12 @@ namespace TheBox.Buttons
 					if ( m_EditLeft )
 					{
 						m_Def.Left = bme.MenuDefinition;
-						linkLeft.Text = Pandora.TextProvider[ "ButtonMenuEditor.Menu" ];
+						linkLeft.Text = Pandora.Localization.TextProvider[ "ButtonMenuEditor.Menu" ];
 					}
 					else
 					{
 						m_Def.Right = bme.MenuDefinition;
-						linkRight.Text = Pandora.TextProvider[ "ButtonMenuEditor.Menu" ];
+						linkRight.Text = Pandora.Localization.TextProvider[ "ButtonMenuEditor.Menu" ];
 					}
 				}
 			}
@@ -594,12 +594,12 @@ namespace TheBox.Buttons
 				if ( m_EditLeft )
 				{
 					m_Def.Left = new LastCommand();
-					linkLeft.Text = Pandora.TextProvider[ "Buttons.LastCommand" ];
+					linkLeft.Text = Pandora.Localization.TextProvider[ "Buttons.LastCommand" ];
 				}
 				else
 				{
 					m_Def.Right = new LastCommand();
-					linkRight.Text = Pandora.TextProvider[ "Buttons.LastCommand" ];
+					linkRight.Text = Pandora.Localization.TextProvider[ "Buttons.LastCommand" ];
 				}
 			}
 		}
@@ -618,13 +618,13 @@ namespace TheBox.Buttons
 					if ( m_EditLeft )
 					{
 						m_Def.Left = mce.MultiDef;
-						linkLeft.Text = Pandora.TextProvider[ "Buttons.Multi" ];
+						linkLeft.Text = Pandora.Localization.TextProvider[ "Buttons.Multi" ];
 						bPreview.Text = m_Def.Caption;
 					}
 					else
 					{
 						m_Def.Right = mce.MultiDef;
-						linkRight.Text = Pandora.TextProvider[ "Buttons.Multi" ];
+						linkRight.Text = Pandora.Localization.TextProvider[ "Buttons.Multi" ];
 					}
 
 					bPreview.Text = m_Def.Caption;
@@ -657,11 +657,11 @@ namespace TheBox.Buttons
 			{
 				if ( m_Def.Left != null )
 				{
-					linkLeft.Text = Pandora.TextProvider[ m_Def.Left.Name ];
+					linkLeft.Text = Pandora.Localization.TextProvider[ m_Def.Left.Name ];
 				}
 				if ( m_Def.Right != null )
 				{
-					linkRight.Text = Pandora.TextProvider[ m_Def.Right.Name ];
+					linkRight.Text = Pandora.Localization.TextProvider[ m_Def.Right.Name ];
 				}
 			}
 		}

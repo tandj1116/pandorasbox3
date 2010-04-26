@@ -40,7 +40,7 @@ namespace TheBox.Forms
 		public PopUpForm()
 		{
 			InitializeComponent();
-			Pandora.LocalizeControl( this );
+			Pandora.Localization.LocalizeControl( this );
 
 			// Flickering fix
 			SetStyle( ControlStyles.DoubleBuffer, true );

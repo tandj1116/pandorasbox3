@@ -42,7 +42,7 @@ namespace TheBox.Forms
 			//
 			InitializeComponent();
 
-			Pandora.LocalizeControl( this );
+			Pandora.Localization.LocalizeControl( this );
 		}
 
 		private RandomTilesList m_TileSet;
@@ -409,7 +409,7 @@ namespace TheBox.Forms
 
 			if ( tile.Items.Count == 0 )
 			{
-				MessageBox.Show( Pandora.TextProvider[ "Random.InvalidIDs" ] );
+				MessageBox.Show( Pandora.Localization.TextProvider[ "Random.InvalidIDs" ] );
 				return;
 			}
 
@@ -505,7 +505,7 @@ namespace TheBox.Forms
 			}
 
 			if ( purge.Count > 0 )
-				MessageBox.Show( string.Format( Pandora.TextProvider[ "Random.Purge" ], purge.Count ) );
+				MessageBox.Show( string.Format( Pandora.Localization.TextProvider[ "Random.Purge" ], purge.Count ) );
 
 			m_List.Save();
 		}

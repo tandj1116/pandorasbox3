@@ -31,7 +31,7 @@ namespace TheBox.Forms
 			//
 			InitializeComponent();
 
-			Pandora.LocalizeControl( this );
+			Pandora.Localization.LocalizeControl( this );
 		}
 
 		/// <summary>

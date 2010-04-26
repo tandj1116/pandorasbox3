@@ -34,7 +34,7 @@ namespace TheBox.Forms
 			//
 			InitializeComponent();
 
-			Pandora.LocalizeControl( this );
+			Pandora.Localization.LocalizeControl( this );
 		}
 
 		/// <summary>
@@ -190,7 +190,7 @@ namespace TheBox.Forms
 		private void EnableButton()
 		{
 			bOk.Enabled = txName.Text.Length > 0 &&
-				labFile.Text != Pandora.TextProvider[ "Tools.Browse" ] && labFile.Text.Length > 0;
+				labFile.Text != Pandora.Localization.TextProvider[ "Tools.Browse" ] && labFile.Text.Length > 0;
 		}
 
 		private LauncherEntry m_Entry;

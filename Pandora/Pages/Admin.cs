@@ -646,11 +646,11 @@ namespace TheBox.Pages
 		{
 			if ( m_Process != null )
 			{
-				labServer.Text = Pandora.TextProvider[ "Admin.Running" ];
+				labServer.Text = Pandora.Localization.TextProvider[ "Admin.Running" ];
 			}
 			else
 			{
-				labServer.Text = Pandora.TextProvider[ "Admin.Stopped" ];
+				labServer.Text = Pandora.Localization.TextProvider[ "Admin.Stopped" ];
 			}
 
 			bStartServer.Enabled = Pandora.Profile.Admin.ServerExe != null

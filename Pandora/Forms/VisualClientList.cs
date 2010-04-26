@@ -34,13 +34,13 @@ namespace TheBox.Forms
 			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 			m_Table = new Dictionary<Point, List<ClientEntry>>();
 			// Issue 10 - End
-			Pandora.LocalizeControl( this );
+			Pandora.Localization.LocalizeControl( this );
 
 			tBar.ImageList = new ImageList();
 			tBar.ImageList.ImageSize = new Size( 1, 1 );
 
-			bExit.Text = Pandora.TextProvider[ "Common.Exit" ];
-			bRefresh.Text = Pandora.TextProvider[ "Common.Refresh" ];
+			bExit.Text = Pandora.Localization.TextProvider[ "Common.Exit" ];
+			bRefresh.Text = Pandora.Localization.TextProvider[ "Common.Refresh" ];
 
 			// Flickering fix
 			SetStyle( ControlStyles.DoubleBuffer, true );

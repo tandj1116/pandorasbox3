@@ -26,7 +26,7 @@ namespace TheBox.Forms
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
-			Pandora.LocalizeControl( this );
+			Pandora.Localization.LocalizeControl( this );
 		}
 
 		/// <summary>

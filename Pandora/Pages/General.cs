@@ -553,7 +553,7 @@ namespace TheBox.Pages
 				if ( Pandora.Profile.General.AllSkills )
 				{
 					// Display all skills text
-					lnkSkill.Text = Pandora.TextProvider[ "Misc.AllSkills" ];
+					lnkSkill.Text = Pandora.Localization.TextProvider[ "Misc.AllSkills" ];
 				}
 				else
 				{
@@ -612,7 +612,7 @@ namespace TheBox.Pages
 			}
 			else
 			{
-				lnkSound.Text = Pandora.TextProvider[ "General.ChooseSnd" ];
+				lnkSound.Text = Pandora.Localization.TextProvider[ "General.ChooseSnd" ];
 			}
 		}
 
@@ -675,7 +675,7 @@ namespace TheBox.Pages
 		private void Skills_AllSkillsSelected(object sender, EventArgs e)
 		{
 			Pandora.Profile.General.AllSkills = true;
-			lnkSkill.Text = Pandora.TextProvider[ "Misc.AllSkills" ];
+			lnkSkill.Text = Pandora.Localization.TextProvider[ "Misc.AllSkills" ];
 		}
 
 		/// <summary>
@@ -944,11 +944,11 @@ namespace TheBox.Pages
 
 			m_WebMenu = new ContextMenu();
 
-			MenuItem add = new MenuItem( Pandora.TextProvider[ "General.AddCurrPreset" ] );
+			MenuItem add = new MenuItem( Pandora.Localization.TextProvider[ "General.AddCurrPreset" ] );
 			add.Click += new EventHandler(add_Click);
 			m_WebMenu.MenuItems.Add( add );
 
-			MenuItem edit = new MenuItem( Pandora.TextProvider[ "General.EditPresets" ] );
+			MenuItem edit = new MenuItem( Pandora.Localization.TextProvider[ "General.EditPresets" ] );
 			edit.Click += new EventHandler(EditWebPresets);
 			m_WebMenu.MenuItems.Add( edit );
 
@@ -980,11 +980,11 @@ namespace TheBox.Pages
 
 			m_SpeechMenu = new ContextMenu();
 
-			MenuItem add = new MenuItem( Pandora.TextProvider[ "General.AddCurrPreset" ] );
+			MenuItem add = new MenuItem( Pandora.Localization.TextProvider[ "General.AddCurrPreset" ] );
 			add.Click += new EventHandler(add_Click2);
 			m_SpeechMenu.MenuItems.Add( add );
 
-			MenuItem edit = new MenuItem( Pandora.TextProvider[ "General.EditPresets" ] );
+			MenuItem edit = new MenuItem( Pandora.Localization.TextProvider[ "General.EditPresets" ] );
 			edit.Click += new EventHandler(EditSpeechPresets);
 			m_SpeechMenu.MenuItems.Add( edit );
 

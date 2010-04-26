@@ -45,7 +45,7 @@ namespace TheBox.Forms.Editors
 		{
 			InitializeComponent();
 
-			Pandora.LocalizeControl( this );
+			Pandora.Localization.LocalizeControl( this );
 
 			m_Preview.MulFileManager = Pandora.Profile.MulManager;
 		}
@@ -181,7 +181,7 @@ namespace TheBox.Forms.Editors
 			}
 			else
 			{
-				MessageBox.Show( Pandora.TextProvider[ "Items.NoName" ] );
+				MessageBox.Show( Pandora.Localization.TextProvider[ "Items.NoName" ] );
 			}			
 		}
 

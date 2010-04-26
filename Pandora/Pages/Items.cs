@@ -517,8 +517,8 @@ namespace TheBox.Pages
 				bUp.Tag = new CommandCallback( PerformNudgeUp );
 				bDown.Tag = new CommandCallback( PerformNudgeDown );
 
-				Pandora.LocalizeMenu( cmItems );
-				Pandora.LocalizeMenu( cmCat );
+				Pandora.Localization.LocalizeMenu( cmItems );
+				Pandora.Localization.LocalizeMenu( cmCat );
 
 				bToPack.ContextMenu = Pandora.cmModifiers;
 				bAdd.ContextMenu = Pandora.cmModifiers;
@@ -864,7 +864,7 @@ namespace TheBox.Pages
 		{
 			if ( MessageBox.Show( 
 				this,
-				Pandora.TextProvider[ "Items.DelCat" ],
+				Pandora.Localization.TextProvider[ "Items.DelCat" ],
 				"",
 				MessageBoxButtons.YesNo,
 				MessageBoxIcon.Warning ) == DialogResult.Yes )
@@ -989,7 +989,7 @@ namespace TheBox.Pages
 		private void cmDeleteItem_Click(object sender, System.EventArgs e)
 		{
 			if ( MessageBox.Show( this,
-				Pandora.TextProvider[ "Items.DelItem" ],
+				Pandora.Localization.TextProvider[ "Items.DelItem" ],
 				"",
 				MessageBoxButtons.YesNo ) == DialogResult.Yes )
 			{
@@ -1050,7 +1050,7 @@ namespace TheBox.Pages
 
 				if ( m_Results.Count == 0 )
 				{
-					MessageBox.Show( Pandora.TextProvider[ "Misc.NoResults" ] );
+					MessageBox.Show( Pandora.Localization.TextProvider[ "Misc.NoResults" ] );
 					m_Results = null;
 				}
 				else
@@ -1115,7 +1115,7 @@ namespace TheBox.Pages
 			}
 			catch
 			{
-				MessageBox.Show( Pandora.TextProvider[ "Misc.SearchError" ] );
+				MessageBox.Show( Pandora.Localization.TextProvider[ "Misc.SearchError" ] );
 				m_Results = null;
 			}
 		}

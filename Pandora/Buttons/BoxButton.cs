@@ -21,14 +21,14 @@ namespace TheBox.Buttons
 
 		private void BuildMenu()
 		{
-            if (Pandora.TextProvider != null)
+            if (Pandora.Localization.TextProvider != null)
             {
-                mEdit = new MenuItem(Pandora.TextProvider["Common.Edit"], new EventHandler(EditButton));
-                mEdit = new MenuItem(Pandora.TextProvider["Common.Edit"], new EventHandler(EditButton));
-                mClear = new MenuItem(Pandora.TextProvider["Common.Clear"], new EventHandler(ClearButton));
-                mImport = new MenuItem(Pandora.TextProvider["Common.Import"], new EventHandler(ImportButton));
-                mExport = new MenuItem(Pandora.TextProvider["Common.Export"], new EventHandler(ExportButton));
-                mRestore = new MenuItem(Pandora.TextProvider["Common.RestoreDefault"], new EventHandler(RestoreDefault));
+                mEdit = new MenuItem(Pandora.Localization.TextProvider["Common.Edit"], new EventHandler(EditButton));
+                mEdit = new MenuItem(Pandora.Localization.TextProvider["Common.Edit"], new EventHandler(EditButton));
+                mClear = new MenuItem(Pandora.Localization.TextProvider["Common.Clear"], new EventHandler(ClearButton));
+                mImport = new MenuItem(Pandora.Localization.TextProvider["Common.Import"], new EventHandler(ImportButton));
+                mExport = new MenuItem(Pandora.Localization.TextProvider["Common.Export"], new EventHandler(ExportButton));
+                mRestore = new MenuItem(Pandora.Localization.TextProvider["Common.RestoreDefault"], new EventHandler(RestoreDefault));
 
                 m_Menu = new ContextMenu(new MenuItem[]
 				{
@@ -79,7 +79,7 @@ namespace TheBox.Buttons
 		/// </summary>
 		private void ClearButton( object sender, EventArgs e )
 		{
-			if ( MessageBox.Show( this, Pandora.TextProvider[ "Buttons.ConfirmClear" ], "", MessageBoxButtons.YesNo ) == DialogResult.Yes )
+			if ( MessageBox.Show( this, Pandora.Localization.TextProvider[ "Buttons.ConfirmClear" ], "", MessageBoxButtons.YesNo ) == DialogResult.Yes )
 			{
 				Pandora.Buttons.ClearButton( this );
 				Pandora.ToolTip.SetToolTip( this, null );
@@ -91,7 +91,7 @@ namespace TheBox.Buttons
 		/// </summary>
 		private void ImportButton( object sender, EventArgs e )
 		{
-			if ( MessageBox.Show( this, Pandora.TextProvider[ "Buttons.ImportConfirm" ], "", MessageBoxButtons.YesNo ) == DialogResult.Yes )
+			if ( MessageBox.Show( this, Pandora.Localization.TextProvider[ "Buttons.ImportConfirm" ], "", MessageBoxButtons.YesNo ) == DialogResult.Yes )
 			{
 				if ( OpenFile.ShowDialog() == DialogResult.OK )
 				{
@@ -103,7 +103,7 @@ namespace TheBox.Buttons
 					}
 					else
 					{
-						MessageBox.Show( Pandora.TextProvider[ "Buttons.LoadFail" ] );
+						MessageBox.Show( Pandora.Localization.TextProvider[ "Buttons.LoadFail" ] );
 					}
 				}
 			}
@@ -118,7 +118,7 @@ namespace TheBox.Buttons
 			{
 				if ( ! m_Def.Save( SaveFile.FileName ) )
 				{
-					MessageBox.Show( Pandora.TextProvider[ "Buttons.SaveFail" ] );
+					MessageBox.Show( Pandora.Localization.TextProvider[ "Buttons.SaveFail" ] );
 				}
 			}
 		}

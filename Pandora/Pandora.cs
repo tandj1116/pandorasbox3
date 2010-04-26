@@ -17,6 +17,7 @@ using TheBox.Forms.ProfileWizard;
 using TheBox.Buttons;
 using TheBox.Data;
 using TheBox.BoxServer;
+using TheBox.Localization;
 
 namespace TheBox
 {
@@ -142,169 +143,68 @@ namespace TheBox
 
 		#region Localization and TextProvider
 
-		/// <summary>
-		/// Gets the TextProvider object used to retrieve localized text
-		/// </summary>
-		public static TheBox.Lang.TextProvider TextProvider
-		{
-			get
-			{
-				if (m_TextProvider == null)
-				{
-					// m_TextProvider = TheBox.Lang.TextProvider.Deserialize( @"D:\Dev\Pandora 2.0\Pandora\Language\English.xml" );
-					// Issue 6:  	 Improve error management - Tarion
-					try
-					{
-							m_TextProvider = TheBox.Lang.TextProvider.GetLanguage();
-					}
-					catch
-					{
-							return null;
-					}
-					// End Issue 6
-				}
+        private static LocalizationHelper localization;
 
-				return m_TextProvider;
-			}
-			set { m_TextProvider = value; }
-		}
+        public static LocalizationHelper Localization
+        {
+            get
+            {
+                if (localization == null)
+                {
+                    localization = new LocalizationHelper();
+                }
+                return localization;
+            }
+        }
 
-		/// <summary>
-		/// Gets a StringCollection representing the languages available
-		/// </summary>
-		public static StringCollection SupportedLanguages
-		{
-			get
-			{
-				StringCollection languages = new StringCollection();
+        
+        #endregion
 
-				languages.Add("English");
+        #region options & gui
 
-				// TODO : Add code to correctly detect supported languages
+        /// <summary>
+        /// Updates the color used to display links
+        /// </summary>
+        /// <param name="c">The Control that contains links to be changed</param>
+        public static void UpdateLinks(Control control)
+        {
+            if (control is LinkLabel)
+            {
+                (control as LinkLabel).LinkColor = Pandora.Profile.General.Links.Color;
+                (control as LinkLabel).VisitedLinkColor = Pandora.Profile.General.Links.Color;
+            }
 
-				return languages;
-			}
-		}
+            foreach (Control c in control.Controls)
+            {
+                UpdateLinks(c);
+            }
+        }
 
-		/// <summary>
-		/// Localizes the text of a control and all of its children controls
-		/// </summary>
-		/// <param name="control">The control that should be localized</param>
-		public static void LocalizeControl(Control control)
-		{
-			//			ButtonBase bb = control as ButtonBase;
-			//
-			//			if ( bb != null )
-			//				bb.FlatStyle = Pandora.Profile.General.FlatButtons ? FlatStyle.Flat : FlatStyle.System;
+        /// <summary>
+        /// Gets the tool tip provider for this instance of Pandora
+        /// </summary>
+        public static System.Windows.Forms.ToolTip ToolTip
+        {
+            get
+            {
+                if (m_ToolTip == null)
+                {
+                    m_ToolTip = new ToolTip();
 
-			if (control is Form)
-			{
-				// Set options on controls
-				Form f = control as Form;
+                    m_ToolTip.Active = true;
+                    m_ToolTip.ShowAlways = true;
+                }
 
-				f.TopMost = Pandora.Profile.General.TopMost;
-				f.Opacity = (double)Pandora.Profile.General.Opacity / 100.0;
-			}
+                return m_ToolTip;
+            }
+        }
 
-			if (control is TheBox.Buttons.BoxButton)
-			{
-				// Box button
-				TheBox.Buttons.BoxButton b = control as TheBox.Buttons.BoxButton;
+        #endregion
 
-				ButtonDef def = null;
 
-				if (b.ButtonID >= 0)
-					def = Buttons[b];
+        #region Variables
 
-				Profile.ButtonIndex.DoButton(b);
-			}
-			else
-			{
-				// Classic control
-				string text = control.Text;
-
-				string[] path = text.Split(new char[] { '.' });
-
-				if (path.Length == 2)
-					control.Text = Pandora.TextProvider[text];
-
-				if (control is LinkLabel)
-				{
-					(control as LinkLabel).LinkColor = Pandora.Profile.General.Links.Color;
-					(control as LinkLabel).VisitedLinkColor = Pandora.Profile.General.Links.Color;
-					(control as LinkLabel).LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-				}
-
-				if (control.Controls.Count > 0)
-				{
-					foreach (Control c in control.Controls)
-						LocalizeControl(c);
-				}
-			}
-		}
-
-		/// <summary>
-		/// Localizes a menu and all of its submenus
-		/// </summary>
-		/// <param name="menu">The menu that must be localized</param>
-		public static void LocalizeMenu(Menu menu)
-		{
-			foreach (MenuItem mi in menu.MenuItems)
-			{
-				string text = mi.Text;
-
-				string localizedText = Pandora.TextProvider[text];
-
-				if (localizedText != null)
-					mi.Text = localizedText;
-
-				if (mi.MenuItems.Count > 0)
-					LocalizeMenu(mi);
-			}
-		}
-
-		/// <summary>
-		/// Gets the tool tip provider for this instance of Pandora
-		/// </summary>
-		public static System.Windows.Forms.ToolTip ToolTip
-		{
-			get
-			{
-				if (m_ToolTip == null)
-				{
-					m_ToolTip = new ToolTip();
-
-					m_ToolTip.Active = true;
-					m_ToolTip.ShowAlways = true;
-				}
-
-				return m_ToolTip;
-			}
-		}
-
-		/// <summary>
-		/// Updates the color used to display links
-		/// </summary>
-		/// <param name="c">The Control that contains links to be changed</param>
-		public static void UpdateLinks(Control control)
-		{
-			if (control is LinkLabel)
-			{
-				(control as LinkLabel).LinkColor = Pandora.Profile.General.Links.Color;
-				(control as LinkLabel).VisitedLinkColor = Pandora.Profile.General.Links.Color;
-			}
-
-			foreach (Control c in control.Controls)
-			{
-				UpdateLinks(c);
-			}
-		}
-
-		#endregion
-
-		#region Variables
-
-		/// <summary>
+        /// <summary>
 		/// The log provider for Pandora
 		/// </summary>
 		private static BoxLog m_Log = null;
@@ -322,7 +222,7 @@ namespace TheBox
 		/// <summary>
 		/// The localization provider
 		/// </summary>
-		private static TheBox.Lang.TextProvider m_TextProvider = null;
+		//private static TheBox.Common.Localization.TextProvider m_TextProvider = null;
 
 		/// <summary>
 		/// The working folder for the program
@@ -486,7 +386,7 @@ namespace TheBox
 
 					if (m_TheBox != null)
 					{
-						m_TheBox.Text = string.Format(Pandora.TextProvider["Misc.BoxTitle"], Pandora.Profile.Name, Pandora.Connected ? Pandora.TextProvider["Misc.Online"] : Pandora.TextProvider["Misc.Offline"]);
+						m_TheBox.Text = string.Format(Pandora.Localization.TextProvider["Misc.BoxTitle"], Pandora.Profile.Name, Pandora.Connected ? Pandora.Localization.TextProvider["Misc.Online"] : Pandora.Localization.TextProvider["Misc.Offline"]);
 					}
 
 					if (OnlineChanged != null)
@@ -593,7 +493,7 @@ namespace TheBox
 			if (!Pandora.Connected)
 			{
 				// Not connected, request connection
-				if (MessageBox.Show(null, Pandora.TextProvider["Misc.RequestConnection"], "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+				if (MessageBox.Show(null, Pandora.Localization.TextProvider["Misc.RequestConnection"], "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 				{
 					BoxServerForm form = new BoxServerForm(false);
 					form.ShowDialog();
@@ -1055,7 +955,7 @@ namespace TheBox
 					if (Pandora.Profile.General.ModifiersWarnings[index])
 					{
 						if (MessageBox.Show(Pandora.BoxForm,
-							string.Format(Pandora.TextProvider["Errors.ModifierWarn"], mi.Text),
+							string.Format(Pandora.Localization.TextProvider["Errors.ModifierWarn"], mi.Text),
 							"",
 							MessageBoxButtons.YesNo) == DialogResult.No)
 						{

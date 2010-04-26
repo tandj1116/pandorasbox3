@@ -99,8 +99,8 @@ namespace TheBox.Options
 
 			if ( prof.ProfileVersion > m_CurrentVersion )
 			{
-				if ( Pandora.TextProvider != null )
-					System.Windows.Forms.MessageBox.Show( Pandora.TextProvider[ "Misc.ProfileIOErr" ] );
+                if (Pandora.Localization.TextProvider != null)
+					System.Windows.Forms.MessageBox.Show( Pandora.Localization.TextProvider[ "Misc.ProfileIOErr" ] );
 				else
 					System.Windows.Forms.MessageBox.Show( "Please upgrade your version of Pandora's Box.\n\nThe profile you are importing has been created with a more recent version of this software." );
 			}

@@ -26,7 +26,7 @@ namespace TheBox.Data
 		public SkillsData()
 		{
 			m_Menu = new ContextMenu();
-			MenuItem allskills = new MenuItem( Pandora.TextProvider[ "Misc.AllSkills" ] );
+			MenuItem allskills = new MenuItem( Pandora.Localization.TextProvider[ "Misc.AllSkills" ] );
 			allskills.Click += new EventHandler(allskills_Click);
 			m_Menu.MenuItems.Add( allskills );
 			m_Menu.MenuItems.Add( new MenuItem( "-" ) );

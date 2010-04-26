@@ -15,7 +15,7 @@ namespace TheBox.BoxServer
 			if ( Pandora.Profile.Server.Enabled )
 			{
 				if ( MessageBox.Show( Pandora.BoxForm,
-					Pandora.TextProvider[ "Misc.RequestConnection" ],
+					Pandora.Localization.TextProvider[ "Misc.RequestConnection" ],
 					null,
 					MessageBoxButtons.YesNo,
 					MessageBoxIcon.Question ) == DialogResult.Yes )
@@ -28,7 +28,7 @@ namespace TheBox.BoxServer
 			}
 			else
 			{
-				MessageBox.Show( Pandora.TextProvider[ "Errors.NoServer" ] );
+				MessageBox.Show( Pandora.Localization.TextProvider[ "Errors.NoServer" ] );
 			}
 		}
 
@@ -45,7 +45,7 @@ namespace TheBox.BoxServer
 			if ( msg is ErrorMessage )
 			{
 				// Generic error message
-				MessageBox.Show( string.Format( Pandora.TextProvider[ "Errors.GenServErr" ], ( msg as ErrorMessage ).Message ) );
+				MessageBox.Show( string.Format( Pandora.Localization.TextProvider[ "Errors.GenServErr" ], ( msg as ErrorMessage ).Message ) );
 				return false;
 			}
 			else if ( msg is LoginError )
@@ -58,22 +58,22 @@ namespace TheBox.BoxServer
 				{
 					case AuthenticationResult.AccessLevelError :
 						
-						err = Pandora.TextProvider[ "Errors.LoginAccess" ];
+						err = Pandora.Localization.TextProvider[ "Errors.LoginAccess" ];
 						break;
 
 					case AuthenticationResult.OnlineMobileRequired:
 
-						err = Pandora.TextProvider[ "Errors.NotOnline" ];
+						err = Pandora.Localization.TextProvider[ "Errors.NotOnline" ];
 						break;
 
 					case AuthenticationResult.UnregisteredUser:
 
-						err = Pandora.TextProvider[ "Errors.LogUnregistered" ];
+						err = Pandora.Localization.TextProvider[ "Errors.LogUnregistered" ];
 						break;
 
 					case AuthenticationResult.WrongCredentials:
 
-						err = Pandora.TextProvider[ "Errors.WrongCredentials" ];
+						err = Pandora.Localization.TextProvider[ "Errors.WrongCredentials" ];
 						break;
 
 					case AuthenticationResult.Success:
@@ -86,7 +86,7 @@ namespace TheBox.BoxServer
 			}
 			else if ( msg is FeatureNotSupported )
 			{
-				MessageBox.Show( Pandora.TextProvider[ "Errors.NotSupported" ] );
+				MessageBox.Show( Pandora.Localization.TextProvider[ "Errors.NotSupported" ] );
 				return false;
 			}
 
@@ -127,7 +127,7 @@ namespace TheBox.BoxServer
 
 				if ( result == null )
 				{
-					MessageBox.Show( Pandora.TextProvider[ "Errors.ServerError" ] );
+					MessageBox.Show( Pandora.Localization.TextProvider[ "Errors.ServerError" ] );
 					Pandora.Connected = false;
 					return false;
 				}
@@ -235,7 +235,7 @@ namespace TheBox.BoxServer
 			catch ( Exception err )
 			{
 				Pandora.Log.WriteError( err, "Error when processing a BoxMessage of type: {0}", msg.GetType().FullName );
-				MessageBox.Show( Pandora.TextProvider[ "Errors.ConnectionLost" ] );
+				MessageBox.Show( Pandora.Localization.TextProvider[ "Errors.ConnectionLost" ] );
 				Pandora.Connected = false;
 				outcome = null;
 			}

@@ -31,7 +31,7 @@ namespace TheBox.Forms
 		public SpawnForm()
 		{
 			InitializeComponent();
-			Pandora.LocalizeControl( this );
+			Pandora.Localization.LocalizeControl( this );
 		}
 
 		private int m_Amount;

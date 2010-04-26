@@ -43,12 +43,12 @@ namespace TheBox.Forms
 			m_Big = Pandora.Profile.Travel.WorldMapBig;
 			m_Map = Pandora.Map.Map;
 
-			bClose.Text = Pandora.TextProvider[ "Common.Exit" ];
+			bClose.Text = Pandora.Localization.TextProvider[ "Common.Exit" ];
 
 			tBar.ImageList = new ImageList();
 			tBar.ImageList.ImageSize = new Size( 1,1 );
 
-			Pandora.LocalizeControl( this );
+			Pandora.Localization.LocalizeControl( this );
 
 			m_Buttons = new ToolBarButton[]
 				{
@@ -158,12 +158,12 @@ namespace TheBox.Forms
 			if ( m_Big )
 			{
 				bBig.Pushed = true;
-				bBig.Text = Pandora.TextProvider[ "World.Big" ];
+				bBig.Text = Pandora.Localization.TextProvider[ "World.Big" ];
 			}
 			else
 			{
 				bBig.Pushed = false;
-				bBig.Text = Pandora.TextProvider[ "World.Small" ];
+				bBig.Text = Pandora.Localization.TextProvider[ "World.Small" ];
 			}
 
 			for ( int i = 0; i < Pandora.Profile.Travel.MapCount; i++ )
@@ -192,7 +192,7 @@ namespace TheBox.Forms
 				m_Buttons[ (int) m_Map ].Enabled = false;
 				Pandora.Log.WriteError( null, string.Format( "Display of enabled map {0} failed.", (int) m_Map ) );
 
-				MessageBox.Show( Pandora.TextProvider[ "World.NoImage" ] );
+				MessageBox.Show( Pandora.Localization.TextProvider[ "World.NoImage" ] );
 			}
 			else
 			{
@@ -239,7 +239,7 @@ namespace TheBox.Forms
 
 				Pandora.Profile.Travel.WorldMapBig = m_Big;
 
-				bBig.Text = m_Big ? Pandora.TextProvider[ "World.Big" ] : Pandora.TextProvider[ "World.Small" ];
+				bBig.Text = m_Big ? Pandora.Localization.TextProvider[ "World.Big" ] : Pandora.Localization.TextProvider[ "World.Small" ];
 			}
 			else if ( e.Button == bClose )
 			{

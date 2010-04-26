@@ -121,19 +121,19 @@ namespace TheBox.Pages
 						case BoxPropType.Numeric:
 
 							VisibleControl = labMsg;
-							labMsg.Text = Pandora.TextProvider[ "Props.Numeric" ];
+							labMsg.Text = Pandora.Localization.TextProvider[ "Props.Numeric" ];
 							break;
 
 						case BoxPropType.Other:
 
 							VisibleControl = labMsg;
-							labMsg.Text = Pandora.TextProvider[ "Props.Other" ];
+							labMsg.Text = Pandora.Localization.TextProvider[ "Props.Other" ];
 							break;
 
 						case BoxPropType.Text:
 
 							VisibleControl = labMsg;
-							labMsg.Text = Pandora.TextProvider[ "Props.Text" ];
+							labMsg.Text = Pandora.Localization.TextProvider[ "Props.Text" ];
 							break;
 
 						case BoxPropType.Boolean:
@@ -701,7 +701,7 @@ namespace TheBox.Pages
 
 				if ( results.Count == 0 )
 				{
-					MessageBox.Show( Pandora.TextProvider[ "Props.NoClassMatch" ] );
+					MessageBox.Show( Pandora.Localization.TextProvider[ "Props.NoClassMatch" ] );
 				}
 				else if ( results.Count == 1 )
 				{
