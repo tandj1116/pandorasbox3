@@ -50,41 +50,41 @@ namespace TheBox.Controls.Params
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.labName = new System.Windows.Forms.Label();
-			this.num = new System.Windows.Forms.NumericUpDown();
-			((System.ComponentModel.ISupportInitialize)(this.num)).BeginInit();
-			this.SuspendLayout();
-			// 
-			// labName
-			// 
-			this.labName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.labName.Location = new System.Drawing.Point(0, 0);
-			this.labName.Name = "labName";
-			this.labName.Size = new System.Drawing.Size(96, 16);
-			this.labName.TabIndex = 0;
-			// 
-			// num
-			// 
-			this.num.Location = new System.Drawing.Point(0, 16);
-			this.num.Maximum = new System.Decimal(new int[] {
-																				50000,
-																				0,
-																				0,
-																				0});
-			this.num.Name = "num";
-			this.num.Size = new System.Drawing.Size(96, 20);
-			this.num.TabIndex = 1;
-			this.num.ValueChanged += new System.EventHandler(this.num_ValueChanged);
-			// 
-			// NumericParam
-			// 
-			this.Controls.Add(this.num);
-			this.Controls.Add(this.labName);
-			this.Name = "NumericParam";
-			this.Size = new System.Drawing.Size(96, 36);
-			this.Load += new System.EventHandler(this.NumericParam_Load);
-			((System.ComponentModel.ISupportInitialize)(this.num)).EndInit();
-			this.ResumeLayout(false);
+            this.labName = new System.Windows.Forms.Label();
+            this.num = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.num)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // labName
+            // 
+            this.labName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labName.Location = new System.Drawing.Point(0, 0);
+            this.labName.Name = "labName";
+            this.labName.Size = new System.Drawing.Size(96, 16);
+            this.labName.TabIndex = 0;
+            // 
+            // num
+            // 
+            this.num.Location = new System.Drawing.Point(0, 16);
+            this.num.Maximum = new decimal(new int[] {
+            Int16.MaxValue,
+            0,
+            0,
+            0});
+            this.num.Name = "num";
+            this.num.Size = new System.Drawing.Size(96, 20);
+            this.num.TabIndex = 1;
+            this.num.ValueChanged += new System.EventHandler(this.num_ValueChanged);
+            // 
+            // NumericParam
+            // 
+            this.Controls.Add(this.num);
+            this.Controls.Add(this.labName);
+            this.Name = "NumericParam";
+            this.Size = new System.Drawing.Size(96, 36);
+            this.Load += new System.EventHandler(this.NumericParam_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.num)).EndInit();
+            this.ResumeLayout(false);
 
 		}
 		#endregion
