@@ -6,16 +6,9 @@
 You will find a log file at this path:
 
 Multilanguage:
-  * {{{VISTA: "..\Users\USERNAME\AppData\Roaming\Pandora's Box 3"}}}
+  * {{{VISTA: "%AppData%\Roaming\Pandora's Box 3"}}}
+  * {{{All: "%AppData%\Pandora's Box 3"}}}
 
-English: 
-  * {{{XP: "..\Documents And Settings\USERNAME\ApplicationData\Pandora's Box 3"}}}
-
-German:
-  * {{{XP: "C:\Dokumente und Einstellungen\USERNAME\Anwendungsdaten\Pandora's Box 3"}}}
-
-Italian:
-  * {{{XP: "..\Documents and Settings\USERNAME\Dati applicazioni\Pandora's Box 3"}}}
 
 There must be a file named *Log.txt*. 
 The content may be useful to find bugs, especially when where is no exception thrown.
