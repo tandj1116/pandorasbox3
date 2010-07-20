@@ -32,6 +32,8 @@ namespace TheBox.Forms
 		private GroupBox groupBox2;
 		private Label label1;
         private LinkLabel Arya;
+        private LinkLabel linkLabelTarion;
+        private Label lblLog4Net;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -91,6 +93,8 @@ namespace TheBox.Forms
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.labVersion = new System.Windows.Forms.Label();
+            this.linkLabelTarion = new System.Windows.Forms.LinkLabel();
+            this.lblLog4Net = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnl.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -100,8 +104,9 @@ namespace TheBox.Forms
             // 
             // bClose
             // 
+            this.bClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bClose.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.bClose.Location = new System.Drawing.Point(346, 131);
+            this.bClose.Location = new System.Drawing.Point(346, 152);
             this.bClose.Name = "bClose";
             this.bClose.Size = new System.Drawing.Size(75, 23);
             this.bClose.TabIndex = 7;
@@ -120,16 +125,22 @@ namespace TheBox.Forms
             // 
             // pnl
             // 
+            this.pnl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.pnl.BackColor = System.Drawing.Color.Black;
             this.pnl.Controls.Add(this.panel1);
             this.pnl.Location = new System.Drawing.Point(12, 89);
             this.pnl.Name = "pnl";
-            this.pnl.Size = new System.Drawing.Size(446, 200);
+            this.pnl.Size = new System.Drawing.Size(446, 215);
             this.pnl.TabIndex = 11;
             this.pnl.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_Paint);
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.groupBox1);
@@ -137,15 +148,18 @@ namespace TheBox.Forms
             this.panel1.Controls.Add(this.bClose);
             this.panel1.Location = new System.Drawing.Point(8, 8);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(431, 179);
+            this.panel1.Size = new System.Drawing.Size(431, 194);
             this.panel1.TabIndex = 0;
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox2.Controls.Add(this.linkLabelTarion);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Location = new System.Drawing.Point(8, 32);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(124, 131);
+            this.groupBox2.Size = new System.Drawing.Size(124, 146);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Pandora\'s 3.0 staff:";
@@ -161,6 +175,9 @@ namespace TheBox.Forms
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox1.Controls.Add(this.lblLog4Net);
             this.groupBox1.Controls.Add(this.Arya);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label13);
@@ -176,7 +193,7 @@ namespace TheBox.Forms
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(149, 32);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(190, 131);
+            this.groupBox1.Size = new System.Drawing.Size(190, 146);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Credits till 2.0";
@@ -196,7 +213,7 @@ namespace TheBox.Forms
             // 
             this.label14.AutoSize = true;
             this.label14.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.label14.Location = new System.Drawing.Point(9, 112);
             this.label14.Name = "label14";
@@ -270,7 +287,7 @@ namespace TheBox.Forms
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(80, 16);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(128, 16);
+            this.label8.Size = new System.Drawing.Size(104, 16);
             this.label8.TabIndex = 5;
             this.label8.Text = "Arya";
             // 
@@ -331,11 +348,35 @@ namespace TheBox.Forms
             this.labVersion.TabIndex = 13;
             this.labVersion.Text = "9.0.21022.8";
             // 
+            // linkLabelTarion
+            // 
+            this.linkLabelTarion.AutoSize = true;
+            this.linkLabelTarion.Location = new System.Drawing.Point(68, 70);
+            this.linkLabelTarion.Name = "linkLabelTarion";
+            this.linkLabelTarion.Size = new System.Drawing.Size(43, 13);
+            this.linkLabelTarion.TabIndex = 10;
+            this.linkLabelTarion.TabStop = true;
+            this.linkLabelTarion.Text = "website";
+            this.linkLabelTarion.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelTarion_LinkClicked);
+            // 
+            // lblLog4Net
+            // 
+            this.lblLog4Net.AutoSize = true;
+            this.lblLog4Net.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblLog4Net.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLog4Net.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.lblLog4Net.Location = new System.Drawing.Point(9, 125);
+            this.lblLog4Net.Name = "lblLog4Net";
+            this.lblLog4Net.Size = new System.Drawing.Size(55, 13);
+            this.lblLog4Net.TabIndex = 12;
+            this.lblLog4Net.Text = "Log4Net";
+            this.lblLog4Net.Click += new System.EventHandler(this.lblLog4Net_Click);
+            // 
             // AboutForm
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(473, 300);
+            this.ClientSize = new System.Drawing.Size(473, 315);
             this.Controls.Add(this.labVersion);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pnl);
@@ -437,6 +478,16 @@ namespace TheBox.Forms
 			if ( Pandora.BoxForm != null )
 				Pandora.BoxForm.Visible = true;
 		}
+
+        private void linkLabelTarion_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://www.niondir.de/");
+        }
+
+        private void lblLog4Net_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://logging.apache.org/log4net/index.html");
+        }
 
         
 	}
