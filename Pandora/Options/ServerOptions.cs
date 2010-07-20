@@ -127,6 +127,13 @@ namespace TheBox.Options
 			}
 		}
 
+        /// <summary>
+        /// Apllied the fix from "Issue 56:  	 BoxServer Work with PD 3.0.0.4" without testing it yet.
+        /// The lines are just commented out until it is tested.
+        /// </summary>
+        /// <param name="password"></param>
+        /// <param name="username"></param>
+        /// <returns></returns>
 		private static string ComputeSHA1PasswordHash( string password, string username )
 		{
 			HashAlgorithm hash = new SHA1CryptoServiceProvider();
@@ -135,14 +142,16 @@ namespace TheBox.Options
 			StringBuilder sb = new StringBuilder();
 
 			sb.Append( username );
-			sb.Append( username.Length );
+            // Issue 56:  	 BoxServer Work with PD 3.0.0.4 - Tarion
+			//sb.Append( username.Length );
 			sb.Append( password );
 
 			password = sb.ToString(); // Salted
 
 			int length = Encoding.ASCII.GetBytes( password, 0, password.Length > 256 ? 256 : password.Length, buffer, 0 );
 			byte[] hashed = hash.ComputeHash( buffer, 0, length );
-			hashed = hash.ComputeHash( hashed, 0, hashed.Length );
+            // Issue 56:  	 BoxServer Work with PD 3.0.0.4 - Tarion
+            //hashed = hash.ComputeHash( hashed, 0, hashed.Length );
 
 			return BitConverter.ToString( hashed );
 		}
