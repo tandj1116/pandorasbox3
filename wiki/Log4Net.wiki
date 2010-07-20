@@ -1,5 +1,5 @@
+#summary Logging engine
 #labels Documentation
-#Logging engine
 
 = Introduction =
 
