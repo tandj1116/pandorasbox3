@@ -217,10 +217,20 @@ namespace TheBox.Data
 		}
 
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-		public Note( string name ) : base()
+        public Note(string name)
+            : base()
 		{
 			m_Name = name;
 		}
+
+        /// <summary>
+        /// Used to deserialize
+        /// </summary>
+        public Note()
+            : base()
+        {
+        }
+
 		// Issue 10 - End
 
 		/// <summary>
