@@ -146,9 +146,12 @@ namespace TheBox.Data
 		private string m_Name = "";
 		private string[] m_Text;
 		private NotePriority m_Priority = NotePriority.Normal;
-		private DateTime m_Date;
-		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-		private List<Location> m_Locations = null;
+
+        // Issue 51:  	 Note's does not save the correct time od day. - Tarion
+        private DateTime m_Date = DateTime.Now;
+        // Issue 51 - End
+        // Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+		private List<Location> m_Locations = new List<Location>();
 		// Issue 10 - End
 		private ContextMenu m_LocationsMenu = null;
 
@@ -216,15 +219,7 @@ namespace TheBox.Data
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public Note( string name ) : base()
 		{
-			//m_Date = DateTime.Now;
 			m_Name = name;
-			//m_Locations = new ArrayList();
-		}
-
-		public Note()
-		{
-			m_Date = DateTime.Now;
-			m_Locations = new List<Location>();
 		}
 		// Issue 10 - End
 
