@@ -67,7 +67,7 @@ namespace TheBox.Controls.Params
             // 
             this.num.Location = new System.Drawing.Point(0, 16);
             this.num.Maximum = new decimal(new int[] {
-            Int16.MaxValue,
+            Int32.MaxValue,
             0,
             0,
             0});
