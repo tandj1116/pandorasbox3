@@ -1,3 +1,4 @@
+#summary How to report errors
 #labels Featured,Phase-QA
 = How to report errors =
 
