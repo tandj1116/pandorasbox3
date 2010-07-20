@@ -4,6 +4,10 @@ Pandora's Box 3.0.0.5 (Updated on 20.07.2010)
 - Issue 50: LocalizedSign LabelNumber no longer limited by 50000
 - Issue 51: Note's does not save the correct time of day.
 - Issue 56: BoxServer password issue
+- Improved error management
+- Implemented Log4Net
+- Removed some duplicated entries in english translation file
+- Added neutral XML for translating in new languages
 
 Pandora's Box 3.0.0.4 | 05-24-09
 - Fixed the bug that makes Pandora think that the client isn't running.
