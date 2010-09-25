@@ -1,7 +1,6 @@
 using System;
 using System.Threading;
 using System.Windows.Forms;
-
 using TheBox.Forms;
 
 namespace TheBox.Common
@@ -9,18 +8,18 @@ namespace TheBox.Common
 	/// <summary>
 	/// Provides access to the splash screen
 	/// </summary>
-	public class Splash
+	public class Splash : ISplash
 	{
-		private static SplashScreen m_Form;
-		private static Thread m_Thread;
+		private SplashScreen m_Form;
+		private Thread m_Thread;
 
-		private static void ShowThread()
+		private void ShowThread()
 		{
 			m_Form = new SplashScreen();
 			Application.Run( m_Form	);
 		}
 
-		public static void Show()
+		public void Show()
 		{
 			if ( m_Thread != null )
 			{
@@ -33,7 +32,7 @@ namespace TheBox.Common
 			m_Thread.Start();
 		}
 
-		public static void Close()
+		public void Close()
 		{
 			if ( m_Thread == null || m_Form == null )
 				return;
@@ -48,7 +47,7 @@ namespace TheBox.Common
 			m_Form = null;
 		}
 
-		public static void SetStatusText( string text )
+		public void SetStatusText( string text )
 		{
 			if ( m_Form != null )
 			{

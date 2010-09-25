@@ -475,7 +475,8 @@ namespace TheBox.Pages
 
 		private void bOptions_Click(object sender, System.EventArgs e)
 		{
-			TheBox.Forms.OptionsForm form = new TheBox.Forms.OptionsForm();
+            // Do not acces the container from a static refference, should be solved better
+			TheBox.Forms.OptionsForm form = new TheBox.Forms.OptionsForm(Pandora.Container.Resolve<ProfileManager>());
 			form.ShowDialog();
 		}
 

@@ -89,6 +89,10 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LightCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0e5f0cb63554a380, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\LightCore.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=acd885a080663f75, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\log4net.dll</HintPath>
@@ -164,6 +168,10 @@
     <EmbeddedResource Include="App.ico" />
     <EmbeddedResource Include="Box.resx">
       <DependentUpon>Box.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BoxForm.resx">
+      <DependentUpon>BoxForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Buttons\BoxButton.resx">
@@ -274,6 +282,10 @@
       <DependentUpon>TimeSpanControl.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TopBar.resx">
+      <DependentUpon>TopBar.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\UOGrid.resx">
       <DependentUpon>UOGrid.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -358,48 +370,48 @@
       <DependentUpon>PopUpForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Profile Wizard\LanguageSelector.resx">
+    <EmbeddedResource Include="Forms\ProfileChooser.resx">
+      <DependentUpon>ProfileChooser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProfileWizard\LanguageSelector.resx">
       <DependentUpon>LanguageSelector.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Profile Wizard\ProfileWizard.resx">
+    <EmbeddedResource Include="Forms\ProfileWizard\ProfileWizard.resx">
       <DependentUpon>ProfileWizard.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Profile Wizard\pwStep1.resx">
+    <EmbeddedResource Include="Forms\ProfileWizard\pwStep1.resx">
       <DependentUpon>pwStep1.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Profile Wizard\pwStep3Name.resx">
+    <EmbeddedResource Include="Forms\ProfileWizard\pwStep3Name.resx">
       <DependentUpon>pwStep3Name.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Profile Wizard\pwStep4Folder.resx">
+    <EmbeddedResource Include="Forms\ProfileWizard\pwStep4Folder.resx">
       <DependentUpon>pwStep4Folder.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Profile Wizard\pwStep5aMapNames.resx">
+    <EmbeddedResource Include="Forms\ProfileWizard\pwStep5aMapNames.resx">
       <DependentUpon>pwStep5aMapNames.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Profile Wizard\pwStep6bServer.resx">
+    <EmbeddedResource Include="Forms\ProfileWizard\pwStep6bServer.resx">
       <DependentUpon>pwStep6bServer.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Profile Wizard\pwStep6Images.resx">
+    <EmbeddedResource Include="Forms\ProfileWizard\pwStep6Images.resx">
       <DependentUpon>pwStep6Images.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Profile Wizard\pwStep7End.resx">
+    <EmbeddedResource Include="Forms\ProfileWizard\pwStep7End.resx">
       <DependentUpon>pwStep7End.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Profile Wizard\Step5CustomMap.resx">
+    <EmbeddedResource Include="Forms\ProfileWizard\Step5CustomMap.resx">
       <DependentUpon>Step5CustomMap.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ProfileChooser.resx">
-      <DependentUpon>ProfileChooser.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\QuickHue.resx">
@@ -503,6 +515,11 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="pbp.ico" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Roofing\RoofingForm.resx">
       <DependentUpon>RoofingForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -512,6 +529,12 @@
     </Compile>
     <Compile Include="Box.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BoxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BoxForm.Designer.cs">
+      <DependentUpon>BoxForm.cs</DependentUpon>
     </Compile>
     <Compile Include="BoxServer\BoxConnection.cs">
       <SubType>Code</SubType>
@@ -624,6 +647,11 @@
     <Compile Include="Buttons\SimpleCommand.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Common\BoxLog.cs" />
+    <Compile Include="Common\ISplash.cs" />
+    <Compile Include="Common\ProcessExtension.cs" />
+    <Compile Include="Common\ScreenCapture.cs" />
+    <Compile Include="Common\Splash.cs" />
     <Compile Include="Controls\BooleanControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -692,6 +720,12 @@
     </Compile>
     <Compile Include="Controls\TimeSpanControl.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TopBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TopBar.Designer.cs">
+      <DependentUpon>TopBar.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\UOGrid.cs">
       <SubType>Component</SubType>
@@ -805,6 +839,8 @@
     <Compile Include="Forms\HueSelector.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\IForm.cs" />
+    <Compile Include="Forms\IProfileChooser.cs" />
     <Compile Include="Forms\LauncherForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -823,38 +859,39 @@
     <Compile Include="Forms\PopUpForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Profile Wizard\LanguageSelector.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Profile Wizard\ProfileWizard.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Profile Wizard\pwStep1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Forms\Profile Wizard\pwStep3Name.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Forms\Profile Wizard\pwStep4Folder.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Forms\Profile Wizard\pwStep5aMapNames.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Forms\Profile Wizard\pwStep6bServer.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Forms\Profile Wizard\pwStep6Images.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Forms\Profile Wizard\pwStep7End.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Forms\Profile Wizard\Step5CustomMap.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="Forms\ProfileChooser.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProfileWizard\ILanguageSelector.cs" />
+    <Compile Include="Forms\ProfileWizard\LanguageSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProfileWizard\ProfileWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProfileWizard\pwStep1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\ProfileWizard\pwStep3Name.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\ProfileWizard\pwStep4Folder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\ProfileWizard\pwStep5aMapNames.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\ProfileWizard\pwStep6bServer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\ProfileWizard\pwStep6Images.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\ProfileWizard\pwStep7End.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\ProfileWizard\Step5CustomMap.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Forms\QuickHue.cs">
       <SubType>Form</SubType>
@@ -895,6 +932,8 @@
     <Compile Include="Forms\WorldMap.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="IBoxForm.cs" />
+    <Compile Include="LightCoreBuilder.cs" />
     <Compile Include="Localization\LocalizationHelper.cs" />
     <Compile Include="Options\AdminOptions.cs">
       <SubType>Code</SubType>
@@ -978,6 +1017,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ProfileManager.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Roofing\Roof.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -1000,25 +1044,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="StartingContext.cs" />
-    <Compile Include="Utility\BoxLog.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Utility\ProcessExtension.cs" />
-    <Compile Include="Utility\ScreenCapture.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Utility\Splash.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <None Include="BoxServer\Builder\vssver.scc" />
     <None Include="BoxServer\Explorer\vssver.scc" />
     <None Include="BoxServer\Messages\vssver.scc" />
     <None Include="BoxServer\vssver.scc" />
+    <None Include="Common\vssver.scc" />
     <None Include="Pandora.exe.config" />
     <None Include="Pandora.exe.manifest" />
     <Content Include="Reference\Roofing.cs">
       <SubType>Code</SubType>
     </Content>
+    <None Include="Resources\box_down.gif" />
+    <None Include="Resources\box_normal.gif" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
@@ -1036,9 +1073,6 @@
       <ProductName>.NET Framework 3.5</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

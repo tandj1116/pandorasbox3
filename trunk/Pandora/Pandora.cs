@@ -21,6 +21,7 @@ using TheBox.Localization;
 
 namespace TheBox
 {
+
 	public class Pandora
 	{
 		#region Log
@@ -211,7 +212,7 @@ namespace TheBox
 		/// <summary>
 		/// The Box form
 		/// </summary>
-		private static Box m_TheBox;
+        private static IBoxForm m_TheBox;
 
 		/// <summary>
 		/// The loaded hues
@@ -293,7 +294,7 @@ namespace TheBox
                 // Catch a possible exception here and return null.
                 try
                 {
-				    Splash.SetStatusText("Searching existing instances");
+                    _splash.SetStatusText("Searching existing instances");
 
 				    Process current = Process.GetCurrentProcess();
 
@@ -339,7 +340,7 @@ namespace TheBox
 		/// <summary>
 		/// Gets the Box form
 		/// </summary>
-		public static Box BoxForm
+        public static IBoxForm BoxForm
 		{
 			get
 			{
@@ -394,22 +395,6 @@ namespace TheBox
 		{
 			Process process = Process.GetCurrentProcess();
 			process.Kill();
-		}
-
-		/// <summary>
-		/// Restarts Pandora's Box
-		/// </summary>
-		public static void Restart()
-		{
-			m_Context.MainForm = null;
-
-			if (m_TheBox != null)
-			{
-				m_TheBox.Close();
-				m_TheBox.Dispose();
-			}
-
-			m_Context.DoProfile();
 		}
 
 		/// <summary>
@@ -477,10 +462,11 @@ namespace TheBox
 		/// <summary>
 		/// Gets the profile currently loaded
 		/// </summary>
+        [Obsolete("ProfileManager.Profile should be used")]
 		public static Profile Profile
 		{
             // Workaround, there are over 640 refferences... - Tarion
-			get { return ProfileManager.Instance.Profile; }
+            get { return _profileManager.Profile; }
 		}
 
         /// <summary>
@@ -488,6 +474,9 @@ namespace TheBox
         /// </summary>
         public static void CreateNewProfile()
         {
+            _container.Resolve<ProfileManager>().CreateNewProfile();
+
+            /* Now handled by ProfileManager
             m_Context.MainForm = null;
 
             if (m_TheBox != null)
@@ -497,6 +486,7 @@ namespace TheBox
             }
 
             m_Context.MakeNewProfile();
+             * */
         }
 
         /// <summary>
@@ -504,6 +494,9 @@ namespace TheBox
         /// </summary>
         public static void DeleteCurrentProfile()
         {
+            _container.Resolve<ProfileManager>().DeleteCurrentProfile();
+
+            /* Now handled by ProfileManager
             // Have to be refactored when we have a more global GUI handling - Tarion
             m_Context.MainForm = null;
 
@@ -515,6 +508,7 @@ namespace TheBox
 
             ProfileManager.Instance.DeleteCurrentProfile();
             m_Context.DoProfile();
+             * */
         }
 
 		#endregion
@@ -879,7 +873,7 @@ namespace TheBox
 
 					if (Pandora.Profile.General.ModifiersWarnings[index])
 					{
-						if (MessageBox.Show(Pandora.BoxForm,
+						if (MessageBox.Show(Pandora.BoxForm as Form,
 							string.Format(Pandora.Localization.TextProvider["Errors.ModifierWarn"], mi.Text),
 							"",
 							MessageBoxButtons.YesNo) == DialogResult.No)
@@ -929,7 +923,7 @@ namespace TheBox
             {
                 if (m_BoxConnection == null)
                 {
-                    m_BoxConnection = new BoxConnection(ProfileManager.Instance);
+                    m_BoxConnection = new BoxConnection(_profileManager);
                 }
                 return m_BoxConnection;
             }
@@ -940,6 +934,16 @@ namespace TheBox
 
 		#endregion
 
+        private static LightCore.IContainer _container;
+
+        public static LightCore.IContainer Container
+        {
+            get { return _container; }
+            set { _container = value; }
+        }
+        private static ProfileManager _profileManager;
+        private static ISplash _splash;
+
 		/// <summary>
 		/// The main entry point for the application.
 		/// </summary>
@@ -949,7 +953,12 @@ namespace TheBox
 			try
 			{
 				Log.WriteEntry("Starting");
-				Splash.Show();
+
+                LightCoreBuilder builder = new LightCoreBuilder();
+                _container = builder.BuildContainer();
+                _splash = _container.Resolve<ISplash>();
+
+                _splash.Show();
 				AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
 
 				// Delete any temp files created during compilation of profile IO
@@ -957,24 +966,32 @@ namespace TheBox
 
 				if (File.Exists(temp))
 				{
-					Splash.SetStatusText("Deleting temporary files");
+                    _splash.SetStatusText("Deleting temporary files");
 					File.Delete(temp);
 				}
 
+
+                _profileManager = _container.Resolve<ProfileManager>();
 				// Issue 28:  	 Refactoring Pandora.cs - Tarion
 				// Move any profiles resulting from previous versions
-				ProfileManager.Instance.MoveOldProfiles();
+                _profileManager.MoveOldProfiles();
+				//ProfileManager.Instance.MoveOldProfiles();
 				// End Issue 28:
 
 				if (args.Length == 1 && File.Exists(args[0]) && Path.GetExtension(args[0]).ToLower() == ".pbp")
 				{
-					ProfileManager.Instance.ImportProfile(args[0]);
+                    _profileManager.ImportProfile(args[0]);
 				}
 
-				if (ProfileManager.Instance.ProfileLoaded)
+                StartingContext context = _container.Resolve<StartingContext>();
+                Application.Run(context);
+
+                // the following code is replaced, logic moved into StartingContext
+                /*
+                if (profileManager.ProfileLoaded)
 				{
 					Pandora.Log.WriteEntry("Import startup initiated");
-					m_Context = new StartingContext(ProfileManager.Instance.Profile.Name);
+                    m_Context = new StartingContext(profileManager.Profile.Name);
 					Application.Run(m_Context);
 				}
 				else
@@ -993,10 +1010,12 @@ namespace TheBox
 					else
 					{
 						Pandora.Log.WriteEntry("Double instances check passed");
+
 						m_Context = new StartingContext();
 						Application.Run(m_Context);
 					}
 				}
+                */
 			}
 			catch (Exception err)
 			{

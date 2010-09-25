@@ -192,7 +192,7 @@ namespace TheBox.Options
 		{
 			get
 			{
-				string profilesFolder = ProfileManager.Instance.ProfilesFolder;
+				string profilesFolder = ProfileManager.ProfilesFolder;
 				StringCollection list = new StringCollection();
 
 				if (Directory.Exists(profilesFolder))
@@ -251,7 +251,7 @@ namespace TheBox.Options
 		{
 			get
 			{
-				return Path.Combine(ProfileManager.Instance.ProfilesFolder, m_Name);
+				return Path.Combine(ProfileManager.ProfilesFolder, m_Name);
 			}
 		}
 
@@ -404,7 +404,7 @@ namespace TheBox.Options
 		/// <returns>The profile loaded. Null if the profile was not found</returns>
 		public static Profile Load( string name )
 		{
-            string file = Path.Combine(Path.Combine(ProfileManager.Instance.ProfilesFolder, name), "Profile.xml");
+            string file = Path.Combine(Path.Combine(ProfileManager.ProfilesFolder, name), "Profile.xml");
 
 			if ( !File.Exists( file ) )
 			{
@@ -527,7 +527,7 @@ namespace TheBox.Options
 
 		public static void DeleteProfile( string profile )
 		{
-            string folder = Path.Combine(ProfileManager.Instance.ProfilesFolder, profile);
+            string folder = Path.Combine(ProfileManager.ProfilesFolder, profile);
 
 			if ( Directory.Exists( folder ) )
 			{

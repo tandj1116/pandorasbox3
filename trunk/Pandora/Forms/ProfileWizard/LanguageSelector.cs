@@ -10,18 +10,21 @@ namespace TheBox.Forms.ProfileWizard
 	/// <summary>
 	/// Summary description for LanguageSelector.
 	/// </summary>
-	public class LanguageSelector : System.Windows.Forms.Form
+    public class LanguageSelector : System.Windows.Forms.Form, ILanguageSelector
 	{
 		private System.Windows.Forms.Button btnOK;
 		private System.Windows.Forms.ComboBox cmbLang;
+        private ProfileManager _profileManager;
+
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
-		public LanguageSelector()
+		public LanguageSelector(ProfileManager profileManager)
 		{
 			InitializeComponent();
+            _profileManager = profileManager;
 			DialogResult = DialogResult.Cancel;
 		}
 
@@ -115,7 +118,7 @@ namespace TheBox.Forms.ProfileWizard
 		{
 			// Close and run the profile wizard
             this.Visible = false;
-            ProfileManager.Instance.CreateNewProfile(cmbLang.Text);
+            _profileManager.CreateNewProfile(cmbLang.Text);
 
 			this.DialogResult = DialogResult.OK;
 			this.Close();
