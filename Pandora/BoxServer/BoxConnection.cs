@@ -51,7 +51,7 @@ namespace TheBox.BoxServer
         {
             if (Pandora.Profile.Server.Enabled)
             {
-                if (MessageBox.Show(Pandora.BoxForm,
+                if (MessageBox.Show(Pandora.BoxForm as Form,
                     Pandora.Localization.TextProvider["Misc.RequestConnection"],
                     null,
                     MessageBoxButtons.YesNo,

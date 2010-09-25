@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using TSWizards;
+using TheBox.Options;
 
 namespace TheBox.Forms.ProfileWizard
 {
@@ -12,6 +13,8 @@ namespace TheBox.Forms.ProfileWizard
 		private System.ComponentModel.IContainer components = null;
 
 		private bool m_Succesful = false;
+        private bool m_UseProfileAsDefault = false;
+
 		private static TheBox.Common.Localization.TextProvider m_TextProvider = null;
 		private TheBox.Options.Profile m_Profile;
 
@@ -35,10 +38,22 @@ namespace TheBox.Forms.ProfileWizard
 			}
 		}
 
+        public bool UseProfileAsDefault
+        {
+            get
+            {
+                return m_UseProfileAsDefault;
+            }
+            set
+            {
+                m_UseProfileAsDefault = value;
+            }
+        }
+
 		/// <summary>
 		/// Creates a new Profile Wizard
 		/// </summary>
-		public ProfileWizard( TheBox.Options.Profile profile )
+		public ProfileWizard(Profile profile)
 		{
 			// This call is required by the Windows Form Designer.
 			InitializeComponent();
@@ -115,14 +130,14 @@ namespace TheBox.Forms.ProfileWizard
 
 		private void ProfileWizard_LoadSteps(object sender, System.EventArgs e)
 		{
-			this.AddStep( "Step1", new pwStep1() );
-			this.AddStep( "Step3Name", new pwStep3Name() );
-			this.AddStep( "Step4Folder", new pwStep4Folder() );
-			this.AddStep( "Step5CustomMap", new pwStep5CustomMap() );
-			this.AddStep( "Step5aMapNames", new pwStep5MapNames() );
-			this.AddStep( "Step6Images", new pwStep6Images() );
-			this.AddStep( "Step6bServer", new pwStep6bServer() );
-			this.AddStep( "Step7End", new pwStep7End() );
+            this.AddStep("Step1", new pwStep1());
+            this.AddStep("Step3Name", new pwStep3Name());
+            this.AddStep("Step4Folder", new pwStep4Folder());
+            this.AddStep("Step5CustomMap", new pwStep5CustomMap());
+            this.AddStep("Step5aMapNames", new pwStep5MapNames());
+            this.AddStep("Step6Images", new pwStep6Images());
+            this.AddStep("Step6bServer", new pwStep6bServer());
+            this.AddStep("Step7End", new pwStep7End());
 
 
             m_TextProvider = Pandora.Localization.GetLanguage(m_Profile.Language);

@@ -7,6 +7,8 @@ using System.IO;
 using TheBox.Forms.ProfileWizard;
 using TheBox.Options;
 using TheBox.Forms;
+using LightCore;
+using System.Diagnostics;
 
 // Issue 28:  	 Refactoring Pandora.cs - Tarion
 namespace TheBox
@@ -17,78 +19,120 @@ namespace TheBox
     /// </summary>
     public class StartingContext : ApplicationContext
     {
-        private bool m_Started = false;
+        private ProfileManager _profileManager;
+        private ISplash _splash;
+        private IContainer _container;
 
-        public StartingContext()
-        {
-            DoProfile();
-        }
 
-        public StartingContext(string profile)
+        public StartingContext(IContainer container, ProfileManager profileManager, ISplash splash)
         {
-            LoadProfile(profile);
-        }
-
-        public void DoProfile()
-        {
-            if (ProfileManager.Instance.DefaultProfile != null)
+            _container = container;
+            _splash = splash;
+            _profileManager = profileManager;
+            
+            if (_profileManager.ProfileLoaded)
             {
-                Splash.SetStatusText("Loading default profile");
-                LoadProfile(ProfileManager.Instance.DefaultProfile);
+                Pandora.Log.WriteEntry("Import startup initiated");
+                LoadProfile(_profileManager.Profile.Name);
+            }
+            else
+            {
+                Pandora.Log.WriteEntry("Normal startup initiated");
+
+                // Move on with normal startup
+                Process proc = Pandora.ExistingInstance;
+                if (proc != null) // Single instance check
+                {
+                    Pandora.Log.WriteError(null, "Double instance detected");
+                    MessageBox.Show("You can't run two instances of Pandora's Box at the same time");
+                    //  Issue 33:  	 Bring to front if already started - Tarion
+                    ProcessExtension.BringToFront(proc);
+                }
+                else
+                {
+                    Pandora.Log.WriteEntry("Double instances check passed");
+                    DoProfile();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Called when we need a profile. Do one of the following: 
+        /// - Load the default profile
+        /// - Show dialog to select a profile
+        /// - Show dialog to create a profile
+        /// 
+        /// Only public because of the bad implemented restart funktion in pandora.cs
+        /// </summary>
+        private void DoProfile()
+        {
+            if (_profileManager.DefaultProfile != null)
+            {
+                _splash.SetStatusText("Loading default profile");
+                LoadProfile(_profileManager.DefaultProfile);
             }
             else
             {
                 // No default profile specified. Either choose one or create a new one
-                string[] profiles = Directory.GetDirectories(ProfileManager.Instance.ProfilesFolder);
-
-                if (profiles.Length == 0)
+                if (_profileManager.ProfileNames.Length == 0)
                     MakeNewProfile();
                 else
-                    ChooseProfile(profiles);
+                    ChooseProfile();
             }
         }
 
         /// <summary>
         /// Brings up a dialog that will create a new user profile
         /// </summary>
-        public void MakeNewProfile()
+        private void MakeNewProfile()
         {
-            Splash.SetStatusText("Creating new profile");
+            _splash.SetStatusText("Creating new profile");
 
-            MainForm = new LanguageSelector();
+            ILanguageSelector languageSelector = _container.Resolve<ILanguageSelector>();
+            MainForm = languageSelector as Form;
+            MainForm.Show();
+        }
 
-            if (m_Started)
-                MainForm.Show();
+        /// <summary>
+        /// Brings up the choose profile dialog
+        /// </summary>
+        /// <param name="profiles">A list of possible profile names. p.e. ProfileManager.ProfileNames</param>
+        private void ChooseProfile()
+        {
+            _splash.SetStatusText("Profile selection");
 
-            m_Started = true;
+            IProfileChooser profileChooser = _container.Resolve<IProfileChooser>();
+            MainForm = profileChooser as Form;
+            MainForm.Show();
         }
 
         /// <summary>
         /// Loads a profile
+        /// Should be part of the profile manager and need a return value
         /// </summary>
         /// <param name="name">The name of the profile</param>
         private void LoadProfile(string name)
         {
-            Splash.SetStatusText("Loading profile");
+            _splash.SetStatusText("Loading profile");
 
             try
             {
-                ProfileManager.Instance.LoadProfile(name);
+                _profileManager.LoadProfile(name);
             }
             catch (Exception err)
             {
                 Pandora.Log.WriteError(err, "Couldn't load profile {0}", name);
 
-                if (name == ProfileManager.Instance.DefaultProfile)
+                if (name == _profileManager.DefaultProfile)
                 {
-                    ProfileManager.Instance.DefaultProfile = "";
+                    _profileManager.DefaultProfile = "";
                 }
 
                 DoProfile();
                 return;
             }
 
-            if (Pandora.Profile == null)
+            if (_profileManager.Profile == null)
             {
                 string msg = string.Format("The profile {0} is corrupt, therefore it can't be loaded. Would you like to attempt to restore it?", name);
 
@@ -106,13 +150,19 @@ namespace TheBox
 
             try
             {
-                MainForm = new Box();
-                Pandora.BoxForm = (Box)MainForm;
+                // To Test show the new form
+                /* 
+                // Should be handled through the LightCoreBuilder
+                // Uncomment to get a first preview of the new form
+                BoxForm newBoxForm = new BoxForm();
+                Pandora.Localization.LocalizeControl(_newBoxForm);
+                newBoxForm.Show();
+                */
 
-                if (m_Started)
-                    MainForm.Show();
-
-                m_Started = true;
+                IBoxForm boxForm = _container.Resolve<IBoxForm>();
+                Pandora.BoxForm = boxForm;
+                MainForm = boxForm as Form;
+                MainForm.Show();
             }
             catch (Exception err)
             {
@@ -131,16 +181,12 @@ namespace TheBox
             // Action was NEW PROFILE: check if valid, if not exit
             if (sender is LanguageSelector)
             {
-                if (Pandora.Profile != null) // Profile creation succesful
+                if (_profileManager.Profile != null) // Profile creation succesful
                 {
-                    MainForm = new Box();
-                    Pandora.BoxForm = (Box)MainForm;
-
-                    if (m_Started)
-                        MainForm.Show();
-
-                    m_Started = true;
-
+                    IBoxForm boxForm = _container.Resolve<IBoxForm>();
+                    Pandora.BoxForm = boxForm;
+                    MainForm = boxForm as Form;
+                    MainForm.Show();
                     return;
                 }
                 else
@@ -157,25 +203,23 @@ namespace TheBox
                 switch (chooser.Action)
                 {
                     case ProfileChooser.Actions.Exit:
-
                         break;
-
                     case ProfileChooser.Actions.LoadProfile:
-
+                        if (chooser.UseDefault)
+                        {
+                            _profileManager.DefaultProfile = chooser.SelectedProfile;
+                        }
                         LoadProfile(chooser.SelectedProfile);
                         return;
-
                     case ProfileChooser.Actions.MakeNewProfile:
-
                         MakeNewProfile();
-
                         return;
                 }
             }
 
-            if (sender is Box)
+            if (sender is IBoxForm)
             {
-                string next = (sender as Box).NextProfile;
+                string next = (sender as IBoxForm).NextProfile;
 
                 if (next != null)
                 {
@@ -187,29 +231,6 @@ namespace TheBox
             base.OnMainFormClosed(sender, e);
         }
 
-        /// <summary>
-        /// Brings up the choose profile dialog
-        /// </summary>
-        /// <param name="profiles">A list of possible profile names</param>
-        private void ChooseProfile(string[] profiles)
-        {
-            Splash.SetStatusText("Profile selection");
-
-            string[] pnames = new string[profiles.Length];
-
-            for (int i = 0; i < profiles.Length; i++)
-            {
-                string[] items = profiles[i].Split(new char[] { Path.DirectorySeparatorChar });
-
-                pnames[i] = items[items.Length - 1];
-            }
-
-            MainForm = new ProfileChooser(pnames);
-
-            if (m_Started)
-                MainForm.Show();
-
-            m_Started = true;
-        }
+        
     }
 }

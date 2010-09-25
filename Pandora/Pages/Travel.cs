@@ -976,7 +976,7 @@ namespace TheBox.Pages
 				if ( tCat.SelectedNode == null )
 					return;
 				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-				if ( ! (tCat.SelectedNode.Tag != null && tCat.SelectedNode.Tag is List<object> ) )
+				if ( tCat.SelectedNode.Tag == null || !(tCat.SelectedNode.Tag is List<object>) )
 				// Issue 10 - End
 					return;
 
@@ -1459,7 +1459,7 @@ namespace TheBox.Pages
 				int z = 0;
 				int map = -1;
 
-				Ultima.Client.FindLocation( ref x, ref y, ref z, ref map );
+				bool found = Ultima.Client.FindLocation( ref x, ref y, ref z, ref map );
 
 				if ( map != -1 )
 				{

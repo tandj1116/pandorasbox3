@@ -14,9 +14,14 @@ namespace TheBox
     /// </summary>
     public class ProfileManager
     {
-        // Issue 28:  	 Refactoring Pandora.cs - Tarion
-        // This whole class contains code from Pandora.cs
+        
 
+        // Issue 28:  	 Refactoring Pandora.cs - Tarion
+        // This whole class contains code from Pandora.cs ans some other code from the refactoring
+
+        private ISplash _splash;
+
+        /*
         private static ProfileManager instance = null;
 
         public static ProfileManager Instance
@@ -31,27 +36,31 @@ namespace TheBox
                 return instance;
             }
         }
+        */
+
+        // Maybe a solution
+        //public event EventHandler CreateNewProfile;
 
         public bool ProfileLoaded
         {
-            get { return (profile != null); }
+            get { return (_profile != null); }
         }
 
-        private Profile profile = null;
+        private Profile _profile = null;
 
         /// <summary>
         /// Gets the profile currently loaded
         /// </summary>
         public Profile Profile
         {
-            get { return profile; }
+            get { return _profile; }
         }
 
         /// <summary>
         /// Gets the location of the Profiles folder for this machine
         /// </summary>
-        private string profilesFoler = String.Empty;
-        public string ProfilesFolder
+        private static string profilesFoler = String.Empty;
+        public static string ProfilesFolder
         {
             get
             {
@@ -113,6 +122,24 @@ namespace TheBox
             }
         }
 
+        public string[] ProfileNames
+        {
+            get
+            {
+                string[] profileDirs = Directory.GetDirectories(ProfileManager.ProfilesFolder);
+
+                string[] pnames = new string[profileDirs.Length];
+
+                for (int i = 0; i < profileDirs.Length; i++)
+                {
+                    string[] items = profileDirs[i].Split(new char[] { Path.DirectorySeparatorChar });
+                    pnames[i] = items[items.Length - 1];
+                }
+
+                return pnames;
+            }
+        }
+
         /// <summary>
         /// Gets an array of string representing the names of the existing profiles
         /// </summary>
@@ -135,9 +162,24 @@ namespace TheBox
             }
         }
 
-        private ProfileManager()
+        public ProfileManager(ISplash splash)
         {
-            // Private constuctor, it's a singleton. Use: ProfileManager.Instance
+            _splash = splash;
+        }
+
+        public void CreateNewProfile()
+        {
+            // Temporarly deisabled
+            //_context.MainForm = null;
+
+            if (Pandora.BoxForm != null)
+            {
+                Pandora.BoxForm.Close();
+                Pandora.BoxForm.Dispose();
+            }
+
+            // Temporarly deisabled
+            //_context.MakeNewProfile();
         }
 
         /// <summary>
@@ -152,13 +194,20 @@ namespace TheBox
             wiz.ShowDialog();
             profile = wiz.Profile;
 
+            if (wiz.UseProfileAsDefault)
+            {
+                this.DefaultProfile = wiz.Profile.Name;
+            }
+
             profile.Save();
             profile.CreateData();
+            this._profile = profile;
         }
+
 
         public void LoadProfile(string name)
         {
-            profile = Profile.Load(name);
+            _profile = Profile.Load(name);
         }
 
 
@@ -167,8 +216,22 @@ namespace TheBox
         /// </summary>
         public void DeleteCurrentProfile()
         {
-            Profile.DeleteProfile(profile.Name);
-            profile = null;
+            // Have to be refactored when we have a more global GUI handling - Tarion
+            // Temporarly deisabled
+            //_context.MainForm = null;
+
+            if (Pandora.BoxForm != null)
+            {
+                Pandora.BoxForm.Close();
+                Pandora.BoxForm.Dispose();
+            }
+
+
+            Profile.DeleteProfile(_profile.Name);
+            _profile = null;
+
+            // Temporarly deisabled
+            //_context.DoProfile();
         }
 
         /// <summary>
@@ -179,7 +242,7 @@ namespace TheBox
         public bool ImportProfile(string filename)
         {
             Pandora.Log.WriteEntry("Importing Profile...");
-            Splash.SetStatusText("Importing profile");
+            _splash.SetStatusText("Importing profile");
 
             Profile p = null;
 
@@ -192,7 +255,7 @@ namespace TheBox
             }
             else
             {
-                profile = p;
+                _profile = p;
             }
 
             bool run = false;
@@ -227,7 +290,7 @@ namespace TheBox
 
             if (!run)
             {
-                profile = null;
+                _profile = null;
             }
 
             return run;
@@ -239,14 +302,14 @@ namespace TheBox
         /// Exports a Pandora's Box profile
         /// </summary>
         /// <param name="p">The profile to export</param>
-        public void ExportProfile(Profile p)
+        public void ExportProfile()
         {
             System.Windows.Forms.SaveFileDialog dlg = new SaveFileDialog();
             dlg.Filter = "Pandora's Box Profile (*.pbp)|*.pbp";
 
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                ProfileIO pio = new ProfileIO(p);
+                ProfileIO pio = new ProfileIO(_profile);
                 pio.Save(dlg.FileName);
             }
 
@@ -286,7 +349,7 @@ namespace TheBox
 
             if (File.Exists(log))
             {
-                Splash.SetStatusText("Removing old log file");
+                _splash.SetStatusText("Removing old log file");
                 try
                 {
                     File.Delete(log);
@@ -302,7 +365,7 @@ namespace TheBox
 
             if (File.Exists(iniFile))
             {
-                Splash.SetStatusText("Removing old ini file");
+                _splash.SetStatusText("Removing old ini file");
 
                 string newIni = Path.Combine(Pandora.ApplicationDataFolder, "Pandora.ini");
 
@@ -344,7 +407,7 @@ namespace TheBox
             if (profiles.Length == 0)
                 return;
 
-            Splash.SetStatusText("Moving old profiles");
+            _splash.SetStatusText("Moving old profiles");
 
             Pandora.Log.WriteEntry("Found {0} profiles in the old profiles folder", profiles.Length);
 
@@ -401,6 +464,8 @@ namespace TheBox
                 Pandora.Log.WriteError(err, "Couldn't delete old profiles folder: {0}", oldFolder);
             }
         }
+
+
 
         
     }

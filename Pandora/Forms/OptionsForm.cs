@@ -135,7 +135,9 @@ namespace TheBox.Forms
 
 		private bool m_ApplyOptions = false;
 
-		public OptionsForm()
+        private ProfileManager _profileManager;
+
+		public OptionsForm(ProfileManager profileManager)
 		{
 			//
 			// Required for Windows Form Designer support
@@ -143,6 +145,7 @@ namespace TheBox.Forms
 			InitializeComponent();
 
 			Pandora.Localization.LocalizeControl( this );
+            _profileManager = profileManager;
 		}
 
 		/// <summary>
@@ -1680,7 +1683,7 @@ namespace TheBox.Forms
 		/// </summary>
 		private void SetDefaultProfile()
 		{
-			string defProf = ProfileManager.Instance.DefaultProfile;
+            string defProf = _profileManager.DefaultProfile;
 
 			if ( defProf != null && defProf.Length > 0 )
 			{
@@ -1700,7 +1703,7 @@ namespace TheBox.Forms
 			lstProfiles.BeginUpdate();
 			lstProfiles.Items.Clear();
 
-			lstProfiles.Items.AddRange( ProfileManager.Instance.ExistingProfiles );
+            lstProfiles.Items.AddRange(_profileManager.ExistingProfiles);
 			lstProfiles.SelectedItem = Pandora.Profile.Name;
 
 			lstProfiles.EndUpdate();
@@ -2118,7 +2121,7 @@ namespace TheBox.Forms
 				txLinkColor.BackColor = ColorChooser.Color;
 
 				UpdateLinks( this );
-				UpdateLinks( Pandora.BoxForm );
+				UpdateLinks( Pandora.BoxForm as Form );
 			}
 		}
 
@@ -2581,7 +2584,7 @@ namespace TheBox.Forms
 				try
 				{
 					old = Pandora.Profile.BaseFolder;
-					newFolder = Path.Combine( ProfileManager.Instance.ProfilesFolder, txProfName.Text );
+					newFolder = Path.Combine( ProfileManager.ProfilesFolder, txProfName.Text );
 
 					if ( old == newFolder )
 					{
@@ -2631,7 +2634,7 @@ namespace TheBox.Forms
 		/// <param name="e"></param>
 		private void bResetDefaultProfile_Click(object sender, System.EventArgs e)
 		{
-            ProfileManager.Instance.DefaultProfile = null;
+            _profileManager.DefaultProfile = null;
 			SetDefaultProfile();
 		}
 
@@ -2642,7 +2645,7 @@ namespace TheBox.Forms
 		{
 			if ( lstProfiles.SelectedIndex > -1 )
 			{
-                ProfileManager.Instance.DefaultProfile = lstProfiles.Text;
+                _profileManager.DefaultProfile = lstProfiles.Text;
 				SetDefaultProfile();
 			}
 		}
@@ -2691,7 +2694,7 @@ namespace TheBox.Forms
 		/// </summary>
 		private void bExportProfile_Click(object sender, System.EventArgs e)
 		{
-            ProfileManager.Instance.ExportProfile(Pandora.Profile);
+            _profileManager.ExportProfile();
 		}
 
 		/// <summary>
@@ -2699,7 +2702,7 @@ namespace TheBox.Forms
 		/// </summary>
 		private void bImportProfile_Click(object sender, System.EventArgs e)
 		{
-            TheBox.Options.Profile p = ProfileManager.Instance.ImportProfile();
+            TheBox.Options.Profile p = _profileManager.ImportProfile();
 
 			if ( p != null )
 			{

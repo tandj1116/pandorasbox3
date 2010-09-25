@@ -43,11 +43,19 @@ namespace TheBox.Forms
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
-			Pandora.Localization.LocalizeControl( this );
 
-			// Hues
-			Chart.Hues = Pandora.Hues;
-			Art.MulFileManager = Pandora.Profile.MulManager;
+            try
+            {
+                Pandora.Localization.LocalizeControl(this);
+
+                // Hues
+                Chart.Hues = Pandora.Hues;
+                Art.MulFileManager = Pandora.Profile.MulManager;
+            }
+            catch (Exception)
+            {
+                // For designer
+            }
 		}
 
 		/// <summary>

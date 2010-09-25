@@ -9,7 +9,7 @@ namespace TheBox.Forms
 	/// <summary>
 	/// Summary description for ProfileChooser.
 	/// </summary>
-	public class ProfileChooser : System.Windows.Forms.Form
+    public class ProfileChooser : System.Windows.Forms.Form, IProfileChooser
 	{
 		/// <summary>
 		/// The action selected by the user
@@ -43,6 +43,11 @@ namespace TheBox.Forms
 			}
 		}
 
+        public bool UseDefault
+        {
+            get { return chkDefault.Checked; }
+        }
+
 		private Actions m_Action = Actions.Exit;
 
 		/// <summary>
@@ -67,14 +72,14 @@ namespace TheBox.Forms
 		/// Creates a new profile chooser form
 		/// </summary>
 		/// <param name="profiles">The list of profiles available</param>
-		public ProfileChooser( string[] profiles )
+		public ProfileChooser(ProfileManager profileManager)
 		{
 			//
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
 
-			foreach ( string s in profiles )
+            foreach (string s in profileManager.ProfileNames)
 			{
 				list.Items.Add( s );
 			}
@@ -195,8 +200,9 @@ namespace TheBox.Forms
 			m_SelectedProfile = (string) list.SelectedItem;
 			m_Action = Actions.LoadProfile;
 
-			if ( chkDefault.Checked )
-                ProfileManager.Instance.DefaultProfile = m_SelectedProfile;
+            // Must be handled from dialog user
+			//if ( chkDefault.Checked )
+            //    ProfileManager.Instance.DefaultProfile = m_SelectedProfile;
 
 			Close();
 		}

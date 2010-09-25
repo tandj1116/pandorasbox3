@@ -16,7 +16,6 @@ namespace TheBox.Forms.ProfileWizard
 		{
 			// This call is required by the Windows Form Designer.
 			InitializeComponent();
-
 			// TODO: Add any initialization after the InitializeComponent call
 		}
 
@@ -38,13 +37,16 @@ namespace TheBox.Forms.ProfileWizard
         private void pwStep7End_ValidateStep(object sender, System.ComponentModel.CancelEventArgs e)
         {
             ProfileWizard wiz = Wizard as ProfileWizard;
+            wiz.UseProfileAsDefault = chkDefault.Checked;
             wiz.Succesful = true;
 
+            
+            /*
             if (chkDefault.Checked)
             {
                 // Default profile
-                ProfileManager.Instance.DefaultProfile = wiz.Profile.Name;
-            }
+                _profileManager.DefaultProfile = wiz.Profile.Name;
+            }*/
 
             Pandora.Log.WriteEntry("pwStep7End_ValidateStep not saving the porfile now!");
             /*

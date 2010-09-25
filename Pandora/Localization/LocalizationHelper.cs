@@ -22,7 +22,8 @@ namespace TheBox.Localization
     // Issue 28:  	 Refactoring Pandora.cs - Tarion
     public class LocalizationHelper
     {
-        TextProvider m_TextProvider;
+        private const string DEFAULT_LANGUAGE = "English";
+        private TextProvider m_TextProvider;
 
         public LocalizationHelper()
         {
@@ -64,7 +65,7 @@ namespace TheBox.Localization
             {
                 StringCollection languages = new StringCollection();
 
-                languages.Add("English");
+                languages.Add(DEFAULT_LANGUAGE);
 
                 // TODO : Add code to correctly detect supported languages
 
@@ -144,6 +145,56 @@ namespace TheBox.Localization
             }
         }
 
+        /// <summary>
+        /// Added support for ContextMenuStrip Tarion (19.07.2010)
+        /// </summary>
+        /// <param name="contextMenuStrip"></param>
+        public void LocalizeMenu(ContextMenuStrip contextMenuStrip)
+        {
+            foreach (ToolStripItem tsi in contextMenuStrip.Items)
+            {
+                string text = tsi.Text;
+
+                string localizedText = Pandora.Localization.TextProvider[text];
+
+                if (localizedText != null)
+                    tsi.Text = localizedText;
+
+                if (tsi is ToolStripMenuItem)
+                {
+                    ToolStripMenuItem tsmi = (ToolStripMenuItem)tsi;
+
+                    if (tsmi != null && tsmi.DropDownItems.Count > 0)
+                        LocalizeMenu(tsmi);
+                }
+            }
+        }
+ 
+        /// <summary>
+        /// Added support for ToolStripMenuItem Tarion (19.07.2010)
+        /// </summary>
+        /// <param name="toolStripMenuItem"></param>
+        public void LocalizeMenu(ToolStripMenuItem toolStripMenuItem)
+        {
+            foreach (ToolStripItem tsi in toolStripMenuItem.DropDownItems)
+            {
+                string text = tsi.Text;
+
+                string localizedText = Pandora.Localization.TextProvider[text];
+
+                if (localizedText != null)
+                    tsi.Text = localizedText;
+
+                if (tsi is ToolStripMenuItem)
+                {
+                    ToolStripMenuItem tsmi = (ToolStripMenuItem)tsi;
+
+                    if (tsmi != null && tsmi.DropDownItems.Count > 0)
+                        LocalizeMenu(tsmi);
+                }
+            }
+        }
+
 
 
         /// <summary>
@@ -152,6 +203,9 @@ namespace TheBox.Localization
         /// <returns>A Text Provider object</returns>
         public TextProvider GetLanguage()
         {
+            // Return a default value: Tarion (19.07.2010)
+            if (Pandora.Profile == null) return GetLanguage(DEFAULT_LANGUAGE);
+
             return GetLanguage(Pandora.Profile.Language);
         }
 
@@ -169,18 +223,18 @@ namespace TheBox.Localization
             if (!File.Exists(file))
             {
                 // Selected language doesn't exist. Revert to English
-                System.Windows.Forms.MessageBox.Show(string.Format("The langague selected for the current profile could not be located. English will be used instead.\n\nMissing language: {0}.", Pandora.Profile.Language));
+                System.Windows.Forms.MessageBox.Show(String.Format("The langague selected for the current profile could not be located. {0} will be used instead.\n\nMissing language: {0}.", Pandora.Profile.Language, DEFAULT_LANGUAGE));
 
-                Pandora.Profile.Language = "English";
+                Pandora.Profile.Language = DEFAULT_LANGUAGE;
 
                 file = Path.Combine(Pandora.Folder, "Lang");
-                file = Path.Combine(file, string.Format("English.dll"));
+                file = Path.Combine(file, string.Format(DEFAULT_LANGUAGE + ".dll"));
 
                 if (!File.Exists(file))
                 {
                     // English doesn't exist either. This is wrong.
-                    System.Windows.Forms.MessageBox.Show("Pandora's Box couldn't locate a required component (English.dll). Please reinstall the program to address this issue.");
-                    Pandora.Log.WriteError(null, "English.dll not found. Closing.");
+                    System.Windows.Forms.MessageBox.Show(String.Format("Pandora's Box couldn't locate a required component ({0}.dll). Please reinstall the program to address this issue.", DEFAULT_LANGUAGE));
+                    Pandora.Log.WriteError(null, DEFAULT_LANGUAGE + ".dll not found. Closing.");
                     Pandora.ClosePandora();
                     // Is this executed?
                     throw new Exception("Default language file not found");
@@ -213,5 +267,7 @@ namespace TheBox.Localization
                 throw new Exception("Language file corrupted");
             }
         }
+
+        
     }
 }
