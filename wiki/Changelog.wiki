@@ -1,6 +1,6 @@
 #labels Phase-Implementation,Featured
 = Changelog =
-*Pandora's Box 3.0.0.5 | 20.07.2010*
+*Pandora's Box 3.0.0.5 | 20.07.10*
   * Issue 46: Power Scroll issue
   * Issue 47: Runics dont give resource option.
   * Issue 50: LocalizedSign LabelNumber no longer limited by 50000
